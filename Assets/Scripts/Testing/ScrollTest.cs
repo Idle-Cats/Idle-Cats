@@ -21,7 +21,7 @@ public class ScrollTest : MonoBehaviour
     {
         foreach (Touch touch in Input.touches) {
             if (touch.phase == TouchPhase.Moved) {
-                gameObject.transform.position = new Vector3(transform.position.x, transform.position.y - (touch.deltaPosition.y * (scrollSpeed/100)), -10);
+                gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + (touch.deltaPosition.y * (-scrollSpeed/100)), -10);
                 if (gameObject.transform.position.y > 0) {
                     gameObject.transform.position = new Vector3(transform.position.x, 0, -10);
                 }
