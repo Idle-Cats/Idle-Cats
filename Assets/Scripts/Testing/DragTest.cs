@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DragTest : MonoBehaviour
 {
+    public GameObject gameControl;
+
     private Camera cam;
 
     [SerializeField]
@@ -34,6 +36,9 @@ public class DragTest : MonoBehaviour
                         draggedObject = hit.collider.gameObject;
                         draggingObject = true;
                         dragFingerId = touch.fingerId;
+                    }
+                    else if (hit.collider.gameObject.tag == "PlaceRoom") {
+                        gameControl.GetComponent<BuildRoom>().placeTestRoom();
                     }
                 }
             }

@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 33756874}
   - component: {fileID: 33756875}
+  - component: {fileID: 33756876}
   m_Layer: 0
   m_Name: Game Control
   m_TagString: Untagged
@@ -168,8 +169,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodePrefab: {fileID: 5218410267202666652, guid: 6ea01c91cae2e3742a8ab778bd7cbe2b, type: 3}
-  nodeList: []
-  nodeListLength: 0
+  node: {fileID: 0}
+  nodeLength: 0
+  roomHeight: 2
+--- !u!114 &33756876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33756873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47534b6a158ba16458afb5eb08b7ce30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testRoom: {fileID: 2205992875595995088, guid: 8f256201cdc1d494486d9f303bdb7c5c, type: 3}
 --- !u!1 &986514172
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,9 +507,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd12d6d4570b6724ca8949e4f69a3fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControl: {fileID: 33756873}
   draggedObject: {fileID: 0}
   draggingObject: 0
-  dragFingerId: 0
+  dragFingerId: -1
 --- !u!1 &2057849699
 GameObject:
   m_ObjectHideFlags: 0
