@@ -47,6 +47,21 @@ public class DragTest : MonoBehaviour
             }
             if (touch.phase == TouchPhase.Ended) {
                 if (draggingObject && touch.fingerId == dragFingerId) {
+                    Vector2 fingerPos = touch.position;
+                    Vector3 firePoint = cam.ScreenToWorldPoint(new Vector3(fingerPos.x, fingerPos.y, 0));
+
+                    int layermask = 1 << 6; 
+
+                    RaycastHit2D hit = Physics2D.Raycast(firePoint, Vector3.forward, 20, layermask);
+                    Debug.DrawRay(firePoint, Vector3.forward * 20, Color.green, 5, false);
+                    if (hit.collider != null) {
+                        draggedObject.GetComponent<CurrentRoom>().currentRoom = hit.collider.gameObject;
+                        draggedObject.transform.position = hit.collider.gameObject.transform.position;
+                    }
+                    else {
+                        draggedObject.transform.position = draggedObject.GetComponent<CurrentRoom>().currentRoom.transform.position;
+                    }
+
                     draggingObject = false;
                     draggedObject = null;
                     dragFingerId = -1;

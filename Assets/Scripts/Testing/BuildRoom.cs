@@ -22,7 +22,8 @@ public class BuildRoom : MonoBehaviour
         room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
 
         if (roomCount == 0) {
-            Instantiate(catTest, room.transform.position, Quaternion.identity);
+            GameObject cat = Instantiate(catTest, room.transform.position, Quaternion.identity);
+            cat.GetComponent<CurrentRoom>().currentRoom = room;
         }//remove this code later just for cat testing purposes
 
         roomCount++;
