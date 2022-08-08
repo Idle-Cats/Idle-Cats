@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 33756874}
+  - component: {fileID: 33756875}
   m_Layer: 0
   m_Name: Game Control
   m_TagString: Untagged
@@ -154,6 +155,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &33756875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33756873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc132797558c9a4782969e3e17b132a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodePrefab: {fileID: 5218410267202666652, guid: 6ea01c91cae2e3742a8ab778bd7cbe2b, type: 3}
+  nodeList: []
+  nodeListLength: 0
 --- !u!1 &986514172
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   draggedObject: {fileID: 0}
   draggingObject: 0
+  dragFingerId: 0
 --- !u!1 &2057849699
 GameObject:
   m_ObjectHideFlags: 0
