@@ -11,6 +11,8 @@ public class DragTest : MonoBehaviour
 
     public bool draggingObject = false;
 
+    public int dragFingerId = -1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,16 +33,17 @@ public class DragTest : MonoBehaviour
                     if (hit.collider.gameObject.tag == "Draggable") {
                         draggedObject = hit.collider.gameObject;
                         draggingObject = true;
+                        dragFingerId = touch.fingerId;
                     }
                 }
             }
             if (touch.phase == TouchPhase.Ended) {
-                if (draggingObject) {
+                if (draggingObject && touch.fingerId == dragFingerId) {
                     draggingObject = false;
                     draggedObject = null;
                 }
             }
-            if (touch.phase == TouchPhase.Moved) {
+            if (touch.phase == TouchPhase.Moved && touch.fingerId == dragFingerId) {
                 if (draggingObject) {
 
                     Vector3 fingerPos = cam.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 0));

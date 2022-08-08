@@ -19,9 +19,9 @@ public class ScrollTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameObject.GetComponent<DragTest>().draggingObject) {
             foreach (Touch touch in Input.touches) {
                 if (touch.phase == TouchPhase.Moved) {
+                if (touch.fingerId != gameObject.GetComponent<DragTest>().dragFingerId) {
                     gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + (touch.deltaPosition.y * (-scrollSpeed / 100)), -10);
                     if (gameObject.transform.position.y > 0) {
                         gameObject.transform.position = new Vector3(transform.position.x, 0, -10);
@@ -30,7 +30,7 @@ public class ScrollTest : MonoBehaviour
                         gameObject.transform.position = new Vector3(transform.position.x, -bottom, -10);
                     }
                 }
+                }
             }
-        }
     }
 }
