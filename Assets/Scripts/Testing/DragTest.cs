@@ -15,6 +15,8 @@ public class DragTest : MonoBehaviour
 
     public int dragFingerId = -1;
 
+    private GameObject dragStartRoom = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class DragTest : MonoBehaviour
                         draggedObject = hit.collider.gameObject;
                         draggingObject = true;
                         dragFingerId = touch.fingerId;
+
                     }
                     else if (hit.collider.gameObject.tag == "PlaceRoom") {
                         gameControl.GetComponent<BuildRoom>().placeTestRoom();
