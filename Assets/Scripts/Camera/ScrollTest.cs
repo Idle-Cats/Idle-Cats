@@ -23,8 +23,8 @@ public class ScrollTest : MonoBehaviour
                 if (touch.phase == TouchPhase.Moved) {
                 if (touch.fingerId != gameObject.GetComponent<DragTest>().dragFingerId) {
                     gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + (touch.deltaPosition.y * (-scrollSpeed / 100)), -10);
-                    if (gameObject.transform.position.y > 0) {
-                        gameObject.transform.position = new Vector3(transform.position.x, 0, -10);
+                    if (gameObject.transform.position.y > top) {
+                        gameObject.transform.position = new Vector3(transform.position.x, top, -10);
                     }
                     else if (gameObject.transform.position.y < -bottom) {
                         gameObject.transform.position = new Vector3(transform.position.x, -bottom, -10);

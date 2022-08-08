@@ -15,8 +15,6 @@ public class DragTest : MonoBehaviour
 
     public int dragFingerId = -1;
 
-    private GameObject dragStartRoom = null;
-
     // Start is called before the first frame update
     void Start()
     {
