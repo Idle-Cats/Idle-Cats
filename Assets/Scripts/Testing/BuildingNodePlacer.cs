@@ -11,7 +11,7 @@ public class BuildingNodePlacer : MonoBehaviour
     private int nodeLength;
 
     [SerializeField]
-    private int roomHeight = 1;
+    private float roomHeight = 1;
 
     void Start()
     {
@@ -22,7 +22,9 @@ public class BuildingNodePlacer : MonoBehaviour
     }
 
     public void placeNode() {
-        GameObject newNode = Instantiate(nodePrefab, new Vector2(0, 4 - (roomHeight * nodeLength)), Quaternion.identity);
+        roomHeight = gameObject.GetComponent<BuildRoom>().roomHeight;
+
+        GameObject newNode = Instantiate(nodePrefab, new Vector2(0, 4 - (roomHeight * 1.5f * nodeLength)), Quaternion.identity);
         Destroy(node);
         node = newNode;
         nodeLength++;

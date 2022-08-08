@@ -8,8 +8,16 @@ public class BuildRoom : MonoBehaviour
 
     private int roomCount = 0;
 
+    public float roomHeight;
+
+    void Start()
+    {
+        roomHeight = testRoom.GetComponent<SpriteRenderer>().size.y;
+    }
+
     public void placeTestRoom() {
-        Instantiate(testRoom, gameObject.GetComponent<BuildingNodePlacer>().node.transform.position, Quaternion.identity);
+        GameObject room = Instantiate(testRoom, gameObject.GetComponent<BuildingNodePlacer>().node.transform.position, Quaternion.identity);
+        room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
         roomCount++;
         gameObject.GetComponent<BuildingNodePlacer>().placeNode();
     }
