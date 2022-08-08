@@ -41,6 +41,7 @@ public class DragTest : MonoBehaviour
                 if (draggingObject && touch.fingerId == dragFingerId) {
                     draggingObject = false;
                     draggedObject = null;
+                    dragFingerId = -1;
                 }
             }
             if (touch.phase == TouchPhase.Moved && touch.fingerId == dragFingerId) {
