@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveTestCube : MonoBehaviour
+public class CurrentRoom : MonoBehaviour
 {
+    public GameObject currentRoom;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +16,5 @@ public class MoveTestCube : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void moveUp() {
-        this.transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
     }
 }
