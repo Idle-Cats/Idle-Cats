@@ -1,6 +1,8 @@
-wusing System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ResourceRoom : MonoBehaviour
 {
@@ -9,10 +11,13 @@ public class ResourceRoom : MonoBehaviour
     // Start is called before the first frame update
 
     private float roomInvent = 0;
-    private double upgradeModifier = 0;
-    private int roomCapacity = 0;
-    private double resourceGen = 0;
+    private float upgradeModifier = 0;
+    private float roomCapacity = 0;
+    private float resourceGen = 0;
     private string name = "ResourceRoom";
+    [SerializeField]
+    private GameObject resourceCounter;
+    private float globalResource = 0; //TODO make this global
 
     void Start()
     {
@@ -21,30 +26,19 @@ public class ResourceRoom : MonoBehaviour
         this.name = "Fishing Room";
         this.roomCapacity = 100;
         this.resourceGen = 1;
+        InvokeRepeating("updateRoom", 0.0f, 1.0f);
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //TODO change to once per second
     {
-        //adds a tick of resource gen to roomInvent
-        if (roomInvent < roomCapacity)
-        {
-            addInvent(resourceGen * (1 + upgradeModifier));
-        }
-
-        //code for input?
-        //if (Input.ClickHere == true)
-        //{
-        //    globalResource = globalResource + roomInvent;
-        //    roomInvent = 0;
-        //}
-        
+        //adds a tick of resource gen to roomInvent 
     }
 
     //method for adding to invent making sure capacity isn't exceeded
-    void addInvent(int x)
+    void addInvent(float x)
     {
-        int tempInvent = roomInvent + x;
+        float tempInvent = roomInvent + x;
         if (tempInvent >= roomCapacity)
         {
             roomInvent = roomCapacity;
@@ -53,5 +47,21 @@ public class ResourceRoom : MonoBehaviour
         {
             roomInvent = tempInvent;
         }
+    }
+
+    public void collectResources()
+    {
+            globalResource = globalResource + roomInvent;
+            roomInvent = 0;
+    }
+
+    public void updateRoom()
+    {
+        if (roomInvent < roomCapacity)
+        {
+            addInvent(resourceGen * (1 + upgradeModifier));
+        }
+
+        resourceCounter.GetComponent<TextMeshProUGUI>().SetText("Current Resources: " + roomInvent + "/" + roomCapacity);
     }
 }

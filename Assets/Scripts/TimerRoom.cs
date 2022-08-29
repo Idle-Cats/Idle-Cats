@@ -7,8 +7,8 @@ public class TimerRoom : MonoBehaviour
     //nathan is here
     //he says we suck
     //this is a skeleton class for timed rooms
-    private float timer = 0.0;
-    private boolean researching = false;
+    private float timer = 0.0f;
+    private bool researching = false;
    
     // Start is called before the first frame update
     void Start()
