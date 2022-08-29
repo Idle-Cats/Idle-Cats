@@ -134,9 +134,12 @@ GameObject:
   - component: {fileID: 33756874}
   - component: {fileID: 33756875}
   - component: {fileID: 33756876}
+<<<<<<< HEAD
   - component: {fileID: 33756877}
   - component: {fileID: 33756878}
   - component: {fileID: 33756879}
+=======
+>>>>>>> parent of 0d1e957 (added in sound feature)
   m_Layer: 0
   m_Name: Game Control
   m_TagString: Untagged
@@ -190,6 +193,7 @@ MonoBehaviour:
   testRoom: {fileID: 2205992875595995088, guid: 8f256201cdc1d494486d9f303bdb7c5c, type: 3}
   roomHeight: 0
   catTest: {fileID: 207835099897388151, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+<<<<<<< HEAD
 --- !u!114 &33756877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e095bb767480b1a4fbf51d52ca961f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+>>>>>>> parent of 0d1e957 (added in sound feature)
 --- !u!1 &440901897
 GameObject:
   m_ObjectHideFlags: 0
