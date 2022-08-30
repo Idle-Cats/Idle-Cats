@@ -6,6 +6,6 @@ EG: Fixes # (issue)
 
 # Checklist:
 - [ ] I have assigned myself to this pull request
-- [ ] I have assigned one of the Alexs as a reviewer 
+- [ ] I have requested someone to review my changes (Ping on Discord)
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] My changes generate no new warnings
