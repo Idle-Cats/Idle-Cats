@@ -4,7 +4,6 @@ using static Cats;
 
 public class CatList{
 
-// singleton pattern
 private static CatList instance;
 
 public static CatList getInstance() {
@@ -15,7 +14,7 @@ public static CatList getInstance() {
 }
 
    // hashset 
-    private HashSet<Cats> discoveredCats = new HashSet<Cats>();
+    public HashSet<Cats> discoveredCats = new HashSet<Cats>();
 
     public void AddCat(Cats cat) {
         if(!catTypeExists(cat.GetCatType())) {

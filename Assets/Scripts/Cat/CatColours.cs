@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Cats;
+using static CatList;
 
-public class CatColour : MonoBehaviour
+public class CatColours : MonoBehaviour
 {
     private Cats cat;
-    // create a serializable class for the cat type
-    [SerializeField] public CatType catType;
+    CatList catList = CatList.getInstance();
 
     // Start is called before the first frame update
     void Start()
     {
+        CatList.getInstance().AddCat(new Cats(CatType.GREEN));
         Cats cat = Cats.GenerateRandomCat();
 
         switch (cat.GetCatType())
@@ -47,6 +48,9 @@ public class CatColour : MonoBehaviour
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f);
                 break;
         }
+        // print size of cat list
+        // print(catList.discoveredCats.Count);
+        print(catList.PrintCats());
     }
 
     // Update is called once per frame
