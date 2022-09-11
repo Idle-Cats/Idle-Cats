@@ -52,7 +52,7 @@ public class Cats {
                 Console.WriteLine("Generating new cat...");
                 return GenerateRandomCat();
             }
-            // if random less than 500
+            // if random less than 500 then get a cat from already owned list
         } else if (randomNumber < 500) {
             List<Cats> cList = new List<Cats>(catList.discoveredCats);
             CatType catType = cList[random.Next(catList.discoveredCats.Count)].GetCatType();
@@ -65,6 +65,7 @@ public class Cats {
         }
     }
 
+    // all cats
     public enum CatType {
         GREY,
         BROWN,

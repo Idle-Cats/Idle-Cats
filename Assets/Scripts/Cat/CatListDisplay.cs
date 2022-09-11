@@ -15,10 +15,11 @@ public class CatListDisplay : MonoBehaviour
     {
         Cats cat = new Cats(catType);
 
-        // bool exists = catList.catTypeExists(cat.GetCatType());
         bool exists = CatList.getInstance().catTypeExists(cat.GetCatType());
+        // if cat exists in catlist, set sprite to active otherwise set to inactive
         float opacity = exists ? 1.0f : 0.5f;
         
+        // set colours regarding cats - can change
         switch (cat.GetCatType())
         {
             case CatType.GREY:

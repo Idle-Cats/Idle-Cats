@@ -18,7 +18,7 @@ public class DragTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = gameObject.GetComponent<Camera>();
+       cam = gameObject.GetComponent<Camera>();
     }
 
     // Update is called once per frame
