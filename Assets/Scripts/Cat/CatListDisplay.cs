@@ -52,6 +52,15 @@ public class CatListDisplay : MonoBehaviour
             case CatType.RAINBOW:
                 this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
                 break;
+            case CatType.WELCOME:
+                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
+                break;
+            case CatType.PARTY:
+                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
+                break;
+            case CatType.HELP:
+                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
+                break;
         }
     }
 
