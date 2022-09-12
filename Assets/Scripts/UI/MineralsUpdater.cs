@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static Formatter;
+using static GameControl;
 
 public class MineralsUpdater : MonoBehaviour
 {
-    // Change once Game Provider is created
-    public int Minerals = 0;
-
     // Start is called before the first frame update
     void Start()
     {

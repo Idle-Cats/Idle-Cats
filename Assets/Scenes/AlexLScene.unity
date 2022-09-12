@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'F: ??'
+  m_text: 'M: ??'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1208,7 +1208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c022c9bc1503ee489d8a50332909a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Minerals: 0
 --- !u!1 &493715552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2595,7 +2594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe09125f46402e45929a0a4f7920b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Food: 0
 --- !u!1 &1142106306
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,7 +3156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126003c817947314da680fc8c04cb43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coins: 500
 --- !u!114 &1472056481
 MonoBehaviour:
   m_ObjectHideFlags: 0
