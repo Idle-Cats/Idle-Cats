@@ -1747,7 +1747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.57594633, a: 1}
+  m_Color: {r: 1, g: 0.0047169924, b: 0.6865551, a: 0.59607846}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1907,6 +1907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testRoom: {fileID: 2205992875595995088, guid: 8f256201cdc1d494486d9f303bdb7c5c, type: 3}
+  roomCount: 0
   roomHeight: 0
   catTest: {fileID: 207835099897388151, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
 --- !u!114 &925868949
@@ -1952,13 +1953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494fc9e13cb0e4c0db98d4cba2ae92f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cat: {fileID: 948020749}
-  minX: 0
-  maxX: 668
-  minY: 0
-  maxY: 1580
-  speed: 600
-  maxTime: 20
 --- !u!1 &931764814
 GameObject:
   m_ObjectHideFlags: 0
