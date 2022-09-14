@@ -16,5 +16,9 @@ public class SaveInfomation
 
     public int roomCount;
 
+    public int nodeLength;
+
+    public float nodeY;
+
     //public HashSet<Transform> cats;
 }

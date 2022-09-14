@@ -26,6 +26,16 @@ public class SaveLoadManager : MonoBehaviour
         //saves the data using save helper to turn info into a string that can be put in playerprefs
         infomation.discoveredCats = CatList.getInstance().discoveredCats;
         infomation.rooms = gameObject.GetComponent<BuildRoom>().rooms;
+        infomation.roomCount = gameObject.GetComponent<BuildRoom>().roomCount;
+        infomation.nodeLength = gameObject.GetComponent<BuildingNodePlacer>().nodeLength;
+        if (infomation.nodeLength > 0) {
+            infomation.nodeY = gameObject.GetComponent<BuildingNodePlacer>().node.transform.position.y;
+        }
+        else {
+            infomation.nodeY = 4;
+        }
+
+
         PlayerPrefs.SetString("Save Info", SaveHelper.Serialise<SaveInfomation>(infomation));
         Debug.Log(SaveHelper.Serialise<SaveInfomation>(infomation));
     }
@@ -35,6 +45,16 @@ public class SaveLoadManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Save Info")) {
             infomation = SaveHelper.Deserialise<SaveInfomation>(PlayerPrefs.GetString("Save Info"));
             Debug.Log(PlayerPrefs.GetString("Save Info"));
+
+            CatList.getInstance().discoveredCats = infomation.discoveredCats;
+            gameObject.GetComponent<BuildRoom>().rooms = infomation.rooms;
+            gameObject.GetComponent<BuildRoom>().roomCount = infomation.roomCount;
+
+            gameObject.GetComponent<BuildRoom>().LoadRooms();
+
+            gameObject.GetComponent<BuildingNodePlacer>().nodeLength = infomation.nodeLength;
+            gameObject.GetComponent<BuildingNodePlacer>().LoadNode(infomation.nodeY);
+
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
