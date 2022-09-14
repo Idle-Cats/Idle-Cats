@@ -6,7 +6,7 @@ public class BuildRoom : MonoBehaviour
 {
     public GameObject testRoom;
 
-    private int roomCount = 0;
+    public int roomCount = 0;
 
     public float roomHeight;
 
