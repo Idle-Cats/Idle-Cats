@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ResourceRoom : MonoBehaviour
 {
@@ -27,6 +28,25 @@ public class ResourceRoom : MonoBehaviour
         this.roomCapacity = 100;
         this.resourceGen = 1;
         InvokeRepeating("updateRoom", 0.0f, 1.0f);
+
+        //Alex code for loading in time
+        //Michael please change this
+        string dateQuitString = PlayerPrefs.GetString("dateQuit", "");
+        if (!dateQuitString.Equals("")) {
+            DateTime dateQuit = DateTime.Parse(dateQuitString);
+            DateTime dateNow = DateTime.Now;
+
+            if (dateNow > dateQuit) {
+                TimeSpan timeSpan = dateNow - dateQuit;
+                addInvent((float)(this.resourceGen * timeSpan.TotalSeconds));
+            }
+        }
+    }
+
+    void OnApplicationQuit() {
+        DateTime dateQuit = DateTime.Now;
+        //Michael please change this
+        PlayerPrefs.SetString("dateQuit", dateQuit.ToString());
     }
 
     // Update is called once per frame
