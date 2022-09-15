@@ -10,11 +10,16 @@ public class RoomInfo
 
     public RoomType roomType;
 
-    public RoomInfo(Vector3 pos, RoomType type) {
+    public ResourceRoomSave resourceRoom;
+
+    private GameObject room;
+
+    public RoomInfo(Vector3 pos, RoomType type, ResourceRoomSave resourceRoom) {
         this.x = pos.x;
         this.y = pos.y;
         this.z = pos.z;
         this.roomType = type;
+        this.resourceRoom = resourceRoom;
     }
 
     public RoomInfo() {
@@ -29,5 +34,13 @@ public class RoomInfo
     public enum RoomType {
         ResourceRoom,
         TimedRoom
+    }
+
+    public void SetRoom(GameObject room) {
+        this.room = room;
+    }
+
+    public void RefreshInfo() {
+        resourceRoom = room.GetComponent<ResourceRoom>().MakeCopy();
     }
 }

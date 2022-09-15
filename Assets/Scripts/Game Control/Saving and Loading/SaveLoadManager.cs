@@ -25,6 +25,9 @@ public class SaveLoadManager : MonoBehaviour
     {
         //saves the data using save helper to turn info into a string that can be put in playerprefs
         infomation.discoveredCats = CatList.getInstance().discoveredCats;
+
+        gameObject.GetComponent<BuildRoom>().RefreshRooms();
+
         infomation.rooms = gameObject.GetComponent<BuildRoom>().rooms;
         infomation.roomCount = gameObject.GetComponent<BuildRoom>().roomCount;
         infomation.nodeLength = gameObject.GetComponent<BuildingNodePlacer>().nodeLength;

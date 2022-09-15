@@ -30,7 +30,9 @@ public class BuildRoom : MonoBehaviour
 
         Vector3 pos = room.transform.position;
 
-        RoomInfo roomInfo = new RoomInfo(pos, RoomInfo.RoomType.ResourceRoom);
+        RoomInfo roomInfo = new RoomInfo(pos, RoomInfo.RoomType.ResourceRoom, room.GetComponent<ResourceRoom>().MakeCopy());
+
+        roomInfo.SetRoom(room);
 
         if (roomCount == rooms.Length - 1) {
             ExpandRooms();
@@ -67,7 +69,19 @@ public class BuildRoom : MonoBehaviour
         gameObject.GetComponent<BuildingNodePlacer>().nodeLength = 0;
         for (int i = 0; i < roomCount; i++) {
             GameObject room = Instantiate(testRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
+
+            rooms[i].SetRoom(room);
+
+            if (rooms[i].roomType == RoomInfo.RoomType.ResourceRoom) {
+                room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
+            }
             //Debug.Log(rooms[i]);
+        }
+    }
+
+    public void RefreshRooms() {
+        for (int i = 0; i < roomCount; i++) {
+            rooms[i].RefreshInfo();
         }
     }
 }
