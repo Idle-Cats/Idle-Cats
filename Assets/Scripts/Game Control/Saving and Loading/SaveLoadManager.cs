@@ -38,6 +38,8 @@ public class SaveLoadManager : MonoBehaviour
             infomation.nodeY = 4;
         }
 
+        infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
+        infomation.catCount = gameObject.GetComponent<ScreenCatList>().catCount;
 
         PlayerPrefs.SetString("Save Info", SaveHelper.Serialise<SaveInfomation>(infomation));
         Debug.Log(SaveHelper.Serialise<SaveInfomation>(infomation));
@@ -57,6 +59,8 @@ public class SaveLoadManager : MonoBehaviour
 
             gameObject.GetComponent<BuildingNodePlacer>().nodeLength = infomation.nodeLength;
             gameObject.GetComponent<BuildingNodePlacer>().LoadNode(infomation.nodeY);
+
+            gameObject.GetComponent<ScreenCatList>().setFromCatInfo(infomation.cats, infomation.catCount);
 
         }
         else {//if there is no save infomation makes a new blank save

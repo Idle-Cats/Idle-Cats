@@ -23,9 +23,12 @@ public class BuildRoom : MonoBehaviour
         GameObject room = Instantiate(testRoom, gameObject.GetComponent<BuildingNodePlacer>().node.transform.position, Quaternion.identity);
         room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
 
+        room.GetComponent<RoomInfomation>().roomNum = roomCount;
+
         if (roomCount == 0) {
             GameObject cat = Instantiate(catTest, room.transform.position, Quaternion.identity);
             cat.GetComponent<CurrentRoom>().currentRoom = room;
+            gameObject.GetComponent<ScreenCatList>().addCat(cat);
         }//remove this code later just for cat testing purposes
 
         Vector3 pos = room.transform.position;

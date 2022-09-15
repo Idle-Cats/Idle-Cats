@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 2205992875595995095}
   - component: {fileID: 6803920241028846455}
   - component: {fileID: 9158349751255671562}
+  - component: {fileID: 3350016076676482568}
   m_Layer: 6
   m_Name: TimerRoom
   m_TagString: Untagged
@@ -202,6 +203,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2793256890328558575}
+--- !u!114 &3350016076676482568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205992875595995088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66af3ddc239ee24b9ad591f12e792dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomNum: 0
 --- !u!1 &2573909913814620740
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class RoomInfo
 
     private GameObject room;
 
+    public int roomNum;
+
     public RoomInfo(Vector3 pos, RoomType type, ResourceRoomSave resourceRoom) {
         this.x = pos.x;
         this.y = pos.y;
@@ -38,6 +40,10 @@ public class RoomInfo
 
     public void SetRoom(GameObject room) {
         this.room = room;
+    }
+
+    public GameObject getRoom() {
+        return this.room;
     }
 
     public void RefreshInfo() {

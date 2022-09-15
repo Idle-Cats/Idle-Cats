@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2205992875595995095}
   - component: {fileID: 6803920241028846455}
   - component: {fileID: 2845889945985629952}
+  - component: {fileID: 3523940588975789952}
   m_Layer: 6
   m_Name: TestRoom
   m_TagString: Untagged
@@ -125,7 +126,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845fab38fdab91d4ba94f9f927977a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomInvent: 0
+  upgradeModifier: 0
+  roomCapacity: 0
+  resourceGen: 0
+  name: ResourceRoom
   resourceCounter: {fileID: 3832907475030933562}
+  globalResource: 0
+--- !u!114 &3523940588975789952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205992875595995088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66af3ddc239ee24b9ad591f12e792dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomNum: 0
 --- !u!1 &3832907475030933562
 GameObject:
   m_ObjectHideFlags: 0
