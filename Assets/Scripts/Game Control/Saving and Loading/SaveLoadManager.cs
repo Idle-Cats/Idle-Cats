@@ -19,6 +19,8 @@ public class SaveLoadManager : MonoBehaviour
         //loads a save when it is opened
         Instance = this;
         Load();
+
+        InvokeRepeating("AutoSave", 300, 300);
     }
 
     private void OnApplicationPause(bool pause)
@@ -72,5 +74,11 @@ public class SaveLoadManager : MonoBehaviour
             infomation = new SaveInfomation();
             Save();
         }
+
+        void AutoSave() {
+            Save();
+        }
     }
+
+    
 }
