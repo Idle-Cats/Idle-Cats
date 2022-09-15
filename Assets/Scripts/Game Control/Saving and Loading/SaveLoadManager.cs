@@ -21,6 +21,11 @@ public class SaveLoadManager : MonoBehaviour
         Load();
     }
 
+    private void OnApplicationPause(bool pause)
+    {
+        Save();
+    }
+
     public void Save()
     {
         //saves the data using save helper to turn info into a string that can be put in playerprefs
