@@ -9,19 +9,20 @@ public class PartyCat : MonoBehaviour
     //this can be changed to reference the cat via inheritance (assign the script to the cat instead of game control)
     public GameObject cat;
 
+    //grabing the canvas for dynamic display
+    public GameObject canvas;
+
     //storing the size of the canvas
-    public float minX;
-    public float maxX;
-    public float minY;
-    public float maxY;
+    float minX;
+    float maxX;
+    float minY;
+    float maxY;
 
-    //easy change of speed for testing
-    //this should be changed to a private static variable when in production
-    public float speed;
+    //speed that the cat moves per tick
+    float speed = 550;
 
-    //easy change of max time between spawns for testing
-    //this should be changed to a private static variable when in production
-    public float maxTime;
+    //maximum amount of time between cats in seconds
+    float maxTime = 200;
 
     //tracks the amount of time the cat hasn't spawned for
     float spawnTime;
@@ -45,6 +46,10 @@ public class PartyCat : MonoBehaviour
     //when the game opens the time is set to 0
     void Start() 
     {
+        minX = 0;
+        minY = 0;
+        maxY = canvas.GetComponent<RectTransform>().rect.height;
+        maxX = canvas.GetComponent<RectTransform>().rect.width;
         currentTime = 0;
         SetRandomTime(); 
     }
@@ -62,7 +67,7 @@ public class PartyCat : MonoBehaviour
                 if (!isRunningAway) 
                 {
                     //this can be randomised later
-                    targetPosition = new Vector2(1165, 1700);
+                    targetPosition = new Vector2(maxX + 500, Random.Range(0.0f, (float)(maxY + 20)));
                     isRunningAway = true;
                 } else {
                     if ((Vector2)cat.transform.position != targetPosition) {
