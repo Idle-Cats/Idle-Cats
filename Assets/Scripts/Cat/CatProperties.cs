@@ -15,7 +15,7 @@ public class CatProperties : MonoBehaviour
     {
         CatList.getInstance().AddCat(new Cats(CatType.GREEN));
         Cats cat = Cats.GenerateRandomCat();
-
+        Debug.Log(catList.PrintCats());
         switch (cat.GetCatType())
         {
             case CatType.GREY:

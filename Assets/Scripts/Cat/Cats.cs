@@ -3,7 +3,10 @@ using static CatList;
 using System.Collections.Generic;   // for List<>
 
 public class Cats {
-    private CatType type;
+    public CatType type;
+
+    public Cats() {
+    }
 
     public Cats(CatType catType) {
         this.type = catType;

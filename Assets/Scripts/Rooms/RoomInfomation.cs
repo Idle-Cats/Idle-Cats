@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CurrentRoom : MonoBehaviour
+public class RoomInfomation : MonoBehaviour
 {
-    public GameObject currentRoom;
+    public int roomNum;
 }
