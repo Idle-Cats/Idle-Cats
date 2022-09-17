@@ -24,7 +24,7 @@ public class BuildRoom : MonoBehaviour
     public void buildRoom (GameObject roomToBuild) {
         //Generates a room
         GameObject room = Instantiate(roomToBuild, gameObject.GetComponent<BuildingNodePlacer>().node.transform.position, Quaternion.identity);
-        //room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+        room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
         //Sets the rooms room num to the room count for the cats to be loaded in
         room.GetComponent<RoomInfomation>().roomNum = roomCount;
 

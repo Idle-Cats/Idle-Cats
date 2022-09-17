@@ -85,8 +85,8 @@ public class ResourceRoom : MonoBehaviour
 
     public void collectResources()
     {
-            globalResource = globalResource + roomInvent;
-            roomInvent = 0;
+        globalResource = globalResource + roomInvent;
+        roomInvent = 0;
     }
 
     public void updateRoom()
