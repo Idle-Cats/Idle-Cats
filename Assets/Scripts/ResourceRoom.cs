@@ -15,7 +15,7 @@ public class ResourceRoom : MonoBehaviour
     public float upgradeModifier = 0;
     public float roomCapacity = 0;
     public float resourceGen = 0;
-    public string name = "ResourceRoom";
+    public new string name = "ResourceRoom";
     [SerializeField]
     private GameObject resourceCounter;
     public float globalResource = 0; //TODO make this global
