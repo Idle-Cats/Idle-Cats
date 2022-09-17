@@ -25,11 +25,10 @@ public class BuildingNodePlacer : MonoBehaviour
     public void placeNode() {
         roomHeight = gameObject.GetComponent<BuildRoom>().roomHeight;
 
+        nodeLength++;
         GameObject newNode = Instantiate(nodePrefab, new Vector2(0, 4 - (roomHeight * 1.5f * nodeLength)), Quaternion.identity);
         Destroy(node);
         node = newNode;
-        Debug.Log("Node Num: " + nodeLength);
-        nodeLength++;
     }
 
     public void LoadNode(float nodeY) {

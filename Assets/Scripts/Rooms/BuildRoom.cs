@@ -5,6 +5,8 @@ using UnityEngine;
 public class BuildRoom : MonoBehaviour
 {
     public GameObject testRoom;
+    public GameObject resourceRoom;
+    public GameObject artifactRoom;
 
     public int roomCount = 0;
 
@@ -19,9 +21,9 @@ public class BuildRoom : MonoBehaviour
         roomHeight = testRoom.GetComponent<SpriteRenderer>().size.y;
     }
 
-    public void placeTestRoom() {
+    public void buildRoom (GameObject roomToBuild) {
         //Generates a room
-        GameObject room = Instantiate(testRoom, gameObject.GetComponent<BuildingNodePlacer>().node.transform.position, Quaternion.identity);
+        GameObject room = Instantiate(roomToBuild, gameObject.GetComponent<BuildingNodePlacer>().node.transform.position, Quaternion.identity);
         room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
         //Sets the rooms room num to the room count for the cats to be loaded in
         room.GetComponent<RoomInfomation>().roomNum = roomCount;
@@ -34,19 +36,31 @@ public class BuildRoom : MonoBehaviour
 
         Vector3 pos = room.transform.position;
         //gets the info for the room, this is for saving and loading purposes as you cant save gameObjects
-        RoomInfo roomInfo = new RoomInfo(pos, RoomInfo.RoomType.ResourceRoom, room.GetComponent<ResourceRoom>().MakeCopy());
+        if (room.GetComponent<RoomInfomation>().roomType == RoomInfo.RoomType.ResourceRoom) {
+            RoomInfo roomInfo = new RoomInfo(pos, room.GetComponent<RoomInfomation>().roomType, room.GetComponent<ResourceRoom>().MakeCopy());
+            roomInfo.SetRoom(room);
 
-        roomInfo.SetRoom(room);
-        //Holds an array of room info
-        if (roomCount == rooms.Length - 1) {
-            ExpandRooms();
+            //Holds an array of room info
+            if (roomCount == rooms.Length - 1) {
+                ExpandRooms();
+            }
+            rooms[roomCount] = roomInfo;
         }
-        rooms[roomCount] = roomInfo;
+        else {
+            RoomInfo roomInfo = new RoomInfo(pos, room.GetComponent<RoomInfomation>().roomType, null);
+            roomInfo.SetRoom(room);
+
+            //Holds an array of room info
+            if (roomCount == rooms.Length - 1) {
+                ExpandRooms();
+            }
+            rooms[roomCount] = roomInfo;
+        }
 
         roomCount++;
 
         gameObject.GetComponent<BuildingNodePlacer>().placeNode();
-        
+
     }
 
     private void ExpandRooms() {
@@ -73,14 +87,24 @@ public class BuildRoom : MonoBehaviour
         //Loads rooms using room info
         gameObject.GetComponent<BuildingNodePlacer>().nodeLength = 0;
         for (int i = 0; i < roomCount; i++) {
-            GameObject room = Instantiate(testRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
-
-            rooms[i].SetRoom(room);
-
             if (rooms[i].roomType == RoomInfo.RoomType.ResourceRoom) {
-                room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
+                GameObject room = Instantiate(resourceRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
+
+                rooms[i].SetRoom(room);
+
+                if (rooms[i].roomType == RoomInfo.RoomType.ResourceRoom) {
+                    room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
+                }
             }
-            //Debug.Log(rooms[i]);
+            else if (rooms[i].roomType == RoomInfo.RoomType.ArtifactRoom) {
+                GameObject room = Instantiate(artifactRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
+
+                rooms[i].SetRoom(room);
+
+                if (rooms[i].roomType == RoomInfo.RoomType.ResourceRoom) {
+                    room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
+                }
+            }
         }
     }
 

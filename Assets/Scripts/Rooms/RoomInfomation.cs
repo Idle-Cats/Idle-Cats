@@ -5,4 +5,6 @@ using UnityEngine;
 public class RoomInfomation : MonoBehaviour
 {
     public int roomNum;
+
+    public RoomInfo.RoomType roomType;
 }

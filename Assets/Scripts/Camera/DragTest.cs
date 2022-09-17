@@ -38,9 +38,6 @@ public class DragTest : MonoBehaviour
                         dragFingerId = touch.fingerId;
 
                     }
-                    else if (hit.collider.gameObject.tag == "PlaceRoom") {
-                        gameControl.GetComponent<BuildRoom>().placeTestRoom();
-                    }
                 }
             }
             if (touch.phase == TouchPhase.Ended) {

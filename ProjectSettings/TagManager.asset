@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Draggable
   - Room
-  - PlaceRoom
   layers:
   - Default
   - TransparentFX
