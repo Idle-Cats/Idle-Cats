@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Old Cat Food
   m_EditorClassIdentifier: 
   name: Old Cat Food
-  boost: 0
+  boost: 0.1
   image: {fileID: 21300000, guid: d2365f28bfa5140ee89f56757d820b93, type: 3}
