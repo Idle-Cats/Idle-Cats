@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ResourceRoom : MonoBehaviour
 {
@@ -10,14 +11,14 @@ public class ResourceRoom : MonoBehaviour
     //skeleton class for resource rooms
     // Start is called before the first frame update
 
-    private float roomInvent = 0;
-    private float upgradeModifier = 0;
-    private float roomCapacity = 0;
-    private float resourceGen = 0;
-    private string name = "ResourceRoom";
+    public float roomInvent = 0;
+    public float upgradeModifier = 0;
+    public float roomCapacity = 0;
+    public float resourceGen = 0;
+    public string name = "ResourceRoom";
     [SerializeField]
     private GameObject resourceCounter;
-    private float globalResource = 0; //TODO make this global
+    public float globalResource = 0; //TODO make this global
 
     void Start()
     {
@@ -27,12 +28,45 @@ public class ResourceRoom : MonoBehaviour
         this.roomCapacity = 100;
         this.resourceGen = 1;
         InvokeRepeating("updateRoom", 0.0f, 1.0f);
+
+        //Alex code for loading in time
+        //Michael please change this
+        string dateQuitString = PlayerPrefs.GetString("dateQuit", "");
+        if (!dateQuitString.Equals("")) {
+            DateTime dateQuit = DateTime.Parse(dateQuitString);
+            DateTime dateNow = DateTime.Now;
+
+            if (dateNow > dateQuit) {
+                TimeSpan timeSpan = dateNow - dateQuit;
+                addInvent((float)(this.resourceGen * timeSpan.TotalSeconds));
+            }
+        }
+    }
+
+    void OnApplicationQuit() {
+        DateTime dateQuit = DateTime.Now;
+        //Michael please change this
+        PlayerPrefs.SetString("dateQuit", dateQuit.ToString());
     }
 
     // Update is called once per frame
     void Update() //TODO change to once per second
     {
         //adds a tick of resource gen to roomInvent 
+    }
+
+
+    public void GetCopy(ResourceRoomSave resourceRoom) {
+        this.roomInvent = resourceRoom.roomInvent;
+        this.upgradeModifier = resourceRoom.upgradeModifier;
+        this.roomCapacity = resourceRoom.roomCapacity;
+        this.resourceGen = resourceRoom.resourceGen;
+        this.name = resourceRoom.name;
+        this.globalResource = resourceRoom.globalResource;
+    }
+
+    public ResourceRoomSave MakeCopy() {
+        return new ResourceRoomSave(roomInvent, upgradeModifier, roomCapacity, resourceGen, name, globalResource);
     }
 
     //method for adding to invent making sure capacity isn't exceeded
