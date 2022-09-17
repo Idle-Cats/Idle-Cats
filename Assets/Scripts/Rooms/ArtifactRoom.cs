@@ -14,6 +14,7 @@ public class ArtifactRoom : MonoBehaviour
         //costs, timer, gain.
 
     private bool researching = false;
+    [SerializeField]
     private int timeLength = 0;
     [SerializeField]
     private float percentDone = 0.0f;
@@ -21,6 +22,7 @@ public class ArtifactRoom : MonoBehaviour
     [SerializeField]
     private GameObject slider;
 
+    [SerializeField]
     private int initialLength;
 
     [SerializeField]
@@ -47,6 +49,7 @@ public class ArtifactRoom : MonoBehaviour
         //Collect artifact here
         collectButton.SetActive(false);
         startButton.SetActive(true);
+        slider.SetActive(false);
         this.roomTitle = "Room not busy";
     }
 
@@ -72,7 +75,9 @@ public class ArtifactRoom : MonoBehaviour
 
     public void startDig()
     {
+        Debug.Log("Dig Started");
         startButton.SetActive(false);
+        slider.SetActive(true);
         setTimer(30);
     }
 
@@ -81,7 +86,7 @@ public class ArtifactRoom : MonoBehaviour
         if (this.timeLength > 0)
         {
             this.timeLength--;
-            this.percentDone = (this.timeLength / initialLength) * 100;
+            this.percentDone = ((float)this.timeLength / (float)initialLength) * 100;
 
             slider.GetComponent<Slider>().value = percentDone;
         }

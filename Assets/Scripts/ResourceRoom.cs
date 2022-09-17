@@ -43,7 +43,7 @@ public class ResourceRoom : MonoBehaviour
         }
     }
 
-    void OnApplicationQuit() {
+    void OnApplicationPause() {
         DateTime dateQuit = DateTime.Now;
         //Michael please change this
         PlayerPrefs.SetString("dateQuit", dateQuit.ToString());
