@@ -35,7 +35,8 @@ public class RoomInfo
 
     public enum RoomType {
         ResourceRoom,
-        TimedRoom
+        TimedRoom,
+        ArtifactRoom
     }
 
     public void SetRoom(GameObject room) {
@@ -47,6 +48,8 @@ public class RoomInfo
     }
 
     public void RefreshInfo() {
-        resourceRoom = room.GetComponent<ResourceRoom>().MakeCopy();
+        if (roomType == RoomType.ResourceRoom) {
+            resourceRoom = room.GetComponent<ResourceRoom>().MakeCopy();
+        }
     }
 }
