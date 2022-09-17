@@ -36,10 +36,6 @@ public class DragTest : MonoBehaviour
                         draggedObject = hit.collider.gameObject;
                         draggingObject = true;
                         dragFingerId = touch.fingerId;
-
-                    }
-                    else if (hit.collider.gameObject.tag == "PlaceRoom") {
-                        gameControl.GetComponent<BuildRoom>().placeTestRoom();
                     }
                 }
             }
@@ -48,16 +44,23 @@ public class DragTest : MonoBehaviour
                     Vector2 fingerPos = touch.position;
                     Vector3 firePoint = cam.ScreenToWorldPoint(new Vector3(fingerPos.x, fingerPos.y, 0));
 
-                    int layermask = 1 << 6; 
+                    int layermask = 1 << 6;
 
                     RaycastHit2D hit = Physics2D.Raycast(firePoint, Vector3.forward, 20, layermask);
                     Debug.DrawRay(firePoint, Vector3.forward * 20, Color.green, 5, false);
-                    if (hit.collider != null) {
-                        draggedObject.GetComponent<CurrentRoom>().currentRoom = hit.collider.gameObject;
-                        draggedObject.transform.position = hit.collider.gameObject.transform.position;
+                    if (draggedObject.layer == 3 || draggedObject.layer == 8) {
+                        if (hit.collider != null) {
+                            draggedObject.GetComponent<CurrentRoom>().currentRoom = hit.collider.gameObject;
+                            draggedObject.transform.position = hit.collider.gameObject.transform.position;
+                        }
+                        else if (draggedObject.GetComponent<CurrentRoom>().currentRoom == null) {
+                        }
+                        else {
+                            draggedObject.transform.position = draggedObject.GetComponent<CurrentRoom>().currentRoom.transform.position;
+                        }
                     }
                     else {
-                        draggedObject.transform.position = draggedObject.GetComponent<CurrentRoom>().currentRoom.transform.position;
+
                     }
 
                     draggingObject = false;

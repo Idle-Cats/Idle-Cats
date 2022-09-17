@@ -6,17 +6,16 @@ TagManager:
   tags:
   - Draggable
   - Room
-  - PlaceRoom
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Cat
   - Water
   - UI
   - Room
   - UI Menu
-  - 
+  - Artifacts
   - 
   - 
   - 
