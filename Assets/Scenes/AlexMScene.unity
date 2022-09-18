@@ -3485,6 +3485,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1309163140}
+        m_TargetAssemblyTypeName: GameProgression, Assembly-CSharp
+        m_MethodName: caughtPartyCat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &591277248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6782,6 +6794,7 @@ GameObject:
   - component: {fileID: 1309163140}
   - component: {fileID: 1309163141}
   - component: {fileID: 1309163142}
+  - component: {fileID: 1309163143}
   m_Layer: 0
   m_Name: Game Control
   m_TagString: Untagged
@@ -6914,7 +6927,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1110ab55572844ef9fbf7de89366949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flags: {fileID: 1309163141}
+  flags: {fileID: 0}
+  buttonPressCounter: 0
+  crazyCatCounter: 0
   welcome_panel: {fileID: 363443808}
   milestone1: {fileID: 1138009265}
   milestone2: {fileID: 320477942}
@@ -6938,7 +6953,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1309163132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ede17b9d22e64dfbbc5c573152dd835, type: 3}
+  m_Script: {fileID: 11500000, guid: 79d9ba800184c4e8cb898a4978f66703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   first_load: 0
@@ -6975,6 +6990,18 @@ MonoBehaviour:
   - {fileID: 0}
   catCount: 0
   catTest: {fileID: 207835099897388151, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+--- !u!114 &1309163143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309163132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2168b590204bf634a91a9b562d083c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1387139165
 GameObject:
   m_ObjectHideFlags: 0
@@ -8828,6 +8855,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163132}
+        m_TargetAssemblyTypeName: GameSounds, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
