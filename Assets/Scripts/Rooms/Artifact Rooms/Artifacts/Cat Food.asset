@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Cat Food
   boost: 0.2
-  image: {fileID: 21300000, guid: d2365f28bfa5140ee89f56757d820b93, type: 3}
+  image: {fileID: 21300000, guid: 9823326ff6403c7418ed76da67505ec9, type: 3}

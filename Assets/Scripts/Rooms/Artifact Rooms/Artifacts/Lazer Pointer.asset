@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4099a821b7c601c479500553c665cdd4, type: 3}
-  m_Name: Old Cat Food
+  m_Name: Lazer Pointer
   m_EditorClassIdentifier: 
-  name: Old Cat Food
-  boost: 0.1
+  name: Lazer Pointer
+  boost: 1
   image: {fileID: 21300000, guid: 9823326ff6403c7418ed76da67505ec9, type: 3}
+  boostType: 1

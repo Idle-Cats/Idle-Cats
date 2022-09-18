@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6803920241028846455}
   - component: {fileID: 3523940588975789952}
   - component: {fileID: 8267596586269949488}
+  - component: {fileID: 7923748556369165272}
   m_Layer: 6
   m_Name: CatpowerRoom
   m_TagString: Untagged
@@ -127,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomNum: 0
+  roomType: 0
+  gameControl: {fileID: 0}
 --- !u!114 &8267596586269949488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,12 +143,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomInvent: 0
-  upgradeModifier: 0
   roomCapacity: 0
   resourceGen: 0
   name: Catpower Room
   resourceCounter: {fileID: 3832907475030933562}
-  globalCatpower: 0
+--- !u!114 &7923748556369165272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205992875595995088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae026a0f17dc4e43b485778acc52e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostAmount: 0
 --- !u!1 &3832907475030933562
 GameObject:
   m_ObjectHideFlags: 0

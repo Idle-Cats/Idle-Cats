@@ -12,7 +12,7 @@ public class CatpowerRoom : MonoBehaviour
     // Start is called before the first frame update
 
     public float roomInvent = 0;
-    public float upgradeModifier = 0;
+    private RoomBoost roomBoost;
     public float roomCapacity = 0;
     public float resourceGen = 0;
     public string name = "Catpower Room";
@@ -21,6 +21,7 @@ public class CatpowerRoom : MonoBehaviour
 
     void Start()
     {
+        roomBoost = gameObject.GetComponent<RoomBoost>();
         //initialise values here
         //temp placeholder code:
         this.name = "Catpower Room";
@@ -57,14 +58,14 @@ public class CatpowerRoom : MonoBehaviour
 
     public void GetCopy(ResourceRoomSave resourceRoom) {
         this.roomInvent = resourceRoom.roomInvent;
-        this.upgradeModifier = resourceRoom.upgradeModifier;
+        //this.upgradeModifier = resourceRoom.upgradeModifier;
         this.roomCapacity = resourceRoom.roomCapacity;
         this.resourceGen = resourceRoom.resourceGen;
         this.name = resourceRoom.name;
     }
 
     public ResourceRoomSave MakeCopy() {
-        return new ResourceRoomSave(roomInvent, upgradeModifier, roomCapacity, resourceGen, name);
+        return new ResourceRoomSave(roomInvent, roomBoost, roomCapacity, resourceGen, name);
     }
 
     //method for adding to invent making sure capacity isn't exceeded
@@ -92,7 +93,7 @@ public class CatpowerRoom : MonoBehaviour
     {
         if (roomInvent < roomCapacity)
         {
-            addInvent(resourceGen * (1 + upgradeModifier));
+            addInvent(resourceGen * (1 + roomBoost.boostAmount));
         }
 
         resourceCounter.GetComponent<TextMeshProUGUI>().SetText("Current Resources: " + roomInvent + "/" + roomCapacity);
