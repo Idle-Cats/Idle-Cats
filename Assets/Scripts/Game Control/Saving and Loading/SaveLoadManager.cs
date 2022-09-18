@@ -48,6 +48,8 @@ public class SaveLoadManager : MonoBehaviour
         infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
         infomation.catCount = gameObject.GetComponent<ScreenCatList>().catCount;
 
+        infomation.flags = gameObject.GetComponent<Flags>();
+
         PlayerPrefs.SetString("Save Info", SaveHelper.Serialise<SaveInfomation>(infomation));
         Debug.Log(SaveHelper.Serialise<SaveInfomation>(infomation));
     }
@@ -69,6 +71,7 @@ public class SaveLoadManager : MonoBehaviour
 
             gameObject.GetComponent<ScreenCatList>().setFromCatInfo(infomation.cats, infomation.catCount);
 
+            gameObject.GetComponent<GameProgression>().flags = infomation.flags;
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
