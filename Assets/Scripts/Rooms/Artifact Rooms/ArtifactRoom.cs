@@ -10,8 +10,8 @@ public class ArtifactRoom : MonoBehaviour
     //he says we suck
     //this is a skeleton class for timed rooms
 
-        // need upgrade object with constructor
-        //costs, timer, gain.
+    // need upgrade object with constructor
+    //costs, timer, gain.
 
     private bool researching = false;
     [SerializeField]
@@ -30,6 +30,9 @@ public class ArtifactRoom : MonoBehaviour
     [SerializeField]
     private GameObject collectButton;
 
+    [SerializeField]
+    private GameObject artifactPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,13 @@ public class ArtifactRoom : MonoBehaviour
     public void clickCollect()
     {
         //Collect artifact here
+        Artifact artifact = gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<ArtifactsFound>().GetRandomArtifact();
+        Debug.Log(artifact);
+        if (artifact != null) {
+            GameObject newArtifact = Instantiate(artifactPrefab, gameObject.transform.position, Quaternion.identity);
+            newArtifact.GetComponent<ArtifactDisplay>().artifact = artifact;
+            newArtifact.GetComponent<ArtifactDisplay>().RefreshSelf();
+        }
         collectButton.SetActive(false);
         startButton.SetActive(true);
         slider.SetActive(false);
@@ -78,7 +88,7 @@ public class ArtifactRoom : MonoBehaviour
         Debug.Log("Dig Started");
         startButton.SetActive(false);
         slider.SetActive(true);
-        setTimer(30);
+        setTimer(300);
     }
 
     public void updateArtifactTimerLength()

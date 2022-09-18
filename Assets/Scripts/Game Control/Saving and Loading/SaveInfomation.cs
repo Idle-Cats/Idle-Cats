@@ -12,7 +12,7 @@ public class SaveInfomation
 
     public HashSet<Cats> discoveredCats;
 
-    public RoomInfo[] rooms;
+    public RoomSaveInfo[] rooms;
     public CatInfo[] cats;
 
     public int catCount;

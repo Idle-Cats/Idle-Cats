@@ -4,15 +4,42 @@ using UnityEngine;
 
 public class ArtifactsFound : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Artifact[] allArtifacts;
+    public Artifact[] unlockedArtifacts;
+    public int unlockedArtifactsCount = 0;
+
+    private void Start()
     {
-        
+        unlockedArtifacts = new Artifact[allArtifacts.Length];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    //Need to rewrite this code so it eventually upgrades artifacts to another type if you already have it
+    public Artifact GetRandomArtifact() {
+        if (unlockedArtifactsCount != allArtifacts.Length) {
+            while (true) {
+                Artifact artifact = allArtifacts[Random.Range(0, allArtifacts.Length)];
+                if (!ArtifactAlreadyUnlocked(artifact)) {
+                    unlockedArtifacts[unlockedArtifactsCount] = artifact;
+                    unlockedArtifactsCount++;
+                    return artifact;
+                }
+
+            }
+
+        }
+        else {
+            return null;
+        }
+    }
+
+    public bool ArtifactAlreadyUnlocked(Artifact artifact) {
+        foreach (Artifact unlockedArtifact in unlockedArtifacts) {
+            if (unlockedArtifact != null) {
+                if (unlockedArtifact.Equals(artifact)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomInfo
+public class RoomSaveInfo
 {
     public float x;
     public float y;
@@ -16,7 +16,7 @@ public class RoomInfo
 
     public int roomNum;
 
-    public RoomInfo(Vector3 pos, RoomType type, ResourceRoomSave resourceRoom) {
+    public RoomSaveInfo(Vector3 pos, RoomType type, ResourceRoomSave resourceRoom) {
         this.x = pos.x;
         this.y = pos.y;
         this.z = pos.z;
@@ -24,7 +24,7 @@ public class RoomInfo
         this.resourceRoom = resourceRoom;
     }
 
-    public RoomInfo() {
+    public RoomSaveInfo() {
 
     }
 
