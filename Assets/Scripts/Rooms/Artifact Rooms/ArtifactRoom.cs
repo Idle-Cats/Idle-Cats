@@ -88,7 +88,7 @@ public class ArtifactRoom : MonoBehaviour
         Debug.Log("Dig Started");
         startButton.SetActive(false);
         slider.SetActive(true);
-        setTimer(5);
+        setTimer(300);
     }
 
     public void updateArtifactTimerLength()
