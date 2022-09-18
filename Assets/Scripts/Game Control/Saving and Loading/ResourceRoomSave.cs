@@ -8,15 +8,13 @@ public class ResourceRoomSave
     public float roomCapacity = 0;
     public float resourceGen = 0;
     public string name = "ResourceRoom";
-    public float globalResource = 0; //TODO make this global
 
-    public ResourceRoomSave(float roomInvent, float upgradeModifier, float roomCapacity, float resourceGen, string name, float globalResource) {
+    public ResourceRoomSave(float roomInvent, float upgradeModifier, float roomCapacity, float resourceGen, string name) {
         this.roomInvent = roomInvent;
         this.upgradeModifier = upgradeModifier;
         this.roomCapacity = roomCapacity;
         this.resourceGen = resourceGen;
         this.name = name;
-        this.globalResource = globalResource;
     }
 
     public ResourceRoomSave() {
