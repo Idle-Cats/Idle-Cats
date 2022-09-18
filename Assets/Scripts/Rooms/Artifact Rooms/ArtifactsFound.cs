@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class ArtifactsFound : MonoBehaviour
 {
+    public Artifact[] AllArtifacts;
+    public Artifact[] UnlockedArtifacts;
+
 
 }

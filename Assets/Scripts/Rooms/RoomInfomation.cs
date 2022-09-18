@@ -6,5 +6,5 @@ public class RoomInfomation : MonoBehaviour
 {
     public int roomNum;
 
-    public RoomInfo.RoomType roomType;
+    public RoomSaveInfo.RoomType roomType;
 }
