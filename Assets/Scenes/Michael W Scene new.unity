@@ -4197,6 +4197,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3cbe17696573d3646a47ffdc9d0c15e4, type: 2}
   - {fileID: 11400000, guid: 0a99fc374f16d1d4d8503e2ef5b01a1f, type: 2}
   - {fileID: 11400000, guid: 6a5e1b232342557468c5e0850ca8cc0a, type: 2}
+  - {fileID: 11400000, guid: bb40439a81512894eb0749b5ee3d1265, type: 2}
   unlockedArtifacts: []
   unlockedArtifactsCount: 0
 --- !u!1 &1387139165
