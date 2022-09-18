@@ -22,6 +22,4 @@ public class SaveInfomation
     public int nodeLength;
 
     public float nodeY;
-
-    public Flags flags;
 }

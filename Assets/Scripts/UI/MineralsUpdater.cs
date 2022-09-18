@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static Formatter;
-using static GameControl;
+using static User;
 
 public class MineralsUpdater : MonoBehaviour
 {
