@@ -24,8 +24,6 @@ public class GameProgression : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        flags = gameObject.GetComponent<Flags>();
-
         if (!flags.first_load) {
             ShowWelcome();
         }
@@ -148,26 +146,5 @@ public class GameProgression : MonoBehaviour
 
     void ShowMilestone13() {
         milestone13.SetActive(true);
-    }
-
-    public void buildRoomCheck() {
-        if (!flags.milestone1) {
-            flags.milestone1 = true;
-            ShowMilestone1();
-            //add cat from milestone1
-        }
-
-        if (!flags.milestone2 && gameObject.GetComponent<BuildRoom>().roomCount > 10) {
-            flags.milestone2 = true;
-            ShowMilestone2();
-            //add cat from milestone2
-        }
-    }
-
-    public void caughtPartyCat() {
-        if (!flags.milestone3) {
-            flags.milestone3 = true;
-            ShowMilestone3();
-        }
     }
 }
