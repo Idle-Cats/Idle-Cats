@@ -68,7 +68,6 @@ public class SaveLoadManager : MonoBehaviour
             gameObject.GetComponent<BuildingNodePlacer>().LoadNode(infomation.nodeY);
 
             gameObject.GetComponent<ScreenCatList>().setFromCatInfo(infomation.cats, infomation.catCount);
-
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
