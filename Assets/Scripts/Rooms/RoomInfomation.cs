@@ -7,4 +7,6 @@ public class RoomInfomation : MonoBehaviour
     public int roomNum;
 
     public RoomSaveInfo.RoomType roomType;
+
+    public GameObject gameControl;
 }

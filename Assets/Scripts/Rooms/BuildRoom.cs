@@ -27,6 +27,7 @@ public class BuildRoom : MonoBehaviour
         //room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
         //Sets the rooms room num to the room count for the cats to be loaded in
         room.GetComponent<RoomInfomation>().roomNum = roomCount;
+        room.GetComponent<RoomInfomation>().gameControl = gameObject;
 
         if (roomCount == 0) {
             GameObject cat = Instantiate(catTest, room.transform.position, Quaternion.identity);
@@ -90,6 +91,8 @@ public class BuildRoom : MonoBehaviour
             if (rooms[i].roomType == RoomSaveInfo.RoomType.ResourceRoom) {
                 GameObject room = Instantiate(resourceRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
 
+                room.GetComponent<RoomInfomation>().gameControl = gameObject;
+
                 rooms[i].SetRoom(room);
 
                 if (rooms[i].roomType == RoomSaveInfo.RoomType.ResourceRoom) {
@@ -98,6 +101,8 @@ public class BuildRoom : MonoBehaviour
             }
             else if (rooms[i].roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
                 GameObject room = Instantiate(artifactRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
+
+                room.GetComponent<RoomInfomation>().gameControl = gameObject;
 
                 rooms[i].SetRoom(room);
 

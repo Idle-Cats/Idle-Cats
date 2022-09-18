@@ -15,6 +15,10 @@ public class ArtifactDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+
+    public void RefreshSelf() {
         artworkImage.sprite = artifact.image;
         nameText.GetComponent<TextMeshProUGUI>().SetText(artifact.name);
     }

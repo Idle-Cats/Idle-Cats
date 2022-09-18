@@ -1184,6 +1184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomNum: 0
   roomType: 2
+  gameControl: {fileID: 0}
 --- !u!114 &7057323813828018250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,3 +1203,4 @@ MonoBehaviour:
   initialLength: 0
   startButton: {fileID: 1362681544916997370}
   collectButton: {fileID: 2839723701392311573}
+  artifactPrefab: {fileID: 517884340891196201, guid: c6f8c1b55d7e7eb41b33a07cfab10c19, type: 3}
