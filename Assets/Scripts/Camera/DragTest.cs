@@ -50,8 +50,14 @@ public class DragTest : MonoBehaviour
                     Debug.DrawRay(firePoint, Vector3.forward * 20, Color.green, 5, false);
                     if (draggedObject.layer == 3 || draggedObject.layer == 8) {
                         if (hit.collider != null) {
+                            if (draggedObject.layer == 8) {
+                                draggedObject.GetComponent<ArtifactsBoost>().RemoveBoost();
+                            }
                             draggedObject.GetComponent<CurrentRoom>().currentRoom = hit.collider.gameObject;
                             draggedObject.transform.position = hit.collider.gameObject.transform.position;
+                            if (draggedObject.layer == 8) {
+                                draggedObject.GetComponent<ArtifactsBoost>().ApplyBoost();
+                            }
                         }
                         else if (draggedObject.GetComponent<CurrentRoom>().currentRoom == null) {
                         }
