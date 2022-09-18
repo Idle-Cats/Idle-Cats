@@ -36,6 +36,7 @@ public class BuildRoom : MonoBehaviour
             roomInfo.SetRoom(room);
 
             //Holds an array of room info
+            Debug.Log("Room Length: " + rooms);
             if (roomCount == rooms.Length - 1) {
                 ExpandRooms();
             }

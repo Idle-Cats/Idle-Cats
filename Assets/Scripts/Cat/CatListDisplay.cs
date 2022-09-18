@@ -11,19 +11,34 @@ public class CatListDisplay : MonoBehaviour
     // create a serializable class for the catlist
     [SerializeField] public CatList catList;
 
+    public Image catImage;
+
+
+    // public Cats cat { get => cat; set => cat = value; }
+    public Cats getCat(){
+        return new Cats(catType);
+    }
+
+    public CatListDisplay()
+    {
+        this.cat = new Cats(catType);
+    }
+
     void Start()
     {
-        Cats cat = new Cats(catType);
+        // Cats cat = new Cats(catType);
+
 
         bool exists = CatList.getInstance().catTypeExists(cat.GetCatType());
         // if cat exists in catlist, set sprite to active otherwise set to inactive
         float opacity = exists ? 1.0f : 0.5f;
+        // return;
         
         // set colours regarding cats - can change
         switch (cat.GetCatType())
         {
             case CatType.GREY:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f, opacity);
+                // GetComponent<Image>().sprite = 
                 break;
             case CatType.BROWN:
                 this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
@@ -56,9 +71,6 @@ public class CatListDisplay : MonoBehaviour
                 this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
                 break;
             case CatType.PARTY:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
-                break;
-            case CatType.HELP:
                 this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
                 break;
         }
