@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static User;
 using static Cats;
 using static CatList;
 
@@ -18,6 +17,8 @@ public class GameProgression : MonoBehaviour
     public int buttonPressCounter;
 
     public int crazyCatCounter;
+
+    private User user;
 
     public GameObject welcome_panel;
     public GameObject milestone1;
@@ -37,6 +38,7 @@ public class GameProgression : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        user = gameObject.GetComponent<User>();
         catList = CatList.getInstance();
 
         Debug.Log(catList.discoveredCats);
@@ -53,19 +55,19 @@ public class GameProgression : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Food + Minerals + Coins > 1000 && flags.milestone4 == 0) {
+        if (user.food + user.minerals + user.catPower > 1000 && flags.milestone4 == 0) {
             foodReached1000();
         }
 
-        if (Food + Minerals + Coins > 10000 && flags.milestone5 == 0) {
+        if (user.food + user.minerals + user.catPower > 10000 && flags.milestone5 == 0) {
             foodReached10000();
         }
 
-        if (Food + Minerals + Coins > 100000 && flags.milestone6 == 0) {
+        if (user.food + user.minerals + user.catPower > 100000 && flags.milestone6 == 0) {
             foodReached100000();
         }
 
-        if (Food + Minerals + Coins > 1000000 && flags.milestone7 == 0) {
+        if (user.food + user.minerals + user.catPower > 1000000 && flags.milestone7 == 0) {
             foodReached1000000();
         }
     }

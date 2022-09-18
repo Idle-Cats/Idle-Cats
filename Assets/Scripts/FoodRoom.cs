@@ -18,7 +18,6 @@ public class FoodRoom : MonoBehaviour
     public string name = "Food Room";
     [SerializeField]
     private GameObject resourceCounter;
-    public float Food = 0; //TODO make this global
 
     void Start()
     {
@@ -62,11 +61,10 @@ public class FoodRoom : MonoBehaviour
         this.roomCapacity = resourceRoom.roomCapacity;
         this.resourceGen = resourceRoom.resourceGen;
         this.name = resourceRoom.name;
-        this.Food = resourceRoom.globalResource;
     }
 
     public ResourceRoomSave MakeCopy() {
-        return new ResourceRoomSave(roomInvent, upgradeModifier, roomCapacity, resourceGen, name, Food);
+        return new ResourceRoomSave(roomInvent, upgradeModifier, roomCapacity, resourceGen, name);
     }
 
     //method for adding to invent making sure capacity isn't exceeded
@@ -85,8 +83,9 @@ public class FoodRoom : MonoBehaviour
 
     public void collectResources()
     {
-            Food = Food + roomInvent;
-            roomInvent = 0;
+        int roomInventRounded = (int)Math.Floor(roomInvent);
+        gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().food += roomInventRounded;
+        roomInvent = roomInvent - roomInventRounded;
     }
 
     public void updateRoom()

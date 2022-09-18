@@ -18,7 +18,6 @@ public class MineralRoom : MonoBehaviour
     public string name = "Mineral Room";
     [SerializeField]
     private GameObject resourceCounter;
-    public float globalMineral = 0; //TODO make this global
 
     void Start()
     {
@@ -62,11 +61,10 @@ public class MineralRoom : MonoBehaviour
         this.roomCapacity = resourceRoom.roomCapacity;
         this.resourceGen = resourceRoom.resourceGen;
         this.name = resourceRoom.name;
-        this.globalMineral = resourceRoom.globalResource;
     }
 
     public ResourceRoomSave MakeCopy() {
-        return new ResourceRoomSave(roomInvent, upgradeModifier, roomCapacity, resourceGen, name, globalMineral);
+        return new ResourceRoomSave(roomInvent, upgradeModifier, roomCapacity, resourceGen, name);
     }
 
     //method for adding to invent making sure capacity isn't exceeded
@@ -85,8 +83,9 @@ public class MineralRoom : MonoBehaviour
 
     public void collectResources()
     {
-            globalMineral = globalMineral + roomInvent;
-            roomInvent = 0;
+        int roomInventRounded = (int)Math.Floor(roomInvent);
+        gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().minerals += roomInventRounded;
+        roomInvent = roomInvent - roomInventRounded;
     }
 
     public void updateRoom()

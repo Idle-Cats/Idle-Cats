@@ -18,7 +18,6 @@ public class CatpowerRoom : MonoBehaviour
     public string name = "Catpower Room";
     [SerializeField]
     private GameObject resourceCounter;
-    public float globalCatpower = 0; //TODO make this global
 
     void Start()
     {
@@ -62,11 +61,10 @@ public class CatpowerRoom : MonoBehaviour
         this.roomCapacity = resourceRoom.roomCapacity;
         this.resourceGen = resourceRoom.resourceGen;
         this.name = resourceRoom.name;
-        this.globalCatpower = resourceRoom.globalResource;
     }
 
     public ResourceRoomSave MakeCopy() {
-        return new ResourceRoomSave(roomInvent, upgradeModifier, roomCapacity, resourceGen, name, globalCatpower);
+        return new ResourceRoomSave(roomInvent, upgradeModifier, roomCapacity, resourceGen, name);
     }
 
     //method for adding to invent making sure capacity isn't exceeded
@@ -85,8 +83,9 @@ public class CatpowerRoom : MonoBehaviour
 
     public void collectResources()
     {
-            globalCatpower = globalCatpower + roomInvent;
-            roomInvent = 0;
+        int roomInventRounded = (int)Math.Floor(roomInvent);
+        gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().catPower += roomInventRounded;
+        roomInvent = roomInvent - roomInventRounded;
     }
 
     public void updateRoom()
