@@ -28,12 +28,6 @@ public class BuildRoom : MonoBehaviour
         //Sets the rooms room num to the room count for the cats to be loaded in
         room.GetComponent<RoomInfomation>().roomNum = roomCount;
 
-        if (roomCount == 0) {
-            GameObject cat = Instantiate(catTest, room.transform.position, Quaternion.identity);
-            cat.GetComponent<CurrentRoom>().currentRoom = room;
-            gameObject.GetComponent<ScreenCatList>().addCat(cat);
-        }//remove this code later just for cat testing purposes
-
         Vector3 pos = room.transform.position;
         //gets the info for the room, this is for saving and loading purposes as you cant save gameObjects
         if (room.GetComponent<RoomInfomation>().roomType == RoomInfo.RoomType.ResourceRoom) {
