@@ -128,10 +128,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomInvent: 0
+  roomBoost: {fileID: 1425116050999907019}
   roomCapacity: 0
   resourceGen: 0
   name: ResourceRoom
   resourceCounter: {fileID: 3832907475030933562}
+  resourceType: 0
 --- !u!114 &3523940588975789952
 MonoBehaviour:
   m_ObjectHideFlags: 0

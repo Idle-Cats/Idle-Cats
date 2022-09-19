@@ -32,7 +32,6 @@ public class BuildRoom : MonoBehaviour
         Vector3 pos = room.transform.position;
         //gets the info for the room, this is for saving and loading purposes as you cant save gameObjects
         if (room.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
-            room.GetComponent<ResourceRoom>().roomBoost = room.GetComponent<RoomBoost>();
             RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInfomation>().roomType, room.GetComponent<ResourceRoom>().MakeCopy());
             roomInfo.SetRoom(room);
 
@@ -87,12 +86,8 @@ public class BuildRoom : MonoBehaviour
                 GameObject room = Instantiate(resourceRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
 
                 room.GetComponent<RoomInfomation>().gameControl = gameObject;
-                room.GetComponent<ResourceRoom>().roomBoost = room.GetComponent<RoomBoost>();
                 rooms[i].SetRoom(room);
-
-                if (rooms[i].roomType == RoomSaveInfo.RoomType.ResourceRoom) {
-                    room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
-                }
+                room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
             }
             else if (rooms[i].roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
                 GameObject room = Instantiate(artifactRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);

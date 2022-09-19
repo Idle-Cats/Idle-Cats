@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2205992875595995095}
   - component: {fileID: 6803920241028846455}
   - component: {fileID: 3523940588975789952}
-  - component: {fileID: -7427125608317567271}
   - component: {fileID: 4409131399786195193}
+  - component: {fileID: 3819545171420798020}
   m_Layer: 6
   m_Name: MineralRoom
   m_TagString: Untagged
@@ -130,23 +130,6 @@ MonoBehaviour:
   roomNum: 0
   roomType: 0
   gameControl: {fileID: 0}
---- !u!114 &-7427125608317567271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2205992875595995088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b2a7b11dde9ab54fab3c5870f6dcc6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomInvent: 0
-  roomCapacity: 0
-  resourceGen: 0
-  name: Mineral Room
-  resourceCounter: {fileID: 3832907475030933562}
 --- !u!114 &4409131399786195193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +143,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostAmount: 0
+--- !u!114 &3819545171420798020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205992875595995088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845fab38fdab91d4ba94f9f927977a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomInvent: 0
+  roomBoost: {fileID: 4409131399786195193}
+  roomCapacity: 0
+  resourceGen: 0
+  name: ResourceRoom
+  resourceCounter: {fileID: 3832907475030933562}
+  resourceType: 0
 --- !u!1 &3832907475030933562
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3819545171420798020}
         m_TargetAssemblyTypeName: ResourceRoom, Assembly-CSharp
         m_MethodName: collectResources
         m_Mode: 1

@@ -20,9 +20,10 @@ public class ResourceRoom : MonoBehaviour
     [SerializeField]
     private GameObject resourceCounter;
 
+    public ResourceType resourceType;
+
     void Start()
     {
-        roomBoost = gameObject.GetComponent<RoomBoost>();
         //initialise values here
         //temp placeholder code:
         this.name = "Fishing Room";
@@ -63,10 +64,11 @@ public class ResourceRoom : MonoBehaviour
         this.roomCapacity = resourceRoom.roomCapacity;
         this.resourceGen = resourceRoom.resourceGen;
         this.name = resourceRoom.name;
+        this.resourceType = resourceRoom.resourceType;
     }
 
     public ResourceRoomSave MakeCopy() {
-        return new ResourceRoomSave(roomInvent, roomBoost, roomCapacity, resourceGen, name);
+        return new ResourceRoomSave(roomInvent, roomBoost, roomCapacity, resourceGen, name, resourceType);
     }
 
     //method for adding to invent making sure capacity isn't exceeded
@@ -86,7 +88,17 @@ public class ResourceRoom : MonoBehaviour
     public void collectResources()
     {
         int roomInventRounded = (int)Math.Floor(roomInvent);
-        gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().minerals += roomInventRounded;
+        if (resourceType == ResourceType.catpower) {
+            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().catPower += roomInventRounded;
+
+        }
+        else if (resourceType == ResourceType.minerals) {
+            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().minerals += roomInventRounded;
+        }
+        else if (resourceType == ResourceType.food) {
+            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().food += roomInventRounded;
+        }
+
         roomInvent = roomInvent - roomInventRounded;
 
         resourceCounter.GetComponent<TextMeshProUGUI>().SetText("Current Resources: " + roomInvent + "/" + roomCapacity);
@@ -100,5 +112,11 @@ public class ResourceRoom : MonoBehaviour
         }
 
         resourceCounter.GetComponent<TextMeshProUGUI>().SetText("Current Resources: " + roomInvent + "/" + roomCapacity);
+    }
+
+    public enum ResourceType {
+        minerals,
+        catpower,
+        food
     }
 }
