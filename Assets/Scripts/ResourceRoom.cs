@@ -109,7 +109,6 @@ public class ResourceRoom : MonoBehaviour
         DateTime dateNow = DateTime.Now;
 
         if (dateNow > dateQuit) {
-            Debug.Log("E");
             TimeSpan timeSpan = dateNow - dateQuit;
             addInvent((float)(this.resourceGen * timeSpan.TotalSeconds));
         }

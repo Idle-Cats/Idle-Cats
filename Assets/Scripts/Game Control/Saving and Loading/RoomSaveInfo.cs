@@ -11,6 +11,7 @@ public class RoomSaveInfo
     public RoomType roomType;
 
     public ResourceRoomSave resourceRoom;
+    public TimerRoomSave timerRoomSave;
 
     private GameObject room;
 
@@ -22,6 +23,15 @@ public class RoomSaveInfo
         this.z = pos.z;
         this.roomType = type;
         this.resourceRoom = resourceRoom;
+    }
+
+    public RoomSaveInfo(Vector3 pos, RoomType type, TimerRoomSave timerRoomSave)
+    {
+        this.x = pos.x;
+        this.y = pos.y;
+        this.z = pos.z;
+        this.roomType = type;
+        this.timerRoomSave = timerRoomSave;
     }
 
     public RoomSaveInfo() {
@@ -50,6 +60,9 @@ public class RoomSaveInfo
     public void RefreshInfo() {
         if (roomType == RoomType.ResourceRoom) {
             resourceRoom = room.GetComponent<ResourceRoom>().MakeCopy();
+        }
+        else if (roomType == RoomType.ArtifactRoom){
+            timerRoomSave = room.GetComponent<ArtifactRoom>().MakeCopy();
         }
     }
 }

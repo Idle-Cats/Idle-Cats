@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ArtifactRoom : MonoBehaviour
 {
@@ -40,13 +41,13 @@ public class ArtifactRoom : MonoBehaviour
     void Start()
     {
         roomBoost = gameObject.GetComponent<RoomBoost>();
-       //
+        //
     }
 
     //where do i put this?
     public void applyResearch()
     {
-        initialLength = this.timeLength;
+        
 
         InvokeRepeating("updateArtifactTimerLength", 0.0f, 1.0f);
     }
@@ -86,6 +87,16 @@ public class ArtifactRoom : MonoBehaviour
         this.timeLength = timeLength;
         this.roomTitle = "Digging for artifacts";
         this.researching = true;
+        initialLength = this.timeLength;
+        applyResearch();
+    }
+
+    void setTimer(int timeLength, float initialLength)
+    {
+        this.timeLength = timeLength;
+        this.roomTitle = "Digging for artifacts";
+        this.researching = true;
+        this.initialLength = initialLength;
         applyResearch();
     }
 
@@ -94,14 +105,13 @@ public class ArtifactRoom : MonoBehaviour
         Debug.Log("Dig Started");
         startButton.SetActive(false);
         slider.SetActive(true);
-        setTimer(10);
+        setTimer(60);
     }
 
     public void updateArtifactTimerLength()
     {
-        if (this.timeLength > 0)
-        {
-            this.timeLength-= (baseTimeReduction * (1 + roomBoost.boostAmount));
+        if (this.timeLength > 0) {
+            this.timeLength -= (baseTimeReduction * (1 + roomBoost.boostAmount));
             this.percentDone = ((float)this.timeLength / (float)initialLength) * 100;
 
             slider.GetComponent<Slider>().value = percentDone;
@@ -112,5 +122,43 @@ public class ArtifactRoom : MonoBehaviour
 
             CancelInvoke("updateArtifactTimerLength");
         }
+    }
+
+    public void calculateOfflineProgress()
+    {
+        if (researching) {
+            DateTime dateQuit = gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<SaveLoadManager>().infomation.timeSaved;
+            DateTime dateNow = DateTime.Now;
+
+            if (dateNow > dateQuit) {
+                TimeSpan timeSpan = dateNow - dateQuit;
+                timeLength -= (float)(this.baseTimeReduction * timeSpan.TotalSeconds);
+            }
+            slider.SetActive(true);
+            startButton.SetActive(false);
+            if (timeLength <= 0) {
+                setTimer();
+                collectButton.SetActive(true);
+            }
+            else {
+                setTimer((int)Math.Ceiling(timeLength), initialLength);
+            }
+
+            this.percentDone = ((float)this.timeLength / (float)initialLength) * 100;
+
+            slider.GetComponent<Slider>().value = percentDone;
+        }
+    }
+
+    public TimerRoomSave MakeCopy() {
+        TimerRoomSave timerRoomSave = new TimerRoomSave(timeLength, initialLength, researching);
+
+        return timerRoomSave;
+    }
+
+    public void GetCopy(TimerRoomSave timerRoomSave) {
+        timeLength = timerRoomSave.timeLength;
+        initialLength = timerRoomSave.initialLength;
+        researching = timerRoomSave.researching;
     }
 }
