@@ -9,4 +9,12 @@ public class Artifact : ScriptableObject
     public float boost;
 
     public Sprite image;
+
+    public BoostType boostType;
+
+    public enum BoostType {
+        resourceBoost,
+        timedBoost,
+        resourceMax
+    }
 }

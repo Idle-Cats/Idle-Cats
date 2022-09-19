@@ -12,12 +12,15 @@ public class ResourceRoom : MonoBehaviour
     // Start is called before the first frame update
 
     public float roomInvent = 0;
-    public float upgradeModifier = 0;
+    public RoomBoost roomBoost;
+    //public float upgradeModifier = 0;
     public float roomCapacity = 0;
     public float resourceGen = 0;
     public new string name = "ResourceRoom";
     [SerializeField]
     private GameObject resourceCounter;
+
+    public ResourceType resourceType;
 
     void Start()
     {
@@ -57,14 +60,16 @@ public class ResourceRoom : MonoBehaviour
 
     public void GetCopy(ResourceRoomSave resourceRoom) {
         this.roomInvent = resourceRoom.roomInvent;
-        this.upgradeModifier = resourceRoom.upgradeModifier;
+        //this.upgradeModifier = resourceRoom.upgradeModifier;
         this.roomCapacity = resourceRoom.roomCapacity;
         this.resourceGen = resourceRoom.resourceGen;
         this.name = resourceRoom.name;
+        this.roomBoost.boostAmount = resourceRoom.roomBoost;
+        this.resourceType = resourceRoom.resourceType;
     }
 
     public ResourceRoomSave MakeCopy() {
-        return new ResourceRoomSave(roomInvent, upgradeModifier, roomCapacity, resourceGen, name);
+        return new ResourceRoomSave(roomInvent, roomBoost, roomCapacity, resourceGen, name, resourceType);
     }
 
     //method for adding to invent making sure capacity isn't exceeded
@@ -84,17 +89,35 @@ public class ResourceRoom : MonoBehaviour
     public void collectResources()
     {
         int roomInventRounded = (int)Math.Floor(roomInvent);
-        gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().minerals += roomInventRounded;
+        if (resourceType == ResourceType.catpower) {
+            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().catPower += roomInventRounded;
+
+        }
+        else if (resourceType == ResourceType.minerals) {
+            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().minerals += roomInventRounded;
+        }
+        else if (resourceType == ResourceType.food) {
+            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().food += roomInventRounded;
+        }
+
         roomInvent = roomInvent - roomInventRounded;
+
+        resourceCounter.GetComponent<TextMeshProUGUI>().SetText("Current Resources: " + roomInvent + "/" + roomCapacity);
     }
 
     public void updateRoom()
     {
         if (roomInvent < roomCapacity)
         {
-            addInvent(resourceGen * (1 + upgradeModifier));
+            addInvent(resourceGen * (1 + roomBoost.boostAmount));
         }
 
         resourceCounter.GetComponent<TextMeshProUGUI>().SetText("Current Resources: " + roomInvent + "/" + roomCapacity);
+    }
+
+    public enum ResourceType {
+        minerals,
+        catpower,
+        food
     }
 }

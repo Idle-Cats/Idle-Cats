@@ -15,15 +15,18 @@ public class ArtifactRoom : MonoBehaviour
 
     private bool researching = false;
     [SerializeField]
-    private int timeLength = 0;
+    private float timeLength = 0;
     [SerializeField]
     private float percentDone = 0.0f;
     private string roomTitle = null;
     [SerializeField]
     private GameObject slider;
 
+    private float baseTimeReduction = 1;
+    private RoomBoost roomBoost;
+
     [SerializeField]
-    private int initialLength;
+    private float initialLength;
 
     [SerializeField]
     private GameObject startButton;
@@ -36,6 +39,7 @@ public class ArtifactRoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        roomBoost = gameObject.GetComponent<RoomBoost>();
        //
     }
 
@@ -95,7 +99,7 @@ public class ArtifactRoom : MonoBehaviour
     {
         if (this.timeLength > 0)
         {
-            this.timeLength--;
+            this.timeLength-= (baseTimeReduction * (1 + roomBoost.boostAmount));
             this.percentDone = ((float)this.timeLength / (float)initialLength) * 100;
 
             slider.GetComponent<Slider>().value = percentDone;

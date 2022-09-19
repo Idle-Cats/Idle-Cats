@@ -1069,6 +1069,7 @@ GameObject:
   - component: {fileID: 4142894903479088779}
   - component: {fileID: 5291518733005530100}
   - component: {fileID: 7057323813828018250}
+  - component: {fileID: 1799538577168812089}
   m_Layer: 6
   m_Name: ArtifactRoom 1
   m_TagString: Untagged
@@ -1204,3 +1205,16 @@ MonoBehaviour:
   startButton: {fileID: 1362681544916997370}
   collectButton: {fileID: 2839723701392311573}
   artifactPrefab: {fileID: 517884340891196201, guid: c6f8c1b55d7e7eb41b33a07cfab10c19, type: 3}
+--- !u!114 &1799538577168812089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759403740819747372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae026a0f17dc4e43b485778acc52e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostAmount: 0

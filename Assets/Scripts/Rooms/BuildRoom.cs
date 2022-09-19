@@ -86,12 +86,8 @@ public class BuildRoom : MonoBehaviour
                 GameObject room = Instantiate(resourceRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
 
                 room.GetComponent<RoomInfomation>().gameControl = gameObject;
-
                 rooms[i].SetRoom(room);
-
-                if (rooms[i].roomType == RoomSaveInfo.RoomType.ResourceRoom) {
-                    room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
-                }
+                room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
             }
             else if (rooms[i].roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
                 GameObject room = Instantiate(artifactRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
