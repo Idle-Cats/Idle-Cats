@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SaveLoadManager : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class SaveLoadManager : MonoBehaviour
     public void Save()
     {
         //saves the data using save helper to turn info into a string that can be put in playerprefs
+        infomation.catPower = gameObject.GetComponent<User>().catPower;
+        infomation.minerals = gameObject.GetComponent<User>().minerals;
+        infomation.food = gameObject.GetComponent<User>().food;
+
         infomation.discoveredCats = CatList.getInstance().discoveredCats;
 
         gameObject.GetComponent<BuildRoom>().RefreshRooms();
@@ -53,6 +58,13 @@ public class SaveLoadManager : MonoBehaviour
         infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
         infomation.catCount = gameObject.GetComponent<ScreenCatList>().catCount;
 
+        infomation.unlockedArtifacts = gameObject.GetComponent<ArtifactsFound>().GetUnlockedArtifacts();
+        infomation.unlockedArtifactCount = gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount;
+        ArtifactSaveInfo artifactSaveInfo = new ArtifactSaveInfo();
+        infomation.spawnedArtifacts = artifactSaveInfo.makeSaveInfo(gameObject.GetComponent<ArtifactsFound>().spawnedArtifacts, gameObject.GetComponent<ArtifactsFound>().artifactCount, gameObject.GetComponent<ArtifactsFound>().allArtifacts);
+
+        infomation.timeSaved = DateTime.Now;
+
         PlayerPrefs.SetString("Save Info", SaveHelper.Serialise<SaveInfomation>(infomation));
         Debug.Log(SaveHelper.Serialise<SaveInfomation>(infomation));
     }
@@ -62,6 +74,10 @@ public class SaveLoadManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Save Info")) {
             infomation = SaveHelper.Deserialise<SaveInfomation>(PlayerPrefs.GetString("Save Info"));
             Debug.Log(PlayerPrefs.GetString("Save Info"));
+
+            gameObject.GetComponent<User>().catPower = infomation.catPower;
+            gameObject.GetComponent<User>().food = infomation.food;
+            gameObject.GetComponent<User>().minerals = infomation.minerals;
 
             CatList.getInstance().discoveredCats = infomation.discoveredCats;
             gameObject.GetComponent<BuildRoom>().rooms = infomation.rooms;
@@ -73,6 +89,11 @@ public class SaveLoadManager : MonoBehaviour
             gameObject.GetComponent<BuildingNodePlacer>().LoadNode(infomation.nodeY);
 
             gameObject.GetComponent<ScreenCatList>().setFromCatInfo(infomation.cats, infomation.catCount);
+
+            gameObject.GetComponent<ArtifactsFound>().SetUnlockedArtifacts(infomation.unlockedArtifacts);
+            gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount = infomation.unlockedArtifactCount;
+
+            gameObject.GetComponent<ArtifactsFound>().loadSaveInfo(infomation.spawnedArtifacts);
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();

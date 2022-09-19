@@ -4621,6 +4621,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aff715382a6f4e942b12c60d1f45d44d, type: 2}
   unlockedArtifacts: []
   unlockedArtifactsCount: 0
+  spawnedArtifacts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  artifactCount: 0
+  artifactPrefab: {fileID: 517884340891196201, guid: c6f8c1b55d7e7eb41b33a07cfab10c19, type: 3}
 --- !u!114 &1309163142
 MonoBehaviour:
   m_ObjectHideFlags: 0

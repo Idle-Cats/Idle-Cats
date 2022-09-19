@@ -41,8 +41,8 @@ public class BuildRoom : MonoBehaviour
             }
             rooms[roomCount] = roomInfo;
         }
-        else {
-            RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInfomation>().roomType, null);
+        else if (room.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
+            RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInfomation>().roomType, room.GetComponent<ArtifactRoom>().MakeCopy());
             roomInfo.SetRoom(room);
 
             //Holds an array of room info
@@ -88,6 +88,7 @@ public class BuildRoom : MonoBehaviour
                 room.GetComponent<RoomInfomation>().gameControl = gameObject;
                 rooms[i].SetRoom(room);
                 room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
+                room.GetComponent<ResourceRoom>().calculateOfflineProgress();
             }
             else if (rooms[i].roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
                 GameObject room = Instantiate(artifactRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
@@ -96,9 +97,8 @@ public class BuildRoom : MonoBehaviour
 
                 rooms[i].SetRoom(room);
 
-                if (rooms[i].roomType == RoomSaveInfo.RoomType.ResourceRoom) {
-                    room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
-                }
+                room.GetComponent<ArtifactRoom>().GetCopy(rooms[i].timerRoomSave);
+                room.GetComponent<ArtifactRoom>().calculateOfflineProgress();
             }
         }
     }
