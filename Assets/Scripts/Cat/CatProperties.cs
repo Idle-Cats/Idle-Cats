@@ -13,7 +13,8 @@ public class CatProperties : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CatList.getInstance().AddCat(new Cats(CatType.GREEN));
+        CatList.getInstance().AddCat(new Cats(CatType.GREY));
+        CatList.getInstance().AddCat(new Cats(CatType.TEAL));
         // Cats cat = Cats.GenerateRandomCat();
 
         switch (cat.GetCatType())

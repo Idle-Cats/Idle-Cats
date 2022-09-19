@@ -3,75 +3,85 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Cats;
 using static CatList;
+using UnityEngine.UI;
+using TMPro;
+
 public class CatListDisplay : MonoBehaviour
+
 {
     private Cats cat;
-    // create a serializable class for the cat type
-    [SerializeField] public CatType catType;
-    // create a serializable class for the catlist
-    [SerializeField] public CatList catList;
+    public CatType catType;
+    public CatList catList;
 
-    public Image catImage;
+    public TextMeshProUGUI catListText;
 
+    public Sprite catImage;
+    public Sprite defaultCat;
 
     // public Cats cat { get => cat; set => cat = value; }
     public Cats getCat(){
         return new Cats(catType);
     }
 
-    public CatListDisplay()
-    {
-        this.cat = new Cats(catType);
+    public void click() {
+        catListText.text = "Cats: " + cat.GetCatType();
     }
+
 
     void Start()
     {
+        CatList.getInstance().AddCat(new Cats(CatType.GREY));
+        CatList.getInstance().AddCat(new Cats(CatType.TEAL));
+        this.cat = new Cats(catType);
         // Cats cat = new Cats(catType);
-
-
         bool exists = CatList.getInstance().catTypeExists(cat.GetCatType());
-        // if cat exists in catlist, set sprite to active otherwise set to inactive
-        float opacity = exists ? 1.0f : 0.5f;
-        // return;
+
+        Sprite selected = null;
+
+        if(exists) {
+            selected = catImage;
+        } else {
+            selected = defaultCat;
+        }
         
         // set colours regarding cats - can change
         switch (cat.GetCatType())
         {
             case CatType.GREY:
-                // GetComponent<Image>().sprite = 
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.BROWN:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.WHITE:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.GINGER:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.7f, 0.3f, 0.1f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.TEAL:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.4f, 0.6f, 0.7f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.PINK:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.7f, 0.0f, 0.5f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.BLUE:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 1.0f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.GREEN:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 1.0f, 0.0f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.RED:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.RAINBOW:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.WELCOME:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.PARTY:
-                this.transform.Find("Renderer").GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, opacity);
+                this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
         }
     }
