@@ -90,7 +90,7 @@ public class SaveLoadManager : MonoBehaviour
             gameObject.GetComponent<ArtifactsFound>().unlockedArtifacts = infomation.unlockedArtifacts;
             gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount = infomation.unlockedArtifactCount;
 
-            gameObject.GetComponent<ArtifactsFound>().spawnedArtifacts = 
+            gameObject.GetComponent<ArtifactsFound>().loadSaveInfo(infomation.spawnedArtifacts);
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();

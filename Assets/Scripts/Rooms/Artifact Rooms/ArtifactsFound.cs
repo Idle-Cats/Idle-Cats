@@ -11,6 +11,8 @@ public class ArtifactsFound : MonoBehaviour
     public GameObject[] spawnedArtifacts = new GameObject[5];
     public int artifactCount = 0;
 
+    public GameObject artifactPrefab;
+
     private void Start()
     {
         unlockedArtifacts = new Artifact[allArtifacts.Length];
@@ -66,5 +68,16 @@ public class ArtifactsFound : MonoBehaviour
         }
 
         spawnedArtifacts = newArtifacts;
+    }
+
+    public void loadSaveInfo(ArtifactSaveInfo[] saveFile)
+    {
+        spawnedArtifacts = new GameObject[saveFile.Length];
+        for (int i = 0; i < saveFile.Length; i++) {
+            GameObject newArtifact = Instantiate(artifactPrefab, new Vector2(saveFile[i].x, saveFile[i].y), Quaternion.identity);
+            newArtifact.GetComponent<ArtifactDisplay>().artifact = saveFile[i].artifact;
+            newArtifact.GetComponent<ArtifactDisplay>().RefreshSelf();
+            newArtifact.GetComponent<CurrentRoom>().currentRoom = gameObject.GetComponent<BuildRoom>().rooms[saveFile[i].roomNum].getRoom();
+        }
     }
 }

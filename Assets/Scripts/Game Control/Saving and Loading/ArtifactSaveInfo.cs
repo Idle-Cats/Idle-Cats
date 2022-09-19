@@ -35,6 +35,4 @@ public class ArtifactSaveInfo
 
         return tempSave;
     }
-
-    public GameObject[]
 }
