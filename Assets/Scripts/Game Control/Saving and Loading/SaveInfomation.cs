@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CatList;
+using System;
 
 public class SaveInfomation
 {
@@ -26,4 +27,6 @@ public class SaveInfomation
     public int[] unlockedArtifacts;
     public int unlockedArtifactCount;
     public ArtifactSaveInfo[] spawnedArtifacts;
+
+    public DateTime timeSaved;
 }
