@@ -12,7 +12,7 @@ public class ResourceRoom : MonoBehaviour
     // Start is called before the first frame update
 
     public float roomInvent = 0;
-    private RoomBoost roomBoost;
+    public RoomBoost roomBoost;
     //public float upgradeModifier = 0;
     public float roomCapacity = 0;
     public float resourceGen = 0;
