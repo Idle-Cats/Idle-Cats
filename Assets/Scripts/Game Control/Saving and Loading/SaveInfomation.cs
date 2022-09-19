@@ -23,7 +23,7 @@ public class SaveInfomation
 
     public float nodeY;
 
-    public Artifact[] unlockedArtifacts;
+    public int[] unlockedArtifacts;
     public int unlockedArtifactCount;
     public ArtifactSaveInfo[] spawnedArtifacts;
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Artifact", menuName = "Artifact")]
 public class Artifact : ScriptableObject
 {
-    public new string name;
+    public string artifactName;
     public float boost;
 
     public Sprite image;

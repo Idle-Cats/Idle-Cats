@@ -57,10 +57,10 @@ public class SaveLoadManager : MonoBehaviour
         infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
         infomation.catCount = gameObject.GetComponent<ScreenCatList>().catCount;
 
-        infomation.unlockedArtifacts = gameObject.GetComponent<ArtifactsFound>().unlockedArtifacts;
+        infomation.unlockedArtifacts = gameObject.GetComponent<ArtifactsFound>().GetUnlockedArtifacts();
         infomation.unlockedArtifactCount = gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount;
         ArtifactSaveInfo artifactSaveInfo = new ArtifactSaveInfo();
-        infomation.spawnedArtifacts = artifactSaveInfo.makeSaveInfo(gameObject.GetComponent<ArtifactsFound>().spawnedArtifacts, gameObject.GetComponent<ArtifactsFound>().artifactCount);
+        infomation.spawnedArtifacts = artifactSaveInfo.makeSaveInfo(gameObject.GetComponent<ArtifactsFound>().spawnedArtifacts, gameObject.GetComponent<ArtifactsFound>().artifactCount, gameObject.GetComponent<ArtifactsFound>().allArtifacts);
 
         PlayerPrefs.SetString("Save Info", SaveHelper.Serialise<SaveInfomation>(infomation));
         Debug.Log(SaveHelper.Serialise<SaveInfomation>(infomation));
@@ -87,7 +87,7 @@ public class SaveLoadManager : MonoBehaviour
 
             gameObject.GetComponent<ScreenCatList>().setFromCatInfo(infomation.cats, infomation.catCount);
 
-            gameObject.GetComponent<ArtifactsFound>().unlockedArtifacts = infomation.unlockedArtifacts;
+            gameObject.GetComponent<ArtifactsFound>().SetUnlockedArtifacts(infomation.unlockedArtifacts);
             gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount = infomation.unlockedArtifactCount;
 
             gameObject.GetComponent<ArtifactsFound>().loadSaveInfo(infomation.spawnedArtifacts);

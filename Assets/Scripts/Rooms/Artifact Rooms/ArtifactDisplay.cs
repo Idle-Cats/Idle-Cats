@@ -22,6 +22,6 @@ public class ArtifactDisplay : MonoBehaviour
 
     public void RefreshSelf() {
         artworkImage.sprite = artifact.image;
-        nameText.GetComponent<TextMeshProUGUI>().SetText(artifact.name);
+        nameText.GetComponent<TextMeshProUGUI>().SetText(artifact.artifactName);
     }
 }

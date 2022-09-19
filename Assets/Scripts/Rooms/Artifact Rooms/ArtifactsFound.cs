@@ -72,12 +72,43 @@ public class ArtifactsFound : MonoBehaviour
 
     public void loadSaveInfo(ArtifactSaveInfo[] saveFile)
     {
-        spawnedArtifacts = new GameObject[saveFile.Length];
-        for (int i = 0; i < saveFile.Length; i++) {
-            GameObject newArtifact = Instantiate(artifactPrefab, new Vector2(saveFile[i].x, saveFile[i].y), Quaternion.identity);
-            newArtifact.GetComponent<ArtifactDisplay>().artifact = saveFile[i].artifact;
-            newArtifact.GetComponent<ArtifactDisplay>().RefreshSelf();
-            newArtifact.GetComponent<CurrentRoom>().currentRoom = gameObject.GetComponent<BuildRoom>().rooms[saveFile[i].roomNum].getRoom();
+        if (saveFile.Length > 0) {
+            spawnedArtifacts = new GameObject[saveFile.Length];
+            for (int i = 0; i < saveFile.Length; i++) {
+                GameObject newArtifact = Instantiate(artifactPrefab, new Vector2(saveFile[i].x, saveFile[i].y), Quaternion.identity);
+                newArtifact.GetComponent<ArtifactDisplay>().artifact = allArtifacts[saveFile[i].artifactNum];
+                newArtifact.GetComponent<ArtifactDisplay>().RefreshSelf();
+                newArtifact.GetComponent<CurrentRoom>().currentRoom = gameObject.GetComponent<BuildRoom>().rooms[saveFile[i].roomNum].getRoom();
+            }
         }
+    }
+
+    public int[] GetUnlockedArtifacts() {
+        int[] data = new int[unlockedArtifactsCount];
+        for (int i = 0; i < unlockedArtifactsCount; i++) {
+            data[i] = findNum(unlockedArtifacts[i]);
+        }
+
+        return data;
+    }
+
+    public void SetUnlockedArtifacts(int[] data) {
+        if (data.Length > 0) {
+            unlockedArtifacts = new Artifact[allArtifacts.Length];
+
+            for (int i = 0; i < data.Length; i++) {
+                unlockedArtifacts[i] = allArtifacts[data[i]];
+            }
+        }
+    }
+
+    private int findNum(Artifact artifact)
+    {
+        for (int i = 0; i < allArtifacts.Length; i++) {
+            if (artifact == allArtifacts[i]) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
