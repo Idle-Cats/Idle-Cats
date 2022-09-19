@@ -36,6 +36,10 @@ public class SaveLoadManager : MonoBehaviour
     public void Save()
     {
         //saves the data using save helper to turn info into a string that can be put in playerprefs
+        infomation.catPower = gameObject.GetComponent<User>().catPower;
+        infomation.minerals = gameObject.GetComponent<User>().minerals;
+        infomation.food = gameObject.GetComponent<User>().food;
+
         infomation.discoveredCats = CatList.getInstance().discoveredCats;
 
         gameObject.GetComponent<BuildRoom>().RefreshRooms();
@@ -62,6 +66,10 @@ public class SaveLoadManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Save Info")) {
             infomation = SaveHelper.Deserialise<SaveInfomation>(PlayerPrefs.GetString("Save Info"));
             Debug.Log(PlayerPrefs.GetString("Save Info"));
+
+            gameObject.GetComponent<User>().catPower = infomation.catPower;
+            gameObject.GetComponent<User>().food = infomation.food;
+            gameObject.GetComponent<User>().minerals = infomation.minerals;
 
             CatList.getInstance().discoveredCats = infomation.discoveredCats;
             gameObject.GetComponent<BuildRoom>().rooms = infomation.rooms;

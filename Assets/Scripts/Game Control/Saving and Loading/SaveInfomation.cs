@@ -6,9 +6,9 @@ using static CatList;
 public class SaveInfomation
 {
     //holds all infomation to be saved
-    public int money = 243564;
-
-    public int cheese = 1982810;
+    public int food = 0;
+    public int minerals = 0;
+    public int catPower = 0;
 
     public HashSet<Cats> discoveredCats;
 
