@@ -60,6 +60,8 @@ public class ArtifactRoom : MonoBehaviour
             GameObject newArtifact = Instantiate(artifactPrefab, gameObject.transform.position, Quaternion.identity);
             newArtifact.GetComponent<ArtifactDisplay>().artifact = artifact;
             newArtifact.GetComponent<ArtifactDisplay>().RefreshSelf();
+            newArtifact.GetComponent<CurrentRoom>().currentRoom = gameObject;
+            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<ArtifactsFound>().AddArtifact(newArtifact);
         }
         collectButton.SetActive(false);
         startButton.SetActive(true);

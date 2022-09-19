@@ -8,6 +8,9 @@ public class ArtifactsFound : MonoBehaviour
     public Artifact[] unlockedArtifacts;
     public int unlockedArtifactsCount = 0;
 
+    public GameObject[] spawnedArtifacts = new GameObject[5];
+    public int artifactCount = 0;
+
     private void Start()
     {
         unlockedArtifacts = new Artifact[allArtifacts.Length];
@@ -41,5 +44,27 @@ public class ArtifactsFound : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void AddArtifact(GameObject artifact) {
+
+        if (artifactCount == spawnedArtifacts.Length - 1) {
+            ExpandArtifacts();
+        }
+
+        spawnedArtifacts[artifactCount] = artifact;
+
+        artifactCount += 1;
+    }
+
+    private void ExpandArtifacts()
+    {
+        GameObject[] newArtifacts = new GameObject[spawnedArtifacts.Length * 4];
+
+        for (int i = 0; i < artifactCount; i++) {
+            newArtifacts[i] = spawnedArtifacts[i];
+        }
+
+        spawnedArtifacts = newArtifacts;
     }
 }

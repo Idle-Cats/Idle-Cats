@@ -57,6 +57,11 @@ public class SaveLoadManager : MonoBehaviour
         infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
         infomation.catCount = gameObject.GetComponent<ScreenCatList>().catCount;
 
+        infomation.unlockedArtifacts = gameObject.GetComponent<ArtifactsFound>().unlockedArtifacts;
+        infomation.unlockedArtifactCount = gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount;
+        ArtifactSaveInfo artifactSaveInfo = new ArtifactSaveInfo();
+        infomation.spawnedArtifacts = artifactSaveInfo.makeSaveInfo(gameObject.GetComponent<ArtifactsFound>().spawnedArtifacts, gameObject.GetComponent<ArtifactsFound>().artifactCount);
+
         PlayerPrefs.SetString("Save Info", SaveHelper.Serialise<SaveInfomation>(infomation));
         Debug.Log(SaveHelper.Serialise<SaveInfomation>(infomation));
     }
@@ -68,7 +73,6 @@ public class SaveLoadManager : MonoBehaviour
             Debug.Log(PlayerPrefs.GetString("Save Info"));
 
             gameObject.GetComponent<User>().catPower = infomation.catPower;
-            Debug.Log(gameObject.GetComponent<User>().catPower);
             gameObject.GetComponent<User>().food = infomation.food;
             gameObject.GetComponent<User>().minerals = infomation.minerals;
 
@@ -82,6 +86,11 @@ public class SaveLoadManager : MonoBehaviour
             gameObject.GetComponent<BuildingNodePlacer>().LoadNode(infomation.nodeY);
 
             gameObject.GetComponent<ScreenCatList>().setFromCatInfo(infomation.cats, infomation.catCount);
+
+            gameObject.GetComponent<ArtifactsFound>().unlockedArtifacts = infomation.unlockedArtifacts;
+            gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount = infomation.unlockedArtifactCount;
+
+            gameObject.GetComponent<ArtifactsFound>().spawnedArtifacts = 
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
