@@ -64,6 +64,7 @@ public class ResourceRoom : MonoBehaviour
         this.roomCapacity = resourceRoom.roomCapacity;
         this.resourceGen = resourceRoom.resourceGen;
         this.name = resourceRoom.name;
+        this.roomBoost.boostAmount = resourceRoom.roomBoost;
         this.resourceType = resourceRoom.resourceType;
     }
 
