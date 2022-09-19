@@ -68,6 +68,7 @@ public class SaveLoadManager : MonoBehaviour
             Debug.Log(PlayerPrefs.GetString("Save Info"));
 
             gameObject.GetComponent<User>().catPower = infomation.catPower;
+            Debug.Log(gameObject.GetComponent<User>().catPower);
             gameObject.GetComponent<User>().food = infomation.food;
             gameObject.GetComponent<User>().minerals = infomation.minerals;
 
