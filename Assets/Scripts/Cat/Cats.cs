@@ -21,6 +21,7 @@ public class Cats {
     }
 
     // generate a random cat
+    //not needed
     public static Cats GenerateRandomCat() {
         CatList catList = CatList.getInstance();
         Random random = new Random();
@@ -70,18 +71,18 @@ public class Cats {
 
     // all cats
     public enum CatType {
-        GREY,
-        BROWN,
-        WHITE,
-        GINGER,
-        TEAL,
-        PINK,
-        BLUE,
-        GREEN,
-        RED,
-        RAINBOW,
-        WELCOME,
-        PARTY,
-        HELP
+        GREY, //milestone1
+        BROWN, //milestone2
+        WHITE, //milestone3
+        GINGER, //milestone4
+        TEAL, //milestone5
+        PINK, //milestone6
+        BLUE, //milestone7
+        GREEN, //milestone8
+        RED, //milestone9
+        RAINBOW, //milestone10
+        WELCOME, //milestone11
+        PARTY, //milestone12
+        HELP //mileston13
     }
 }

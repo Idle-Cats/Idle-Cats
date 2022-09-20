@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomInfo
+public class RoomSaveInfo
 {
     public float x;
     public float y;
@@ -11,12 +11,13 @@ public class RoomInfo
     public RoomType roomType;
 
     public ResourceRoomSave resourceRoom;
+    public TimerRoomSave timerRoomSave;
 
     private GameObject room;
 
     public int roomNum;
 
-    public RoomInfo(Vector3 pos, RoomType type, ResourceRoomSave resourceRoom) {
+    public RoomSaveInfo(Vector3 pos, RoomType type, ResourceRoomSave resourceRoom) {
         this.x = pos.x;
         this.y = pos.y;
         this.z = pos.z;
@@ -24,7 +25,16 @@ public class RoomInfo
         this.resourceRoom = resourceRoom;
     }
 
-    public RoomInfo() {
+    public RoomSaveInfo(Vector3 pos, RoomType type, TimerRoomSave timerRoomSave)
+    {
+        this.x = pos.x;
+        this.y = pos.y;
+        this.z = pos.z;
+        this.roomType = type;
+        this.timerRoomSave = timerRoomSave;
+    }
+
+    public RoomSaveInfo() {
 
     }
 
@@ -50,6 +60,9 @@ public class RoomInfo
     public void RefreshInfo() {
         if (roomType == RoomType.ResourceRoom) {
             resourceRoom = room.GetComponent<ResourceRoom>().MakeCopy();
+        }
+        else if (roomType == RoomType.ArtifactRoom){
+            timerRoomSave = room.GetComponent<ArtifactRoom>().MakeCopy();
         }
     }
 }
