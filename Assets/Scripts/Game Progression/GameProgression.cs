@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using static User;
 using static Cat;
 using static CatList;
@@ -18,6 +19,8 @@ public class GameProgression : MonoBehaviour
     public int buttonPressCounter;
 
     public int crazyCatCounter;
+
+    private User user;
 
     public GameObject welcome_panel;
     public GameObject milestone1;
@@ -37,6 +40,7 @@ public class GameProgression : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        user = gameObject.GetComponent<User>();
         catList = CatList.getInstance();
 
         // Debug.Log(catList.discoveredCat);
@@ -53,19 +57,19 @@ public class GameProgression : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Food + Minerals + Coins > 1000 && flags.milestone4 == 0) {
+        if (user.food + user.minerals + user.catPower > 1000 && flags.milestone4 == 0) {
             foodReached1000();
         }
 
-        if (Food + Minerals + Coins > 10000 && flags.milestone5 == 0) {
+        if (user.food + user.minerals + user.catPower > 10000 && flags.milestone5 == 0) {
             foodReached10000();
         }
 
-        if (Food + Minerals + Coins > 100000 && flags.milestone6 == 0) {
+        if (user.food + user.minerals + user.catPower > 100000 && flags.milestone6 == 0) {
             foodReached100000();
         }
 
-        if (Food + Minerals + Coins > 1000000 && flags.milestone7 == 0) {
+        if (user.food + user.minerals + user.catPower > 1000000 && flags.milestone7 == 0) {
             foodReached1000000();
         }
     }
@@ -192,6 +196,7 @@ public class GameProgression : MonoBehaviour
         if (flags.milestone1 == 0) {
             flags.milestone1 = 1;
             ShowMilestone1();
+            
             //add cat from milestone1
            catList.AddCatType(CatType.GREY);
         }
@@ -199,6 +204,7 @@ public class GameProgression : MonoBehaviour
         if (flags.milestone12 == 0 && gameObject.GetComponent<BuildRoom>().roomCount > 10) {
             flags.milestone12 = 1;
             ShowMilestone12();
+
             //add cat from milestone12
             catList.AddCatType(CatType.PARTY);
         }
@@ -206,6 +212,7 @@ public class GameProgression : MonoBehaviour
         if (flags.milestone2 == 0 && gameObject.GetComponent<BuildRoom>().roomCount > 20) {
             flags.milestone2 = 1;
             ShowMilestone2();
+
             //add cat from milestone2
             catList.AddCatType(CatType.BROWN);
         }

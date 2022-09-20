@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using static Formatter;
 
-public class MineralsUpdater : MonoBehaviour
+public class CatPowerUpdater : MonoBehaviour
 {
     [SerializeField]
     private GameObject gameControl;
@@ -15,12 +15,12 @@ public class MineralsUpdater : MonoBehaviour
     void Start()
     {
         user = gameControl.GetComponent<User>();
-        GetComponent<TextMeshProUGUI>().text = "M: " + formatValue(user.minerals);
+        GetComponent<TextMeshProUGUI>().text = "C: " + formatValue(user.catPower);
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<TextMeshProUGUI>().text = "M: " + formatValue(user.minerals);
+        GetComponent<TextMeshProUGUI>().text = "C: " + formatValue(user.catPower);
     }
 }

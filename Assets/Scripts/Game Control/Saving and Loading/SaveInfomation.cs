@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static CatList;
+using System;
 
 public class SaveInfomation
 {
     //holds all infomation to be saved
-    public int money = 243564;
-
-    public int cheese = 1982810;
+    public int food = 0;
+    public int minerals = 0;
+    public int catPower = 0;
 
     public HashSet<CatType> discoveredCats;
 
@@ -22,4 +23,10 @@ public class SaveInfomation
     public int nodeLength;
 
     public float nodeY;
+
+    public int[] unlockedArtifacts;
+    public int unlockedArtifactCount;
+    public ArtifactSaveInfo[] spawnedArtifacts;
+
+    public DateTime timeSaved;
 }
