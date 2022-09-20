@@ -7,7 +7,6 @@ using UnityEngine.UI;
 using TMPro;
 
 public class CatListDisplay : MonoBehaviour
-
 {
     private Cats cat;
     public CatType catType;
@@ -18,22 +17,24 @@ public class CatListDisplay : MonoBehaviour
     public Sprite catImage;
     public Sprite defaultCat;
 
-    // public Cats cat { get => cat; set => cat = value; }
     public Cats getCat(){
         return new Cats(catType);
     }
 
     public void click() {
-        catListText.text = "Cats: " + cat.GetCatType();
+        // if cat hasnt been unlocked yet dont update the text
+        if (CatList.getInstance().catTypeExists(cat.GetCatType())) {
+            catListText.text = "Cats: " + cat.GetCatType() + "\nPrimary Boost: " + Cats.GetPBoost(cat.GetCatType())+ "\nSecondary Boost: " + Cats.GetSBoost(cat.GetCatType());
+        } else {
+            catListText.text = "Cats: ????";
+        }
     }
-
 
     void Start()
     {
         CatList.getInstance().AddCat(new Cats(CatType.GREY));
         CatList.getInstance().AddCat(new Cats(CatType.TEAL));
         this.cat = new Cats(catType);
-        // Cats cat = new Cats(catType);
         bool exists = CatList.getInstance().catTypeExists(cat.GetCatType());
 
         Sprite selected = null;

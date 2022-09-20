@@ -1,12 +1,10 @@
 using System;
 using static CatList;
-using System.Collections.Generic;   // for List<>
 
 public class Cats {
     public CatType type;
-
-    public Cats() {
-    }
+    private int pBoost;
+    private int sBoost;
 
     public Cats(CatType catType) {
         this.type = catType;
@@ -19,14 +17,6 @@ public class Cats {
     public string PrintCat() {
         return "Cat type: " + this.type;
     }
-
-    // generate a random cat
-    //not needed
-    // public static Cats GenerateRandomCat() {
-    //         List<Cats> cList = new List<Cats>(catList.discoveredCats);
-    //         CatType catType = cList[random.Next(catList.discoveredCats.Count)].GetCatType();
-    //         return new Cats(catType);
-    // }
 
     // all cats
     public enum CatType {
@@ -43,5 +33,53 @@ public class Cats {
         WELCOME, //milestone11
         PARTY, //milestone12
         HELP //mileston13
+    }
+
+    public static int GetPBoost(CatType type) {
+        switch (type) {
+            case CatType.GREY:
+            case CatType.BROWN:
+            case CatType.WHITE:
+            case CatType.GINGER:
+                return 1;
+            case CatType.TEAL:
+            case CatType.PINK:
+            case CatType.BLUE:
+            case CatType.GREEN:
+            case CatType.RED:
+                return 2;
+            case CatType.RAINBOW:
+                return 10;
+            case CatType.WELCOME:
+            case CatType.PARTY:
+            case CatType.HELP:
+                return 5;
+            default:
+                return 0;
+        }
+    }
+
+    public static int GetSBoost(CatType type) {
+        switch (type) {
+            case CatType.GREY:
+            case CatType.BROWN:
+            case CatType.WHITE:
+            case CatType.GINGER:
+                return 2;
+            case CatType.TEAL:
+            case CatType.PINK:
+            case CatType.BLUE:
+            case CatType.GREEN:
+            case CatType.RED:
+                return 4;
+            case CatType.RAINBOW:
+                return 20;
+            case CatType.WELCOME:
+            case CatType.PARTY:
+            case CatType.HELP:
+                return 10;
+            default:
+                return 0;
+        }
     }
 }
