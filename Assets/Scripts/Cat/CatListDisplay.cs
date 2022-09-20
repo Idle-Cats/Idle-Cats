@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Cats;
+using static Cat;
 using static CatList;
 using UnityEngine.UI;
 using TMPro;
 
 public class CatListDisplay : MonoBehaviour
 {
-    private Cats cat;
     public CatType catType;
     public CatList catList;
 
@@ -19,16 +18,18 @@ public class CatListDisplay : MonoBehaviour
 
     public GameObject AddCat;
 
-    public Cats getCat(){
-        return new Cats(catType);
-    }
+    // public Cats getCat(){
+    //     return new Cats(catType);
+    // }
 
     public void click() {
         // if cat hasnt been unlocked yet dont update the text
-        if (CatList.getInstance().catTypeExists(cat.GetCatType())) {
+        if (CatList.getInstance().catTypeExists(catType)) {
             // make button visible
             AddCat.SetActive(true);
-            catListText.text = "Cats: " + cat.GetCatType() + "\nPrimary Boost: " + Cats.GetPBoost(cat.GetCatType())+ "\nSecondary Boost: " + Cats.GetSBoost(cat.GetCatType());
+            catListText.text = "Cats: " + catType + "\nPrimary Boost: " + Cat.GetPBoost(catType)+ "\nSecondary Boost: " + Cat.GetSBoost(catType);
+            // currentCat.setCatType(catType);
+            SceneControl.catTypeSpawn = catType;
         } else {
             // make button invisible
             AddCat.SetActive(false);
@@ -38,10 +39,10 @@ public class CatListDisplay : MonoBehaviour
 
     void Start()
     {
-        CatList.getInstance().AddCat(new Cats(CatType.GREY));
-        CatList.getInstance().AddCat(new Cats(CatType.TEAL));
-        this.cat = new Cats(catType);
-        bool exists = CatList.getInstance().catTypeExists(cat.GetCatType());
+        // CatList.getInstance().AddCat(new Cat(CatType.GREY));
+        // CatList.getInstance().AddCat(new Cat(CatType.TEAL));
+        CatList.getInstance().AddCatType(CatType.RAINBOW);
+        bool exists = CatList.getInstance().catTypeExists(catType);
 
         Sprite selected = null;
 
@@ -52,7 +53,7 @@ public class CatListDisplay : MonoBehaviour
         }
         
         // set colours regarding cats - can change
-        switch (cat.GetCatType())
+        switch (catType)
         {
             case CatType.GREY:
                 this.transform.Find("Image").GetComponent<Image>().sprite = selected;

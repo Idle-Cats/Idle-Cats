@@ -10,7 +10,7 @@ public class SaveInfomation
 
     public int cheese = 1982810;
 
-    public HashSet<Cats> discoveredCats;
+    public HashSet<CatType> discoveredCats;
 
     public RoomSaveInfo[] rooms;
     public CatInfo[] cats;

@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using static CatProperties;
-
 public class CatBoostRooms : MonoBehaviour
 {
-    private CatProperties cProp;
+    private Cat cat;
 
     void Start()
     {
-        cProp = GetComponent<CatProperties>();
+        cat = GetComponent<Cat>();
     }
 
     public void ApplyCatBoost() {
-        // cProp null check
-        if (cProp == null) {
+        // cat null check
+        if (cat == null) {
             return;
         }
 
@@ -38,8 +36,8 @@ public class CatBoostRooms : MonoBehaviour
         }
 
         // add the modifier to the resource room
-        resourceRoom.upgradeModifier += Cats.GetSBoost(cProp.GetCatType());
-        Debug.Log("Cat boost applied" + Cats.GetSBoost(cProp.GetCatType()));
+        resourceRoom.upgradeModifier += Cat.GetSBoost(cat.catType);
+        Debug.Log("Cat boost applied" + Cat.GetSBoost(cat.catType));
 
         // if (gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
         //     gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<ResourceRoom>().upgradeModifier += Cats.GetSBoost(cat.GetCatType());

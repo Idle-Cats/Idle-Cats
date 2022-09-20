@@ -4922,10 +4922,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1309163137}
         m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
         m_MethodName: addCat
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1760372909}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5373,6 +5373,7 @@ GameObject:
   - component: {fileID: 1309163137}
   - component: {fileID: 1309163138}
   - component: {fileID: 1309163139}
+  - component: {fileID: 1309163140}
   m_Layer: 0
   m_Name: Game Control
   m_TagString: Untagged
@@ -5469,7 +5470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CatPanel: {fileID: 300016871}
   OpenCatList: {fileID: 996434374}
-  Cat: {fileID: 0}
+  catBuilder: {fileID: 1309163140}
+  catCount: 0
 --- !u!114 &1309163138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5496,6 +5498,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea11d620e8cbb514ab31028d163b2952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1309163140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309163132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72f696721e8e4cc28f4f650ab9af89e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 207835099897388151, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+  instance: {fileID: 0}
 --- !u!1 &1324361915
 GameObject:
   m_ObjectHideFlags: 0
