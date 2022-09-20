@@ -164,6 +164,7 @@ public class PartyCat : MonoBehaviour
                 break;
             case 2:
                 gameObject.GetComponent<User>().food += (int)reward;
+
                 break;
         }
     }
