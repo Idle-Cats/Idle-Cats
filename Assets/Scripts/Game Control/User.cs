@@ -5,16 +5,13 @@ using UnityEngine;
 public class User : MonoBehaviour
 {
 
-    public static int Coins;
-    public static int Food;
-    public static int Minerals;
+    public int catPower = 0;
+    public int food = 0;
+    public int minerals = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        Coins = 0;
-        Food = 0;
-        Minerals = 0;
     }
 
     // Update is called once per frame

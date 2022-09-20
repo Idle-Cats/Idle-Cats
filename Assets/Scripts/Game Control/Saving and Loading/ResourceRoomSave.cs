@@ -4,19 +4,19 @@ using System.Collections.Generic;
 public class ResourceRoomSave
 {
     public float roomInvent = 0;
-    public float upgradeModifier = 0;
+    public float roomBoost;
     public float roomCapacity = 0;
     public float resourceGen = 0;
     public string name = "ResourceRoom";
-    public float globalResource = 0; //TODO make this global
+    public ResourceRoom.ResourceType resourceType;
 
-    public ResourceRoomSave(float roomInvent, float upgradeModifier, float roomCapacity, float resourceGen, string name, float globalResource) {
+    public ResourceRoomSave(float roomInvent, RoomBoost roomBoost, float roomCapacity, float resourceGen, string name, ResourceRoom.ResourceType resourceType) {
         this.roomInvent = roomInvent;
-        this.upgradeModifier = upgradeModifier;
+        this.roomBoost = roomBoost.boostAmount;
         this.roomCapacity = roomCapacity;
         this.resourceGen = resourceGen;
         this.name = name;
-        this.globalResource = globalResource;
+        this.resourceType = resourceType;
     }
 
     public ResourceRoomSave() {
