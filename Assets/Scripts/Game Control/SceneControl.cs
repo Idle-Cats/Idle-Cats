@@ -6,18 +6,10 @@ using UnityEngine.UI;
 
 public class SceneControl : MonoBehaviour
 {
-
     public GameObject CatPanel;
     public GameObject OpenCatList;
 
-    //show catlist
-   public void ListScene() {  
-        SceneManager.LoadScene("CatList");  
-    }  
-    //show main game (keanna for now cause testing)
-    public void GameScene() {  
-        SceneManager.LoadScene("KeannaScene");  
-    }
+    public GameObject Cat;
 
     public void showCatPanel() 
     {
@@ -29,5 +21,13 @@ public class SceneControl : MonoBehaviour
     {
         OpenCatList.SetActive(true);
         CatPanel.SetActive(false);
+    }
+
+    public void addCat(GameObject prefab) {
+        // hide cat panel
+        hideCatPanel();
+        // add cat prefab to screen
+        GameObject cat = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        cat.SetActive(true);
     }
 }

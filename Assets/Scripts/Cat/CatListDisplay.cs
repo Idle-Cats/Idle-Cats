@@ -17,6 +17,8 @@ public class CatListDisplay : MonoBehaviour
     public Sprite catImage;
     public Sprite defaultCat;
 
+    public GameObject AddCat;
+
     public Cats getCat(){
         return new Cats(catType);
     }
@@ -24,8 +26,12 @@ public class CatListDisplay : MonoBehaviour
     public void click() {
         // if cat hasnt been unlocked yet dont update the text
         if (CatList.getInstance().catTypeExists(cat.GetCatType())) {
+            // make button visible
+            AddCat.SetActive(true);
             catListText.text = "Cats: " + cat.GetCatType() + "\nPrimary Boost: " + Cats.GetPBoost(cat.GetCatType())+ "\nSecondary Boost: " + Cats.GetSBoost(cat.GetCatType());
         } else {
+            // make button invisible
+            AddCat.SetActive(false);
             catListText.text = "Cats: ????";
         }
     }
