@@ -121,11 +121,31 @@ public class BuildRoom : MonoBehaviour
 
     public void canAffordPrices() {
         foreach(GameObject room in buildButtonList){
+            if (room.gameObject.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
+                //Update price
+            }
+
             int price = room.GetComponent<CanAfford>().price;
             CanAfford.PriceType priceType = room.GetComponent<CanAfford>().priceType;
 
             if (priceType == CanAfford.PriceType.Minerals) {
                 if (gameObject.GetComponent<User>().minerals >= price) {
+                    room.GetComponent<Button>().interactable = true;
+                }
+                else {
+                    room.GetComponent<Button>().interactable = false;
+                }
+            }
+            else if (priceType == CanAfford.PriceType.Catpower) {
+                if (gameObject.GetComponent<User>().catPower >= price) {
+                    room.GetComponent<Button>().interactable = true;
+                }
+                else {
+                    room.GetComponent<Button>().interactable = false;
+                }
+            }
+            else if (priceType == CanAfford.PriceType.Food) {
+                if (gameObject.GetComponent<User>().food >= price) {
                     room.GetComponent<Button>().interactable = true;
                 }
                 else {
