@@ -157,13 +157,14 @@ public class PartyCat : MonoBehaviour
 
         switch(rewardType) {
             case 0:
-                User.Coins += (int)reward;
+                gameObject.GetComponent<User>().catPower += (int)reward;
                 break;
             case 1:
-                User.Minerals += (int)reward;
+                gameObject.GetComponent<User>().minerals += (int)reward;
                 break;
             case 2:
-                User.Food += (int)reward;
+                gameObject.GetComponent<User>().food += (int)reward;
+
                 break;
         }
     }
