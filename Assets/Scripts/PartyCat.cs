@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static User;
 
 public class PartyCat : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class PartyCat : MonoBehaviour
 
     //stores the reward the user gets upon clicking the cat
     float reward;
+    int rewardType; //0 for Coins, 1 for Minerals, 2 for Fodd
     bool isActive = false;
 
     //boolean to track the state of the cat
@@ -57,6 +59,11 @@ public class PartyCat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+    }
+
+    //moves the cat and determines if it is going to spawn
+    void Move() {
         //checks if the cat is moving
         if (isActive) {
             //move cat towards a random position on the screen 
@@ -119,7 +126,9 @@ public class PartyCat : MonoBehaviour
         currentTime = 0;
         SetRandomTime();
         endTime = Random.Range(0.0f, 10.0f) + 10.0f;
-        reward = 25;
+        reward = Random.Range(0.0f, 90.0f) + 10.0f;
+        rewardType = Random.Range(0, 3);
+        speed = reward * 10;
         cat.transform.position = getRandomPosition();
         cat.SetActive(true);
         isActive = true;
@@ -145,7 +154,18 @@ public class PartyCat : MonoBehaviour
     public void Reward() 
     {
         DeSpawn();
-        Debug.Log(reward);
+
+        switch(rewardType) {
+            case 0:
+                User.Coins += (int)reward;
+                break;
+            case 1:
+                User.Minerals += (int)reward;
+                break;
+            case 2:
+                User.Food += (int)reward;
+                break;
+        }
     }
 
     //flips the cat so it is pointing the direction it is running

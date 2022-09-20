@@ -194,7 +194,6 @@ public class GameProgression : MonoBehaviour
         if (flags.milestone1 == 0) {
             flags.milestone1 = 1;
             ShowMilestone1();
-            //add cat from milestone1
             Cats newCat = new Cats(CatType.GREY);
             catList.AddCat(newCat);
         }
@@ -202,7 +201,6 @@ public class GameProgression : MonoBehaviour
         if (flags.milestone12 == 0 && gameObject.GetComponent<BuildRoom>().roomCount > 10) {
             flags.milestone12 = 1;
             ShowMilestone12();
-            //add cat from milestone12
             Cats newCat = new Cats(CatType.PARTY);
             catList.AddCat(newCat);
         }
@@ -210,7 +208,6 @@ public class GameProgression : MonoBehaviour
         if (flags.milestone2 == 0 && gameObject.GetComponent<BuildRoom>().roomCount > 20) {
             flags.milestone2 = 1;
             ShowMilestone2();
-            //add cat from milestone2
             Cats newCat = new Cats(CatType.BROWN);
             catList.AddCat(newCat);
         }
