@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;   // for Set<>
-using static Cats;
+using static Cat;
 
 public class CatList{
 
@@ -15,30 +15,23 @@ public static CatList getInstance() {
 }
 
    // hashset 
-    public HashSet<Cats> discoveredCats = new HashSet<Cats>();
+    public HashSet<CatType> discoveredCats = new HashSet<CatType>();
 
     // add cat to list
-    public void AddCat(Cats cat) {
-        if(!catTypeExists(cat.GetCatType())) {
-            discoveredCats.Add(cat);
-        }
+    public void AddCatType(CatType catType) {
+        discoveredCats.Add(catType);
     }
-    // print list from set
-    public string PrintCats() {
-        string output = "";
-        foreach (Cats cat in discoveredCats) {
-            output += cat.PrintCat() + " ";
-        }
-        return output;
-    }
+    // // print list from set
+    // public string PrintCats() {
+    //     string output = "";
+    //     foreach (Cat cat in discoveredCats) {
+    //         output += cat.PrintCat() + " ";
+    //     }
+    //     return output;
+    // }
 
     // check if cat type exists in list for catlist
     public bool catTypeExists(CatType type) {
-        foreach (Cats cat in discoveredCats) {
-            if (cat.GetCatType() == type) {
-                return true;
-            }
-        }
-        return false;
+        return discoveredCats.Contains(type);
     }
 }
