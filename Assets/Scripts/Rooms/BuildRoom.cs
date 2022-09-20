@@ -121,9 +121,9 @@ public class BuildRoom : MonoBehaviour
 
     public void canAffordPrices() {
         foreach(GameObject room in buildButtonList){
-            if (room.gameObject.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
-                //Update price
-            }
+            //if (room.gameObject.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
+            //    //Update price
+            //}
 
             int price = room.GetComponent<CanAfford>().price;
             CanAfford.PriceType priceType = room.GetComponent<CanAfford>().priceType;
