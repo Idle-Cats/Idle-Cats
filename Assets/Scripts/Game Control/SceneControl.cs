@@ -7,10 +7,15 @@ public class SceneControl : MonoBehaviour
 {
     //show catlist
    public void ListScene() {  
-        SceneManager.LoadScene("CatList");  
+        SceneManager.LoadScene("CatList");
     }  
-    //show main game (keanna for now cause testing)
+    //show main game
     public void GameScene() {  
-        SceneManager.LoadScene("KeannaScene");  
+        SceneManager.LoadScene("AlexLScene");
+    }
+
+    // Show welcome screen
+    public void WelcomeScene() {  
+        SceneManager.LoadScene("WelcomeScreen");
     }
 }
