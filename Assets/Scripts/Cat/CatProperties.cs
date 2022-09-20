@@ -15,8 +15,10 @@ public class CatProperties : MonoBehaviour
     {
         CatList.getInstance().AddCat(new Cats(CatType.GREY));
         CatList.getInstance().AddCat(new Cats(CatType.TEAL));
-        // Cats cat = Cats.GenerateRandomCat();
+        CatList.getInstance().AddCat(new Cats(CatType.RAINBOW));
 
+        cat = new Cats(CatType.RAINBOW);
+        
         switch (cat.GetCatType())
         {
             case CatType.GREY:
@@ -67,5 +69,10 @@ public class CatProperties : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public CatType GetCatType()
+    {
+        return cat.GetCatType();
     }
 }
