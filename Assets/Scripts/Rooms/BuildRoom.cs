@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildRoom : MonoBehaviour
 {
@@ -16,9 +17,17 @@ public class BuildRoom : MonoBehaviour
 
     public GameObject catTest;
 
+    [SerializeField]
+    private List<GameObject> buildButtonList;
+
     void Start()
     {
         roomHeight = testRoom.GetComponent<SpriteRenderer>().size.y;
+    }
+
+    void Update()
+    {
+        canAffordPrices();
     }
 
     public void buildRoom (GameObject roomToBuild) {
@@ -107,6 +116,42 @@ public class BuildRoom : MonoBehaviour
         //refreshes room info, used just before saving to get up to date data
         for (int i = 0; i < roomCount; i++) {
             rooms[i].RefreshInfo();
+        }
+    }
+
+    public void canAffordPrices() {
+        foreach(GameObject room in buildButtonList){
+            if (room.gameObject.GetComponent<CanAfford>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
+                //Update price
+            }
+
+            int price = room.GetComponent<CanAfford>().price;
+            CanAfford.PriceType priceType = room.GetComponent<CanAfford>().priceType;
+
+            if (priceType == CanAfford.PriceType.Minerals) {
+                if (gameObject.GetComponent<User>().minerals >= price) {
+                    room.GetComponent<Button>().interactable = true;
+                }
+                else {
+                    room.GetComponent<Button>().interactable = false;
+                }
+            }
+            else if (priceType == CanAfford.PriceType.Catpower) {
+                if (gameObject.GetComponent<User>().catPower >= price) {
+                    room.GetComponent<Button>().interactable = true;
+                }
+                else {
+                    room.GetComponent<Button>().interactable = false;
+                }
+            }
+            else if (priceType == CanAfford.PriceType.Food) {
+                if (gameObject.GetComponent<User>().food >= price) {
+                    room.GetComponent<Button>().interactable = true;
+                }
+                else {
+                    room.GetComponent<Button>().interactable = false;
+                }
+            }
         }
     }
 }
