@@ -42,6 +42,8 @@ public class CatListDisplay : MonoBehaviour
         // CatList.getInstance().AddCat(new Cat(CatType.GREY));
         // CatList.getInstance().AddCat(new Cat(CatType.TEAL));
         CatList.getInstance().AddCatType(CatType.RAINBOW);
+        CatList.getInstance().AddCatType(CatType.GREY);
+        CatList.getInstance().AddCatType(CatType.TEAL);
         bool exists = CatList.getInstance().catTypeExists(catType);
 
         Sprite selected = null;
