@@ -1075,6 +1075,14 @@ PrefabInstance:
       propertyPath: catImage9
       value: 
       objectReference: {fileID: 21300000, guid: 77fee88de85d54d80982ad25d7272afe, type: 3}
+    - target: {fileID: 8343773392539452547, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+      propertyPath: catImage10
+      value: 
+      objectReference: {fileID: 21300000, guid: 3636f89e19ec843f69a4a918a3b2d46b, type: 3}
+    - target: {fileID: 8343773392539452547, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+      propertyPath: catImage11
+      value: 
+      objectReference: {fileID: 21300000, guid: f7f1cb88d0ce24774b271ce6bcf348f0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
 --- !u!1 &174399048

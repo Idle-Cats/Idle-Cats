@@ -53,9 +53,9 @@ public class DragTest : MonoBehaviour
                             if (draggedObject.layer == 8) {
                                 draggedObject.GetComponent<ArtifactsBoost>().RemoveBoost();
                             }
-                            if (draggedObject.layer == 3) {
-                                Debug.Log("identifier: " + draggedObject.GetComponent<CatBoostRooms>());
-                                // draggedObject.GetComponent<CatBoostRooms>().RemoveCatBoost();
+                            if (draggedObject.layer == 3 && draggedObject.GetComponent<CurrentRoom>().currentRoom != null) {
+                                Debug.Log("identifier (rem): " + draggedObject.GetComponent<CatBoostRooms>());
+                                draggedObject.GetComponent<CatBoostRooms>().RemoveCatBoost();
                             }
                             draggedObject.GetComponent<CurrentRoom>().currentRoom = hit.collider.gameObject;
                             draggedObject.transform.position = hit.collider.gameObject.transform.position;
@@ -67,7 +67,6 @@ public class DragTest : MonoBehaviour
                                     Debug.Log("identifier: " + draggedObject.GetComponent<CatBoostRooms>());
                                     draggedObject.GetComponent<CatBoostRooms>().ApplyCatBoost();
                                 }
-                                // draggedObject.GetComponent<CatBoostRooms>().ApplyCatBoost();
                             }
                         }
                         else if (draggedObject.GetComponent<CurrentRoom>().currentRoom == null) {
