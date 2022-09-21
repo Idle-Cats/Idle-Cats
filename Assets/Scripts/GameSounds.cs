@@ -86,14 +86,21 @@ public class GameSounds : MonoBehaviour
 
     public void showPanel() 
     {
-        openSoundsButton.SetActive(false);
         panel.SetActive(true);
     }
 
     public void hidePanel() 
     {
-        openSoundsButton.SetActive(true);
         panel.SetActive(false);
+    }
+
+    public void togglePanel() 
+    {
+        if (panel.activeSelf) {
+            hidePanel();
+        } else {
+            showPanel();
+        }
     }
 
     public void muteMaster() 
