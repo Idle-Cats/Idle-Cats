@@ -137,7 +137,7 @@ public class PartyCat : MonoBehaviour
         endTime = Random.Range(0.0f, 10.0f) + 10.0f;
         reward = Random.Range(0.0f, 90.0f) + 10.0f;
         rewardType = Random.Range(0, 3);
-        speed = reward * 10;
+        speed = 10;
         cat.transform.position = getRandomPosition();
         cat.SetActive(true);
         isActive = true;
@@ -175,7 +175,6 @@ public class PartyCat : MonoBehaviour
                 break;
             case 2:
                 gameObject.GetComponent<User>().food += (int)reward;
-
                 break;
         }
     }
