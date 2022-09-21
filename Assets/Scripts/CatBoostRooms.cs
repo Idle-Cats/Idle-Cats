@@ -36,7 +36,7 @@ public class CatBoostRooms : MonoBehaviour
         }
 
         // add the modifier to the resource room
-        resourceRoom.upgradeModifier += Cat.GetSBoost(cat.catType);
+        resourceRoom.roomBoost.boostAmount += Cat.GetSBoost(cat.catType);
         Debug.Log("Cat boost applied" + Cat.GetSBoost(cat.catType));
 
         // if (gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
