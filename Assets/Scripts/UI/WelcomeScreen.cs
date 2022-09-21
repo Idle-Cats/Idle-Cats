@@ -1,27 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class WelcomeScreen : MonoBehaviour
 {
-
-    private GameObject gameControl;
-
-    void Awake() {
-        gameControl = GameObject.Find("Game Control");
-        CatGameFlags flags = gameControl.GetComponent<CatGameFlags>();
-        if (flags.first_load == 0) {
-            gameControl.GetComponent<SceneControl>().WelcomeScene();
-        }
-    }
-
     public void assignName() {
+        
         string name = GameObject.Find("Username Input").GetComponent<TMP_InputField>().text;
-        CatGameFlags flags = gameControl.GetComponent<CatGameFlags>();
-        flags.first_load = 1;
-        gameControl.GetComponent<User>().username = name;
-        gameControl.GetComponent<SceneControl>().GameScene();
+        if (name.Length < 1) {
+            return;
+        }
+        GameObject.Find("Game Control").GetComponent<User>().username = name;
+        GameObject.Find("Game Control").GetComponent<CatGameFlags>().first_load = 1;
+        GameObject.Find("Game Control").GetComponent<SceneControl>().GameScene();
     }
 }
