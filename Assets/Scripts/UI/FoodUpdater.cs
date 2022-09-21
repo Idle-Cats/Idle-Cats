@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static Formatter;
-using static GameControl;
 
 public class FoodUpdater : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject gameControl;
+
+    private User user;
+
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<TextMeshProUGUI>().text = "F: " + formatValue(Food);
+        user = gameControl.GetComponent<User>();
+        GetComponent<TextMeshProUGUI>().text = "F: " + formatValue(user.food);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Food += 10;
-        GetComponent<TextMeshProUGUI>().text = "F: " + formatValue(Food);
+        GetComponent<TextMeshProUGUI>().text = "F: " + formatValue(user.food);
     }
 }

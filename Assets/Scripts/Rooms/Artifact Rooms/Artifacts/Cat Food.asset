@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4099a821b7c601c479500553c665cdd4, type: 3}
   m_Name: Cat Food
   m_EditorClassIdentifier: 
-  name: Cat Food
+  artifactName: Cat Food
   boost: 0.2
-  image: {fileID: 21300000, guid: d2365f28bfa5140ee89f56757d820b93, type: 3}
+  image: {fileID: 21300000, guid: 9823326ff6403c7418ed76da67505ec9, type: 3}
+  boostType: 0

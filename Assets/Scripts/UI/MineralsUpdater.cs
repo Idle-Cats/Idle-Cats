@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static Formatter;
-using static GameControl;
 
 public class MineralsUpdater : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject gameControl;
+
+    private User user;
+
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<TextMeshProUGUI>().text = "M: " + formatValue(Minerals);
+        user = gameControl.GetComponent<User>();
+        GetComponent<TextMeshProUGUI>().text = "M: " + formatValue(user.minerals);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Minerals += 100;
-        GetComponent<TextMeshProUGUI>().text = "M: " + formatValue(Minerals);
+        GetComponent<TextMeshProUGUI>().text = "M: " + formatValue(user.minerals);
     }
 }

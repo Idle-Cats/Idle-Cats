@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2205992875595995095}
   - component: {fileID: 6803920241028846455}
   - component: {fileID: 3523940588975789952}
-  - component: {fileID: 4099471913256555168}
+  - component: {fileID: 6781757767813995484}
+  - component: {fileID: 7617761074603016406}
   m_Layer: 6
   m_Name: FoodRoom
   m_TagString: Untagged
@@ -127,7 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomNum: 0
---- !u!114 &4099471913256555168
+  roomType: 0
+  gameControl: {fileID: 0}
+--- !u!114 &6781757767813995484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,16 +139,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 2205992875595995088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fed9e4e96db8a2b4e8bb615a078e30b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ae026a0f17dc4e43b485778acc52e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostAmount: 0
+--- !u!114 &7617761074603016406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205992875595995088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 845fab38fdab91d4ba94f9f927977a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roomInvent: 0
-  upgradeModifier: 0
+  roomBoost: {fileID: 6781757767813995484}
   roomCapacity: 0
   resourceGen: 0
-  name: Food Room
+  name: ResourceRoom
   resourceCounter: {fileID: 3832907475030933562}
-  Food: 0
+  resourceType: 2
 --- !u!1 &3832907475030933562
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7617761074603016406}
         m_TargetAssemblyTypeName: ResourceRoom, Assembly-CSharp
         m_MethodName: collectResources
         m_Mode: 1

@@ -50,17 +50,30 @@ public class DragTest : MonoBehaviour
                     Debug.DrawRay(firePoint, Vector3.forward * 20, Color.green, 5, false);
                     if (draggedObject.layer == 3 || draggedObject.layer == 8) {
                         if (hit.collider != null) {
+                            if (draggedObject.layer == 8) {
+                                draggedObject.GetComponent<ArtifactsBoost>().RemoveBoost();
+                            }
+                            // if (draggedObject.layer == 3) {
+                            //     draggedObject.GetComponent<CatBoostRooms>().RemoveCatBoost();
+                            // }
                             draggedObject.GetComponent<CurrentRoom>().currentRoom = hit.collider.gameObject;
                             draggedObject.transform.position = hit.collider.gameObject.transform.position;
+                            if (draggedObject.layer == 8) {
+                                draggedObject.GetComponent<ArtifactsBoost>().ApplyBoost();
+                            }
+                            if (draggedObject.layer == 3) {
+                                if(draggedObject != null) {
+                                    Debug.Log("identifier: " + draggedObject.GetComponent<CatBoostRooms>());
+                                    draggedObject.GetComponent<CatBoostRooms>().ApplyCatBoost();
+                                }
+                                // draggedObject.GetComponent<CatBoostRooms>().ApplyCatBoost();
+                            }
                         }
                         else if (draggedObject.GetComponent<CurrentRoom>().currentRoom == null) {
                         }
                         else {
                             draggedObject.transform.position = draggedObject.GetComponent<CurrentRoom>().currentRoom.transform.position;
                         }
-                    }
-                    else {
-
                     }
 
                     draggingObject = false;
