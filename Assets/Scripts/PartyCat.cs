@@ -12,6 +12,14 @@ public class PartyCat : MonoBehaviour
 
     //grabing the canvas for dynamic display
     public GameObject canvas;
+    public Camera camera;
+
+    //explosion
+    public GameObject explosion;
+
+    //explosion sound
+    public AudioSource explosion_sound;
+    public AudioSource running_sound;
 
     //storing the size of the canvas
     float minX;
@@ -23,7 +31,7 @@ public class PartyCat : MonoBehaviour
     float speed = 550;
 
     //maximum amount of time between cats in seconds
-    float maxTime = 200;
+    float maxTime = 20;
 
     //tracks the amount of time the cat hasn't spawned for
     float spawnTime;
@@ -66,6 +74,7 @@ public class PartyCat : MonoBehaviour
     void Move() {
         //checks if the cat is moving
         if (isActive) {
+            //TO DO: figure out running sound playing concurrently
             //move cat towards a random position on the screen 
             timeSinceSpawned += Time.deltaTime;
             if (timeSinceSpawned > endTime) {
@@ -128,7 +137,7 @@ public class PartyCat : MonoBehaviour
         endTime = Random.Range(0.0f, 10.0f) + 10.0f;
         reward = Random.Range(0.0f, 90.0f) + 10.0f;
         rewardType = Random.Range(0, 3);
-        speed = reward * 10;
+        speed = 10;
         cat.transform.position = getRandomPosition();
         cat.SetActive(true);
         isActive = true;
@@ -153,6 +162,8 @@ public class PartyCat : MonoBehaviour
     //applies the reward to the user
     public void Reward() 
     {
+        explosion_sound.Play();
+        Instantiate(explosion, camera.ScreenToWorldPoint(cat.transform.position), Quaternion.identity);
         DeSpawn();
 
         switch(rewardType) {
@@ -164,7 +175,6 @@ public class PartyCat : MonoBehaviour
                 break;
             case 2:
                 gameObject.GetComponent<User>().food += (int)reward;
-
                 break;
         }
     }
