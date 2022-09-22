@@ -31,7 +31,13 @@ public class CatGameFlags : MonoBehaviour
         Save();
     }
 
+    void OnApplicationPause()
+    {
+        Save();
+    }
+
     void Load() {
+        Debug.Log("loaded");
         firstLoad = PlayerPrefs.GetInt("CatGameFlags0");
         milestone1 = PlayerPrefs.GetInt("CatGameFlags1");
         milestone2 = PlayerPrefs.GetInt("CatGameFlags2");
@@ -49,6 +55,7 @@ public class CatGameFlags : MonoBehaviour
     }
 
     void Save() {
+        Debug.Log("saved");
         PlayerPrefs.SetInt("CatGameFlags0", firstLoad);
         PlayerPrefs.SetInt("CatGameFlags1", milestone1);
         PlayerPrefs.SetInt("CatGameFlags2", milestone2);

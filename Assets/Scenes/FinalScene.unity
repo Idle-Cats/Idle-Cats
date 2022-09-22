@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8573c4d5fdb7e498c11c4262eac1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePrice: 200
+  basePrice: 100
   currentPrice: 0
   priceType: 2
   roomType: 0
@@ -8141,7 +8141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8573c4d5fdb7e498c11c4262eac1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePrice: 300
+  basePrice: 100
   currentPrice: 0
   priceType: 1
   roomType: 0
@@ -14977,7 +14977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8573c4d5fdb7e498c11c4262eac1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basePrice: 300
+  basePrice: 100
   currentPrice: 0
   priceType: 0
   roomType: 0
