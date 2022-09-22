@@ -444,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe09125f46402e45929a0a4f7920b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControl: {fileID: 1309163132}
 --- !u!114 &46597373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3465,6 +3466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c022c9bc1503ee489d8a50332909a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControl: {fileID: 1309163132}
 --- !u!114 &1296485120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3578,6 +3580,7 @@ GameObject:
   - component: {fileID: 1309163138}
   - component: {fileID: 1309163139}
   - component: {fileID: 1309163140}
+  - component: {fileID: 1309163141}
   m_Layer: 0
   m_Name: Game Control
   m_TagString: Untagged
@@ -3624,9 +3627,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testRoom: {fileID: 2205992875595995088, guid: 8f256201cdc1d494486d9f303bdb7c5c, type: 3}
+  resourceRoom: {fileID: 0}
+  artifactRoom: {fileID: 0}
   roomCount: 0
   roomHeight: 0
   catTest: {fileID: 207835099897388151, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+  buildButtonList: []
 --- !u!114 &1309163135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3670,6 +3676,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192d8a764885b47d69d857e49191fdb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CatPanel: {fileID: 0}
+  OpenCatList: {fileID: 0}
+  catBuilder: {fileID: 0}
+  catCount: 0
 --- !u!114 &1309163138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3684,6 +3694,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cat: {fileID: 591277244}
   canvas: {fileID: 0}
+  camera: {fileID: 0}
+  explosion: {fileID: 0}
+  explosion_sound: {fileID: 0}
+  running_sound: {fileID: 0}
 --- !u!114 &1309163139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3716,6 +3730,23 @@ MonoBehaviour:
   - {fileID: 0}
   catCount: 0
   catTest: {fileID: 207835099897388151, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+--- !u!114 &1309163141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309163132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2168b590204bf634a91a9b562d083c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScore: 0
+  username: 
+  catPower: 0
+  food: 0
+  minerals: 0
 --- !u!1 &1387139165
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,7 +3886,7 @@ GameObject:
   - component: {fileID: 1387929785}
   - component: {fileID: 1387929788}
   - component: {fileID: 1387929787}
-  - component: {fileID: 1387929786}
+  - component: {fileID: 1387929789}
   m_Layer: 5
   m_Name: Coins
   m_TagString: Untagged
@@ -3883,18 +3914,6 @@ RectTransform:
   m_AnchoredPosition: {x: 576, y: -25}
   m_SizeDelta: {x: 230, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1387929786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387929784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 126003c817947314da680fc8c04cb43b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1387929787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3992,6 +4011,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387929784}
   m_CullTransparentMesh: 1
+--- !u!114 &1387929789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387929784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc54c76a32380b4fac6c35188bac143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameControl: {fileID: 1309163132}
 --- !u!1 &1417730290
 GameObject:
   m_ObjectHideFlags: 0

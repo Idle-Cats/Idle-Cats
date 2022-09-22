@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CatList.unity
     guid: 65dc53fe8384d419ab5d6dd75d387c5d
+  - enabled: 1
+    path: Assets/Scenes/AlexLScene.unity
+    guid: 60bb30e5581b840619ce3346879f5ba2
+  - enabled: 1
+    path: Assets/Scenes/WelcomeScreen.unity
+    guid: 8627f4f697d73314d9f0a58e13bbab45
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: c3fe33c9276c93f42b1165a4d8bed1c6, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 516989cbcefe51d46bd57bd232ebf562, type: 2}

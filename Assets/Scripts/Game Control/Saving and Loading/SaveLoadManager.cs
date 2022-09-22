@@ -19,19 +19,19 @@ public class SaveLoadManager : MonoBehaviour
 
         //loads a save when it is opened
         Instance = this;
-        Load();
+        //Load();
 
         InvokeRepeating("AutoSave", 300, 300);
     }
 
     private void OnApplicationPause(bool pause)
     {
-        Save();
+        //Save();
     }
 
     private void OnApplicationQuit()
     {
-        Save();
+        //Save();
     }
 
     public void Save()
@@ -52,7 +52,7 @@ public class SaveLoadManager : MonoBehaviour
             infomation.nodeY = gameObject.GetComponent<BuildingNodePlacer>().node.transform.position.y;
         }
         else {
-            infomation.nodeY = 3.2f;
+            infomation.nodeY = -0.6f;
         }
 
         infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
@@ -97,11 +97,11 @@ public class SaveLoadManager : MonoBehaviour
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
-            Save();
+            //Save();
         }
 
         void AutoSave() {
-            Save();
+            //Save();
         }
     }
 

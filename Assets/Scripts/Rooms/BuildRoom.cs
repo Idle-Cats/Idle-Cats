@@ -30,7 +30,8 @@ public class BuildRoom : MonoBehaviour
         canAffordPrices();
     }
 
-    public void buildRoom (GameObject roomToBuild) {
+    public void buildRoom(GameObject roomToBuild)
+    {
         //Generates a room
         GameObject room = Instantiate(roomToBuild, gameObject.GetComponent<BuildingNodePlacer>().node.transform.position, Quaternion.identity);
         //room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
@@ -46,17 +47,19 @@ public class BuildRoom : MonoBehaviour
 
             //Holds an array of room info
             Debug.Log("Room Length: " + rooms);
-            if (roomCount == rooms.Length - 1) {
+            if (roomCount == rooms.Length - 1)
+            {
                 ExpandRooms();
             }
             rooms[roomCount] = roomInfo;
-        }
-        else if (room.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
+        } else if (room.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
             RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInformation>().roomType, room.GetComponent<ArtifactRoom>().MakeCopy());
+            
             roomInfo.SetRoom(room);
 
             //Holds an array of room info
-            if (roomCount == rooms.Length - 1) {
+            if (roomCount == rooms.Length - 1)
+            {
                 ExpandRooms();
             }
             rooms[roomCount] = roomInfo;
@@ -68,31 +71,38 @@ public class BuildRoom : MonoBehaviour
 
     }
 
-    private void ExpandRooms() {
+    private void ExpandRooms()
+    {
         RoomSaveInfo[] newRooms = new RoomSaveInfo[rooms.Length * 4];
 
-        for (int i = 0; i < roomCount; i++) {
+        for (int i = 0; i < roomCount; i++)
+        {
             newRooms[i] = rooms[i];
         }
 
         rooms = newRooms;
     }
 
-    private string PrintRooms() {
+    private string PrintRooms()
+    {
         string strings = "";
 
-        for (int i = 0; i < roomCount + 1; i++) {
+        for (int i = 0; i < roomCount + 1; i++)
+        {
             strings += rooms[i] + "\n";
         }
 
         return strings;
     }
 
-    public void LoadRooms() {
+    public void LoadRooms()
+    {
         //Loads rooms using room info
         gameObject.GetComponent<BuildingNodePlacer>().nodeLength = 0;
-        for (int i = 0; i < roomCount; i++) {
-            if (rooms[i].roomType == RoomSaveInfo.RoomType.ResourceRoom) {
+        for (int i = 0; i < roomCount; i++)
+        {
+            if (rooms[i].roomType == RoomSaveInfo.RoomType.ResourceRoom)
+            {
                 GameObject room = Instantiate(resourceRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
 
                 room.GetComponent<RoomInformation>().gameControl = gameObject;
@@ -100,7 +110,8 @@ public class BuildRoom : MonoBehaviour
                 room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
                 room.GetComponent<ResourceRoom>().calculateOfflineProgress();
             }
-            else if (rooms[i].roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
+            else if (rooms[i].roomType == RoomSaveInfo.RoomType.ArtifactRoom)
+            {
                 GameObject room = Instantiate(artifactRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
 
                 room.GetComponent<RoomInformation>().gameControl = gameObject;
@@ -113,46 +124,79 @@ public class BuildRoom : MonoBehaviour
         }
     }
 
-    public void RefreshRooms() {
+    public void RefreshRooms()
+    {
         //refreshes room info, used just before saving to get up to date data
-        for (int i = 0; i < roomCount; i++) {
+        for (int i = 0; i < roomCount; i++)
+        {
             rooms[i].RefreshInfo();
         }
     }
 
-    public void canAffordPrices() {
-        foreach(GameObject room in buildButtonList){
-            if (room.gameObject.GetComponent<CanAfford>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
+    public void canAffordPrices()
+    {
+        foreach (GameObject room in buildButtonList)
+        {
+            if (room.gameObject.GetComponent<CanAfford>().roomType == RoomSaveInfo.RoomType.ResourceRoom)
+            {
                 //Update price
+                //Room cost:
+                /*
+$0 for first room then:
+base cost * 2 ^ (number of rooms / 5)
+
+                    Upgrade Room Levelling Algorithms:
+capacity = level * original capacity
+resource generation = resource generation * 2 ^ (level / 2)
+*/
+
+                int currentPrice = 0;
+
+                if (roomCount > 0)
+                {
+                    //TODO maybe add a baseprice here
+                    currentPrice = (room.GetComponent<CanAfford>().basePrice * 2 ^ (roomCount / 5));
+                    
+                }
+                room.GetComponent<CanAfford>().currentPrice = currentPrice;
             }
 
-            int price = room.GetComponent<CanAfford>().price;
-            CanAfford.PriceType priceType = room.GetComponent<CanAfford>().priceType;
+                int price = room.GetComponent<CanAfford>().currentPrice;
+                CanAfford.PriceType priceType = room.GetComponent<CanAfford>().priceType;
 
-            if (priceType == CanAfford.PriceType.Minerals) {
-                if (gameObject.GetComponent<User>().minerals >= price) {
-                    room.GetComponent<Button>().interactable = true;
+                if (priceType == CanAfford.PriceType.Minerals)
+                {
+                    if (gameObject.GetComponent<User>().minerals >= price)
+                    {
+                        room.GetComponent<Button>().interactable = true;
+                    }
+                    else
+                    {
+                        room.GetComponent<Button>().interactable = false;
+                    }
                 }
-                else {
-                    room.GetComponent<Button>().interactable = false;
+                else if (priceType == CanAfford.PriceType.Catpower)
+                {
+                    if (gameObject.GetComponent<User>().catPower >= price)
+                    {
+                        room.GetComponent<Button>().interactable = true;
+                    }
+                    else
+                    {
+                        room.GetComponent<Button>().interactable = false;
+                    }
                 }
-            }
-            else if (priceType == CanAfford.PriceType.Catpower) {
-                if (gameObject.GetComponent<User>().catPower >= price) {
-                    room.GetComponent<Button>().interactable = true;
-                }
-                else {
-                    room.GetComponent<Button>().interactable = false;
-                }
-            }
-            else if (priceType == CanAfford.PriceType.Food) {
-                if (gameObject.GetComponent<User>().food >= price) {
-                    room.GetComponent<Button>().interactable = true;
-                }
-                else {
-                    room.GetComponent<Button>().interactable = false;
+                else if (priceType == CanAfford.PriceType.Food)
+                {
+                    if (gameObject.GetComponent<User>().food >= price)
+                    {
+                        room.GetComponent<Button>().interactable = true;
+                    }
+                    else
+                    {
+                        room.GetComponent<Button>().interactable = false;
+                    }
                 }
             }
         }
     }
-}
