@@ -40,11 +40,10 @@ public class PlayfabManager : MonoBehaviour
         if (result.InfoResultPayload.PlayerProfile != null) {
             name = result.InfoResultPayload.PlayerProfile.DisplayName;
         }
-
-        UpdatePlayerDisplayName();
     }
 
-    void UpdatePlayerDisplayName() {
+    public void UpdatePlayerDisplayName() {
+
         string name = gameObject.GetComponent<User>().username;
         if (name == null || name == "") {
             name = "No Name";

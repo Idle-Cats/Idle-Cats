@@ -16,6 +16,7 @@ public class User : MonoBehaviour
     void Start()
     {
         highScore = PlayerPrefs.GetInt("SavingHighScore");
+        username = PlayerPrefs.GetString("SavingUsername");
     }
 
     // Update is called once per frame
@@ -29,5 +30,6 @@ public class User : MonoBehaviour
 
     void Save() {
         PlayerPrefs.SetInt("SavingHighScore", highScore);
+        PlayerPrefs.SetString("SavingUsername", username);
     }
 }

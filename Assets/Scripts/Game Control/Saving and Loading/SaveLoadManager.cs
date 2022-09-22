@@ -15,7 +15,7 @@ public class SaveLoadManager : MonoBehaviour
     public void Awake()
     {
         //this wont be destroyed between scenes
-        DontDestroyOnLoad(gameObject);  
+        //DontDestroyOnLoad(gameObject);  
 
         //loads a save when it is opened
         Instance = this;
@@ -52,7 +52,7 @@ public class SaveLoadManager : MonoBehaviour
             infomation.nodeY = gameObject.GetComponent<BuildingNodePlacer>().node.transform.position.y;
         }
         else {
-            infomation.nodeY = -0.6f;
+            infomation.nodeY = -1.6f;
         }
 
         infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();

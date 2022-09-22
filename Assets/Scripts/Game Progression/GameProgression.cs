@@ -49,7 +49,7 @@ public class GameProgression : MonoBehaviour
 
         flags = gameObject.GetComponent<CatGameFlags>();
 
-        if (flags.first_load == 0) {
+        if (flags.firstLoad == 0) {
             ShowWelcome();
         }
     }
@@ -79,8 +79,8 @@ public class GameProgression : MonoBehaviour
     }
 
     public void CloseWelcome() {
-        flags.first_load = 1;
-        Debug.Log(flags.first_load);
+        flags.firstLoad = 1;
+        Debug.Log(flags.firstLoad);
         welcome_panel.SetActive(false);
     }
 
