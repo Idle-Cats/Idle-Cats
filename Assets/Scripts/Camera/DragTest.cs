@@ -48,31 +48,52 @@ public class DragTest : MonoBehaviour
 
                     RaycastHit2D hit = Physics2D.Raycast(firePoint, Vector3.forward, 20, layermask);
                     Debug.DrawRay(firePoint, Vector3.forward * 20, Color.green, 5, false);
+                    //Layer 3 = cat
+                    //Layer 8 = room
+                    //Is cat or room
                     if (draggedObject.layer == 3 || draggedObject.layer == 8) {
+                        //If hit something
                         if (hit.collider != null) {
+                            //Dragging object is room
                             if (draggedObject.layer == 8) {
-                                draggedObject.GetComponent<ArtifactsBoost>().RemoveBoost();
-                            }
-                            if (draggedObject.layer == 3 && draggedObject.GetComponent<CurrentRoom>().currentRoom != null) {
-                                Debug.Log("identifier (rem): " + draggedObject.GetComponent<CatBoostRooms>());
-                                draggedObject.GetComponent<CatBoostRooms>().RemoveCatBoost();
-                            }
-                            draggedObject.GetComponent<CurrentRoom>().currentRoom = hit.collider.gameObject;
-                            draggedObject.transform.position = hit.collider.gameObject.transform.position;
-                            if (draggedObject.layer == 8) {
-                                draggedObject.GetComponent<ArtifactsBoost>().ApplyBoost();
-                            }
-                            if (draggedObject.layer == 3) {
-                                if(draggedObject != null) {
-                                    Debug.Log("identifier: " + draggedObject.GetComponent<CatBoostRooms>());
-                                    draggedObject.GetComponent<CatBoostRooms>().ApplyCatBoost();
+                                //draggedObject.GetComponent<ArtifactsBoost>().RemoveBoost();
+
+                            } else { //Dragging object is cat
+                                //Switch or remove cat from room
+                                GameObject objectHit = hit.collider.gameObject;
+                                CurrentRoom currentRoomRef = draggedObject.GetComponent<CurrentRoom>();
+                                //Remove cat from room
+                                if (currentRoomRef.currentRoom != null) { //Cat has a room
+                                    //Remove cat from current room
+                                    draggedObject.GetComponent<CatBoostRooms>().RemoveCatBoost();
+                                    currentRoomRef.currentRoom = null;
+                                }
+
+                                //If hit object is a room then add cat to that room
+                                RoomInformation roomInfo = objectHit.GetComponent<RoomInformation>();
+                                if (roomInfo != null) {
+                                    if (roomInfo.containsCat == false) {
+                                        currentRoomRef.currentRoom = objectHit;
+                                        draggedObject.GetComponent<CatBoostRooms>().ApplyCatBoost();
+                                        //Set cat's current room to the room it was dropped in
+                                        currentRoomRef.currentRoom = objectHit;
+                                        //Set the cat to the rooms position
+                                        draggedObject.transform.position = objectHit.transform.position;
+                                    }
                                 }
                             }
-                        }
-                        else if (draggedObject.GetComponent<CurrentRoom>().currentRoom == null) {
-                        }
-                        else {
-                            draggedObject.transform.position = draggedObject.GetComponent<CurrentRoom>().currentRoom.transform.position;
+                        } else { //Hits nothing
+                            //Is cat
+                            if (draggedObject.layer == 3) {
+                                //Remove cat from room
+                                CurrentRoom currentRoomRef = draggedObject.GetComponent<CurrentRoom>();
+                                //Remove cat from room
+                                if (currentRoomRef.currentRoom != null) { //Cat has a room
+                                    //Remove cat from current room
+                                    draggedObject.GetComponent<CatBoostRooms>().RemoveCatBoost();
+                                    currentRoomRef.currentRoom = null;
+                                }
+                            }
                         }
                     }
 

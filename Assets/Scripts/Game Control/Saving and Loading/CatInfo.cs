@@ -19,6 +19,6 @@ public class CatInfo
         y = cat.transform.position.y;
         z = cat.transform.position.z;
 
-        this.roomNum = cat.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInfomation>().roomNum;
+        this.roomNum = cat.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInformation>().roomNum;
     }
 }

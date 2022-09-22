@@ -24,7 +24,7 @@ public class ArtifactSaveInfo
 
         this.artifactNum = artifactNum;
 
-        this.roomNum = artifact.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInfomation>().roomNum;
+        this.roomNum = artifact.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInformation>().roomNum;
     }
 
     public ArtifactSaveInfo[] makeSaveInfo(GameObject[] artifacts, int length, Artifact[] allArtifacts) {

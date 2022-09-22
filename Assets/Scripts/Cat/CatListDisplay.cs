@@ -53,7 +53,6 @@ public class CatListDisplay : MonoBehaviour
         switch (catType)
         {
             case CatType.GREY:
-                Debug.Log("Grey");
                 this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.BROWN:

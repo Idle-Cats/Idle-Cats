@@ -13,12 +13,12 @@ public class ArtifactsBoost : MonoBehaviour
 
     public void ApplyBoost() {
         if (artifact.boostType == Artifact.BoostType.resourceBoost) {
-            if (gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
+            if (gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
                 gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomBoost>().boostAmount += artifact.boost;
             }
         }
         else if (artifact.boostType == Artifact.BoostType.timedBoost) {
-            if (gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
+            if (gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
                 gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomBoost>().boostAmount += artifact.boost;
             }
         }
@@ -27,12 +27,12 @@ public class ArtifactsBoost : MonoBehaviour
     public void RemoveBoost() {
         if (gameObject.GetComponent<CurrentRoom>().currentRoom != null) {
             if (artifact.boostType == Artifact.BoostType.resourceBoost) {
-                if (gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
+                if (gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
                     gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomBoost>().boostAmount -= artifact.boost;
                 }
             }
             else if (artifact.boostType == Artifact.BoostType.timedBoost) {
-                if (gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
+                if (gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
                     gameObject.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomBoost>().boostAmount -= artifact.boost;
                 }
             }

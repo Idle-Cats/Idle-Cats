@@ -1624,7 +1624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &300016872
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3171,6 +3171,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 622813993}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &654581089
 GameObject:
   m_ObjectHideFlags: 0
@@ -4485,6 +4497,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1087609089}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1102424486
 GameObject:
   m_ObjectHideFlags: 0
@@ -4954,7 +4978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1241969269
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5718,6 +5742,7 @@ MonoBehaviour:
   referenceCat: {fileID: 0}
   catBuilder: {fileID: 1309163140}
   catCount: 0
+  AddCatButton: {fileID: 1241969268}
 --- !u!114 &1309163138
 MonoBehaviour:
   m_ObjectHideFlags: 0

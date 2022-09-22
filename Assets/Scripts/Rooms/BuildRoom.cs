@@ -35,13 +35,13 @@ public class BuildRoom : MonoBehaviour
         GameObject room = Instantiate(roomToBuild, gameObject.GetComponent<BuildingNodePlacer>().node.transform.position, Quaternion.identity);
         //room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
         //Sets the rooms room num to the room count for the cats to be loaded in
-        room.GetComponent<RoomInfomation>().roomNum = roomCount;
-        room.GetComponent<RoomInfomation>().gameControl = gameObject;
+        room.GetComponent<RoomInformation>().roomNum = roomCount;
+        room.GetComponent<RoomInformation>().gameControl = gameObject;
 
         Vector3 pos = room.transform.position;
         //gets the info for the room, this is for saving and loading purposes as you cant save gameObjects
-        if (room.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
-            RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInfomation>().roomType, room.GetComponent<ResourceRoom>().MakeCopy());
+        if (room.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ResourceRoom) {
+            RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInformation>().roomType, room.GetComponent<ResourceRoom>().MakeCopy());
             roomInfo.SetRoom(room);
 
             //Holds an array of room info
@@ -51,8 +51,8 @@ public class BuildRoom : MonoBehaviour
             }
             rooms[roomCount] = roomInfo;
         }
-        else if (room.GetComponent<RoomInfomation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
-            RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInfomation>().roomType, room.GetComponent<ArtifactRoom>().MakeCopy());
+        else if (room.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
+            RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInformation>().roomType, room.GetComponent<ArtifactRoom>().MakeCopy());
             roomInfo.SetRoom(room);
 
             //Holds an array of room info
@@ -95,7 +95,7 @@ public class BuildRoom : MonoBehaviour
             if (rooms[i].roomType == RoomSaveInfo.RoomType.ResourceRoom) {
                 GameObject room = Instantiate(resourceRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
 
-                room.GetComponent<RoomInfomation>().gameControl = gameObject;
+                room.GetComponent<RoomInformation>().gameControl = gameObject;
                 rooms[i].SetRoom(room);
                 room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
                 room.GetComponent<ResourceRoom>().calculateOfflineProgress();
@@ -103,7 +103,7 @@ public class BuildRoom : MonoBehaviour
             else if (rooms[i].roomType == RoomSaveInfo.RoomType.ArtifactRoom) {
                 GameObject room = Instantiate(artifactRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
 
-                room.GetComponent<RoomInfomation>().gameControl = gameObject;
+                room.GetComponent<RoomInformation>().gameControl = gameObject;
 
                 rooms[i].SetRoom(room);
 
