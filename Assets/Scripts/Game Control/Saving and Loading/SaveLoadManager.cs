@@ -19,19 +19,19 @@ public class SaveLoadManager : MonoBehaviour
 
         //loads a save when it is opened
         Instance = this;
-        //Load();
+        Load();
 
         InvokeRepeating("AutoSave", 300, 300);
     }
 
     private void OnApplicationPause(bool pause)
     {
-        //Save();
+        Save();
     }
 
     private void OnApplicationQuit()
     {
-        //Save();
+        Save();
     }
 
     public void Save()
@@ -54,9 +54,14 @@ public class SaveLoadManager : MonoBehaviour
         else {
             infomation.nodeY = -1.6f;
         }
-
-        infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
-        infomation.catCount = gameObject.GetComponent<ScreenCatList>().catCount;
+        //cats
+        List<CatInfo> catinfoList = new List<CatInfo>();
+        foreach (GameObject cat in gameObject.GetComponent<CatBuilder>().catList) {
+            catinfoList.Add(new CatInfo(cat));
+        }
+        infomation.cats = catinfoList;
+        //infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
+        infomation.catCount = gameObject.GetComponent<CatBuilder>().catList.ToArray().Length;
 
         infomation.unlockedArtifacts = gameObject.GetComponent<ArtifactsFound>().GetUnlockedArtifacts();
         infomation.unlockedArtifactCount = gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount;
@@ -88,7 +93,17 @@ public class SaveLoadManager : MonoBehaviour
             gameObject.GetComponent<BuildingNodePlacer>().nodeLength = infomation.nodeLength;
             gameObject.GetComponent<BuildingNodePlacer>().LoadNode(infomation.nodeY);
 
-            gameObject.GetComponent<ScreenCatList>().setFromCatInfo(infomation.cats, infomation.catCount);
+            foreach (CatInfo catInfo in infomation.cats) {
+                gameObject.GetComponent<CatBuilder>().createCat(catInfo);
+            }
+            foreach (GameObject cat in gameObject.GetComponent<CatBuilder>().catList) {
+                foreach (CatListDisplay catListDisplay in gameObject.GetComponent<SceneControl>().catListDisplayList) {
+                    if (catListDisplay.catType == cat.GetComponent<Cat>().catType) {
+                        catListDisplay.assigned = true;
+                    }
+                }
+            }
+            //gameObject.GetComponent<ScreenCatList>().setFromCatInfo(infomation.cats, infomation.catCount);
 
             gameObject.GetComponent<ArtifactsFound>().SetUnlockedArtifacts(infomation.unlockedArtifacts);
             gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount = infomation.unlockedArtifactCount;
@@ -97,11 +112,11 @@ public class SaveLoadManager : MonoBehaviour
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
-            //Save();
+            Save();
         }
 
         void AutoSave() {
-            //Save();
+            Save();
         }
     }
 

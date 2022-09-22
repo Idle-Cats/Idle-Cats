@@ -14,7 +14,7 @@ public class SaveInfomation
     public HashSet<CatType> discoveredCats;
 
     public RoomSaveInfo[] rooms;
-    public CatInfo[] cats;
+    public List<CatInfo> cats;
 
     public int catCount;
 

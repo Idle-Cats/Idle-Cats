@@ -20,15 +20,17 @@ public class SceneControl : MonoBehaviour
 
     public GameObject AddCatButton;
 
-    //show main game
-    public void GameScene() {  
-        SceneManager.LoadScene("AlexLScene");
-    }
+    public List<CatListDisplay> catListDisplayList;
 
-    // Show welcome screen
-    public void WelcomeScene() {  
-        SceneManager.LoadScene("WelcomeScreen");
-    }
+    //show main game
+    //public void GameScene() {  
+    //    SceneManager.LoadScene("AlexLScene");
+    //}
+
+    //// Show welcome screen
+    //public void WelcomeScene() {  
+    //    SceneManager.LoadScene("WelcomeScreen");
+    //}
 
     public void showCatPanel() 
     {

@@ -619,7 +619,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.126263, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &5277950406759772235
 MonoBehaviour:
@@ -636,6 +636,7 @@ MonoBehaviour:
   roomNum: 0
   roomType: 0
   gameControl: {fileID: 0}
+  containsCat: 0
 --- !u!114 &2865734567044348951
 MonoBehaviour:
   m_ObjectHideFlags: 0
