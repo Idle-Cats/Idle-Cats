@@ -45,8 +45,8 @@ public class PlayfabManager : MonoBehaviour
     }
 
     void UpdatePlayerDisplayName() {
-         name = gameObject.GetComponent<User>().username;
-        if (name == null) {
+        string name = gameObject.GetComponent<User>().username;
+        if (name == null || name == "") {
             name = "No Name";
         }
         var request = new UpdateUserTitleDisplayNameRequest {
