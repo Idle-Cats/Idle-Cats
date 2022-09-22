@@ -52,7 +52,7 @@ public class SaveLoadManager : MonoBehaviour
             infomation.nodeY = gameObject.GetComponent<BuildingNodePlacer>().node.transform.position.y;
         }
         else {
-            infomation.nodeY = 3.2f;
+            infomation.nodeY = -0.6f;
         }
 
         infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
