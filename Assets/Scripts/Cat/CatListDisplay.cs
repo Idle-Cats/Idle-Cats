@@ -20,10 +20,6 @@ public class CatListDisplay : MonoBehaviour
 
     public GameObject AddCat;
 
-    // public Cats getCat(){
-    //     return new Cats(catType);
-    // }
-
     public void click() {
         // if cat hasnt been unlocked yet dont update the text
         if (CatList.getInstance().catTypeExists(catType)) {
@@ -45,7 +41,6 @@ public class CatListDisplay : MonoBehaviour
     void InstantiateCatList()
     {
         bool exists = CatList.getInstance().catTypeExists(catType);
-
         Sprite selected = null;
 
         if(exists) {
@@ -99,6 +94,7 @@ public class CatListDisplay : MonoBehaviour
 
     void Start()
     {
+        //set default values - REMOVE LATER
         CatList.getInstance().AddCatType(CatType.RAINBOW);
         CatList.getInstance().AddCatType(CatType.GREY);
         CatList.getInstance().AddCatType(CatType.TEAL);
