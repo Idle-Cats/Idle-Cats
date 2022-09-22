@@ -13,8 +13,6 @@ public class CatBoostRooms : MonoBehaviour
         cat = GetComponent<Cat>();
     }
 
-    
-
     public void ApplyCatBoost() {
         // cat null check
         if (cat == null) {

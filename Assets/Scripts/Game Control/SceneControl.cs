@@ -10,11 +10,15 @@ public class SceneControl : MonoBehaviour
     public GameObject CatPanel;
     public GameObject OpenCatList;
 
+    public GameObject referenceCat;
+
     public CatBuilder catBuilder;
 
     public int catCount = 0;
 
     public static CatType catTypeSpawn;
+
+    public GameObject AddCatButton;
 
     public void showCatPanel() 
     {
@@ -32,6 +36,8 @@ public class SceneControl : MonoBehaviour
         CatType catType = catTypeSpawn;
         BuildRoom buildRoom = GetComponent<BuildRoom>();
 
+        AddCatButton.SetActive(false);
+
         // if cat is less than the number of rooms add cat
         if (catCount < buildRoom.roomCount) {
         // add cat prefab to screen
@@ -39,6 +45,9 @@ public class SceneControl : MonoBehaviour
             // cat.SetActive(true);
             // cat.GetComponent<Cat>().setCatType(catType);
             catBuilder.createCat(catType);
+
+            referenceCat.GetComponent<CatListDisplay>().assigned = true;
+            //catType assigned = true;
             print("Cat added");
         // hide cat panel
             hideCatPanel();
@@ -51,5 +60,9 @@ public class SceneControl : MonoBehaviour
         // // add cat prefab to screen
         // GameObject cat = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
         // cat.SetActive(true);
+    }
+
+    public void SetActiveCat(GameObject cat){
+        referenceCat = cat;
     }
 }

@@ -13,6 +13,8 @@ public class CatListDisplay : MonoBehaviour
 
     public TextMeshProUGUI catListText;
 
+    public bool assigned = false;
+
     public Sprite catImage;
     public Sprite defaultCat;
 
@@ -25,8 +27,11 @@ public class CatListDisplay : MonoBehaviour
     public void click() {
         // if cat hasnt been unlocked yet dont update the text
         if (CatList.getInstance().catTypeExists(catType)) {
-            // make button visible
-            AddCat.SetActive(true);
+            // check if cat has already been added to room
+            if (!assigned) {
+                // make button visible
+                AddCat.SetActive(true);
+            }
             catListText.text = "Cats: " + catType + "\nPrimary Boost: " + Cat.GetPBoost(catType)+ "\nSecondary Boost: " + Cat.GetSBoost(catType);
             // currentCat.setCatType(catType);
             SceneControl.catTypeSpawn = catType;
@@ -37,13 +42,8 @@ public class CatListDisplay : MonoBehaviour
         }
     }
 
-    void Start()
+    void InstantiateCatList()
     {
-        // CatList.getInstance().AddCat(new Cat(CatType.GREY));
-        // CatList.getInstance().AddCat(new Cat(CatType.TEAL));
-        CatList.getInstance().AddCatType(CatType.RAINBOW);
-        CatList.getInstance().AddCatType(CatType.GREY);
-        CatList.getInstance().AddCatType(CatType.TEAL);
         bool exists = CatList.getInstance().catTypeExists(catType);
 
         Sprite selected = null;
@@ -58,6 +58,7 @@ public class CatListDisplay : MonoBehaviour
         switch (catType)
         {
             case CatType.GREY:
+                Debug.Log("Grey");
                 this.transform.Find("Image").GetComponent<Image>().sprite = selected;
                 break;
             case CatType.BROWN:
@@ -96,9 +97,16 @@ public class CatListDisplay : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        CatList.getInstance().AddCatType(CatType.RAINBOW);
+        CatList.getInstance().AddCatType(CatType.GREY);
+        CatList.getInstance().AddCatType(CatType.TEAL);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        InstantiateCatList();
     }
 }

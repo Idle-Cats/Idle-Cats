@@ -12,6 +12,7 @@ public class CatBuilder : MonoBehaviour
         GameObject cat = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
         cat.SetActive(true);
         cat.GetComponent<Cat>().setCatType(catType);
+        
         return cat.GetComponent<Cat>();
     }
 
