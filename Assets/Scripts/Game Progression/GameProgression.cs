@@ -267,4 +267,12 @@ public class GameProgression : MonoBehaviour
             catList.AddCatType(CatType.GREEN);
         }
     }
+
+    public void checkAddCat()
+    {
+        if (flags.milestone11 == 0) {
+            ShowMilestone11();
+            catList.AddCatType(CatType.WELCOME);
+        }
+    }
 }

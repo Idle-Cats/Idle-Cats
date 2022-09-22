@@ -94,9 +94,9 @@ public class CatListDisplay : MonoBehaviour
     void Start()
     {
         //set default values - REMOVE LATER
-        CatList.getInstance().AddCatType(CatType.RAINBOW);
-        CatList.getInstance().AddCatType(CatType.GREY);
-        CatList.getInstance().AddCatType(CatType.TEAL);
+        //CatList.getInstance().AddCatType(CatType.RAINBOW);
+        //CatList.getInstance().AddCatType(CatType.GREY);
+        //CatList.getInstance().AddCatType(CatType.TEAL);
     }
 
     // Update is called once per frame
