@@ -16,6 +16,16 @@ public class SceneControl : MonoBehaviour
 
     public static CatType catTypeSpawn;
 
+    //show main game
+    public void GameScene() {  
+        SceneManager.LoadScene("AlexLScene");
+    }
+
+    // Show welcome screen
+    public void WelcomeScene() {  
+        SceneManager.LoadScene("WelcomeScreen");
+    }
+
     public void showCatPanel() 
     {
         OpenCatList.SetActive(false);
