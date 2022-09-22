@@ -2830,7 +2830,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8573c4d5fdb7e498c11c4262eac1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0
+  basePrice: 300
+  currentPrice: 0
   priceType: 0
   roomType: 0
   gameControl: {fileID: 1309163132}
@@ -3133,7 +3134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8573c4d5fdb7e498c11c4262eac1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 5000
+  basePrice: 3000
+  currentPrice: 0
   priceType: 1
   roomType: 2
   gameControl: {fileID: 1309163132}
@@ -4617,6 +4619,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192d8a764885b47d69d857e49191fdb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CatPanel: {fileID: 0}
+  OpenCatList: {fileID: 0}
+  catBuilder: {fileID: 0}
+  catCount: 0
 --- !u!114 &1309163138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4631,6 +4637,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cat: {fileID: 591277244}
   canvas: {fileID: 1223259991}
+  camera: {fileID: 0}
+  explosion: {fileID: 0}
+  explosion_sound: {fileID: 0}
+  running_sound: {fileID: 0}
 --- !u!114 &1309163139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4704,6 +4714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2168b590204bf634a91a9b562d083c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScore: 0
+  username: 
   catPower: 0
   food: 0
   minerals: 0
@@ -6042,7 +6054,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8573c4d5fdb7e498c11c4262eac1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0
+  basePrice: 200
+  currentPrice: 0
   priceType: 0
   roomType: 0
   gameControl: {fileID: 1309163132}
@@ -6334,7 +6347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8573c4d5fdb7e498c11c4262eac1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 0
+  basePrice: 300
+  currentPrice: 0
   priceType: 0
   roomType: 0
   gameControl: {fileID: 1309163132}
