@@ -85,7 +85,7 @@ public class DragTest : MonoBehaviour
                         } else { //Hits nothing
                             //Is cat
                             if (draggedObject.layer == 3) {
-                                //Remove cat from room
+                                //Remove cat from room when dragged off room
                                 CurrentRoom currentRoomRef = draggedObject.GetComponent<CurrentRoom>();
                                 //Remove cat from room
                                 if (currentRoomRef.currentRoom != null) { //Cat has a room
