@@ -1145,6 +1145,7 @@ GameObject:
   - component: {fileID: 48014171}
   - component: {fileID: 48014170}
   - component: {fileID: 48014169}
+  - component: {fileID: 48014173}
   m_Layer: 5
   m_Name: Food Room
   m_TagString: Untagged
@@ -1308,6 +1309,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48014167}
   m_CullTransparentMesh: 1
+--- !u!114 &48014173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48014167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aec98c85ca5c20438ebbb8bf36fad7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1200535648}
 --- !u!1 &77628484
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,6 +4367,7 @@ GameObject:
   - component: {fileID: 572628540}
   - component: {fileID: 572628539}
   - component: {fileID: 572628538}
+  - component: {fileID: 572628542}
   m_Layer: 5
   m_Name: Artifact Room
   m_TagString: Untagged
@@ -4516,6 +4531,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572628536}
   m_CullTransparentMesh: 1
+--- !u!114 &572628542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572628536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aec98c85ca5c20438ebbb8bf36fad7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 573984673}
 --- !u!1 &573984671
 GameObject:
   m_ObjectHideFlags: 0
@@ -8072,6 +8100,7 @@ GameObject:
   - component: {fileID: 1110500608}
   - component: {fileID: 1110500607}
   - component: {fileID: 1110500606}
+  - component: {fileID: 1110500610}
   m_Layer: 5
   m_Name: Cat Power Room
   m_TagString: Untagged
@@ -8235,6 +8264,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110500604}
   m_CullTransparentMesh: 1
+--- !u!114 &1110500610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110500604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aec98c85ca5c20438ebbb8bf36fad7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1321116648}
 --- !u!1 &1132830013
 GameObject:
   m_ObjectHideFlags: 0
@@ -14891,6 +14933,7 @@ GameObject:
   - component: {fileID: 2081719725}
   - component: {fileID: 2081719724}
   - component: {fileID: 2081719723}
+  - component: {fileID: 2081719727}
   m_Layer: 5
   m_Name: Mineral Room
   m_TagString: Untagged
@@ -15054,6 +15097,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081719721}
   m_CullTransparentMesh: 1
+--- !u!114 &2081719727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081719721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aec98c85ca5c20438ebbb8bf36fad7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1391067540}
 --- !u!1 &2095991700
 GameObject:
   m_ObjectHideFlags: 0

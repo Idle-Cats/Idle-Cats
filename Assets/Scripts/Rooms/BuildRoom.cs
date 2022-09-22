@@ -20,6 +20,10 @@ public class BuildRoom : MonoBehaviour
     [SerializeField]
     private List<GameObject> buildButtonList;
 
+    public Sprite mineralImage;
+    public Sprite catPowerImage;
+    public Sprite foodImage;
+
     void Start()
     {
         roomHeight = testRoom.GetComponent<SpriteRenderer>().size.y;
@@ -109,6 +113,18 @@ public class BuildRoom : MonoBehaviour
                 rooms[i].SetRoom(room);
                 room.GetComponent<ResourceRoom>().GetCopy(rooms[i].resourceRoom);
                 room.GetComponent<ResourceRoom>().calculateOfflineProgress();
+
+                ResourceRoom roomResourceRoom = room.GetComponent<ResourceRoom>();
+
+                if (roomResourceRoom.resourceType == ResourceRoom.ResourceType.minerals) {
+                    room.GetComponent<SpriteRenderer>().sprite = mineralImage;
+                }
+                else if (roomResourceRoom.resourceType == ResourceRoom.ResourceType.catpower) {
+                    room.GetComponent<SpriteRenderer>().sprite = catPowerImage;
+                }
+                else if (roomResourceRoom.resourceType == ResourceRoom.ResourceType.food) {
+                    room.GetComponent<SpriteRenderer>().sprite = foodImage;
+                }
             }
             else if (rooms[i].roomType == RoomSaveInfo.RoomType.ArtifactRoom)
             {
@@ -142,13 +158,13 @@ public class BuildRoom : MonoBehaviour
                 //Update price
                 //Room cost:
                 /*
-$0 for first room then:
-base cost * 2 ^ (number of rooms / 5)
+                $0 for first room then:
+                base cost * 2 ^ (number of rooms / 5)
 
-                    Upgrade Room Levelling Algorithms:
-capacity = level * original capacity
-resource generation = resource generation * 2 ^ (level / 2)
-*/
+                Upgrade Room Levelling Algorithms:
+                capacity = level * original capacity
+                resource generation = resource generation * 2 ^ (level / 2)
+                */
 
                 int currentPrice = 0;
 
@@ -161,10 +177,15 @@ resource generation = resource generation * 2 ^ (level / 2)
                 room.GetComponent<CanAfford>().currentPrice = currentPrice;
             }
 
-                int price = room.GetComponent<CanAfford>().currentPrice;
-                CanAfford.PriceType priceType = room.GetComponent<CanAfford>().priceType;
+            int price = room.GetComponent<CanAfford>().currentPrice;
+            CanAfford.PriceType priceType = room.GetComponent<CanAfford>().priceType;
 
-                if (priceType == CanAfford.PriceType.Minerals)
+
+            string buttonText = "";
+            buttonText += room.name + "\nPrice: " + price + " " + priceType;
+            room.GetComponent<ButtonSetText>().SetText(buttonText);
+
+            if (priceType == CanAfford.PriceType.Minerals)
                 {
                     if (gameObject.GetComponent<User>().minerals >= price)
                     {
