@@ -56,7 +56,11 @@ public class DragTest : MonoBehaviour
                         if (hit.collider != null) {
                             //Dragging object is room
                             if (draggedObject.layer == 8) {
-                                //draggedObject.GetComponent<ArtifactsBoost>().RemoveBoost();
+                                if (draggedObject.GetComponent<CurrentRoom>().currentRoom != null) {
+                                    draggedObject.GetComponent<ArtifactsBoost>().RemoveBoost();
+                                }
+                                draggedObject.GetComponent<CurrentRoom>().currentRoom = hit.collider.gameObject;
+                                draggedObject.GetComponent<ArtifactsBoost>().ApplyBoost();
 
                             } else { //Dragging object is cat
                                 //Switch or remove cat from room
