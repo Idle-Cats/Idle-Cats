@@ -11676,6 +11676,9 @@ MonoBehaviour:
   - {fileID: 2081719721}
   - {fileID: 1110500604}
   - {fileID: 572628536}
+  mineralImage: {fileID: 21300000, guid: df5579aafeb734d5291db3257fbc9066, type: 3}
+  catPowerImage: {fileID: 21300000, guid: e2fcd9aa80219448aa719ee79ba59866, type: 3}
+  foodImage: {fileID: 21300000, guid: 8b4496904c7a74fc5b080d1144756de2, type: 3}
 --- !u!114 &1564675674
 MonoBehaviour:
   m_ObjectHideFlags: 0
