@@ -13,7 +13,6 @@ public static CatList getInstance() {
     }
     return instance;
 }
-
    // hashset 
     public HashSet<CatType> discoveredCats = new HashSet<CatType>();
 
@@ -21,14 +20,6 @@ public static CatList getInstance() {
     public void AddCatType(CatType catType) {
         discoveredCats.Add(catType);
     }
-    // // print list from set
-    // public string PrintCats() {
-    //     string output = "";
-    //     foreach (Cat cat in discoveredCats) {
-    //         output += cat.PrintCat() + " ";
-    //     }
-    //     return output;
-    // }
 
     // check if cat type exists in list for catlist
     public bool catTypeExists(CatType type) {

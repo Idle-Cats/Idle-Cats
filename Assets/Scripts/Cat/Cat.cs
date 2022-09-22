@@ -1,8 +1,22 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cat : MonoBehaviour {
     public CatType catType;
+
+    public Sprite catImage0;
+    public Sprite catImage1;
+    public Sprite catImage2;
+    public Sprite catImage3;
+    public Sprite catImage4;
+    public Sprite catImage5;
+    public Sprite catImage6;
+    public Sprite catImage7;
+    public Sprite catImage8;
+    public Sprite catImage9;
+    public Sprite catImage10;
+    public Sprite catImage11;
 
     public CatType GetCatType() {
         return catType;
@@ -11,43 +25,51 @@ public class Cat : MonoBehaviour {
     public void setCatType(CatType catType) {
         this.catType = catType;
         GetComponent<SpriteRenderer>().color = getCatColor(catType);
+        // set cat size width = 160 and height = 30 using rect transform
+        this.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
     private Color getCatColor(CatType type) {
 
-        Color color = new Color(0.0f, 0.0f, 0.0f);
+        Color color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
         switch (type)
         {
             case CatType.GREY:
-                color = new Color(0.5f, 0.5f, 0.5f);
+                GetComponent<SpriteRenderer>().sprite = catImage0;
                 break;
             case CatType.BROWN:
-                color = new Color(0.0f, 0.0f, 0.0f); 
+                GetComponent<SpriteRenderer>().sprite = catImage1;
                 break;
             case CatType.WHITE:
-                color = new Color(1.0f, 1.0f, 1.0f);
+                GetComponent<SpriteRenderer>().sprite = catImage2;
                 break;
             case CatType.GINGER:
-                color = new Color(0.7f, 0.3f, 0.1f);
+                GetComponent<SpriteRenderer>().sprite = catImage3;
                 break;
             case CatType.TEAL:
-                color = new Color(0.4f, 0.6f, 0.7f);
+                GetComponent<SpriteRenderer>().sprite = catImage4;
                 break;
             case CatType.PINK:
-                color = new Color(0.7f, 0.0f, 0.5f);
+                GetComponent<SpriteRenderer>().sprite = catImage5;
                 break;
             case CatType.BLUE:
-                color = new Color(0.0f, 0.0f, 1.0f);
+                GetComponent<SpriteRenderer>().sprite = catImage6;
                 break;
             case CatType.GREEN:
-                color = new Color(0.0f, 1.0f, 0.0f);
+                GetComponent<SpriteRenderer>().sprite = catImage7;
                 break;
             case CatType.RED:
-                color = new Color(1.0f, 0.0f, 0.0f);
+                GetComponent<SpriteRenderer>().sprite = catImage8;
                 break;
             case CatType.RAINBOW:
-                color = new Color(0.0f, 0.0f, 0.0f);
+                GetComponent<SpriteRenderer>().sprite = catImage9;
+                break;
+            case CatType.WELCOME:
+                GetComponent<SpriteRenderer>().sprite = catImage10;
+                break;
+            case CatType.PARTY:
+                GetComponent<SpriteRenderer>().sprite = catImage11;
                 break;
         }
         return color;
