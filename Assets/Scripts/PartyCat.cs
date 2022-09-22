@@ -31,7 +31,7 @@ public class PartyCat : MonoBehaviour
     float speed = 550;
 
     //maximum amount of time between cats in seconds
-    float maxTime = 20;
+    float maxTime = 200;
 
     //tracks the amount of time the cat hasn't spawned for
     float spawnTime;
