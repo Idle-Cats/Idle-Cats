@@ -24,17 +24,17 @@ public class CatGameFlags : MonoBehaviour
     public int milestone13 = 0;
 
     void Start() {
-        Load();
+        //Load();
     }
 
-    void OnApplicationQuit() {
-        Save();
-    }
+    //void OnApplicationQuit() {
+    //    Save();
+    //}
 
-    void OnApplicationPause()
-    {
-        Save();
-    }
+    //void OnApplicationPause(bool pause)
+    //{
+    //    Save();
+    //}
 
     void Load() {
         Debug.Log("loaded");
@@ -70,5 +70,6 @@ public class CatGameFlags : MonoBehaviour
         PlayerPrefs.SetInt("CatGameFlag11", milestone11);
         PlayerPrefs.SetInt("CatGameFlags12", milestone12);
         PlayerPrefs.SetInt("CatGameFlags12", milestone13);
+        PlayerPrefs.Save();
     }
 }

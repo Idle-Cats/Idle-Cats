@@ -70,6 +70,24 @@ public class SaveLoadManager : MonoBehaviour
 
         infomation.timeSaved = DateTime.Now;
 
+        infomation.userName = gameObject.GetComponent<User>().username;
+        infomation.highScore = gameObject.GetComponent<User>().highScore;
+
+        infomation.firstLoad = gameObject.GetComponent<CatGameFlags>().firstLoad;
+        infomation.milestone1 = gameObject.GetComponent<CatGameFlags>().milestone1;
+        infomation.milestone2 = gameObject.GetComponent<CatGameFlags>().milestone2;
+        infomation.milestone3 = gameObject.GetComponent<CatGameFlags>().milestone3;
+        infomation.milestone4 = gameObject.GetComponent<CatGameFlags>().milestone4;
+        infomation.milestone5 = gameObject.GetComponent<CatGameFlags>().milestone5;
+        infomation.milestone6 = gameObject.GetComponent<CatGameFlags>().milestone6;
+        infomation.milestone7 = gameObject.GetComponent<CatGameFlags>().milestone7;
+        infomation.milestone8 = gameObject.GetComponent<CatGameFlags>().milestone8;
+        infomation.milestone9 = gameObject.GetComponent<CatGameFlags>().milestone9;
+        infomation.milestone10 = gameObject.GetComponent<CatGameFlags>().milestone10;
+        infomation.milestone11 = gameObject.GetComponent<CatGameFlags>().milestone11;
+        infomation.milestone12 = gameObject.GetComponent<CatGameFlags>().milestone12;
+        infomation.milestone13 = gameObject.GetComponent<CatGameFlags>().milestone13;
+
         PlayerPrefs.SetString("Save Info", SaveHelper.Serialise<SaveInfomation>(infomation));
         Debug.Log(SaveHelper.Serialise<SaveInfomation>(infomation));
     }
@@ -109,6 +127,24 @@ public class SaveLoadManager : MonoBehaviour
             gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount = infomation.unlockedArtifactCount;
 
             gameObject.GetComponent<ArtifactsFound>().loadSaveInfo(infomation.spawnedArtifacts);
+
+            gameObject.GetComponent<User>().username = infomation.userName;
+            gameObject.GetComponent<User>().highScore = infomation.highScore;
+
+            gameObject.GetComponent<CatGameFlags>().firstLoad = infomation.firstLoad;
+            gameObject.GetComponent<CatGameFlags>().milestone1 = infomation.milestone1;
+            gameObject.GetComponent<CatGameFlags>().milestone2 = infomation.milestone2;
+            gameObject.GetComponent<CatGameFlags>().milestone3 = infomation.milestone3;
+            gameObject.GetComponent<CatGameFlags>().milestone4 = infomation.milestone4;
+            gameObject.GetComponent<CatGameFlags>().milestone5 = infomation.milestone5;
+            gameObject.GetComponent<CatGameFlags>().milestone6 = infomation.milestone6;
+            gameObject.GetComponent<CatGameFlags>().milestone7 = infomation.milestone7;
+            gameObject.GetComponent<CatGameFlags>().milestone8 = infomation.milestone8;
+            gameObject.GetComponent<CatGameFlags>().milestone9 = infomation.milestone9;
+            gameObject.GetComponent<CatGameFlags>().milestone10 = infomation.milestone10;
+            gameObject.GetComponent<CatGameFlags>().milestone11 = infomation.milestone11;
+            gameObject.GetComponent<CatGameFlags>().milestone12 = infomation.milestone12;
+            gameObject.GetComponent<CatGameFlags>().milestone13 = infomation.milestone13;
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();

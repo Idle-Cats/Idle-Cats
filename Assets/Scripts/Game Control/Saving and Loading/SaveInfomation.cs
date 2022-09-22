@@ -29,4 +29,22 @@ public class SaveInfomation
     public ArtifactSaveInfo[] spawnedArtifacts;
 
     public DateTime timeSaved;
+
+    public int highScore;
+    public string userName;
+
+    public int firstLoad;
+    public int milestone1;
+    public int milestone2;
+    public int milestone3;
+    public int milestone4;
+    public int milestone5;
+    public int milestone6;
+    public int milestone7;
+    public int milestone8;
+    public int milestone9;
+    public int milestone10;
+    public int milestone11;
+    public int milestone12;
+    public int milestone13;
 }
