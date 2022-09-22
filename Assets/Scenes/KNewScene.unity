@@ -306,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 4
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: ffcdea4644296448e823347fb30f70a6, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -360,6 +361,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 33792354}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -551,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe09125f46402e45929a0a4f7920b99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControl: {fileID: 1309163132}
 --- !u!114 &46597373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,6 +710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 0
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: dba6d50b6e64442b89c8d92a38b6ee1a, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -750,6 +765,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 74726726}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -998,6 +1025,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 207835099897388148, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 207835099897388149, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1062,6 +1093,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 468733051051970288, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343773392539452547, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+      propertyPath: catImage9
+      value: 
+      objectReference: {fileID: 21300000, guid: 77fee88de85d54d80982ad25d7272afe, type: 3}
+    - target: {fileID: 8343773392539452547, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+      propertyPath: catImage10
+      value: 
+      objectReference: {fileID: 21300000, guid: 3636f89e19ec843f69a4a918a3b2d46b, type: 3}
+    - target: {fileID: 8343773392539452547, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+      propertyPath: catImage11
+      value: 
+      objectReference: {fileID: 21300000, guid: f7f1cb88d0ce24774b271ce6bcf348f0, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
 --- !u!1 &174399048
@@ -2417,6 +2464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 8
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: aba036ca269644b1ca7116cceda1f874, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -2471,6 +2519,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 468893724}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2657,6 +2717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 1
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: aa4a33eb3b6284aff9b1f5621e2a7608, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -2716,6 +2777,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 569037745}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &587937005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,6 +2837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 3
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: 7acd6d966bc0e4a66a3194ba40d1f810, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -2818,6 +2892,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 587937005}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3025,6 +3111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 10
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: 3636f89e19ec843f69a4a918a3b2d46b, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -3079,6 +3166,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 622813993}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3591,6 +3690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 2
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: dd98176659a014e1c860e17e863d1466, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -3645,6 +3745,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 776250874}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4325,6 +4437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 11
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: f7f1cb88d0ce24774b271ce6bcf348f0, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -4379,6 +4492,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1087609089}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5017,6 +5142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 9
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: 77fee88de85d54d80982ad25d7272afe, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -5071,6 +5197,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1253567980}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5210,6 +5348,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256779718}
   m_CullTransparentMesh: 1
+--- !u!1 &1268664429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1268664431}
+  - component: {fileID: 1268664430}
+  m_Layer: 0
+  m_Name: CatRunning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1268664430
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268664429}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 846313985888159706, guid: 4145c6b1b7a9445529b03a7e8b61cdd2, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 91814e89d3f494ad289977c56df961b9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1268664431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268664429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2613297, y: 958.32117, z: -2.0261858}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1296485117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5261,6 +5527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c022c9bc1503ee489d8a50332909a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControl: {fileID: 1309163132}
 --- !u!114 &1296485120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5372,8 +5639,9 @@ GameObject:
   - component: {fileID: 1309163133}
   - component: {fileID: 1309163137}
   - component: {fileID: 1309163138}
-  - component: {fileID: 1309163139}
   - component: {fileID: 1309163140}
+  - component: {fileID: 1309163141}
+  - component: {fileID: 1309163142}
   m_Layer: 0
   m_Name: Game Control
   m_TagString: Untagged
@@ -5425,6 +5693,7 @@ MonoBehaviour:
   roomCount: 0
   roomHeight: 0
   catTest: {fileID: 207835099897388151, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
+  buildButtonList: []
 --- !u!114 &1309163135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5470,8 +5739,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CatPanel: {fileID: 300016871}
   OpenCatList: {fileID: 996434374}
+  referenceCat: {fileID: 0}
   catBuilder: {fileID: 1309163140}
   catCount: 0
+  AddCatButton: {fileID: 1241969268}
 --- !u!114 &1309163138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5486,18 +5757,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cat: {fileID: 591277244}
   canvas: {fileID: 1223259991}
---- !u!114 &1309163139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309163132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea11d620e8cbb514ab31028d163b2952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  camera: {fileID: 409894009}
+  explosion: {fileID: 6428595040268683790, guid: d3f3d3b0063e8404b9204f58b21f2661, type: 3}
+  explosion_sound: {fileID: 1905270077}
+  running_sound: {fileID: 1268664430}
 --- !u!114 &1309163140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5512,6 +5775,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 207835099897388151, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
   instance: {fileID: 0}
+--- !u!114 &1309163141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309163132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2168b590204bf634a91a9b562d083c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catPower: 0
+  food: 0
+  minerals: 0
+--- !u!114 &1309163142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309163132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5476642e8a33e43aa49d9b337b2a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allArtifacts: []
+  unlockedArtifacts: []
+  unlockedArtifactsCount: 0
+  spawnedArtifacts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  artifactCount: 0
+  artifactPrefab: {fileID: 517884340891196201, guid: c6f8c1b55d7e7eb41b33a07cfab10c19, type: 3}
 --- !u!1 &1324361915
 GameObject:
   m_ObjectHideFlags: 0
@@ -5729,7 +6030,7 @@ GameObject:
   - component: {fileID: 1387929787}
   - component: {fileID: 1387929786}
   m_Layer: 5
-  m_Name: Coins
+  m_Name: CatPower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5764,9 +6065,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1387929784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 126003c817947314da680fc8c04cb43b, type: 3}
+  m_Script: {fileID: 11500000, guid: bdc54c76a32380b4fac6c35188bac143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameControl: {fileID: 1309163132}
 --- !u!114 &1387929787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5912,6 +6214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 5
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: ab2ebc14f06b5408ab1ad430d93b3c9e, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -5966,6 +6269,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1411479165}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6601,6 +6916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 6
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: b8dd975570c0c415aaf4df8d4b153592, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -6655,6 +6971,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1685964283}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7386,6 +7714,134 @@ RectTransform:
   m_AnchoredPosition: {x: -5.0000153, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1905270076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1905270078}
+  - component: {fileID: 1905270077}
+  m_Layer: 0
+  m_Name: Explosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1905270077
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905270076}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 846313985888159706, guid: 4145c6b1b7a9445529b03a7e8b61cdd2, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 4aa5eb9d20d024bcfb04402603560f31, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1905270078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905270076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2613297, y: 958.32117, z: -2.0261858}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1952789152
 GameObject:
   m_ObjectHideFlags: 0
@@ -7594,6 +8050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catType: 7
   catListText: {fileID: 1036950250}
+  assigned: 0
   catImage: {fileID: 21300000, guid: 5e8061436c789456bae80f6a1aca516e, type: 3}
   defaultCat: {fileID: 21300000, guid: 89804b0b4d441479facd83f41f005e89, type: 3}
   AddCat: {fileID: 1241969268}
@@ -7648,6 +8105,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309163137}
+        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
+        m_MethodName: SetActiveCat
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2073505539}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7874,7 +8343,6 @@ GameObject:
   - component: {fileID: 2085020006}
   - component: {fileID: 2085020009}
   - component: {fileID: 2085020008}
-  - component: {fileID: 2085020007}
   m_Layer: 5
   m_Name: catInfo
   m_TagString: Untagged
@@ -7903,62 +8371,6 @@ RectTransform:
   m_AnchoredPosition: {x: 539, y: 49.059}
   m_SizeDelta: {x: 250, y: 150}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &2085020007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2085020005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2085020008}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1309163137}
-        m_TargetAssemblyTypeName: SceneControl, Assembly-CSharp
-        m_MethodName: hideCatPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2085020008
 MonoBehaviour:
   m_ObjectHideFlags: 0
