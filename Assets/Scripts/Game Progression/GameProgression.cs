@@ -271,6 +271,7 @@ public class GameProgression : MonoBehaviour
     public void checkAddCat()
     {
         if (flags.milestone11 == 0) {
+            flags.milestone11 = 1;
             ShowMilestone11();
             catList.AddCatType(CatType.WELCOME);
         }

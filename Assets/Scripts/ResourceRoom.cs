@@ -27,7 +27,7 @@ public class ResourceRoom : MonoBehaviour
         //initialise values here
         //temp placeholder code:
         this.name = "Fishing Room";
-        this.roomCapacity = 100;
+        this.roomCapacity = 1000;
         this.resourceGen = 1;
         InvokeRepeating("updateRoom", 0.0f, 1.0f);
     }

@@ -171,7 +171,7 @@ public class BuildRoom : MonoBehaviour
                 if (roomCount > 0)
                 {
                     //TODO maybe add a baseprice here
-                    currentPrice = (room.GetComponent<CanAfford>().basePrice * 2 ^ (roomCount / 5));
+                    currentPrice = (room.GetComponent<CanAfford>().basePrice * 10 * 2 ^ (roomCount / 5));
                     
                 }
                 room.GetComponent<CanAfford>().currentPrice = currentPrice;
