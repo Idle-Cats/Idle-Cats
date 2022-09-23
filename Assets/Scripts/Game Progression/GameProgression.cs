@@ -37,6 +37,10 @@ public class GameProgression : MonoBehaviour
     public GameObject milestone12;
     public GameObject milestone13;
 
+    public GameObject tutorial1;
+    public GameObject tutorial2;
+    public GameObject tutorial2_1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +86,7 @@ public class GameProgression : MonoBehaviour
         flags.firstLoad = 1;
         Debug.Log(flags.firstLoad);
         welcome_panel.SetActive(false);
+        tutorial1.SetActive(true);
     }
 
     void ShowWelcome() {
@@ -90,6 +95,23 @@ public class GameProgression : MonoBehaviour
 
     public void CloseMilestone1() {
         milestone1.SetActive(false);
+        tutorial2.SetActive(true);
+    }
+
+    public void CloseTutorial1()
+    {
+        tutorial1.SetActive(false);
+    }
+
+    public void CloseTutorial2()
+    {
+        tutorial2.SetActive(false);
+        tutorial2_1.SetActive(true);
+    }
+
+    public void CloseTutorial2_1()
+    {
+        tutorial2_1.SetActive(false);
     }
 
     void ShowMilestone1() {
@@ -265,6 +287,15 @@ public class GameProgression : MonoBehaviour
             flags.milestone8 = 1;
             ShowMilestone8();
             catList.AddCatType(CatType.GREEN);
+        }
+    }
+
+    public void checkAddCat()
+    {
+        if (flags.milestone11 == 0) {
+            flags.milestone11 = 1;
+            ShowMilestone11();
+            catList.AddCatType(CatType.WELCOME);
         }
     }
 }
