@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class User : MonoBehaviour
 {
@@ -12,11 +13,13 @@ public class User : MonoBehaviour
     public int food = 0;
     public int minerals = 0;
 
+    public TextMeshProUGUI usernameObject;
+
     // Start is called before the first frame update
     void Start()
     {
-        highScore = PlayerPrefs.GetInt("SavingHighScore");
-        username = PlayerPrefs.GetString("SavingUsername");
+        //highScore = PlayerPrefs.GetInt("SavingHighScore");
+        //username = PlayerPrefs.GetString("SavingUsername");
     }
 
     //private void OnApplicationPause(bool pause)
@@ -36,6 +39,8 @@ public class User : MonoBehaviour
         if (total > highScore) {
             highScore = total;
         }
+
+        usernameObject.SetText("Username: " + username);
     }
 
     void Save() {
