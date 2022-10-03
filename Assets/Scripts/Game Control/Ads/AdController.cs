@@ -9,10 +9,12 @@ public class AdController : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowL
     [SerializeField] string _iOsAdUnitId = "Interstitial_iOS";
     string _adUnitId;
 
+    public int timeSinceLastAd = 0;
+    public int adTime = 120;
+
     private void Start()
     {
-        LoadAd();
-        ShowAd();
+        InvokeRepeating("AddTImeSinceAd", 1, 1);
     }
 
     void Awake()
@@ -67,5 +69,16 @@ public class AdController : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowL
 
     public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) {
 
+    }
+
+    private void AddTImeSinceAd() {
+        timeSinceLastAd += 1;
+
+        if (timeSinceLastAd >= adTime) {
+            LoadAd();
+            ShowAd();
+
+            timeSinceLastAd = 0;
+        }
     }
 }
