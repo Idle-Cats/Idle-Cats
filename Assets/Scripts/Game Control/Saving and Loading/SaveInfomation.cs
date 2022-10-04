@@ -48,5 +48,5 @@ public class SaveInfomation
     public int milestone12;
     public int milestone13;
 
-    public int timeSinceLastAd;
+    public int triesSinceLastAd;
 }

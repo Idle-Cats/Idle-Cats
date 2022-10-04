@@ -32,7 +32,8 @@ public class PartyCat : MonoBehaviour
     float speed = 550;
 
     //maximum amount of time between cats in seconds
-    float maxTime = 200;
+    //float maxTime = 200;
+    float maxTime = 30;
 
     //tracks the amount of time the cat hasn't spawned for
     float spawnTime;
@@ -56,6 +57,9 @@ public class PartyCat : MonoBehaviour
 
     public GameObject partyCatRewardPanel;
     public TextMeshProUGUI partyCatRewardText;
+
+    public TestAdButton testAdButton;
+    public GameObject showAdButton;
 
     //when the game opens the time is set to 0
     void Start() 
@@ -189,7 +193,15 @@ public class PartyCat : MonoBehaviour
 
         //set party cat panel active and set its text so it shows how many resources were earned
         partyCatRewardPanel.SetActive(true);
-        partyCatRewardText.SetText("You earned " + reward + " " + rewardTypeText);
+
+        string text = "You earned " + Mathf.FloorToInt(reward) + " " + rewardTypeText;
+        
+        if (testAdButton.checkForShowAd()) {
+            text += "\n\nWould you like to watch an Ad to double your rewards?";
+            showAdButton.SetActive(true);
+        }
+
+        partyCatRewardText.SetText(text);
     }
 
     //flips the cat so it is pointing the direction it is running

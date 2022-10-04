@@ -6,15 +6,13 @@ using UnityEngine.Advertisements;
 
 public class TestAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
+    [SerializeField] GameObject showAdButtonObject;
     [SerializeField] Button _showAdButton;
     [SerializeField] string _androidAdUnitId = "Rewarded_Android";
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms
 
-    private void Start()
-    {
-        LoadAd();
-    }
+    public int timeSinceLastAd = 0;
 
     void Awake()
     {
@@ -66,6 +64,9 @@ public class TestAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowL
             Debug.Log("Unity Ads Rewarded Ad Completed");
             // Grant a reward.
 
+            _showAdButton.interactable = false;
+            showAdButtonObject.SetActive(false);
+
             // Load another ad:
             Advertisement.Load(_adUnitId, this);
         }
@@ -92,4 +93,31 @@ public class TestAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowL
         // Clean up the button listeners:
         _showAdButton.onClick.RemoveAllListeners();
     }
+
+    public bool checkForShowAd()
+    {
+        //If more than 5 tries show an ad
+        if (timeSinceLastAd > 5) {
+            timeSinceLastAd = 0;
+            LoadAd();
+            
+            return true;
+        }
+
+        float chance = Random.Range(0, 1.1f);
+        // timeSinceLastAd/10% chance of showing an ad
+        if (chance <= ((float)timeSinceLastAd / 10)) {
+            timeSinceLastAd = 0;
+            LoadAd();
+
+            return true;
+        }
+        else {
+            timeSinceLastAd++;
+
+            return false;
+        }
+    }
+
+
 }
