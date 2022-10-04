@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static User;
+using TMPro;
 
 public class PartyCat : MonoBehaviour
 {
@@ -52,6 +53,9 @@ public class PartyCat : MonoBehaviour
     //boolean to track the state of the cat
     bool isRunningAway = false;
     bool facingRight = false;
+
+    public GameObject partyCatRewardPanel;
+    public TextMeshProUGUI partyCatRewardText;
 
     //when the game opens the time is set to 0
     void Start() 
@@ -166,17 +170,26 @@ public class PartyCat : MonoBehaviour
         Instantiate(explosion, camera.ScreenToWorldPoint(cat.transform.position), Quaternion.identity);
         DeSpawn();
 
-        switch(rewardType) {
+        string rewardTypeText = "";
+
+        switch (rewardType) {
             case 0:
                 gameObject.GetComponent<User>().catPower += (int)reward;
+                rewardTypeText = "Cat Power";
                 break;
             case 1:
                 gameObject.GetComponent<User>().minerals += (int)reward;
+                rewardTypeText = "Minerals";
                 break;
             case 2:
                 gameObject.GetComponent<User>().food += (int)reward;
+                rewardTypeText = "Food";
                 break;
         }
+
+        //set party cat panel active and set its text so it shows how many resources were earned
+        partyCatRewardPanel.SetActive(true);
+        partyCatRewardText.SetText("You earned " + reward + " " + rewardTypeText);
     }
 
     //flips the cat so it is pointing the direction it is running
@@ -189,5 +202,9 @@ public class PartyCat : MonoBehaviour
             cat.transform.RotateAround(cat.transform.position, cat.transform.up, 180f);
             facingRight = true;
         }
+    }
+
+    public void HideRewardPanel() {
+        partyCatRewardPanel.SetActive(false);
     }
 }
