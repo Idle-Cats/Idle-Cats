@@ -12,6 +12,11 @@ public class TestAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowL
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms
 
+    [SerializeField]
+    User user;
+    private float reward;
+    private int rewardType;
+
     public int timeSinceLastAd = 0;
 
     void Awake()
@@ -63,6 +68,17 @@ public class TestAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowL
         if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED)) {
             Debug.Log("Unity Ads Rewarded Ad Completed");
             // Grant a reward.
+            switch (rewardType) {
+                case 0:
+                    user.catPower += (int)reward;
+                    break;
+                case 1:
+                    user.minerals += (int)reward;
+                    break;
+                case 2:
+                    user.food += (int)reward;
+                    break;
+            }
 
             _showAdButton.interactable = false;
             showAdButtonObject.SetActive(false);
@@ -94,8 +110,10 @@ public class TestAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowL
         _showAdButton.onClick.RemoveAllListeners();
     }
 
-    public bool checkForShowAd()
+    public bool checkForShowAd(float reward, int rewardType)
     {
+        this.reward = reward;
+        this.rewardType = rewardType;
         //If more than 5 tries show an ad
         if (timeSinceLastAd > 5) {
             timeSinceLastAd = 0;

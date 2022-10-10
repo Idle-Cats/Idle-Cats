@@ -5260,6 +5260,7 @@ MonoBehaviour:
   _showAdButton: {fileID: 1512130669}
   _androidAdUnitId: Rewarded_Android
   _iOSAdUnitId: Rewarded_iOS
+  user: {fileID: 1564675678}
   timeSinceLastAd: 0
 --- !u!1 &601124138
 GameObject:

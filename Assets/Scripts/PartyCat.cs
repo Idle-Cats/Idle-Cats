@@ -32,8 +32,7 @@ public class PartyCat : MonoBehaviour
     float speed = 550;
 
     //maximum amount of time between cats in seconds
-    //float maxTime = 200;
-    float maxTime = 30;
+    float maxTime = 200;
 
     //tracks the amount of time the cat hasn't spawned for
     float spawnTime;
@@ -143,7 +142,7 @@ public class PartyCat : MonoBehaviour
         currentTime = 0;
         SetRandomTime();
         endTime = Random.Range(0.0f, 10.0f) + 10.0f;
-        reward = Random.Range(0.0f, 90.0f) + 10.0f;
+        reward = Random.Range(0.0f, 190.0f) + 50.0f;
         rewardType = Random.Range(0, 3);
         speed = 10;
         cat.transform.position = getRandomPosition();
@@ -196,7 +195,7 @@ public class PartyCat : MonoBehaviour
 
         string text = "You earned " + Mathf.FloorToInt(reward) + " " + rewardTypeText;
         
-        if (testAdButton.checkForShowAd()) {
+        if (testAdButton.checkForShowAd(reward, rewardType)) {
             text += "\n\nWould you like to watch an Ad to double your rewards?";
             showAdButton.SetActive(true);
         }
