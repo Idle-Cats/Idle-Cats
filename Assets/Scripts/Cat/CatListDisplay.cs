@@ -13,20 +13,21 @@ public class CatListDisplay : MonoBehaviour
 
     public TextMeshProUGUI catListText;
 
+    public bool assigned = false;
+
     public Sprite catImage;
     public Sprite defaultCat;
 
     public GameObject AddCat;
 
-    // public Cats getCat(){
-    //     return new Cats(catType);
-    // }
-
     public void click() {
         // if cat hasnt been unlocked yet dont update the text
         if (CatList.getInstance().catTypeExists(catType)) {
-            // make button visible
-            AddCat.SetActive(true);
+            // check if cat has already been added to room
+            if (!assigned) {
+                // make button visible
+                AddCat.SetActive(true);
+            }
             catListText.text = "Cats: " + catType + "\nPrimary Boost: " + Cat.GetPBoost(catType)+ "\nSecondary Boost: " + Cat.GetSBoost(catType);
             // currentCat.setCatType(catType);
             SceneControl.catTypeSpawn = catType;
@@ -37,13 +38,9 @@ public class CatListDisplay : MonoBehaviour
         }
     }
 
-    void Start()
+    void InstantiateCatList()
     {
-        // CatList.getInstance().AddCat(new Cat(CatType.GREY));
-        // CatList.getInstance().AddCat(new Cat(CatType.TEAL));
-        CatList.getInstance().AddCatType(CatType.RAINBOW);
         bool exists = CatList.getInstance().catTypeExists(catType);
-
         Sprite selected = null;
 
         if(exists) {
@@ -94,9 +91,17 @@ public class CatListDisplay : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        //set default values - REMOVE LATER
+        //CatList.getInstance().AddCatType(CatType.RAINBOW);
+        //CatList.getInstance().AddCatType(CatType.GREY);
+        //CatList.getInstance().AddCatType(CatType.TEAL);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        InstantiateCatList();
     }
 }

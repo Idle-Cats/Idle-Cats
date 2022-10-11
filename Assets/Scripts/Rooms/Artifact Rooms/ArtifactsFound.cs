@@ -15,7 +15,9 @@ public class ArtifactsFound : MonoBehaviour
 
     private void Start()
     {
-        unlockedArtifacts = new Artifact[allArtifacts.Length];
+        if (unlockedArtifacts.Length == 0) {
+            unlockedArtifacts = new Artifact[allArtifacts.Length];
+        }
     }
 
     //Need to rewrite this code so it eventually upgrades artifacts to another type if you already have it

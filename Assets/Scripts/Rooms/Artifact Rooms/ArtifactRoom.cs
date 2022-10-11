@@ -55,14 +55,14 @@ public class ArtifactRoom : MonoBehaviour
     public void clickCollect()
     {
         //Collect artifact here
-        Artifact artifact = gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<ArtifactsFound>().GetRandomArtifact();
+        Artifact artifact = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<ArtifactsFound>().GetRandomArtifact();
         Debug.Log(artifact);
         if (artifact != null) {
             GameObject newArtifact = Instantiate(artifactPrefab, gameObject.transform.position, Quaternion.identity);
             newArtifact.GetComponent<ArtifactDisplay>().artifact = artifact;
             newArtifact.GetComponent<ArtifactDisplay>().RefreshSelf();
             newArtifact.GetComponent<CurrentRoom>().currentRoom = gameObject;
-            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<ArtifactsFound>().AddArtifact(newArtifact);
+            gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<ArtifactsFound>().AddArtifact(newArtifact);
         }
         collectButton.SetActive(false);
         startButton.SetActive(true);
@@ -127,7 +127,7 @@ public class ArtifactRoom : MonoBehaviour
     public void calculateOfflineProgress()
     {
         if (researching) {
-            DateTime dateQuit = gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<SaveLoadManager>().infomation.timeSaved;
+            DateTime dateQuit = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<SaveLoadManager>().infomation.timeSaved;
             DateTime dateNow = DateTime.Now;
 
             if (dateNow > dateQuit) {

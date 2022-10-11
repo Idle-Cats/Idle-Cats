@@ -40,15 +40,16 @@ public class PlayfabManager : MonoBehaviour
         if (result.InfoResultPayload.PlayerProfile != null) {
             name = result.InfoResultPayload.PlayerProfile.DisplayName;
         }
-
-        if (name == null) {
-            UpdatePlayerDisplayName();
-        }
     }
 
-    void UpdatePlayerDisplayName() {
+    public void UpdatePlayerDisplayName() {
+
+        string name = gameObject.GetComponent<User>().username;
+        if (name == null || name == "") {
+            name = "No Name";
+        }
         var request = new UpdateUserTitleDisplayNameRequest {
-            DisplayName = "Alex"
+            DisplayName = name
         };
 
         PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnError);

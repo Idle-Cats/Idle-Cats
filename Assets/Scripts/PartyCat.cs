@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static User;
+using TMPro;
 
 public class PartyCat : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class PartyCat : MonoBehaviour
     float speed = 550;
 
     //maximum amount of time between cats in seconds
-    float maxTime = 20;
+    float maxTime = 200;
 
     //tracks the amount of time the cat hasn't spawned for
     float spawnTime;
@@ -52,6 +53,12 @@ public class PartyCat : MonoBehaviour
     //boolean to track the state of the cat
     bool isRunningAway = false;
     bool facingRight = false;
+
+    public GameObject partyCatRewardPanel;
+    public TextMeshProUGUI partyCatRewardText;
+
+    public TestAdButton testAdButton;
+    public GameObject showAdButton;
 
     //when the game opens the time is set to 0
     void Start() 
@@ -135,7 +142,7 @@ public class PartyCat : MonoBehaviour
         currentTime = 0;
         SetRandomTime();
         endTime = Random.Range(0.0f, 10.0f) + 10.0f;
-        reward = Random.Range(0.0f, 90.0f) + 10.0f;
+        reward = Random.Range(0.0f, 190.0f) + 50.0f;
         rewardType = Random.Range(0, 3);
         speed = 10;
         cat.transform.position = getRandomPosition();
@@ -166,17 +173,35 @@ public class PartyCat : MonoBehaviour
         Instantiate(explosion, camera.ScreenToWorldPoint(cat.transform.position), Quaternion.identity);
         DeSpawn();
 
-        switch(rewardType) {
+        string rewardTypeText = "";
+
+        switch (rewardType) {
             case 0:
                 gameObject.GetComponent<User>().catPower += (int)reward;
+                rewardTypeText = "Cat Power";
                 break;
             case 1:
                 gameObject.GetComponent<User>().minerals += (int)reward;
+                rewardTypeText = "Minerals";
                 break;
             case 2:
                 gameObject.GetComponent<User>().food += (int)reward;
+                rewardTypeText = "Food";
                 break;
         }
+
+        //set party cat panel active and set its text so it shows how many resources were earned
+        partyCatRewardPanel.SetActive(true);
+
+        string text = "You earned " + Mathf.FloorToInt(reward) + " " + rewardTypeText;
+        
+        //check if it should show the ad button
+        if (testAdButton.checkForShowAd(reward, rewardType)) {
+            text += "\n\nWould you like to watch an Ad to double your rewards?";
+            showAdButton.SetActive(true);
+        }
+
+        partyCatRewardText.SetText(text);
     }
 
     //flips the cat so it is pointing the direction it is running
@@ -189,5 +214,9 @@ public class PartyCat : MonoBehaviour
             cat.transform.RotateAround(cat.transform.position, cat.transform.up, 180f);
             facingRight = true;
         }
+    }
+
+    public void HideRewardPanel() {
+        partyCatRewardPanel.SetActive(false);
     }
 }

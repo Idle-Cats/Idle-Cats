@@ -27,7 +27,7 @@ public class ResourceRoom : MonoBehaviour
         //initialise values here
         //temp placeholder code:
         this.name = "Fishing Room";
-        this.roomCapacity = 100;
+        this.roomCapacity = 1000;
         this.resourceGen = 1;
         InvokeRepeating("updateRoom", 0.0f, 1.0f);
     }
@@ -71,14 +71,14 @@ public class ResourceRoom : MonoBehaviour
     {
         int roomInventRounded = (int)Math.Floor(roomInvent);
         if (resourceType == ResourceType.catpower) {
-            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().catPower += roomInventRounded;
+            gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().catPower += roomInventRounded;
 
         }
         else if (resourceType == ResourceType.minerals) {
-            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().minerals += roomInventRounded;
+            gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().minerals += roomInventRounded;
         }
         else if (resourceType == ResourceType.food) {
-            gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<User>().food += roomInventRounded;
+            gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().food += roomInventRounded;
         }
 
         roomInvent = roomInvent - roomInventRounded;
@@ -105,12 +105,12 @@ public class ResourceRoom : MonoBehaviour
     public void calculateOfflineProgress() {
         //Alex code for loading in time
         //Michael please change this
-        DateTime dateQuit = gameObject.GetComponent<RoomInfomation>().gameControl.GetComponent<SaveLoadManager>().infomation.timeSaved;
+        DateTime dateQuit = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<SaveLoadManager>().infomation.timeSaved;
         DateTime dateNow = DateTime.Now;
 
         if (dateNow > dateQuit) {
             TimeSpan timeSpan = dateNow - dateQuit;
-            addInvent((float)(this.resourceGen * timeSpan.TotalSeconds));
+            addInvent((float)(Math.Floor(this.resourceGen * timeSpan.TotalSeconds)));
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CatGameFlags : MonoBehaviour
 {
     //flags for first time opening game
-    public int first_load = 0;
+    public int firstLoad = 0;
 
     //flags for milestones
     //TO DO: Rename milestones so they are more descriptive
@@ -24,15 +24,21 @@ public class CatGameFlags : MonoBehaviour
     public int milestone13 = 0;
 
     void Start() {
-        Load();
+        //Load();
     }
 
-    void OnApplicationQuit() {
-        Save();
-    }
+    //void OnApplicationQuit() {
+    //    Save();
+    //}
+
+    //void OnApplicationPause(bool pause)
+    //{
+    //    Save();
+    //}
 
     void Load() {
-        first_load = PlayerPrefs.GetInt("CatGameFlags0");
+        Debug.Log("loaded");
+        firstLoad = PlayerPrefs.GetInt("CatGameFlags0");
         milestone1 = PlayerPrefs.GetInt("CatGameFlags1");
         milestone2 = PlayerPrefs.GetInt("CatGameFlags2");
         milestone3 = PlayerPrefs.GetInt("CatGameFlags3");
@@ -49,7 +55,8 @@ public class CatGameFlags : MonoBehaviour
     }
 
     void Save() {
-        PlayerPrefs.SetInt("CatGameFlags0", first_load);
+        Debug.Log("saved");
+        PlayerPrefs.SetInt("CatGameFlags0", firstLoad);
         PlayerPrefs.SetInt("CatGameFlags1", milestone1);
         PlayerPrefs.SetInt("CatGameFlags2", milestone2);
         PlayerPrefs.SetInt("CatGameFlags3", milestone3);
@@ -63,5 +70,6 @@ public class CatGameFlags : MonoBehaviour
         PlayerPrefs.SetInt("CatGameFlag11", milestone11);
         PlayerPrefs.SetInt("CatGameFlags12", milestone12);
         PlayerPrefs.SetInt("CatGameFlags12", milestone13);
+        PlayerPrefs.Save();
     }
 }

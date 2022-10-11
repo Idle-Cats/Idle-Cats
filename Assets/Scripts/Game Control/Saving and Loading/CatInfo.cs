@@ -10,6 +10,8 @@ public class CatInfo
 
     public int roomNum;
 
+    public CatType catType;
+
     public CatInfo() {
 
     }
@@ -19,6 +21,13 @@ public class CatInfo
         y = cat.transform.position.y;
         z = cat.transform.position.z;
 
-        this.roomNum = cat.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInfomation>().roomNum;
+        catType = cat.GetComponent<Cat>().catType;
+
+        if (cat.GetComponent<CurrentRoom>().currentRoom != null) {
+            this.roomNum = cat.GetComponent<CurrentRoom>().currentRoom.GetComponent<RoomInformation>().roomNum;
+        }
+        else {
+            this.roomNum = -1;
+        }
     }
 }
