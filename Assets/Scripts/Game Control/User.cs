@@ -15,23 +15,6 @@ public class User : MonoBehaviour
 
     public TextMeshProUGUI usernameObject;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //highScore = PlayerPrefs.GetInt("SavingHighScore");
-        //username = PlayerPrefs.GetString("SavingUsername");
-    }
-
-    //private void OnApplicationPause(bool pause)
-    //{
-    //    Save();
-    //}
-
-    //private void OnApplicationQuit()
-    //{
-    //    Save();
-    //}
-
     // Update is called once per frame
     void Update()
     {
@@ -41,11 +24,5 @@ public class User : MonoBehaviour
         }
 
         usernameObject.SetText("Username: " + username);
-    }
-
-    void Save() {
-        PlayerPrefs.SetInt("SavingHighScore", highScore);
-        PlayerPrefs.SetString("SavingUsername", username);
-        PlayerPrefs.Save();
     }
 }

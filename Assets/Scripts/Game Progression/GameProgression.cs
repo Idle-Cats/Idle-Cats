@@ -49,8 +49,6 @@ public class GameProgression : MonoBehaviour
 
         // Debug.Log(catList.discoveredCat);
 
-        crazyCatCounter = PlayerPrefs.GetInt("PartyCatCount");
-
         flags = gameObject.GetComponent<CatGameFlags>();
 
         if (flags.firstLoad == 0) {
@@ -76,10 +74,6 @@ public class GameProgression : MonoBehaviour
         if (user.food + user.minerals + user.catPower > 1000000 && flags.milestone7 == 0) {
             foodReached1000000();
         }
-    }
-
-    void OnApplicationQuit() {
-        PlayerPrefs.SetInt("PartyCatCount", crazyCatCounter);
     }
 
     public void CloseWelcome() {

@@ -49,4 +49,6 @@ public class SaveInfomation
     public int milestone13;
 
     public int triesSinceLastAd;
+
+    public int crazyCatCounter;
 }

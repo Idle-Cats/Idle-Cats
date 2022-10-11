@@ -92,6 +92,8 @@ public class SaveLoadManager : MonoBehaviour
 
         infomation.triesSinceLastAd = adController.timeSinceLastAd;
 
+        infomation.crazyCatCounter = gameObject.GetComponent<GameProgression>().crazyCatCounter;
+
         PlayerPrefs.SetString("Save Info", SaveHelper.Serialise<SaveInfomation>(infomation));
         Debug.Log(SaveHelper.Serialise<SaveInfomation>(infomation));
     }
@@ -151,6 +153,8 @@ public class SaveLoadManager : MonoBehaviour
             gameObject.GetComponent<CatGameFlags>().milestone13 = infomation.milestone13;
 
             adController.timeSinceLastAd = infomation.triesSinceLastAd;
+
+            gameObject.GetComponent<GameProgression>().crazyCatCounter = infomation.crazyCatCounter;
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
