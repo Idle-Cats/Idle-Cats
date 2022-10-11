@@ -195,6 +195,7 @@ public class PartyCat : MonoBehaviour
 
         string text = "You earned " + Mathf.FloorToInt(reward) + " " + rewardTypeText;
         
+        //check if it should show the ad button
         if (testAdButton.checkForShowAd(reward, rewardType)) {
             text += "\n\nWould you like to watch an Ad to double your rewards?";
             showAdButton.SetActive(true);
