@@ -5196,72 +5196,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573984671}
   m_CullTransparentMesh: 1
---- !u!1 &593460639
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 593460642}
-  - component: {fileID: 593460641}
-  - component: {fileID: 593460643}
-  m_Layer: 0
-  m_Name: Ad Control
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &593460641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593460639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 840c64890a418ff4d889210406c570f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _androidGameId: 4954772
-  _iOSGameId: 4954773
-  _testMode: 1
---- !u!4 &593460642
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593460639}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8085108, y: -1.4029222, z: -0.021122055}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &593460643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593460639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93fd6ea2b3200f042a4ccbd3a39f1d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showAdButtonObject: {fileID: 1512130667}
-  _showAdButton: {fileID: 1512130669}
-  _androidAdUnitId: Rewarded_Android
-  _iOSAdUnitId: Rewarded_iOS
-  user: {fileID: 1564675678}
-  timeSinceLastAd: 0
 --- !u!1 &601124138
 GameObject:
   m_ObjectHideFlags: 0
@@ -12911,6 +12845,8 @@ GameObject:
   - component: {fileID: 1564675683}
   - component: {fileID: 1564675686}
   - component: {fileID: 1564675687}
+  - component: {fileID: 1564675688}
+  - component: {fileID: 1564675689}
   m_Layer: 0
   m_Name: Game Control
   m_TagString: Untagged
@@ -13120,7 +13056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea11d620e8cbb514ab31028d163b2952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adController: {fileID: 593460643}
+  adController: {fileID: 1564675688}
 --- !u!114 &1564675682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13141,7 +13077,7 @@ MonoBehaviour:
   running_sound: {fileID: 1176882044}
   partyCatRewardPanel: {fileID: 1392428678}
   partyCatRewardText: {fileID: 398863583}
-  testAdButton: {fileID: 593460643}
+  testAdButton: {fileID: 1564675688}
   showAdButton: {fileID: 1512130667}
 --- !u!114 &1564675683
 MonoBehaviour:
@@ -13219,6 +13155,39 @@ MonoBehaviour:
   prefab: {fileID: 207835099897388151, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
   instance: {fileID: 0}
   catList: []
+--- !u!114 &1564675688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564675671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fd6ea2b3200f042a4ccbd3a39f1d8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showAdButtonObject: {fileID: 1512130667}
+  _showAdButton: {fileID: 1512130669}
+  _androidAdUnitId: Rewarded_Android
+  _iOSAdUnitId: Rewarded_iOS
+  user: {fileID: 1564675678}
+  timeSinceLastAd: 0
+--- !u!114 &1564675689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564675671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840c64890a418ff4d889210406c570f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _androidGameId: 4954772
+  _iOSGameId: 4954773
+  _testMode: 1
 --- !u!1 &1593792363
 GameObject:
   m_ObjectHideFlags: 0
