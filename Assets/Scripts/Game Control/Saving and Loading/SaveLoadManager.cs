@@ -6,6 +6,7 @@ using System;
 public class SaveLoadManager : MonoBehaviour
 {
     public TestAdButton adController;
+    public CloudSaveData cloudSave;
 
     public static SaveLoadManager Instance {
         set;
@@ -94,8 +95,11 @@ public class SaveLoadManager : MonoBehaviour
 
         infomation.crazyCatCounter = gameObject.GetComponent<GameProgression>().crazyCatCounter;
 
-        PlayerPrefs.SetString("Save Info", SaveHelper.Serialise<SaveInfomation>(infomation));
-        Debug.Log(SaveHelper.Serialise<SaveInfomation>(infomation));
+        string data = SaveHelper.Serialise<SaveInfomation>(infomation);
+
+        PlayerPrefs.SetString("Save Info", data);
+        Debug.Log(data);
+        cloudSave.Save(data);
     }
 
     public void Load() {
