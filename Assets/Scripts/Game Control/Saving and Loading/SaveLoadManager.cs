@@ -99,7 +99,7 @@ public class SaveLoadManager : MonoBehaviour
 
         PlayerPrefs.SetString("Save Info", data);
         Debug.Log(data);
-        cloudSave.Save(data);
+        //cloudSave.Save(data);
     }
 
     public void Load() {

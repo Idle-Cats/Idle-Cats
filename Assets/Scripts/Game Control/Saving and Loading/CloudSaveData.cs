@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CloudSaveData
 {
-    public string data;
+    public string data = "test";
+    public int id;
 
     public void Save(string data) {
         this.data = data;
