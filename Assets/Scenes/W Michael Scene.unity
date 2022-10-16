@@ -13058,6 +13058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   adController: {fileID: 1564675688}
+  cloudSave: {fileID: 1564675690}
 --- !u!114 &1564675682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13198,10 +13199,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1564675671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddf4696717b2c8f498707e6e9001c174, type: 3}
+  m_Script: {fileID: 11500000, guid: 72ceb295df2066f4ab8c0d98b11508c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectString: mongodb + srv://Spaghettiihunter:<password>@cluster0.8y54het.mongodb.net/?retryWrites=true&w=majority
+  data: test
+  saveLoadManager: {fileID: 1564675681}
 --- !u!1 &1593792363
 GameObject:
   m_ObjectHideFlags: 0

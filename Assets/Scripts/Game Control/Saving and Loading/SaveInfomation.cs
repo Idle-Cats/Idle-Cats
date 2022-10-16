@@ -4,6 +4,7 @@ using UnityEngine;
 using static CatList;
 using System;
 
+[Serializable]
 public class SaveInfomation
 {
     //holds all infomation to be saved

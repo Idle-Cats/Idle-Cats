@@ -9,6 +9,9 @@ public class CloudSaveData : MonoBehaviour
     public string data = "test";
     DatabaseReference reference;
 
+    [SerializeField]
+    private SaveLoadManager saveLoadManager;
+
     private void Start()
     {
         reference = FirebaseDatabase.DefaultInstance.RootReference;
@@ -33,19 +36,22 @@ public class CloudSaveData : MonoBehaviour
         reference.Child("users").Child(username).SetRawJsonValueAsync(json);
     }
 
-    public void LoadUser()
+    public void LoadUser(string username, string localData)
     {
-        reference.GetValueAsync().ContinueWith(task =>
-      {
-          if (task.IsFaulted) {
-              // Handle the error...
-              Debug.Log("Error in getting data");
-          }
-          else if (task.IsCompleted) {
-              DataSnapshot snapshot = task.Result;
-              // Do something with snapshot...
-              Debug.Log("Snapshot: " + snapshot);
-          }
-      });
+        reference = FirebaseDatabase.DefaultInstance.RootReference;
+        FirebaseDatabase.DefaultInstance.GetReference("users").Child(username).Child("data").GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsFaulted) {
+                Debug.Log("Error in getting data");
+            }
+            else if (task.IsCompleted) {
+                DataSnapshot snapshot = task.Result;
+                data = snapshot.Value.ToString();
+
+                if (!data.Equals(localData)) {
+                    saveLoadManager.LoadFromData(data);
+                }
+            }
+        });
     }
 }
