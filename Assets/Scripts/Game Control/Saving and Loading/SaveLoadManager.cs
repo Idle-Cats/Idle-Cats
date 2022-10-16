@@ -72,8 +72,8 @@ public class SaveLoadManager : MonoBehaviour
         infomation.spawnedArtifacts = artifactSaveInfo.makeSaveInfo(gameObject.GetComponent<ArtifactsFound>().spawnedArtifacts, gameObject.GetComponent<ArtifactsFound>().artifactCount, gameObject.GetComponent<ArtifactsFound>().allArtifacts);
 
         infomation.timeSaved = DateTime.Now;
-
-        infomation.userName = gameObject.GetComponent<User>().username;
+        string username = gameObject.GetComponent<User>().username;
+        infomation.userName = username;
         infomation.highScore = gameObject.GetComponent<User>().highScore;
 
         infomation.firstLoad = gameObject.GetComponent<CatGameFlags>().firstLoad;
@@ -99,7 +99,7 @@ public class SaveLoadManager : MonoBehaviour
 
         PlayerPrefs.SetString("Save Info", data);
         Debug.Log(data);
-        //cloudSave.Save(data);
+        cloudSave.WriteNewUser(data, username);
     }
 
     public void Load() {
@@ -159,6 +159,8 @@ public class SaveLoadManager : MonoBehaviour
             adController.timeSinceLastAd = infomation.triesSinceLastAd;
 
             gameObject.GetComponent<GameProgression>().crazyCatCounter = infomation.crazyCatCounter;
+
+            cloudSave.LoadUser();
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
