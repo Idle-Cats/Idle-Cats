@@ -105,12 +105,20 @@ public class CloudSaveData : MonoBehaviour
     }
 
     public void CheckConnection() {
+        StartCoroutine("RunConnectionCheck");
+    }
+
+    private IEnumerator RunConnectionCheck() {
+        yield return new WaitForSeconds(0.5f);
+
         DatabaseReference connectedRef = FirebaseDatabase.DefaultInstance.GetReference(".info/connected");
 
         connectedRef.ValueChanged += (object sender, ValueChangedEventArgs a) =>
         {
             bool isConnected = (bool)a.Snapshot.Value;
             Debug.Log("Is Connected: " + isConnected);
+            saveLoadManager.isConnected = isConnected;
+            saveLoadManager.connectionChecked = true;
         };
     }
 }

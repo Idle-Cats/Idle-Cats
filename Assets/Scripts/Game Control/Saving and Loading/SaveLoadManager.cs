@@ -14,6 +14,9 @@ public class SaveLoadManager : MonoBehaviour
     public bool continueSave = false;
     public string data;
 
+    public bool isConnected;
+    public bool connectionChecked = false;
+
     public static SaveLoadManager Instance {
         set;
         get;
@@ -35,9 +38,18 @@ public class SaveLoadManager : MonoBehaviour
 
     private void Update()
     {
-        if (continueSave) {
-            LoadFromData(data);
-            continueSave = false;
+        if (connectionChecked) {
+            if (isConnected) {
+                if (continueSave) {
+                    LoadFromData(data);
+                    continueSave = false;
+                    connectionChecked = false;
+                }
+            }
+            else {
+                LoadFromData(PlayerPrefs.GetString("Save Info"));
+                connectionChecked = false;
+            }
         }
     }
 
