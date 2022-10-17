@@ -10,6 +10,8 @@ public class WelcomeScreenControl : MonoBehaviour
     public User user;
     public TMP_InputField input;
 
+    public CloudSaveData cloud;
+
     void Start() {
     }
 
@@ -26,6 +28,8 @@ public class WelcomeScreenControl : MonoBehaviour
             return;
         }
         user.username = name;
+
+        cloud.CheckProfile(name);
 
         panel.SetActive(false);
     }

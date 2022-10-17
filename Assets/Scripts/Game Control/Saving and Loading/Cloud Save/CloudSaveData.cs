@@ -40,6 +40,7 @@ public class CloudSaveData : MonoBehaviour
     {
         Debug.Log("Loading from Cloud");
         reference = FirebaseDatabase.DefaultInstance.RootReference;
+
         FirebaseDatabase.DefaultInstance.GetReference("users").Child(username).Child("data").GetValueAsync().ContinueWith(task =>
         {
             if (task.IsFaulted) {
@@ -48,7 +49,7 @@ public class CloudSaveData : MonoBehaviour
             else if (task.IsCompleted) {
                 DataSnapshot snapshot = task.Result;
                 data = snapshot.Value.ToString();
-
+                Debug.Log("Data: " + data);
                 if (!data.Equals(localData)) {
                     saveLoadManager.continueSave = true;
                     saveLoadManager.data = data;
@@ -57,6 +58,31 @@ public class CloudSaveData : MonoBehaviour
                     saveLoadManager.continueSave = true;
                     saveLoadManager.data = localData;
                 }
+            }
+        });
+    }
+
+    public void CheckProfile(string username)
+    {
+        reference = FirebaseDatabase.DefaultInstance.RootReference;
+
+        FirebaseDatabase.DefaultInstance.GetReference("users").Child(username).Child("data").GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsFaulted) {
+                Debug.Log("Error in getting data");
+            }
+            else if (task.IsCompleted) {
+                DataSnapshot snapshot = task.Result;
+
+                data = snapshot.Value.ToString();
+                Debug.Log("Data: " + data);
+
+                saveLoadManager.continueSave = true;
+                saveLoadManager.data = data;
+            }
+            if (!task.Result.Exists) {
+                DataSnapshot snapshot = task.Result;
+                gameObject.GetComponent<GameProgression>().CheckWelcome();
             }
         });
     }

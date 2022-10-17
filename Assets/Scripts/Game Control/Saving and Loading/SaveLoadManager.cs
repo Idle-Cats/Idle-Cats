@@ -38,10 +38,10 @@ public class SaveLoadManager : MonoBehaviour
         }
     }
 
-    //private void OnApplicationPause(bool pause)
-    //{
-    //    Save();
-    //}
+    private void OnApplicationPause(bool pause)
+    {
+        Save();
+    }
 
     private void OnApplicationQuit()
     {
@@ -110,7 +110,7 @@ public class SaveLoadManager : MonoBehaviour
 
         PlayerPrefs.SetString("Save Info", data);
         Debug.Log(data);
-        //cloudSave.WriteNewUser(data, username);
+        cloudSave.WriteNewUser(data, username);
     }
 
     public void Load() {
@@ -127,6 +127,8 @@ public class SaveLoadManager : MonoBehaviour
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
             Save();
+            //gameObject.GetComponent<GameProgression>().CheckWelcome();
+            gameObject.GetComponent<WelcomeScreenControl>().CheckWelcome();
         }
     }
 

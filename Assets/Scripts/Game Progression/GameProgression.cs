@@ -53,6 +53,10 @@ public class GameProgression : MonoBehaviour
     }
 
     public void CheckWelcome() {//allows delay of showing welcome screen so can load in time
+        user = gameObject.GetComponent<User>();
+        catList = CatList.getInstance();
+        flags = gameObject.GetComponent<CatGameFlags>();
+
         if (flags.firstLoad == 0) {
             ShowWelcome();
         }
