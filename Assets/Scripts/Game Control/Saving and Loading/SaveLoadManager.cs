@@ -25,6 +25,8 @@ public class SaveLoadManager : MonoBehaviour
     {
         //loads a save when it is opened
         Instance = this;
+        cloudSave.SetSaveLoadManager(this);
+        cloudSave.SetGameProgression(gameObject.GetComponent<GameProgression>());
         Load();
 
         InvokeRepeating("AutoSave", 300, 300);
@@ -126,8 +128,6 @@ public class SaveLoadManager : MonoBehaviour
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
-            Save();
-            //gameObject.GetComponent<GameProgression>().CheckWelcome();
             gameObject.GetComponent<WelcomeScreenControl>().CheckWelcome();
         }
     }
@@ -138,7 +138,6 @@ public class SaveLoadManager : MonoBehaviour
         FinishLoad();
 
         gameObject.GetComponent<GameProgression>().CheckWelcome();
-        gameObject.GetComponent<WelcomeScreenControl>().CheckWelcome();
     }
 
     void AutoSave()

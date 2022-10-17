@@ -106,13 +106,10 @@ public class BuildRoom : MonoBehaviour
         //Loads rooms using room info
         buildingNodePlacer.nodeLength = -1;
         buildingNodePlacer.placeNode();
-        Debug.Log("2");
         for (int i = 0; i < roomCount; i++)
         {
-            Debug.Log("Loading Room Num: " + i);
             if (rooms[i].roomType == RoomSaveInfo.RoomType.ResourceRoom)
             {
-                Debug.Log("Loading a resource room");
                 GameObject room = Instantiate(resourceRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
 
                 room.GetComponent<RoomInformation>().gameControl = gameObject;

@@ -9,8 +9,16 @@ public class CloudSaveData : MonoBehaviour
     public string data = "test";
     DatabaseReference reference;
 
-    [SerializeField]
     private SaveLoadManager saveLoadManager;
+    private GameProgression gameProgression;
+
+    public void SetSaveLoadManager(SaveLoadManager saveLoadManager) {
+        this.saveLoadManager = saveLoadManager;
+    }
+
+    public void SetGameProgression(GameProgression gameProgression) {
+        this.gameProgression = gameProgression;
+    }
 
     private void Start()
     {
@@ -29,11 +37,13 @@ public class CloudSaveData : MonoBehaviour
 
     public void WriteNewUser(string data, string username)
     {
-        reference = FirebaseDatabase.DefaultInstance.RootReference;
-        CloudSaveData cloudSave = new CloudSaveData(data);
-        string json = JsonUtility.ToJson(cloudSave);
+        if (username.Length > 0) {
+            reference = FirebaseDatabase.DefaultInstance.RootReference;
+            CloudSaveData cloudSave = new CloudSaveData(data);
+            string json = JsonUtility.ToJson(cloudSave);
 
-        reference.Child("users").Child(username).SetRawJsonValueAsync(json);
+            reference.Child("users").Child(username).SetRawJsonValueAsync(json);
+        }
     }
 
     public void LoadUser(string username, string localData)
@@ -64,26 +74,36 @@ public class CloudSaveData : MonoBehaviour
 
     public void CheckProfile(string username)
     {
+        Debug.Log("Checking if profile already exists");
         reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        FirebaseDatabase.DefaultInstance.GetReference("users").Child(username).Child("data").GetValueAsync().ContinueWith(task =>
+        FirebaseDatabase.DefaultInstance.GetReference("users").Child(username).GetValueAsync().ContinueWith(task =>
         {
             if (task.IsFaulted) {
                 Debug.Log("Error in getting data");
             }
             else if (task.IsCompleted) {
+                Debug.Log("Task Completed");
                 DataSnapshot snapshot = task.Result;
-
-                data = snapshot.Value.ToString();
+                if (snapshot.Exists) {
+                    Debug.Log("exists");
+                }
+                else {
+                    Debug.Log("dosent exist");
+                    gameProgression.cloudCheckWelcome = true;
+                }
+                data = snapshot.Child("data").Value.ToString();
                 Debug.Log("Data: " + data);
 
                 saveLoadManager.continueSave = true;
                 saveLoadManager.data = data;
             }
-            if (!task.Result.Exists) {
-                DataSnapshot snapshot = task.Result;
-                gameObject.GetComponent<GameProgression>().CheckWelcome();
-            }
         });
+    }
+
+    public void CheckConnection() {
+        DatabaseReference connectedRef = FirebaseDatabase.DefaultInstance.GetReference(".info/connected");
+
+
     }
 }

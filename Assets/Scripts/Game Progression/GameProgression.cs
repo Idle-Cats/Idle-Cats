@@ -41,13 +41,13 @@ public class GameProgression : MonoBehaviour
     public GameObject tutorial2;
     public GameObject tutorial2_1;
 
+    public bool cloudCheckWelcome = false;
+
     // Start is called before the first frame update
     void Start()
     {
         user = gameObject.GetComponent<User>();
         catList = CatList.getInstance();
-
-        // Debug.Log(catList.discoveredCat);
 
         flags = gameObject.GetComponent<CatGameFlags>();
     }
@@ -65,6 +65,10 @@ public class GameProgression : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (cloudCheckWelcome) {
+            CheckWelcome();
+            cloudCheckWelcome = false;
+        }
         if (user.food + user.minerals + user.catPower > 1000 && flags.milestone4 == 0) {
             foodReached1000();
         }
@@ -84,7 +88,6 @@ public class GameProgression : MonoBehaviour
 
     public void CloseWelcome() {
         flags.firstLoad = 1;
-        Debug.Log(flags.firstLoad);
         welcome_panel.SetActive(false);
         tutorial1.SetActive(true);
     }
