@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomNum: 0
-  roomType: 0
+  roomType: 1
   gameControl: {fileID: 0}
   containsCat: 0
 --- !u!114 &3200233253868290228

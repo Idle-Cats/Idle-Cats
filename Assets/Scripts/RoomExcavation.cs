@@ -20,6 +20,8 @@ public class RoomExcavation : MonoBehaviour
         //creates new copy of this room below empty room
         //increment roomDepth++
 
+        //todo fix global variables roomDepth, resourcecosts, 
+
 
 
 
@@ -54,6 +56,20 @@ public class RoomExcavation : MonoBehaviour
     }
 
     //TODO put a method here that checks for pricing  for startButton
+
+
+
+    bool canAfford()    
+    {
+        int currentResources = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().minerals;
+        int currentCost = (roomDepth * roomDepth);
+
+        if (currentResources >= currentCost)
+        {
+            return true;
+        }
+        return false;
+    }
 
 
 
