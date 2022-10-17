@@ -69,6 +69,9 @@ public class CloudSaveData : MonoBehaviour
                     saveLoadManager.data = localData;
                 }
             }
+            else if (task.IsCanceled) {
+                Debug.Log("Task Cancelled");
+            }
         });
     }
 
