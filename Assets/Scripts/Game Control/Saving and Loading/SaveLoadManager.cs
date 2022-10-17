@@ -11,6 +11,9 @@ public class SaveLoadManager : MonoBehaviour
     private User user;
     private BuildRoom buildRoom;
 
+    public bool continueSave = false;
+    public string data;
+
     public static SaveLoadManager Instance {
         set;
         get;
@@ -25,6 +28,14 @@ public class SaveLoadManager : MonoBehaviour
         Load();
 
         InvokeRepeating("AutoSave", 300, 300);
+    }
+
+    private void Update()
+    {
+        if (continueSave) {
+            LoadFromData(data);
+            continueSave = false;
+        }
     }
 
     //private void OnApplicationPause(bool pause)
@@ -110,7 +121,7 @@ public class SaveLoadManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Save Info")) {
             infomation = SaveHelper.Deserialise<SaveInfomation>(PlayerPrefs.GetString("Save Info"));
             Debug.Log(PlayerPrefs.GetString("Save Info"));
-            string username = FinishLoad();
+            string username = infomation.userName;
             cloudSave.LoadUser(username, PlayerPrefs.GetString("Save Info"));
         }
         else {//if there is no save infomation makes a new blank save
@@ -123,6 +134,9 @@ public class SaveLoadManager : MonoBehaviour
         infomation = SaveHelper.Deserialise<SaveInfomation>(data);
         Debug.Log("Cloud Save Data was different" + data);
         FinishLoad();
+
+        gameObject.GetComponent<GameProgression>().CheckWelcome();
+        gameObject.GetComponent<WelcomeScreenControl>().CheckWelcome();
     }
 
     void AutoSave()
@@ -131,6 +145,21 @@ public class SaveLoadManager : MonoBehaviour
     }
 
     private string FinishLoad() {
+        gameObject.GetComponent<CatGameFlags>().firstLoad = infomation.firstLoad;
+        gameObject.GetComponent<CatGameFlags>().milestone1 = infomation.milestone1;
+        gameObject.GetComponent<CatGameFlags>().milestone2 = infomation.milestone2;
+        gameObject.GetComponent<CatGameFlags>().milestone3 = infomation.milestone3;
+        gameObject.GetComponent<CatGameFlags>().milestone4 = infomation.milestone4;
+        gameObject.GetComponent<CatGameFlags>().milestone5 = infomation.milestone5;
+        gameObject.GetComponent<CatGameFlags>().milestone6 = infomation.milestone6;
+        gameObject.GetComponent<CatGameFlags>().milestone7 = infomation.milestone7;
+        gameObject.GetComponent<CatGameFlags>().milestone8 = infomation.milestone8;
+        gameObject.GetComponent<CatGameFlags>().milestone9 = infomation.milestone9;
+        gameObject.GetComponent<CatGameFlags>().milestone10 = infomation.milestone10;
+        gameObject.GetComponent<CatGameFlags>().milestone11 = infomation.milestone11;
+        gameObject.GetComponent<CatGameFlags>().milestone12 = infomation.milestone12;
+        gameObject.GetComponent<CatGameFlags>().milestone13 = infomation.milestone13;
+
         //materials
         user.catPower = infomation.catPower;
         user.food = infomation.food;
@@ -165,21 +194,6 @@ public class SaveLoadManager : MonoBehaviour
 
         gameObject.GetComponent<User>().username = username;
         gameObject.GetComponent<User>().highScore = infomation.highScore;
-
-        gameObject.GetComponent<CatGameFlags>().firstLoad = infomation.firstLoad;
-        gameObject.GetComponent<CatGameFlags>().milestone1 = infomation.milestone1;
-        gameObject.GetComponent<CatGameFlags>().milestone2 = infomation.milestone2;
-        gameObject.GetComponent<CatGameFlags>().milestone3 = infomation.milestone3;
-        gameObject.GetComponent<CatGameFlags>().milestone4 = infomation.milestone4;
-        gameObject.GetComponent<CatGameFlags>().milestone5 = infomation.milestone5;
-        gameObject.GetComponent<CatGameFlags>().milestone6 = infomation.milestone6;
-        gameObject.GetComponent<CatGameFlags>().milestone7 = infomation.milestone7;
-        gameObject.GetComponent<CatGameFlags>().milestone8 = infomation.milestone8;
-        gameObject.GetComponent<CatGameFlags>().milestone9 = infomation.milestone9;
-        gameObject.GetComponent<CatGameFlags>().milestone10 = infomation.milestone10;
-        gameObject.GetComponent<CatGameFlags>().milestone11 = infomation.milestone11;
-        gameObject.GetComponent<CatGameFlags>().milestone12 = infomation.milestone12;
-        gameObject.GetComponent<CatGameFlags>().milestone13 = infomation.milestone13;
 
         adController.timeSinceLastAd = infomation.triesSinceLastAd;
 

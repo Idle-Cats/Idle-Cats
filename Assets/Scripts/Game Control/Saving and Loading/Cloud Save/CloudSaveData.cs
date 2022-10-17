@@ -38,6 +38,7 @@ public class CloudSaveData : MonoBehaviour
 
     public void LoadUser(string username, string localData)
     {
+        Debug.Log("Loading from Cloud");
         reference = FirebaseDatabase.DefaultInstance.RootReference;
         FirebaseDatabase.DefaultInstance.GetReference("users").Child(username).Child("data").GetValueAsync().ContinueWith(task =>
         {
@@ -49,7 +50,12 @@ public class CloudSaveData : MonoBehaviour
                 data = snapshot.Value.ToString();
 
                 if (!data.Equals(localData)) {
-                    saveLoadManager.LoadFromData(data);
+                    saveLoadManager.continueSave = true;
+                    saveLoadManager.data = data;
+                }
+                else {
+                    saveLoadManager.continueSave = true;
+                    saveLoadManager.data = localData;
                 }
             }
         });

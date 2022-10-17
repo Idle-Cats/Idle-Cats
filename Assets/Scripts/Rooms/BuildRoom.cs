@@ -24,6 +24,8 @@ public class BuildRoom : MonoBehaviour
     public Sprite catPowerImage;
     public Sprite foodImage;
 
+    public BuildingNodePlacer buildingNodePlacer;
+
     void Start()
     {
         roomHeight = testRoom.GetComponent<SpriteRenderer>().size.y;
@@ -102,11 +104,15 @@ public class BuildRoom : MonoBehaviour
     public void LoadRooms()
     {
         //Loads rooms using room info
-        gameObject.GetComponent<BuildingNodePlacer>().nodeLength = 0;
+        buildingNodePlacer.nodeLength = -1;
+        buildingNodePlacer.placeNode();
+        Debug.Log("2");
         for (int i = 0; i < roomCount; i++)
         {
+            Debug.Log("Loading Room Num: " + i);
             if (rooms[i].roomType == RoomSaveInfo.RoomType.ResourceRoom)
             {
+                Debug.Log("Loading a resource room");
                 GameObject room = Instantiate(resourceRoom, new Vector3(rooms[i].x, rooms[i].y, rooms[i].z), Quaternion.identity);
 
                 room.GetComponent<RoomInformation>().gameControl = gameObject;

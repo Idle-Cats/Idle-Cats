@@ -50,7 +50,9 @@ public class GameProgression : MonoBehaviour
         // Debug.Log(catList.discoveredCat);
 
         flags = gameObject.GetComponent<CatGameFlags>();
+    }
 
+    public void CheckWelcome() {//allows delay of showing welcome screen so can load in time
         if (flags.firstLoad == 0) {
             ShowWelcome();
         }
