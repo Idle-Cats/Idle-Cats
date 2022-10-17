@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class SaveLoadManager : MonoBehaviour
 {
@@ -13,9 +14,15 @@ public class SaveLoadManager : MonoBehaviour
 
     public bool continueSave = false;
     public string data;
+    private string localData;
 
     public bool isConnected;
     public bool connectionChecked = false;
+
+    private int lastSavedInternet;
+
+    [SerializeField]
+    private GameObject loadSavePanel;
 
     public static SaveLoadManager Instance {
         set;
@@ -31,6 +38,9 @@ public class SaveLoadManager : MonoBehaviour
         cloudSave.SetSaveLoadManager(this);
         cloudSave.SetGameProgression(gameObject.GetComponent<GameProgression>());
         cloudSave.CheckConnection();
+
+        lastSavedInternet = PlayerPrefs.GetInt("Last Saved Via Internet");
+
         Load();
 
         InvokeRepeating("AutoSave", 300, 300);
@@ -41,7 +51,12 @@ public class SaveLoadManager : MonoBehaviour
         if (connectionChecked) {
             if (isConnected) {
                 if (continueSave) {
-                    LoadFromData(data);
+                    if (lastSavedInternet == 1 || (localData.Equals(data))) {
+                        LoadFromData(data);
+                    }
+                    else {
+                        loadSavePanel.SetActive(true);
+                    }
                     continueSave = false;
                     connectionChecked = false;
                 }
@@ -53,14 +68,29 @@ public class SaveLoadManager : MonoBehaviour
         }
     }
 
-    private void OnApplicationPause(bool pause)
-    {
-        Save();
+    public void LocalSaveButtonPressed() {
+        loadSavePanel.SetActive(false);
+        LoadFromData(localData);
     }
+
+    public void CloudSaveButtonPressed() {
+        loadSavePanel.SetActive(false);
+        LoadFromData(data);
+    }
+
+    //disable this for offline testing purposes
+    //private void OnApplicationPause(bool pause)
+    //{
+    //    if (user.username.Length > 0) {
+    //        Save();
+    //    }
+    //}
 
     private void OnApplicationQuit()
     {
-        Save();
+        if (user.username.Length > 0) {
+            Save();
+        }
     }
 
     public void Save()
@@ -126,6 +156,13 @@ public class SaveLoadManager : MonoBehaviour
         PlayerPrefs.SetString("Save Info", data);
         Debug.Log(data);
         cloudSave.WriteNewUser(data, username);
+
+        if (!isConnected) {
+            PlayerPrefs.SetInt("Last Saved Via Internet", 0);
+        }
+        else {
+            PlayerPrefs.SetInt("Last Saved Via Internet", 1);
+        }
     }
 
     public void Load() {
@@ -134,10 +171,11 @@ public class SaveLoadManager : MonoBehaviour
 
         //loads data from playerprefs and uses the save helper to translate the info back into the save infomation script
         if (PlayerPrefs.HasKey("Save Info")) {
-            infomation = SaveHelper.Deserialise<SaveInfomation>(PlayerPrefs.GetString("Save Info"));
-            Debug.Log(PlayerPrefs.GetString("Save Info"));
+            localData = PlayerPrefs.GetString("Save Info");
+            infomation = SaveHelper.Deserialise<SaveInfomation>(localData);
+            Debug.Log(localData);
             string username = infomation.userName;
-            cloudSave.LoadUser(username, PlayerPrefs.GetString("Save Info"));
+            cloudSave.LoadUser(username, localData);
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
