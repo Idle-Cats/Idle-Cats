@@ -27,6 +27,7 @@ public class SaveLoadManager : MonoBehaviour
         Instance = this;
         cloudSave.SetSaveLoadManager(this);
         cloudSave.SetGameProgression(gameObject.GetComponent<GameProgression>());
+        cloudSave.CheckConnection();
         Load();
 
         InvokeRepeating("AutoSave", 300, 300);

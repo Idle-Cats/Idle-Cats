@@ -107,6 +107,10 @@ public class CloudSaveData : MonoBehaviour
     public void CheckConnection() {
         DatabaseReference connectedRef = FirebaseDatabase.DefaultInstance.GetReference(".info/connected");
 
-
+        connectedRef.ValueChanged += (object sender, ValueChangedEventArgs a) =>
+        {
+            bool isConnected = (bool)a.Snapshot.Value;
+            Debug.Log("Is Connected: " + isConnected);
+        };
     }
 }
