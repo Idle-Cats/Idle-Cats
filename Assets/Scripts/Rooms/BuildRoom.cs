@@ -8,6 +8,7 @@ public class BuildRoom : MonoBehaviour
     public GameObject testRoom;
     public GameObject resourceRoom;
     public GameObject artifactRoom;
+    public GameObject excavationRoom;
 
     public int roomCount = 0;
 
@@ -27,6 +28,7 @@ public class BuildRoom : MonoBehaviour
     public Sprite foodImage;
 
     public BuildingNodePlacer buildingNodePlacer;
+    public bool gameStarted = false;
 
     void Start()
     {
@@ -37,6 +39,15 @@ public class BuildRoom : MonoBehaviour
     void Update()
     {
         canAffordPrices();
+
+        if (gameStarted) {
+            if (gameObject.GetComponent<User>().roomDepth == 0)
+            {
+                buildRoom(excavationRoom);
+            }
+
+            gameStarted = false;
+        }
     }
 
     public void buildRoom(GameObject roomToBuild)

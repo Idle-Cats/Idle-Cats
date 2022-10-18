@@ -40,5 +40,7 @@ public class WelcomeScreenControl : MonoBehaviour
         }
 
         panel.SetActive(false);
+
+        gameObject.GetComponent<BuildRoom>().gameStarted = true;
     }
 }

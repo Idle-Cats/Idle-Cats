@@ -12,6 +12,7 @@ public class User : MonoBehaviour
     public int catPower = 0;
     public int food = 0;
     public int minerals = 0;
+    public int roomDepth = 0;
 
     public TextMeshProUGUI usernameObject;
 
