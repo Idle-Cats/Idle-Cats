@@ -26,6 +26,7 @@ public class RoomExcavation : MonoBehaviour
 
 
     private bool researching = false;
+    private bool awaitingCollect = false;
     [SerializeField]
     private int timeLength = 0;
     [SerializeField]
@@ -35,6 +36,8 @@ public class RoomExcavation : MonoBehaviour
     private GameObject slider;
     [SerializeField]
     private int initialLength;
+    [SerializeField]
+    private GameObject research;
 
     [SerializeField]
     private GameObject startButton;
@@ -52,16 +55,19 @@ public class RoomExcavation : MonoBehaviour
     void Start()
     {
         //
+        roomDepth = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().roomDepth;
         roomHeight = gameObject.GetComponent<SpriteRenderer>().size.y;
+        research.GetComponent<TextMeshProUGUI>().SetText("Excavate New Room?\n Cost:" + (roomDepth * roomDepth) + " Cat Power.");
+        collectButton.SetActive(false);
     }
 
     //TODO put a method here that checks for pricing  for startButton
 
 
-
+//A boolean method for checking if player has enough resources to dig a new room
     bool canAfford()    
     {
-        int currentResources = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().minerals;
+        int currentResources = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().catPower;
         int currentCost = (roomDepth * roomDepth);
 
         if (currentResources >= currentCost)
@@ -73,21 +79,16 @@ public class RoomExcavation : MonoBehaviour
 
 
 
-    //TODO put a title here for displaying current cost?
-
-    //where do i put this?
+   
+    //this is a method that does the timer
      public void applyResearch(int timerLength)
     {
         initialLength = timerLength;
-
-        InvokeRepeating("updateArtifactTimerLength", 0.0f, 1.0f);
+        InvokeRepeating("updateTimerLength", 0.0f, 1.0f);
     }
 
-    //set collect button to clickable
-
-        //todo set visible on buttons as well as disable
     
-
+        //this is the method that executes when clicking the collect button
     public void clickCollect()
     {
         setTimer();
@@ -100,39 +101,57 @@ public class RoomExcavation : MonoBehaviour
         gameObject.transform.position = new Vector2(0, -1.6f - (roomHeight * 1.5f * roomDepth));
 
         //so put in empty room, put in new this room below it, increment roomDepth
-        roomDepth++;
+        roomDepth++; //TODO make this global
+        gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().roomDepth = roomDepth;
+        research.GetComponent<TextMeshProUGUI>().SetText("Excavate New Room?\n Cost:" + (roomDepth * roomDepth) + " Cat Power.");
+        awaitingCollect = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //call canAfford, have it make start digging buton available ONLY if not already digging
+        if ((canAfford() == true) && (researching == false) && (awaitingCollect == false))
+        {
+            //make start button active
+            startButton.SetActive(true);
+        }
+        
+        
     }
     //room timer stuff
 
+        //method for timer not running
     void setTimer()
     {
         this.researching = false;
         collectButton.SetActive(false);
-        startButton.SetActive(true);
         slider.SetActive(false);
         this.researchTitle = "Room not busy";
     }
 
+    //method for timer running
     void setTimer(int timeLength, string researchTitle)
     {
+        slider.SetActive(true);
+        startButton.SetActive(false);
         this.timeLength = timeLength;
         this.researchTitle = researchTitle;
         this.researching = true;
         applyResearch(timeLength);
     }
 
+    //method for when start button is clicked
+    //basically only contains the increasing time formula, and removes resource cost
     public void startExcavation()
     {
-        setTimer(((roomDepth+1) *30), "Excavation in progress");
-        startButton.SetActive(false);
-        slider.SetActive(true);
+        int cost = (roomDepth * roomDepth);
+        gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().catPower -= cost;
+        research.GetComponent<TextMeshProUGUI>().SetText("Excavating! Your cats are hard at work.");
+        setTimer(((roomDepth + 1) * 30), "Excavation in progress");
     }
 
+    //method that runs the timer
     public void updateTimerLength()
     {
         if (this.timeLength > 0)
@@ -146,8 +165,9 @@ public class RoomExcavation : MonoBehaviour
         {
             setTimer();
             collectButton.SetActive(true);
-
-            CancelInvoke("updateArtifactTimerLength");
+            research.GetComponent<TextMeshProUGUI>().SetText("Excavation Finished!");
+            awaitingCollect = true;
+            CancelInvoke("updateTimerLength");
         }
     }
     //tap room brings up UI where select between three choices.
