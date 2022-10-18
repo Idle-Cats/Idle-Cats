@@ -11,6 +11,7 @@ public class WelcomeScreenControl : MonoBehaviour
     public TMP_InputField input;
 
     public CloudSaveData cloud;
+    public SaveLoadManager saveLoadManager;
 
     void Start() {
     }
@@ -29,7 +30,14 @@ public class WelcomeScreenControl : MonoBehaviour
         }
         user.username = name;
 
-        cloud.CheckProfile(name);
+        if (saveLoadManager.isConnected) {
+            cloud.CheckProfile(name);
+        }
+        else {
+            gameObject.GetComponent<GameProgression>().cloudCheckWelcome = true;
+            saveLoadManager.continueSave = true;
+            saveLoadManager.data = "";
+        }
 
         panel.SetActive(false);
     }

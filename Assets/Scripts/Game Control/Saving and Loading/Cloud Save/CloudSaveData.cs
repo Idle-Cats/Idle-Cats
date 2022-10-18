@@ -51,20 +51,26 @@ public class CloudSaveData : MonoBehaviour
         Debug.Log("Loading from Cloud");
         reference = FirebaseDatabase.DefaultInstance.RootReference;
 
-        FirebaseDatabase.DefaultInstance.GetReference("users").Child(username).Child("data").GetValueAsync().ContinueWith(task =>
+        FirebaseDatabase.DefaultInstance.GetReference("users").Child(username).GetValueAsync().ContinueWith(task =>
         {
             if (task.IsFaulted) {
                 Debug.Log("Error in getting data");
             }
             else if (task.IsCompleted) {
                 DataSnapshot snapshot = task.Result;
-                data = snapshot.Value.ToString();
                 Debug.Log("Data: " + data);
-                if (!data.Equals(localData)) {
+                if (!snapshot.Exists) {
+                    Debug.Log("cloud save no exist");
+                    saveLoadManager.continueSave = true;
+                    saveLoadManager.data = localData;
+                }
+                else if (!data.Equals(localData)) {
+                    data = snapshot.Child("data").Value.ToString();
                     saveLoadManager.continueSave = true;
                     saveLoadManager.data = data;
                 }
                 else {
+                    data = snapshot.Child("data").Value.ToString();
                     saveLoadManager.continueSave = true;
                     saveLoadManager.data = localData;
                 }
