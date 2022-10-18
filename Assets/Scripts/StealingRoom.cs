@@ -44,6 +44,7 @@ public class StealingRoom : MonoBehaviour {
         startButton.SetActive(true);
         slider.SetActive(false);
         this.roomTitle = "Room not busy";
+        // somehow figure out how much resources to give people @michael help pls
     }
 
     // Update is called once per frame
@@ -81,13 +82,13 @@ public class StealingRoom : MonoBehaviour {
 
     public void updateStealTimerLength() {
         if (this.timeLength > 0) {
-            this.timeLength = this.timeLength - Time.deltaTime;
-            slider.SetActive(true);
-            percentDone = (initialLength-timeLength)/initialLength * 100;
+            this.timeLength -= (baseTimeReduction * (1 + roomBoost.boostAmount));
+            this.percentDone = ((float)this.timeLength / (float)initialLength) * 100;
 
-        } else {
+            slider.GetComponent<Slider>().value = percentDone;
+        }
+        if (this.timeLength <= 0) {
             setTimer();
-            this.stealing = false;
             collectButton.SetActive(true);
 
             CancelInvoke("updateStealTimerLength");
