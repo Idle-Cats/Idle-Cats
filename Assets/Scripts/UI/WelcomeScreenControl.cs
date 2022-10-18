@@ -13,6 +13,8 @@ public class WelcomeScreenControl : MonoBehaviour
     public CloudSaveData cloud;
     public SaveLoadManager saveLoadManager;
 
+    public AuthenicateUser authenicateUser;
+
     void Start() {
     }
 
@@ -42,5 +44,13 @@ public class WelcomeScreenControl : MonoBehaviour
         panel.SetActive(false);
 
         gameObject.GetComponent<BuildRoom>().gameStarted = true;
+    }
+
+    public void CreateUser(TMP_InputField email, TMP_InputField password) {
+        authenicateUser.CreateUser(email, password);
+    }
+
+    public void LoadUser(TMP_InputField email, TMP_InputField password) {
+        authenicateUser.LoadUser(email, password);
     }
 }
