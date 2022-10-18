@@ -39,7 +39,7 @@ public class SaveLoadManager : MonoBehaviour
         cloudSave.SetGameProgression(gameObject.GetComponent<GameProgression>());
         cloudSave.CheckConnection();
 
-        lastSavedInternet = PlayerPrefs.GetInt("Last Saved Via Internet");
+        lastSavedInternet = PlayerPrefs.GetInt("Last Saved Via Internet", 1);
 
         Load();
 
@@ -69,6 +69,7 @@ public class SaveLoadManager : MonoBehaviour
     }
 
     public void LocalSaveButtonPressed() {
+        Debug.Log("test");
         loadSavePanel.SetActive(false);
         LoadFromData(localData);
     }
@@ -79,12 +80,12 @@ public class SaveLoadManager : MonoBehaviour
     }
 
     //disable this for offline testing purposes
-    //private void OnApplicationPause(bool pause)
-    //{
-    //    if (user.username.Length > 0) {
-    //        Save();
-    //    }
-    //}
+    private void OnApplicationPause(bool pause)
+    {
+        if (user.username.Length > 0) {
+            Save();
+        }
+    }
 
     private void OnApplicationQuit()
     {
