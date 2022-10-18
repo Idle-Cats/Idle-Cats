@@ -211,7 +211,7 @@ public class SaveLoadManager : MonoBehaviour
         gameObject.GetComponent<CatGameFlags>().milestone10 = infomation.milestone10;
         gameObject.GetComponent<CatGameFlags>().milestone11 = infomation.milestone11;
         gameObject.GetComponent<CatGameFlags>().milestone12 = infomation.milestone12;
-        gameObject.GetComponent<CatGameFlags>().milestone13 = infomation.milestone13;
+        gameObject.GetComponent<CatGameFlags>().artifactTutorial = infomation.artifactTutorial;
 
         //materials
         user.catPower = infomation.catPower;
