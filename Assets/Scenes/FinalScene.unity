@@ -12409,6 +12409,7 @@ MonoBehaviour:
   testRoom: {fileID: 2205992875595995088, guid: 8f256201cdc1d494486d9f303bdb7c5c, type: 3}
   resourceRoom: {fileID: 7441569948784259099, guid: 8ba7e736655a6f44392b4fa944af426c, type: 3}
   artifactRoom: {fileID: 8759403740819747372, guid: 4444b574970b11a4ba344730dd9051a9, type: 3}
+  excavationRoom: {fileID: 2205992875595995088, guid: 084e58833c7ba8942bb5d663d5a58523, type: 3}
   roomCount: 0
   roomHeight: 0
   catTest: {fileID: 207835099897388151, guid: 4c9c59e864f4737478c105d285d4dd16, type: 3}
@@ -12420,6 +12421,7 @@ MonoBehaviour:
   mineralImage: {fileID: 21300000, guid: df5579aafeb734d5291db3257fbc9066, type: 3}
   catPowerImage: {fileID: 21300000, guid: e2fcd9aa80219448aa719ee79ba59866, type: 3}
   foodImage: {fileID: 21300000, guid: 8b4496904c7a74fc5b080d1144756de2, type: 3}
+  gameStarted: 0
 --- !u!114 &1564675674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12499,6 +12501,7 @@ MonoBehaviour:
   catPower: 0
   food: 0
   minerals: 0
+  roomDepth: 0
   usernameObject: {fileID: 244454371}
 --- !u!114 &1564675679
 MonoBehaviour:
@@ -12570,6 +12573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea11d620e8cbb514ab31028d163b2952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  adController: {fileID: 0}
 --- !u!114 &1564675682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12588,6 +12592,10 @@ MonoBehaviour:
   explosion: {fileID: 6428595040268683790, guid: d3f3d3b0063e8404b9204f58b21f2661, type: 3}
   explosion_sound: {fileID: 1625070355}
   running_sound: {fileID: 1176882044}
+  partyCatRewardPanel: {fileID: 0}
+  partyCatRewardText: {fileID: 0}
+  testAdButton: {fileID: 0}
+  showAdButton: {fileID: 0}
 --- !u!114 &1564675683
 MonoBehaviour:
   m_ObjectHideFlags: 0

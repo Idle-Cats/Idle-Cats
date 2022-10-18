@@ -8,6 +8,7 @@ public class BuildRoom : MonoBehaviour
     public GameObject testRoom;
     public GameObject resourceRoom;
     public GameObject artifactRoom;
+    public GameObject excavationRoom;
 
     public int roomCount = 0;
 
@@ -26,6 +27,8 @@ public class BuildRoom : MonoBehaviour
     public Sprite catPowerImage;
     public Sprite foodImage;
 
+    public bool gameStarted = false;
+
     void Start()
     {
         roomHeight = testRoom.GetComponent<SpriteRenderer>().size.y;
@@ -35,6 +38,15 @@ public class BuildRoom : MonoBehaviour
     void Update()
     {
         canAffordPrices();
+
+        if (gameStarted) {
+            if (gameObject.GetComponent<User>().roomDepth == 0)
+            {
+                buildRoom(excavationRoom);
+            }
+
+            gameStarted = false;
+        }
     }
 
     public void buildRoom(GameObject roomToBuild)
