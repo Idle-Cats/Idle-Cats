@@ -98,7 +98,7 @@ public class RoomExcavation : MonoBehaviour
         //putting an empty room on top of this
         GameObject diggyDiggyHole = Instantiate(emptyRoom, gameObject.transform.position, Quaternion.identity);
         //putting current room down
-        gameObject.transform.position = new Vector2(0, -1.6f - (roomHeight * 1.5f * roomDepth));
+        gameObject.transform.position = new Vector2(0, -1.6f - (roomHeight * 1.5f * (roomDepth+1)));
 
         //so put in empty room, put in new this room below it, increment roomDepth
         roomDepth++; //TODO make this global
