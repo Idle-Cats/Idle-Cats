@@ -44,7 +44,7 @@ public class StealingRoom : MonoBehaviour {
         startButton.SetActive(true);
         slider.SetActive(false);
         this.roomTitle = "Room not busy";
-        // somehow figure out how much resources to give people @michael help pls
+        // somehow figure out how much resources to give people @michael help pls!!
     }
 
     // Update is called once per frame
