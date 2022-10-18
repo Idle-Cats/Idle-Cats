@@ -20,6 +20,8 @@ public class BuildRoom : MonoBehaviour
     [SerializeField]
     private List<GameObject> buildButtonList;
 
+    CatGameFlags flags;
+
     public Sprite mineralImage;
     public Sprite catPowerImage;
     public Sprite foodImage;
@@ -29,6 +31,7 @@ public class BuildRoom : MonoBehaviour
     void Start()
     {
         roomHeight = testRoom.GetComponent<SpriteRenderer>().size.y;
+        flags = gameObject.GetComponent<CatGameFlags>();
     }
 
     void Update()
@@ -156,6 +159,7 @@ public class BuildRoom : MonoBehaviour
     {
         foreach (GameObject room in buildButtonList)
         {
+            bool resourceRoom = false;
             if (room.gameObject.GetComponent<CanAfford>().roomType == RoomSaveInfo.RoomType.ResourceRoom)
             {
                 //Update price
@@ -178,6 +182,7 @@ public class BuildRoom : MonoBehaviour
                     
                 }
                 room.GetComponent<CanAfford>().currentPrice = currentPrice;
+                resourceRoom = true;
             }
 
             int price = room.GetComponent<CanAfford>().currentPrice;
@@ -192,7 +197,15 @@ public class BuildRoom : MonoBehaviour
                 {
                     if (gameObject.GetComponent<User>().minerals >= price)
                     {
-                        room.GetComponent<Button>().interactable = true;
+                        if(flags.resourcesCanBeClicked) {
+                            room.GetComponent<Button>().interactable = true;
+                        } else {
+                            if (!resourceRoom) {
+                                room.GetComponent<Button>().interactable = true;
+                            } else {
+                                room.GetComponent<Button>().interactable = false;
+                            }
+                        }
                     }
                     else
                     {
@@ -201,7 +214,7 @@ public class BuildRoom : MonoBehaviour
                 }
                 else if (priceType == CanAfford.PriceType.Catpower)
                 {
-                    if (gameObject.GetComponent<User>().catPower >= price)
+                    if (gameObject.GetComponent<User>().catPower >= price && flags.resourcesCanBeClicked)
                     {
                         room.GetComponent<Button>().interactable = true;
                     }
@@ -212,7 +225,7 @@ public class BuildRoom : MonoBehaviour
                 }
                 else if (priceType == CanAfford.PriceType.Food)
                 {
-                    if (gameObject.GetComponent<User>().food >= price)
+                    if (gameObject.GetComponent<User>().food >= price && flags.resourcesCanBeClicked)
                     {
                         room.GetComponent<Button>().interactable = true;
                     }

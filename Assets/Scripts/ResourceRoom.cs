@@ -113,4 +113,8 @@ public class ResourceRoom : MonoBehaviour
             addInvent((float)(Math.Floor(this.resourceGen * timeSpan.TotalSeconds)));
         }
     }
+
+    public float GetCurrentBoost() {
+        return resourceGen * (1 + roomBoost.boostAmount);
+    }
 }
