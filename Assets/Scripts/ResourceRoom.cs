@@ -13,13 +13,11 @@ public class ResourceRoom : MonoBehaviour
 
         //TODO: adding buttons to increase the room inventory, add buttons to increase the number of rooms.
         /*
-         * add a counter for amount of times room inventory has been upgraded.
-         * add a counter for amount of times room generation has been upgraded.
-         * button for inventupgrade, button for roomgen upgrade
+         * finish update method
+         * Add a UI button for inventupgrade, button for roomgen upgrade
          * Set text for each button based on roomtype, and what it currently costs.
-         * currentcost based on each counter
          * make each button clickable if can afford
-         * method for clicking button that will add to counter and remove resources.
+         * implement counters into calculations
         */
 
     public float roomInvent = 0;
@@ -56,9 +54,11 @@ public class ResourceRoom : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() //TODO change to once per second
+    void Update() 
     {
-        //adds a tick of resource gen to roomInvent 
+        // if canAffordUpgrade(true) set upgradeGenerationButton.isInteractable(true);
+        // if canAffordUpgrade(false) set upgradeInventButton.isInteractable(true);
+        
     }
 
     //Takes in save data of a room, and initialised the room with it.
@@ -116,7 +116,7 @@ public class ResourceRoom : MonoBehaviour
     {
         if (roomInvent < roomCapacity)
         {
-            addInvent(resourceGen * (1 + roomBoost.boostAmount));
+            addInvent((resourceGen * (timesGenerationUpgraded + 1)) * (1 + roomBoost.boostAmount));
         }
 
         resourceCounter.GetComponent<TextMeshProUGUI>().SetText("Current Resources: " + roomInvent + "/" + roomCapacity);
@@ -154,11 +154,133 @@ public class ResourceRoom : MonoBehaviour
     //formula for increasing the generation upgrade cost - TODO, adjust this.
     public int generationUpgradeCost()
     {
-        int cost = (this.timesGenerationUpgraded+1) * (400);
+        int cost = (timesGenerationUpgraded + 1) * (400);
         return cost;
     }
+
+    //method for increasing the invent upgrade cost - TODO, adjust this
+
+        public int inventUpgradeCost()
+    {
+        int cost = (((timesInventUpgraded + 1) * (timesInventUpgraded+1)) * 1000);
+        return cost;
+    }
+
     //method for determining resource type of cost
-    //public ResourceType costType()
-    //{
-    //}
+    public ResourceType costResourceType()
+    {
+        if (resourceType == ResourceType.food)
+        {
+            return ResourceType.catpower;
+        }
+        else if (resourceType == ResourceType.minerals)
+        {
+            return ResourceType.food;
+        }
+        else
+        {
+            return ResourceType.minerals;
+        }
+    }
+
+    //method for determining if user can afford an upgrade
+    //takes in a bool to determine which button - true = generation, false = inventory
+    public bool canAffordUpgrade(bool generateButton)
+    {
+        ResourceType costType = costResourceType();
+
+        if (generateButton)
+        {
+            if (costType == ResourceType.catpower)
+            {
+                if (gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().catPower >= generationUpgradeCost())
+                {
+                    return true;
+                }
+                return false;
+            }
+            else if (costType == ResourceType.minerals)
+            {
+                if (gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().minerals >= generationUpgradeCost())
+                {
+                    return true;
+                }
+                return false;
+            }
+            else if (resourceType == ResourceType.food)
+            {
+                if (gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().food >= generationUpgradeCost())
+                {
+                    return true;
+                }
+                return false;
+            }
+            else return false;
+        }
+        else
+        {
+            if (costType == ResourceType.catpower)
+            {
+                if (gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().catPower >= inventUpgradeCost())
+                {
+                    return true;
+                }
+                return false;
+            }
+            else if (costType == ResourceType.minerals)
+            {
+                if (gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().minerals >= inventUpgradeCost())
+                {
+                    return true;
+                }
+                return false;
+            }
+            else if (resourceType == ResourceType.food)
+            {
+                if (gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().food >= inventUpgradeCost())
+                {
+                    return true;
+                }
+                return false;
+            }
+            else return false;
+        }
+    }
+
+    //method for if upgradegenerationbutton is pressed
+    public void upgradeGenerationButtonPress()
+    {
+        int cost = generationUpgradeCost();
+        ResourceType type = costResourceType();
+        removeResources(cost, type);
+        timesGenerationUpgraded++;
+    }
+
+    //method for if upgrade invent button is pressed
+    public void upgradeInventButtonPress()
+    {
+        int cost = generationUpgradeCost();
+        ResourceType type = costResourceType();
+        removeResources(cost, type);
+        timesInventUpgraded++;
+        roomCapacity = (1000 * (timesInventUpgraded + 1));
+    }
+
+    //method for removing resources from player
+    public void removeResources(int cost, ResourceType resource)
+    {
+        if (resource == ResourceType.catpower)
+        {
+            gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().catPower -= cost;
+
+        }
+        else if (resource == ResourceType.minerals)
+        {
+            gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().minerals -= cost;
+        }
+        else if (resource == ResourceType.food)
+        {
+            gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().food -= cost;
+        }
+    }
 }
