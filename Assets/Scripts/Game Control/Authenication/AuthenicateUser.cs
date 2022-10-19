@@ -7,6 +7,9 @@ using TMPro;
 
 public class AuthenicateUser : MonoBehaviour
 {
+    public WelcomeScreenControl welcomeScreenControl;
+    public User user;
+
     public void CreateUser(TMP_InputField email, TMP_InputField password) {
         FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task => {
             if (task.IsCanceled) {
@@ -22,6 +25,8 @@ public class AuthenicateUser : MonoBehaviour
             Firebase.Auth.FirebaseUser newUser = task.Result;
             Debug.LogFormat("Firebase user created successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
+            welcomeScreenControl.continueCreateUser = true;
+            user.userId = newUser.UserId;
         });
     }
 
@@ -39,6 +44,8 @@ public class AuthenicateUser : MonoBehaviour
             Firebase.Auth.FirebaseUser newUser = task.Result;
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
+            welcomeScreenControl.continueLoadUser = true;
+            user.userId = newUser.UserId;
         });
     }
 }

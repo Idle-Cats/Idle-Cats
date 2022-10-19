@@ -8,6 +8,7 @@ public class User : MonoBehaviour
     public int highScore;
 
     public string username;
+    public string userId;
 
     public int catPower = 0;
     public int food = 0;

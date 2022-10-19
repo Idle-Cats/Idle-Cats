@@ -33,6 +33,7 @@ public class SaveInfomation
 
     public int highScore;
     public string userName;
+    public string userId;
 
     public int firstLoad;
     public int milestone1;

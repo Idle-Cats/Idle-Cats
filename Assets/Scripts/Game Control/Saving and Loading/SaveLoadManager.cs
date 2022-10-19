@@ -129,8 +129,9 @@ public class SaveLoadManager : MonoBehaviour
         infomation.spawnedArtifacts = artifactSaveInfo.makeSaveInfo(gameObject.GetComponent<ArtifactsFound>().spawnedArtifacts, gameObject.GetComponent<ArtifactsFound>().artifactCount, gameObject.GetComponent<ArtifactsFound>().allArtifacts);
 
         infomation.timeSaved = DateTime.Now;
-        string username = gameObject.GetComponent<User>().username;
-        infomation.userName = username;
+        string userId = gameObject.GetComponent<User>().userId;
+        infomation.userId = userId;
+        infomation.userName = gameObject.GetComponent<User>().username;
         infomation.highScore = gameObject.GetComponent<User>().highScore;
 
         infomation.firstLoad = gameObject.GetComponent<CatGameFlags>().firstLoad;
@@ -156,7 +157,7 @@ public class SaveLoadManager : MonoBehaviour
 
         PlayerPrefs.SetString("Save Info", data);
         Debug.Log(data);
-        cloudSave.WriteNewUser(data, username);
+        cloudSave.WriteNewUser(data, userId);
 
         if (!isConnected) {
             PlayerPrefs.SetInt("Last Saved Via Internet", 0);
@@ -175,8 +176,8 @@ public class SaveLoadManager : MonoBehaviour
             localData = PlayerPrefs.GetString("Save Info");
             infomation = SaveHelper.Deserialise<SaveInfomation>(localData);
             Debug.Log(localData);
-            string username = infomation.userName;
-            cloudSave.LoadUser(username, localData);
+            string userId = infomation.userId;
+            cloudSave.LoadUser(userId, localData);
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
@@ -246,6 +247,7 @@ public class SaveLoadManager : MonoBehaviour
         string username = infomation.userName;
 
         gameObject.GetComponent<User>().username = username;
+        gameObject.GetComponent<User>().userId = infomation.userId;
         gameObject.GetComponent<User>().highScore = infomation.highScore;
 
         adController.timeSinceLastAd = infomation.triesSinceLastAd;

@@ -15,6 +15,15 @@ public class WelcomeScreenControl : MonoBehaviour
 
     public AuthenicateUser authenicateUser;
 
+    public bool continueCreateUser = false;
+    public bool continueLoadUser = false;
+
+    public TMP_InputField newUserEmail;
+    public TMP_InputField newUserPassword;
+
+    public TMP_InputField oldUserEmail;
+    public TMP_InputField oldUserPassword;
+
     void Start() {
     }
 
@@ -46,11 +55,46 @@ public class WelcomeScreenControl : MonoBehaviour
         gameObject.GetComponent<BuildRoom>().gameStarted = true;
     }
 
-    public void CreateUser(TMP_InputField email, TMP_InputField password) {
-        authenicateUser.CreateUser(email, password);
+    public void CreateUser() {
+        string name = input.text;
+        if (name.Length < 1) {
+            return;
+        }
+        user.username = name;
+        
+        if (saveLoadManager.isConnected) {
+            authenicateUser.CreateUser(newUserEmail, newUserPassword);
+        }
     }
 
-    public void LoadUser(TMP_InputField email, TMP_InputField password) {
-        authenicateUser.LoadUser(email, password);
+    public void LoadUser() {
+        if (saveLoadManager.isConnected) {
+            authenicateUser.LoadUser(oldUserEmail, oldUserPassword);
+        }
+    }
+
+    private void Update()
+    {
+        if (continueCreateUser) {
+            string name = input.text;
+            if (name.Length < 1) {
+                return;
+            }
+            user.username = name;
+
+            panel.SetActive(false);
+
+            gameObject.GetComponent<GameProgression>().cloudCheckWelcome = true;
+            gameObject.GetComponent<BuildRoom>().gameStarted = true;
+
+            continueCreateUser = false;
+        }
+        if (continueLoadUser) {
+            cloud.CheckProfile(user.userId);
+
+            panel.SetActive(false);
+
+            continueLoadUser = false;
+        }
     }
 }

@@ -40,14 +40,14 @@ public class BuildRoom : MonoBehaviour
     {
         canAffordPrices();
 
-        if (gameStarted) {
-            if (gameObject.GetComponent<User>().roomDepth == 0)
-            {
-                buildRoom(excavationRoom);
-            }
+        //if (gameStarted) {
+        //    if (gameObject.GetComponent<User>().roomDepth == 0)
+        //    {
+        //        buildRoom(excavationRoom);
+        //    }
 
-            gameStarted = false;
-        }
+        //    gameStarted = false;
+        //}
     }
 
     public void buildRoom(GameObject roomToBuild)

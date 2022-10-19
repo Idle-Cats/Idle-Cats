@@ -12506,7 +12506,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1564675686}
         m_TargetAssemblyTypeName: WelcomeScreenControl, Assembly-CSharp
-        m_MethodName: AssignName
+        m_MethodName: CreateUser
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15885,6 +15885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highScore: 0
   username: 
+  userId: 
   catPower: 0
   food: 0
   minerals: 0
@@ -15986,6 +15987,7 @@ MonoBehaviour:
     unlockedArtifactCount: 0
     highScore: 0
     userName: 
+    userId: 
     firstLoad: 0
     milestone1: 0
     milestone2: 0
@@ -16088,6 +16090,12 @@ MonoBehaviour:
   cloud: {fileID: 1564675690}
   saveLoadManager: {fileID: 1564675681}
   authenicateUser: {fileID: 1564675691}
+  continueCreateUser: 0
+  continueLoadUser: 0
+  newUserEmail: {fileID: 1369625209}
+  newUserPassword: {fileID: 671853218}
+  oldUserEmail: {fileID: 1497765170}
+  oldUserPassword: {fileID: 722075088}
 --- !u!114 &1564675687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16161,8 +16169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb3c759b1849b042b6c8784da2a70ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  email: {fileID: 1369625209}
-  password: {fileID: 671853218}
+  welcomeScreenControl: {fileID: 1564675686}
+  user: {fileID: 1564675678}
 --- !u!1 &1593792363
 GameObject:
   m_ObjectHideFlags: 0
@@ -17198,7 +17206,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1564675686}
         m_TargetAssemblyTypeName: WelcomeScreenControl, Assembly-CSharp
-        m_MethodName: AssignName
+        m_MethodName: LoadUser
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
