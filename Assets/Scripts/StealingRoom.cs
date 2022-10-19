@@ -39,12 +39,21 @@ public class StealingRoom : MonoBehaviour {
 
     public void clickCollect() {
         //Collect artifact here
-        Debug.Log("Click collect");
         collectButton.SetActive(false);
         startButton.SetActive(true);
         slider.SetActive(false);
         this.roomTitle = "Room not busy";
-        // somehow figure out how much resources to give people @michael help pls!!
+        
+        int food = genFood();
+        int mine = genMinerals();
+        int power = genPower();
+
+        Debug.Log("Food: " + food + " Minerals: " + mine + " Power: " + power);
+
+        // add the food, minerals, and power to the user
+        gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().catPower += power;
+        gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().minerals += mine;
+        gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().food += food;
     }
 
     // Update is called once per frame
@@ -77,7 +86,7 @@ public class StealingRoom : MonoBehaviour {
         Debug.Log("Steal Starting");
         startButton.SetActive(false);
         slider.SetActive(true);
-        setTimer(10);
+        setTimer(120);
     }
 
     public void updateStealTimerLength() {
@@ -130,5 +139,29 @@ public class StealingRoom : MonoBehaviour {
         timeLength = timerRoomSave.timeLength;
         initialLength = timerRoomSave.initialLength;
         stealing = timerRoomSave.researching;
+    }
+
+    public int genMinerals() {
+        int currentMinerals = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().minerals;
+        // generate a number between 20% and 30% of the current minerals
+        int random = UnityEngine.Random.Range(20, 30);
+        int minerals = (int)((double)currentMinerals * ((double)random / 100));
+        return minerals;
+    }
+
+    public int genPower() {
+        int currentPower = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().catPower;
+        // generate a number between 20% and 30% of the current power
+        int random = UnityEngine.Random.Range(20, 30);
+        int catPower = (int)((double)currentPower * ((double)random / 100));
+        return catPower;
+    }
+
+    public int genFood() {
+        int currentFood = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().food;
+        // generate a number between 20% and 30% of the current food
+        int random = UnityEngine.Random.Range(20, 30);
+        int food = (int)((double)currentFood * ((double)random / 100.0d));
+        return food;
     }
 }
