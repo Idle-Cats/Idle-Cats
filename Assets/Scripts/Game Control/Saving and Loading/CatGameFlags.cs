@@ -21,7 +21,10 @@ public class CatGameFlags : MonoBehaviour
     public int milestone10 = 0;
     public int milestone11 = 0;
     public int milestone12 = 0;
-    public int milestone13 = 0;
+
+    public int artifactTutorial = 0;
+
+    public bool resourcesCanBeClicked = true;
 
     void Start() {
         //Load();
@@ -37,7 +40,6 @@ public class CatGameFlags : MonoBehaviour
     //}
 
     void Load() {
-        Debug.Log("loaded");
         firstLoad = PlayerPrefs.GetInt("CatGameFlags0");
         milestone1 = PlayerPrefs.GetInt("CatGameFlags1");
         milestone2 = PlayerPrefs.GetInt("CatGameFlags2");
@@ -51,11 +53,11 @@ public class CatGameFlags : MonoBehaviour
         milestone10 = PlayerPrefs.GetInt("CatGameFlags10");
         milestone11 = PlayerPrefs.GetInt("CatGameFlag11");
         milestone12 = PlayerPrefs.GetInt("CatGameFlags12");
-        milestone13 = PlayerPrefs.GetInt("CatGameFlags12");
+        milestone12 = PlayerPrefs.GetInt("CatGameFlags12");
+        artifactTutorial = PlayerPrefs.GetInt("ArtfiactTutorialFlag");
     }
 
     void Save() {
-        Debug.Log("saved");
         PlayerPrefs.SetInt("CatGameFlags0", firstLoad);
         PlayerPrefs.SetInt("CatGameFlags1", milestone1);
         PlayerPrefs.SetInt("CatGameFlags2", milestone2);
@@ -69,7 +71,6 @@ public class CatGameFlags : MonoBehaviour
         PlayerPrefs.SetInt("CatGameFlags10", milestone10);
         PlayerPrefs.SetInt("CatGameFlag11", milestone11);
         PlayerPrefs.SetInt("CatGameFlags12", milestone12);
-        PlayerPrefs.SetInt("CatGameFlags12", milestone13);
-        PlayerPrefs.Save();
+        PlayerPrefs.SetInt("ArtfiactTutorialFlag", artifactTutorial);
     }
 }

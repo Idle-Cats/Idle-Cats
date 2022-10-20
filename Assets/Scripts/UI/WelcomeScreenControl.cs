@@ -25,5 +25,7 @@ public class WelcomeScreenControl : MonoBehaviour
         user.username = name;
 
         panel.SetActive(false);
+
+        gameObject.GetComponent<BuildRoom>().gameStarted = true;
     }
 }
