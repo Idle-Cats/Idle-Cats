@@ -83,10 +83,19 @@ public class StealingRoom : MonoBehaviour {
     }
 
     public void startSteal() {
-        Debug.Log("Steal Starting");
-        startButton.SetActive(false);
-        slider.SetActive(true);
-        setTimer(120);
+
+        // check if room contains a cat
+        if (gameObject.GetComponent<RoomInformation>().containsCat) {
+            Debug.Log("Steal Starting");
+            startButton.SetActive(false);
+            slider.SetActive(true);
+            setTimer(10);
+            
+        } else {
+            // make a pop up error message
+            Debug.Log("No cat in room");
+            return;
+        }
     }
 
     public void updateStealTimerLength() {

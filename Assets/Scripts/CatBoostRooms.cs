@@ -40,9 +40,6 @@ public class CatBoostRooms : MonoBehaviour
         // add the modifier to the resource room
         resourceRoom.roomBoost.boostAmount += Cat.GetSBoost(cat.catType);
         Debug.Log("Cat boost applied " + Cat.GetSBoost(cat.catType));
-
-        // set boolean in RoomInformation to true linking the cat to the room
-        roomInfo.containsCat = true;
     }
 
     public void RemoveCatBoost() {
@@ -72,6 +69,5 @@ public class CatBoostRooms : MonoBehaviour
         // add the modifier to the resource room
         resourceRoom.roomBoost.boostAmount -= Cat.GetSBoost(cat.catType);
         Debug.Log("Cat boost Removed " + Cat.GetSBoost(cat.catType));
-        roomInfo.containsCat = false;
     }
 }
