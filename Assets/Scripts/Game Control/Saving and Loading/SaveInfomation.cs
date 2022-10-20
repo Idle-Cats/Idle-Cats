@@ -46,5 +46,7 @@ public class SaveInfomation
     public int milestone10;
     public int milestone11;
     public int milestone12;
-    public int milestone13;
+    public int artifactTutorial;
+  
+    public int triesSinceLastAd;
 }

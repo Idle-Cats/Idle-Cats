@@ -149,6 +149,7 @@ MonoBehaviour:
   roomNum: 0
   roomType: 0
   gameControl: {fileID: 0}
+  containsCat: 0
 --- !u!114 &1425116050999907019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +175,7 @@ GameObject:
   - component: {fileID: 1491779706123757121}
   - component: {fileID: 5407497059058137109}
   m_Layer: 5
-  m_Name: ResourceCount
+  m_Name: CurrentCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,8 +198,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -391.43637, y: -118.33165}
-  m_SizeDelta: {x: 2.7543, y: 1.2394}
+  m_AnchoredPosition: {x: -391.1835, y: -118.14198}
+  m_SizeDelta: {x: 3.2601, y: 0.8601}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1491779706123757121
 CanvasRenderer:
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Resource Count:'
+  m_text: 'Cost to Excavate:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
