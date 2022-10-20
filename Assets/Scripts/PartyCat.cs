@@ -46,7 +46,7 @@ public class PartyCat : MonoBehaviour
     Vector2 targetPosition;
 
     //stores the reward the user gets upon clicking the cat
-    float reward;
+    int reward;
     int rewardType; //0 for Coins, 1 for Minerals, 2 for Fodd
     bool isActive = false;
 
@@ -142,7 +142,7 @@ public class PartyCat : MonoBehaviour
         currentTime = 0;
         SetRandomTime();
         endTime = Random.Range(0.0f, 10.0f) + 10.0f;
-        reward = Random.Range(0.0f, 190.0f) + 50.0f;
+        reward = 0;
         rewardType = Random.Range(0, 3);
         speed = 10;
         cat.transform.position = getRandomPosition();
@@ -177,15 +177,18 @@ public class PartyCat : MonoBehaviour
 
         switch (rewardType) {
             case 0:
-                gameObject.GetComponent<User>().catPower += (int)reward;
+                reward = genPower();
+                gameObject.GetComponent<User>().catPower += reward;
                 rewardTypeText = "Cat Power";
                 break;
             case 1:
-                gameObject.GetComponent<User>().minerals += (int)reward;
+                reward = genMinerals();
+                gameObject.GetComponent<User>().minerals += reward;
                 rewardTypeText = "Minerals";
                 break;
             case 2:
-                gameObject.GetComponent<User>().food += (int)reward;
+                reward = genFood();
+                gameObject.GetComponent<User>().food += reward;
                 rewardTypeText = "Food";
                 break;
         }
@@ -193,7 +196,7 @@ public class PartyCat : MonoBehaviour
         //set party cat panel active and set its text so it shows how many resources were earned
         partyCatRewardPanel.SetActive(true);
 
-        string text = "You earned " + Mathf.FloorToInt(reward) + " " + rewardTypeText;
+        string text = "You earned " + reward + " " + rewardTypeText;
         
         //check if it should show the ad button
         if (testAdButton.checkForShowAd(reward, rewardType)) {
@@ -202,6 +205,42 @@ public class PartyCat : MonoBehaviour
         }
 
         partyCatRewardText.SetText(text);
+    }
+
+    public int genMinerals() {
+        int currentMinerals = gameObject.GetComponent<User>().minerals;
+        
+        // generate a number between 5% and 10% of the current minerals
+        int random = UnityEngine.Random.Range(5, 10);
+        int minerals = (int)((double)currentMinerals * ((double)random / 100));
+        if (minerals < 100) {
+            minerals = 100;
+        }
+        return minerals;
+    }
+
+    public int genPower() {
+        int currentPower = gameObject.GetComponent<User>().catPower;
+
+        // generate a number between 5% and 10% of the current power
+        int random = UnityEngine.Random.Range(5, 10);
+        int catPower = (int)((double)currentPower * ((double)random / 100));
+        if (catPower < 100) {
+            catPower = 100;
+        }
+        return catPower;
+    }
+
+    public int genFood() {
+        int currentFood = gameObject.GetComponent<User>().food;
+
+        // generate a number between 5% and 10% of the current food
+        int random = UnityEngine.Random.Range(5, 10);
+        int food = (int)((double)currentFood * ((double)random / 100.0d));
+        if (food < 100) {
+            food = 100;
+        }
+        return food;
     }
 
     //flips the cat so it is pointing the direction it is running
