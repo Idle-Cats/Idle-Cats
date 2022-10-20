@@ -1237,7 +1237,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1564675673}
         m_TargetAssemblyTypeName: BuildRoom, Assembly-CSharp
-        m_MethodName: buildRoom
+        m_MethodName: buildRoomInEmptyRoom
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7441569948784259099, guid: 8ba7e736655a6f44392b4fa944af426c, type: 3}
@@ -4829,7 +4829,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1564675673}
         m_TargetAssemblyTypeName: BuildRoom, Assembly-CSharp
-        m_MethodName: buildRoom
+        m_MethodName: buildRoomInEmptyRoom
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8759403740819747372, guid: 4444b574970b11a4ba344730dd9051a9, type: 3}
@@ -8921,7 +8921,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1564675673}
         m_TargetAssemblyTypeName: BuildRoom, Assembly-CSharp
-        m_MethodName: buildRoom
+        m_MethodName: buildRoomInEmptyRoom
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 6310448006297795748, guid: 14694c5de1f9868469055f5e80d2f9e7, type: 3}
@@ -12528,7 +12528,8 @@ MonoBehaviour:
   milestone10: 0
   milestone11: 0
   milestone12: 0
-  milestone13: 0
+  artifactTutorial: 0
+  resourcesCanBeClicked: 1
 --- !u!114 &1564675680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12557,10 +12558,15 @@ MonoBehaviour:
   milestone10: {fileID: 550176493}
   milestone11: {fileID: 2052778439}
   milestone12: {fileID: 831189539}
-  milestone13: {fileID: 1695068334}
   tutorial1: {fileID: 53851395}
   tutorial2: {fileID: 620448694}
   tutorial2_1: {fileID: 2066628526}
+  milestone1_3: {fileID: 0}
+  tutorial3: {fileID: 0}
+  tutorial4: {fileID: 0}
+  tutorial5: {fileID: 0}
+  addRoomButton: {fileID: 0}
+  isInTutorial: 0
 --- !u!114 &1564675681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15870,7 +15876,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1564675673}
         m_TargetAssemblyTypeName: BuildRoom, Assembly-CSharp
-        m_MethodName: buildRoom
+        m_MethodName: buildRoomInEmptyRoom
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7853850442249050976, guid: f9c2d833f481e0b468a907534cfad8f3, type: 3}
