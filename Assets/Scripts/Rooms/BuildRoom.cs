@@ -8,6 +8,8 @@ public class BuildRoom : MonoBehaviour
     public GameObject testRoom;
     public GameObject resourceRoom;
     public GameObject artifactRoom;
+    public GameObject StealingRoom;
+    public GameObject excavationRoom;
 
     public int roomCount = 0;
 
@@ -20,24 +22,41 @@ public class BuildRoom : MonoBehaviour
     [SerializeField]
     private List<GameObject> buildButtonList;
 
+    CatGameFlags flags;
+
     public Sprite mineralImage;
     public Sprite catPowerImage;
     public Sprite foodImage;
 
+    public bool gameStarted = false;
+
+    public Queue<GameObject> emptyRooms = new Queue<GameObject>();
+
+
     void Start()
     {
         roomHeight = testRoom.GetComponent<SpriteRenderer>().size.y;
+        flags = gameObject.GetComponent<CatGameFlags>();
     }
 
     void Update()
     {
         canAffordPrices();
+
+        if (gameStarted) {
+            if (gameObject.GetComponent<User>().roomDepth == 0)
+            {
+                buildExcavationRoom(excavationRoom);
+            }
+
+            gameStarted = false;
+        }
     }
 
-    public void buildRoom(GameObject roomToBuild)
+    public void buildExcavationRoom(GameObject roomToBuild)
     {
         //Generates a room
-        GameObject room = Instantiate(roomToBuild, gameObject.GetComponent<BuildingNodePlacer>().node.transform.position, Quaternion.identity);
+        GameObject room = Instantiate(roomToBuild, new Vector2(0, -1.6f), Quaternion.identity);
         //room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
         //Sets the rooms room num to the room count for the cats to be loaded in
         room.GetComponent<RoomInformation>().roomNum = roomCount;
@@ -68,11 +87,52 @@ public class BuildRoom : MonoBehaviour
             }
             rooms[roomCount] = roomInfo;
         }
+    }
+
+    public void buildRoomInEmptyRoom(GameObject roomToBuild)
+    {
+        //Generates a room
+        GameObject emptyRoom = emptyRooms.Dequeue();
+        GameObject room = Instantiate(roomToBuild, emptyRoom.transform.position, Quaternion.identity);
+
+        //Be careful with this function it is scary
+        Destroy(emptyRoom);
+
+        //room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+        //Sets the rooms room num to the room count for the cats to be loaded in
+        room.GetComponent<RoomInformation>().roomNum = roomCount;
+        room.GetComponent<RoomInformation>().gameControl = gameObject;
+
+        Vector3 pos = room.transform.position;
+        //gets the info for the room, this is for saving and loading purposes as you cant save gameObjects
+        if (room.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ResourceRoom)
+        {
+            RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInformation>().roomType, room.GetComponent<ResourceRoom>().MakeCopy());
+            roomInfo.SetRoom(room);
+
+            //Holds an array of room info
+            Debug.Log("Room Length: " + rooms);
+            if (roomCount == rooms.Length - 1)
+            {
+                ExpandRooms();
+            }
+            rooms[roomCount] = roomInfo;
+        }
+        else if (room.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom)
+        {
+            RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInformation>().roomType, room.GetComponent<ArtifactRoom>().MakeCopy());
+
+            roomInfo.SetRoom(room);
+
+            //Holds an array of room info
+            if (roomCount == rooms.Length - 1)
+            {
+                ExpandRooms();
+            }
+            rooms[roomCount] = roomInfo;
+        }
 
         roomCount++;
-
-        gameObject.GetComponent<BuildingNodePlacer>().placeNode();
-
     }
 
     private void ExpandRooms()
@@ -153,6 +213,7 @@ public class BuildRoom : MonoBehaviour
     {
         foreach (GameObject room in buildButtonList)
         {
+            bool resourceRoom = false;
             if (room.gameObject.GetComponent<CanAfford>().roomType == RoomSaveInfo.RoomType.ResourceRoom)
             {
                 //Update price
@@ -175,6 +236,7 @@ public class BuildRoom : MonoBehaviour
                     
                 }
                 room.GetComponent<CanAfford>().currentPrice = currentPrice;
+                resourceRoom = true;
             }
 
             int price = room.GetComponent<CanAfford>().currentPrice;
@@ -189,7 +251,15 @@ public class BuildRoom : MonoBehaviour
                 {
                     if (gameObject.GetComponent<User>().minerals >= price)
                     {
-                        room.GetComponent<Button>().interactable = true;
+                        if(flags.resourcesCanBeClicked) {
+                            room.GetComponent<Button>().interactable = true;
+                        } else {
+                            if (!resourceRoom) {
+                                room.GetComponent<Button>().interactable = true;
+                            } else {
+                                room.GetComponent<Button>().interactable = false;
+                            }
+                        }
                     }
                     else
                     {
@@ -198,7 +268,7 @@ public class BuildRoom : MonoBehaviour
                 }
                 else if (priceType == CanAfford.PriceType.Catpower)
                 {
-                    if (gameObject.GetComponent<User>().catPower >= price)
+                    if (gameObject.GetComponent<User>().catPower >= price && flags.resourcesCanBeClicked)
                     {
                         room.GetComponent<Button>().interactable = true;
                     }
@@ -209,7 +279,7 @@ public class BuildRoom : MonoBehaviour
                 }
                 else if (priceType == CanAfford.PriceType.Food)
                 {
-                    if (gameObject.GetComponent<User>().food >= price)
+                    if (gameObject.GetComponent<User>().food >= price && flags.resourcesCanBeClicked)
                     {
                         room.GetComponent<Button>().interactable = true;
                     }

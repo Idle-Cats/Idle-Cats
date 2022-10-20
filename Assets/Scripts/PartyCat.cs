@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static User;
+using TMPro;
 
 public class PartyCat : MonoBehaviour
 {
@@ -52,6 +53,12 @@ public class PartyCat : MonoBehaviour
     //boolean to track the state of the cat
     bool isRunningAway = false;
     bool facingRight = false;
+
+    public GameObject partyCatRewardPanel;
+    public TextMeshProUGUI partyCatRewardText;
+
+    public TestAdButton testAdButton;
+    public GameObject showAdButton;
 
     //when the game opens the time is set to 0
     void Start() 
@@ -165,18 +172,35 @@ public class PartyCat : MonoBehaviour
         Instantiate(explosion, camera.ScreenToWorldPoint(cat.transform.position), Quaternion.identity);
         DeSpawn();
 
-        switch(rewardType) {
-            case 0:
+        string rewardTypeText = "";
 
+        switch (rewardType) {
+            case 0:
                 gameObject.GetComponent<User>().catPower += genPower();
+                rewardTypeText = "Cat Power";
                 break;
             case 1:
                 gameObject.GetComponent<User>().minerals += genMinerals();
+                rewardTypeText = "Minerals";
                 break;
             case 2:
                 gameObject.GetComponent<User>().food += genFood();
+                rewardTypeText = "Food";
                 break;
         }
+
+        //set party cat panel active and set its text so it shows how many resources were earned
+        partyCatRewardPanel.SetActive(true);
+
+        string text = "You earned " + Mathf.FloorToInt(reward) + " " + rewardTypeText;
+        
+        //check if it should show the ad button
+        if (testAdButton.checkForShowAd(reward, rewardType)) {
+            text += "\n\nWould you like to watch an Ad to double your rewards?";
+            showAdButton.SetActive(true);
+        }
+
+        partyCatRewardText.SetText(text);
     }
 
     public int genMinerals() {
@@ -225,5 +249,9 @@ public class PartyCat : MonoBehaviour
             cat.transform.RotateAround(cat.transform.position, cat.transform.up, 180f);
             facingRight = true;
         }
+    }
+
+    public void HideRewardPanel() {
+        partyCatRewardPanel.SetActive(false);
     }
 }

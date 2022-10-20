@@ -25,8 +25,8 @@ public class Cat : MonoBehaviour {
     public void setCatType(CatType catType) {
         this.catType = catType;
         GetComponent<SpriteRenderer>().color = getCatColor(catType);
-        // set cat size width = 160 and height = 30 using rect transform
-        this.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        // set cat size width = 130 and height = 30 using rect transform
+        this.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
     }
 
     private Color getCatColor(CatType type) {
@@ -92,7 +92,6 @@ public class Cat : MonoBehaviour {
                 return 10;
             case CatType.WELCOME:
             case CatType.PARTY:
-            case CatType.HELP:
                 return 5;
             default:
                 return 0;
@@ -116,7 +115,6 @@ public class Cat : MonoBehaviour {
                 return 20;
             case CatType.WELCOME:
             case CatType.PARTY:
-            case CatType.HELP:
                 return 10;
             default:
                 return 0;
@@ -138,5 +136,4 @@ public class Cat : MonoBehaviour {
         RAINBOW, //milestone10
         WELCOME, //milestone11
         PARTY, //milestone12
-        HELP //mileston13
     }
