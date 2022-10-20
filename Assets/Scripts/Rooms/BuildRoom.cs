@@ -30,6 +30,9 @@ public class BuildRoom : MonoBehaviour
     public BuildingNodePlacer buildingNodePlacer;
     public bool gameStarted = false;
 
+    public Queue<GameObject> emptyRooms = new Queue<GameObject>();
+
+
     void Start()
     {
         roomHeight = testRoom.GetComponent<SpriteRenderer>().size.y;
@@ -40,20 +43,20 @@ public class BuildRoom : MonoBehaviour
     {
         canAffordPrices();
 
-        //if (gameStarted) {
-        //    if (gameObject.GetComponent<User>().roomDepth == 0)
-        //    {
-        //        buildRoom(excavationRoom);
-        //    }
+        if (gameStarted) {
+            if (gameObject.GetComponent<User>().roomDepth == 0)
+            {
+                buildExcavationRoom(excavationRoom);
+            }
 
-        //    gameStarted = false;
-        //}
+            gameStarted = false;
+        }
     }
 
-    public void buildRoom(GameObject roomToBuild)
+    public void buildExcavationRoom(GameObject roomToBuild)
     {
         //Generates a room
-        GameObject room = Instantiate(roomToBuild, gameObject.GetComponent<BuildingNodePlacer>().node.transform.position, Quaternion.identity);
+        GameObject room = Instantiate(roomToBuild, new Vector2(0, -1.6f), Quaternion.identity);
         //room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
         //Sets the rooms room num to the room count for the cats to be loaded in
         room.GetComponent<RoomInformation>().roomNum = roomCount;
@@ -84,11 +87,52 @@ public class BuildRoom : MonoBehaviour
             }
             rooms[roomCount] = roomInfo;
         }
+    }
+
+    public void buildRoomInEmptyRoom(GameObject roomToBuild)
+    {
+        //Generates a room
+        GameObject emptyRoom = emptyRooms.Dequeue();
+        GameObject room = Instantiate(roomToBuild, emptyRoom.transform.position, Quaternion.identity);
+
+        //Be careful with this function it is scary
+        Destroy(emptyRoom);
+
+        //room.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+        //Sets the rooms room num to the room count for the cats to be loaded in
+        room.GetComponent<RoomInformation>().roomNum = roomCount;
+        room.GetComponent<RoomInformation>().gameControl = gameObject;
+
+        Vector3 pos = room.transform.position;
+        //gets the info for the room, this is for saving and loading purposes as you cant save gameObjects
+        if (room.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ResourceRoom)
+        {
+            RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInformation>().roomType, room.GetComponent<ResourceRoom>().MakeCopy());
+            roomInfo.SetRoom(room);
+
+            //Holds an array of room info
+            Debug.Log("Room Length: " + rooms);
+            if (roomCount == rooms.Length - 1)
+            {
+                ExpandRooms();
+            }
+            rooms[roomCount] = roomInfo;
+        }
+        else if (room.GetComponent<RoomInformation>().roomType == RoomSaveInfo.RoomType.ArtifactRoom)
+        {
+            RoomSaveInfo roomInfo = new RoomSaveInfo(pos, room.GetComponent<RoomInformation>().roomType, room.GetComponent<ArtifactRoom>().MakeCopy());
+
+            roomInfo.SetRoom(room);
+
+            //Holds an array of room info
+            if (roomCount == rooms.Length - 1)
+            {
+                ExpandRooms();
+            }
+            rooms[roomCount] = roomInfo;
+        }
 
         roomCount++;
-
-        gameObject.GetComponent<BuildingNodePlacer>().placeNode();
-
     }
 
     private void ExpandRooms()
