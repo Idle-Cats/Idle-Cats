@@ -46,7 +46,7 @@ public class PartyCat : MonoBehaviour
     Vector2 targetPosition;
 
     //stores the reward the user gets upon clicking the cat
-    float reward;
+    int reward;
     int rewardType; //0 for Coins, 1 for Minerals, 2 for Fodd
     bool isActive = false;
 
@@ -142,6 +142,7 @@ public class PartyCat : MonoBehaviour
         currentTime = 0;
         SetRandomTime();
         endTime = Random.Range(0.0f, 10.0f) + 10.0f;
+        reward = 0;
         rewardType = Random.Range(0, 3);
         speed = 10;
         cat.transform.position = getRandomPosition();
@@ -176,15 +177,18 @@ public class PartyCat : MonoBehaviour
 
         switch (rewardType) {
             case 0:
-                gameObject.GetComponent<User>().catPower += genPower();
+                reward = genPower();
+                gameObject.GetComponent<User>().catPower += reward;
                 rewardTypeText = "Cat Power";
                 break;
             case 1:
-                gameObject.GetComponent<User>().minerals += genMinerals();
+                reward = genMinerals();
+                gameObject.GetComponent<User>().minerals += reward;
                 rewardTypeText = "Minerals";
                 break;
             case 2:
-                gameObject.GetComponent<User>().food += genFood();
+                reward = genFood();
+                gameObject.GetComponent<User>().food += reward;
                 rewardTypeText = "Food";
                 break;
         }
@@ -192,7 +196,7 @@ public class PartyCat : MonoBehaviour
         //set party cat panel active and set its text so it shows how many resources were earned
         partyCatRewardPanel.SetActive(true);
 
-        string text = "You earned " + Mathf.FloorToInt(reward) + " " + rewardTypeText;
+        string text = "You earned " + reward + " " + rewardTypeText;
         
         //check if it should show the ad button
         if (testAdButton.checkForShowAd(reward, rewardType)) {
