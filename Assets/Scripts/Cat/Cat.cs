@@ -92,7 +92,6 @@ public class Cat : MonoBehaviour {
                 return 10;
             case CatType.WELCOME:
             case CatType.PARTY:
-            case CatType.HELP:
                 return 5;
             default:
                 return 0;
@@ -116,7 +115,6 @@ public class Cat : MonoBehaviour {
                 return 20;
             case CatType.WELCOME:
             case CatType.PARTY:
-            case CatType.HELP:
                 return 10;
             default:
                 return 0;
@@ -138,5 +136,4 @@ public class Cat : MonoBehaviour {
         RAINBOW, //milestone10
         WELCOME, //milestone11
         PARTY, //milestone12
-        HELP //milestone13
     }

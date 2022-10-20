@@ -42,6 +42,7 @@ public class StealingRoom : MonoBehaviour {
         collectButton.SetActive(false);
         startButton.SetActive(true);
         slider.SetActive(false);
+        gameObject.GetComponent<RoomInformation>().cat.SetActive(true);
         this.roomTitle = "Room not busy";
         
         int food = genFood();
@@ -63,10 +64,11 @@ public class StealingRoom : MonoBehaviour {
 
     void setTimer() {
      this.stealing = false;
-     this.roomTitle = "Ready to collect";   
+     this.roomTitle = "Ready to collect";
     }
 
     void setTimer (int timeLength) {
+        gameObject.GetComponent<RoomInformation>().cat.SetActive(false);
         this.timeLength = timeLength;
         this.roomTitle = "Stealing Resources";
         this.stealing = true;
@@ -75,8 +77,9 @@ public class StealingRoom : MonoBehaviour {
     }
 
     void setTimer(int timeLength, float initialLength) {
+        gameObject.GetComponent<RoomInformation>().cat.SetActive(false);
         this.timeLength = timeLength;
-        this.roomTitle = "Digging for artifacts";
+        this.roomTitle = "Stealing Resources";
         this.stealing = true;
         this.initialLength = initialLength;
         applySteal();
@@ -90,7 +93,7 @@ public class StealingRoom : MonoBehaviour {
             startButton.SetActive(false);
             slider.SetActive(true);
             setTimer(10);
-            
+
         } else {
             // make a pop up error message
             Debug.Log("No cat in room");

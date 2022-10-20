@@ -73,6 +73,8 @@ public class DragTest : MonoBehaviour
                                     //Remove cat from current room
                                     draggedObject.GetComponent<CatBoostRooms>().RemoveCatBoost();
                                     currentRoomRef.currentRoom.GetComponent<RoomInformation>().containsCat = false;
+                                    currentRoomRef.currentRoom.GetComponent<RoomInformation>().cat = null;
+
                                     currentRoomRef.currentRoom = null;
                                 }
 
@@ -87,6 +89,7 @@ public class DragTest : MonoBehaviour
 
                                         // set boolean in RoomInformation to true linking the cat to the room
                                         currentRoomRef.currentRoom.GetComponent<RoomInformation>().containsCat = true;
+                                        currentRoomRef.currentRoom.GetComponent<RoomInformation>().cat = draggedObject;
 
                                         //Set the cat to the rooms position
                                         draggedObject.transform.position = new Vector3(objectHit.transform.position.x, objectHit.transform.position.y, -1);
@@ -103,6 +106,7 @@ public class DragTest : MonoBehaviour
                                     //Remove cat from current room
                                     draggedObject.GetComponent<CatBoostRooms>().RemoveCatBoost();
                                     currentRoomRef.currentRoom.GetComponent<RoomInformation>().containsCat = false;
+                                    currentRoomRef.currentRoom.GetComponent<RoomInformation>().cat = null;
                                     currentRoomRef.currentRoom = null;
                                     print("Cat removed from room");
                                 }
