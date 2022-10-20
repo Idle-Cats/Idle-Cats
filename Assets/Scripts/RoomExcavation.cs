@@ -104,6 +104,9 @@ public class RoomExcavation : MonoBehaviour
         roomDepth++; //TODO make this global
         gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().roomDepth = roomDepth;
         research.GetComponent<TextMeshProUGUI>().SetText("Excavate New Room?\n Cost:" + (roomDepth * roomDepth) + " Cat Power.");
+        RoomInformation roomInfo = gameObject.GetComponent<RoomInformation>();
+        BuildRoom buildRoom = roomInfo.gameControl.GetComponent<BuildRoom>();
+        buildRoom.emptyRooms.Enqueue(diggyDiggyHole);
         awaitingCollect = false;
     }
 

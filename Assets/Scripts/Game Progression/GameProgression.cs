@@ -7,12 +7,11 @@ using static User;
 using static Cat;
 using static CatList;
 
-public class GameProgression : MonoBehaviour
-{
+public class GameProgression : MonoBehaviour{
     //holds an instance of the flags script to edit milestone values
     public CatGameFlags flags;
     //catlist object to enable creation of cats when milestones are hit
-    CatList catList;
+    public CatList catList;
 
     //if this gets to 5000 in the current session 
     //milestone is reached
@@ -54,6 +53,10 @@ public class GameProgression : MonoBehaviour
 
     public bool isInTutorial = false;
 
+    public int food;
+    public int minerals;
+    public int catPower;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,23 +80,31 @@ public class GameProgression : MonoBehaviour
     {
         //checks if specific resource goals have been hit for the first time and runs
         //their asscoiated function
-        if (user.food + user.minerals + user.catPower >= 1000 && flags.milestone4 == 0) {
+        food = user.food;
+        minerals = user.minerals;
+        catPower = user.catPower;
+
+        CheckUserResources();
+    }
+
+    public void CheckUserResources() {
+        if (food + minerals + catPower >= 1000 && flags.milestone4 == 0) {
             foodReached1000();
         }
 
-        if (user.food + user.minerals + user.catPower >= 10000 && flags.milestone5 == 0) {
+        if (food + minerals + catPower >= 10000 && flags.milestone5 == 0) {
             foodReached10000();
         }
 
-        if (user.food + user.minerals + user.catPower >= 100000 && flags.milestone6 == 0) {
+        if (food + minerals + catPower >= 100000 && flags.milestone6 == 0) {
             foodReached100000();
         }
 
-        if (user.food + user.minerals + user.catPower >= 1000000 && flags.milestone7 == 0) {
+        if (food + minerals + catPower >= 1000000 && flags.milestone7 == 0) {
             foodReached1000000();
         }
 
-        if (user.minerals >= 5000 && flags.artifactTutorial == 0) {
+        if (minerals >= 5000 && flags.artifactTutorial == 0) {
             mineralsReached5000();
         }
     }
@@ -330,6 +341,7 @@ public class GameProgression : MonoBehaviour
         flags.milestone4 = 1;
         ShowMilestone4();
         catList.AddCatType(CatType.GINGER);
+        Debug.Log("Added cat 64");
     }
 
     void mineralsReached5000() {
@@ -343,18 +355,21 @@ public class GameProgression : MonoBehaviour
         flags.milestone5 = 1;
         ShowMilestone5();
         catList.AddCatType(CatType.TEAL);
+        Debug.Log("Added cat 5");
     }
 
     void foodReached100000() {
         flags.milestone6 = 1;
         ShowMilestone6();
         catList.AddCatType(CatType.PINK);
+        Debug.Log("Added cat 6");
     }
 
     void foodReached1000000() {
         flags.milestone7 = 1;
         ShowMilestone7();
         catList.AddCatType(CatType.BLUE);
+        Debug.Log("Added cat 7");
     }
 
     //counts the number of button presses the user has done this session
