@@ -353,7 +353,7 @@ public class ResourceRoom : MonoBehaviour
         else
         {
             return "Upgrade Storage? \n" +
-                "Cost = " + generationUpgradeCost() + " " + resourceToString(costResourceType());
+                "Cost = " + inventUpgradeCost() + " " + resourceToString(costResourceType());
         }
     }
     //method for setting the room info text:

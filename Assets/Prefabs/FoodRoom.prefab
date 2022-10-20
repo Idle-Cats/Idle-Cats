@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -495,7 +495,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1195705307229543683}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1184235543520749341}
+        m_TargetAssemblyTypeName: ResourceRoom, Assembly-CSharp
+        m_MethodName: upgradeGenerationButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4419319331949132737
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -961,7 +973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1201,9 +1213,9 @@ MonoBehaviour:
   timesInventUpgraded: 0
   timesGenerationUpgraded: 0
   upgradeInventButtonText: {fileID: 2568655396244508613}
-  upgradeInventButton: {fileID: 9177023422633701459}
+  upgradeInventButton: {fileID: 4579773523880521183}
   upgradeGenerationButtonText: {fileID: 6957581479272942889}
-  upgradeGenerationButton: {fileID: 3276434325800495386}
+  upgradeGenerationButton: {fileID: 3626973490504792044}
   roomInfoText: {fileID: 7250887267804925637}
   resourceType: 2
 --- !u!1 &9177023422633701459
@@ -1327,4 +1339,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7269834104513423255}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1184235543520749341}
+        m_TargetAssemblyTypeName: ResourceRoom, Assembly-CSharp
+        m_MethodName: upgradeInventButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

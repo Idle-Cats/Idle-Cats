@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -765,7 +765,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3779199778196868093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4280329758915776997}
+        m_TargetAssemblyTypeName: ResourceRoom, Assembly-CSharp
+        m_MethodName: upgradeGenerationButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5412435176667763738
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +899,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 912640193983999844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4280329758915776997}
+        m_TargetAssemblyTypeName: ResourceRoom, Assembly-CSharp
+        m_MethodName: upgradeInventButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6310448006297795748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,9 +1077,9 @@ MonoBehaviour:
   timesInventUpgraded: 0
   timesGenerationUpgraded: 0
   upgradeInventButtonText: {fileID: 3814706261533787415}
-  upgradeInventButton: {fileID: 5412435176667763738}
+  upgradeInventButton: {fileID: 7854305145219179009}
   upgradeGenerationButtonText: {fileID: 6882216245759394840}
-  upgradeGenerationButton: {fileID: 4762941638105697668}
+  upgradeGenerationButton: {fileID: 4248517220273405184}
   roomInfoText: {fileID: 2656825926305217615}
   resourceType: 1
 --- !u!1 &6882216245759394840
@@ -1118,7 +1142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

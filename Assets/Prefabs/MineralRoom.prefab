@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -256,7 +256,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2043097402245017818}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5143948121375887604}
+        m_TargetAssemblyTypeName: ResourceRoom, Assembly-CSharp
+        m_MethodName: upgradeGenerationButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &991524505505030393
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -691,7 +703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1022,7 +1034,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7963602319790335487}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5143948121375887604}
+        m_TargetAssemblyTypeName: ResourceRoom, Assembly-CSharp
+        m_MethodName: upgradeInventButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5139170686443785354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,8 +1347,8 @@ MonoBehaviour:
   timesInventUpgraded: 0
   timesGenerationUpgraded: 0
   upgradeInventButtonText: {fileID: 525000147717458513}
-  upgradeInventButton: {fileID: 4612365046603905553}
+  upgradeInventButton: {fileID: 5791607449646538527}
   upgradeGenerationButtonText: {fileID: 2160508508253903055}
-  upgradeGenerationButton: {fileID: 821209679527718497}
+  upgradeGenerationButton: {fileID: 6587248507172367228}
   roomInfoText: {fileID: 3730483892524970657}
   resourceType: 0
