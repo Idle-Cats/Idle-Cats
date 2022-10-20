@@ -15002,9 +15002,6 @@ MonoBehaviour:
   tutorial4: {fileID: 1252444414}
   tutorial5: {fileID: 1323414624}
   addRoomButton: {fileID: 537950451}
-  catButton: {fileID: 1110500607}
-  mineralsButton: {fileID: 2081719724}
-  foodButton: {fileID: 48014170}
   isInTutorial: 0
 --- !u!114 &1564675681
 MonoBehaviour:
