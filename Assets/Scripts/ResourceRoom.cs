@@ -15,9 +15,10 @@ public class ResourceRoom : MonoBehaviour
         /*
          * finish update method
          * Add a UI button for inventupgrade, button for roomgen upgrade
-         * Set text for each button based on roomtype, and what it currently costs.
-         * make each button clickable if can afford
-         * implement counters into calculations
+         * add UI for each button texts
+         * make each button clickable if can afford see update method
+         * 
+         * save the text of buttons rememeber
         */
 
     public float roomInvent = 0;
@@ -35,11 +36,13 @@ public class ResourceRoom : MonoBehaviour
     [SerializeField]
     private GameObject upgradeInventButtonText;
     [SerializeField]
-    private GameObject upgradeInventButton;
+    private Button upgradeInventButton;
     [SerializeField]
     private GameObject upgradeGenerationButtonText;
     [SerializeField]
-    private GameObject upgradeGenerationButton;
+    private Button upgradeGenerationButton;
+    [SerializeField]
+    private GameObject roomInfoText;
 
     public ResourceType resourceType;
 
@@ -51,13 +54,33 @@ public class ResourceRoom : MonoBehaviour
         this.roomCapacity = 1000;
         this.resourceGen = 1;
         InvokeRepeating("updateRoom", 0.0f, 1.0f);
+        upgradeGenerationButtonText.GetComponent<TextMeshProUGUI>().SetText(updateButtonText(true));
+        upgradeInventButtonText.GetComponent<TextMeshProUGUI>().SetText(updateButtonText(false));
+        setRoomInfo();
+
     }
 
     // Update is called once per frame
     void Update() 
     {
-        // if canAffordUpgrade(true) set upgradeGenerationButton.isInteractable(true);
-        // if canAffordUpgrade(false) set upgradeInventButton.isInteractable(true);
+        //change state of buttons.
+        if (canAffordUpgrade(true))
+        {
+            upgradeGenerationButton.interactable = true;
+        }
+        else
+        {
+            upgradeGenerationButton.interactable = false;
+        }
+
+        if (canAffordUpgrade(false))
+        {
+            upgradeInventButton.interactable = true;
+        }
+        else
+        {
+            upgradeInventButton.interactable = false;
+        }
         
     }
 
@@ -254,6 +277,8 @@ public class ResourceRoom : MonoBehaviour
         ResourceType type = costResourceType();
         removeResources(cost, type);
         timesGenerationUpgraded++;
+        upgradeGenerationButtonText.GetComponent<TextMeshProUGUI>().SetText(updateButtonText(true));
+        setRoomInfo();
     }
 
     //method for if upgrade invent button is pressed
@@ -264,6 +289,8 @@ public class ResourceRoom : MonoBehaviour
         removeResources(cost, type);
         timesInventUpgraded++;
         roomCapacity = (1000 * (timesInventUpgraded + 1));
+        upgradeInventButtonText.GetComponent<TextMeshProUGUI>().SetText(updateButtonText(false));
+        setRoomInfo();
     }
 
     //method for removing resources from player
@@ -283,4 +310,71 @@ public class ResourceRoom : MonoBehaviour
             gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().food -= cost;
         }
     }
+    //method for putting Resourcetype to string
+    public string resourceToString(ResourceType resource)
+    {
+        if (resource == ResourceType.catpower)
+        {
+            return "CatPower";
+        }
+        else if (resource == ResourceType.minerals)
+        {
+            return "Minerals";
+        }
+        else if (resource == ResourceType.food)
+        {
+            return "Food";
+        }
+        else return "Error";
+    }
+
+    //method for updating button text:
+    public string updateButtonText(bool generateButton)
+    {
+        if (generateButton)
+        {
+            if (resourceType == ResourceType.catpower)
+            {
+                return "Buy more cardboard boxes?\n" +
+                    "Cost = " + generationUpgradeCost() + " " + resourceToString(costResourceType());
+            }
+            else if (resourceType == ResourceType.food)
+            {
+                return "Buy another Kitchen?\n" +
+                    "Cost = " + generationUpgradeCost() + " " + resourceToString(costResourceType());
+            }
+            else if (resourceType == ResourceType.minerals)
+            {
+                return "Expand the Mine?\n" +
+                    "Cost = " + generationUpgradeCost() + " " + resourceToString(costResourceType());
+            }
+            return "error";
+        }
+        else
+        {
+            return "Upgrade Storage? \n" +
+                "Cost = " + generationUpgradeCost() + " " + resourceToString(costResourceType());
+        }
+    }
+    //method for setting the room info text:
+    public void setRoomInfo()
+    {
+        if (resourceType == ResourceType.catpower)
+        {
+            roomInfoText.GetComponent<TextMeshProUGUI>().SetText("Cardboard Box Fort lvl: " + (timesGenerationUpgraded + 1) + ".\n" +
+                "Storage lvl: " + (timesInventUpgraded + 1) + ".");
+        }
+        else if (resourceType == ResourceType.food)
+        {
+            roomInfoText.GetComponent<TextMeshProUGUI>().SetText("Kitchen lvl: " + (timesGenerationUpgraded + 1) + ".\n" +
+                "Storage lvl: " + (timesInventUpgraded + 1) + ".");
+        }
+        else if (resourceType == ResourceType.minerals)
+        {
+            roomInfoText.GetComponent<TextMeshProUGUI>().SetText("Mine lvl: " + (timesGenerationUpgraded + 1) + ".\n" +
+                "Storage lvl: " + (timesInventUpgraded + 1) + ".");
+        }
+        return;
+    }
+
 }
