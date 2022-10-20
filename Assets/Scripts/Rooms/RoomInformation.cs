@@ -11,4 +11,5 @@ public class RoomInformation : MonoBehaviour
     public GameObject gameControl;
 
     public bool containsCat = false;
+    public GameObject cat;
 }

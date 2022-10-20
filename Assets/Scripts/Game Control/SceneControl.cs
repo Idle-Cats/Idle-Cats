@@ -22,15 +22,7 @@ public class SceneControl : MonoBehaviour
 
     public List<CatListDisplay> catListDisplayList;
 
-    //show main game
-    //public void GameScene() {  
-    //    SceneManager.LoadScene("AlexLScene");
-    //}
-
-    //// Show welcome screen
-    //public void WelcomeScene() {  
-    //    SceneManager.LoadScene("WelcomeScreen");
-    //}
+    public GameObject catWarningPanel;
 
     public void showCatPanel() 
     {
@@ -61,10 +53,17 @@ public class SceneControl : MonoBehaviour
             hideCatPanel();
         // increment cat count
             catCount++;
+        } else {
+            catWarningPanel.SetActive(true);
         }
     }
 
     public void SetActiveCat(GameObject cat){
         referenceCat = cat;
     }
+
+    public void CloseWarning() {
+        catWarningPanel.SetActive(false);
+    }
+
 }

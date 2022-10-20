@@ -6,13 +6,6 @@ using TMPro;
 
 public class TimerRoom : MonoBehaviour
 {
-    //nathan is here
-    //he says we suck
-    //this is a skeleton class for timed rooms
-
-    // need upgrade object with constructor
-    //costs, timer, gain.
-
     private bool researching = false;
     [SerializeField]
     private int timeLength = 0;
