@@ -135,7 +135,6 @@ public class PartyCat : MonoBehaviour
         currentTime = 0;
         SetRandomTime();
         endTime = Random.Range(0.0f, 10.0f) + 10.0f;
-        reward = Random.Range(0.0f, 90.0f) + 10.0f;
         rewardType = Random.Range(0, 3);
         speed = 10;
         cat.transform.position = getRandomPosition();
@@ -168,15 +167,52 @@ public class PartyCat : MonoBehaviour
 
         switch(rewardType) {
             case 0:
-                gameObject.GetComponent<User>().catPower += (int)reward;
+
+                gameObject.GetComponent<User>().catPower += genPower();
                 break;
             case 1:
-                gameObject.GetComponent<User>().minerals += (int)reward;
+                gameObject.GetComponent<User>().minerals += genMinerals();
                 break;
             case 2:
-                gameObject.GetComponent<User>().food += (int)reward;
+                gameObject.GetComponent<User>().food += genFood();
                 break;
         }
+    }
+
+    public int genMinerals() {
+        int currentMinerals = gameObject.GetComponent<User>().minerals;
+        
+        // generate a number between 5% and 10% of the current minerals
+        int random = UnityEngine.Random.Range(5, 10);
+        int minerals = (int)((double)currentMinerals * ((double)random / 100));
+        if (minerals < 100) {
+            minerals = 100;
+        }
+        return minerals;
+    }
+
+    public int genPower() {
+        int currentPower = gameObject.GetComponent<User>().catPower;
+
+        // generate a number between 5% and 10% of the current power
+        int random = UnityEngine.Random.Range(5, 10);
+        int catPower = (int)((double)currentPower * ((double)random / 100));
+        if (catPower < 100) {
+            catPower = 100;
+        }
+        return catPower;
+    }
+
+    public int genFood() {
+        int currentFood = gameObject.GetComponent<User>().food;
+
+        // generate a number between 5% and 10% of the current food
+        int random = UnityEngine.Random.Range(5, 10);
+        int food = (int)((double)currentFood * ((double)random / 100.0d));
+        if (food < 100) {
+            food = 100;
+        }
+        return food;
     }
 
     //flips the cat so it is pointing the direction it is running
