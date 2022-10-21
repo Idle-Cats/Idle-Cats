@@ -11,7 +11,7 @@ public class CatBuilder : MonoBehaviour
     public List<GameObject> catList = new List<GameObject>();
 
     public Cat createCat(CatType catType) {
-        GameObject cat = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject cat = Instantiate(prefab, new Vector3(0, 0, -1), Quaternion.identity);
         cat.SetActive(true);
         cat.GetComponent<Cat>().setCatType(catType);
 

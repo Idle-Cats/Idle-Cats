@@ -8,6 +8,7 @@ public class BuildRoom : MonoBehaviour
     public GameObject testRoom;
     public GameObject resourceRoom;
     public GameObject artifactRoom;
+    public GameObject StealingRoom;
     public GameObject excavationRoom;
 
     public int roomCount = 0;

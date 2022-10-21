@@ -46,7 +46,8 @@ public class RoomSaveInfo
     public enum RoomType {
         ResourceRoom,
         TimedRoom,
-        ArtifactRoom
+        ArtifactRoom,
+        StealingRoom
     }
 
     public void SetRoom(GameObject room) {
