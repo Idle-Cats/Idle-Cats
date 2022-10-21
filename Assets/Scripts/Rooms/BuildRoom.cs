@@ -46,14 +46,16 @@ public class BuildRoom : MonoBehaviour
         if (gameStarted) {
             if (gameObject.GetComponent<User>().roomDepth == 0)
             {
-                buildExcavationRoom(excavationRoom);
+                GameObject room = buildExcavationRoom(excavationRoom);
+                room.GetComponent<RoomExcavation>().Start();
+                room.GetComponent<RoomExcavation>().clickCollect();
             }
 
             gameStarted = false;
         }
     }
 
-    public void buildExcavationRoom(GameObject roomToBuild)
+    public GameObject buildExcavationRoom(GameObject roomToBuild)
     {
         //Generates a room
         GameObject room = Instantiate(roomToBuild, new Vector2(0, -1.6f), Quaternion.identity);
@@ -87,6 +89,8 @@ public class BuildRoom : MonoBehaviour
             }
             rooms[roomCount] = roomInfo;
         }
+
+        return room;
     }
 
     public void buildRoomInEmptyRoom(GameObject roomToBuild)

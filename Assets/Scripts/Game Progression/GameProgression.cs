@@ -118,9 +118,10 @@ public class GameProgression : MonoBehaviour{
     }
     
     public void CloseWelcome() {
-        flags.firstLoad = 1;
-        welcome_panel.SetActive(false);
-        tutorial1.SetActive(true);
+        if (flags.firstLoad == 0) {
+            welcome_panel.SetActive(false);
+            tutorial1.SetActive(true);
+        }
 
     //All functions facilitate the closing and opening of panels
     //after the last panel is closed the associated flag is set to a non 0 number
