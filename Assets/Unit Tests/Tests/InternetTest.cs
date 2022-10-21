@@ -4,11 +4,11 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class UserTests
+public class InternetTest
 {
     // A Test behaves as an ordinary method
     [Test]
-    public void UserTestsSimplePasses()
+    public void InternetTestSimplePasses()
     {
         // Use the Assert class to test conditions
     }
@@ -16,7 +16,7 @@ public class UserTests
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
     // `yield return null;` to skip a frame.
     [UnityTest]
-    public IEnumerator UserTestsWithEnumeratorPasses()
+    public IEnumerator InternetTestWithEnumeratorPasses()
     {
         // Use the Assert class to test conditions.
         // Use yield to skip a frame.
