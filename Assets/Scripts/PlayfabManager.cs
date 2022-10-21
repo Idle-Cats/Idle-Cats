@@ -106,7 +106,7 @@ public class PlayfabManager : MonoBehaviour
             TextMeshProUGUI[] texts = newRow.GetComponentsInChildren<TextMeshProUGUI>();
             texts[0].text = (item.Position + 1).ToString();
             texts[1].text = item.DisplayName;
-            texts[2].text = item.StatValue.ToString();
+            texts[2].text = Formatter.formatValue(item.StatValue);
         }
     }
 

@@ -47,8 +47,6 @@ public class ArtifactRoom : MonoBehaviour
     //where do i put this?
     public void applyResearch()
     {
-        
-
         InvokeRepeating("updateArtifactTimerLength", 0.0f, 1.0f);
     }
 
