@@ -17,6 +17,7 @@ public class AuthenicateUser : MonoBehaviour
                 return;
             }
             if (task.IsFaulted) {
+                welcomeScreenControl.userExistsChecked = true;
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
                 return;
             }
@@ -37,6 +38,7 @@ public class AuthenicateUser : MonoBehaviour
                 return;
             }
             if (task.IsFaulted) {
+                welcomeScreenControl.userDosentExistsChecked = true;
                 Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
                 return;
             }

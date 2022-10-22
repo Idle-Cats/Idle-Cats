@@ -24,7 +24,22 @@ public class WelcomeScreenControl : MonoBehaviour
     public TMP_InputField oldUserEmail;
     public TMP_InputField oldUserPassword;
 
+    public WelcomeScreenPanel welcomeScreenPanel;
+    public bool isConnected = false;
+    public bool connetionChecked = false;
+
+    public TMP_Text errorText;
+    public GameObject errorTextObject;
+
+    public GameObject confirmButtonCreate;
+    public GameObject confurmButtonLoad;
+
+    public bool userExistsChecked = false;
+
+    public bool userDosentExistsChecked = false;
+
     void Start() {
+        cloud.SetWelcoemScreenControl(this);
     }
 
     public void CheckWelcome() {//delday for saving loading
@@ -34,7 +49,7 @@ public class WelcomeScreenControl : MonoBehaviour
         }
     }
 
-    public void AssignName() {     
+    public void AssignName() {
         string name = input.text;
         if (name.Length < 1) {
             return;
@@ -56,18 +71,20 @@ public class WelcomeScreenControl : MonoBehaviour
     }
 
     public void CreateUser() {
+        confirmButtonCreate.SetActive(false);
         string name = input.text;
         if (name.Length < 1) {
             return;
         }
         user.username = name;
-        
+
         if (saveLoadManager.isConnected) {
             authenicateUser.CreateUser(newUserEmail, newUserPassword);
         }
     }
 
     public void LoadUser() {
+        confurmButtonLoad.SetActive(false);
         if (saveLoadManager.isConnected) {
             authenicateUser.LoadUser(oldUserEmail, oldUserPassword);
         }
@@ -75,6 +92,19 @@ public class WelcomeScreenControl : MonoBehaviour
 
     private void Update()
     {
+        if (connetionChecked) {
+            if (isConnected) {
+                welcomeScreenPanel.ShowChoicePanel();
+                connetionChecked = false;
+                errorText.SetText("");
+                errorTextObject.SetActive(false);
+            }
+            else {
+                errorText.SetText("Please restart and connect to internet");
+                errorTextObject.SetActive(true);
+            }
+            connetionChecked = false;
+        }
         if (continueCreateUser) {
             string name = input.text;
             if (name.Length < 1) {
@@ -95,6 +125,16 @@ public class WelcomeScreenControl : MonoBehaviour
             panel.SetActive(false);
 
             continueLoadUser = false;
+        }
+        if (userExistsChecked) {
+            errorText.SetText("User Already Exists");
+            errorTextObject.SetActive(true);
+            userExistsChecked = false;
+        }
+        if (userDosentExistsChecked) {
+            errorText.SetText("Username or Password was incorrect");
+            errorTextObject.SetActive(true);
+            userDosentExistsChecked = false;
         }
     }
 }

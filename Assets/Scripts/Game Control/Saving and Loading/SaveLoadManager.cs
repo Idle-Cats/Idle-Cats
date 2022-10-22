@@ -96,74 +96,76 @@ public class SaveLoadManager : MonoBehaviour
 
     public void Save()
     {
-        //saves the data using save helper to turn info into a string that can be put in playerprefs
-        infomation.catPower = gameObject.GetComponent<User>().catPower;
-        infomation.minerals = gameObject.GetComponent<User>().minerals;
-        infomation.food = gameObject.GetComponent<User>().food;
+        if (gameObject.GetComponent<CatGameFlags>().firstLoad == 1) {
+            //saves the data using save helper to turn info into a string that can be put in playerprefs
+            infomation.catPower = gameObject.GetComponent<User>().catPower;
+            infomation.minerals = gameObject.GetComponent<User>().minerals;
+            infomation.food = gameObject.GetComponent<User>().food;
 
-        infomation.discoveredCats = CatList.getInstance().discoveredCats;
+            infomation.discoveredCats = CatList.getInstance().discoveredCats;
 
-        gameObject.GetComponent<BuildRoom>().RefreshRooms();
+            gameObject.GetComponent<BuildRoom>().RefreshRooms();
 
-        infomation.rooms = gameObject.GetComponent<BuildRoom>().rooms;//RENAME RESEARCHING TO ACTIVE
-        infomation.roomCount = gameObject.GetComponent<BuildRoom>().roomCount;
-        infomation.nodeLength = gameObject.GetComponent<BuildingNodePlacer>().nodeLength;
-        if (infomation.nodeLength > 0) {
-            infomation.nodeY = gameObject.GetComponent<BuildingNodePlacer>().node.transform.position.y;
-        }
-        else {
-            infomation.nodeY = -1.6f;
-        }
-        //cats
-        List<CatInfo> catinfoList = new List<CatInfo>();
-        foreach (GameObject cat in gameObject.GetComponent<CatBuilder>().catList) {
-            catinfoList.Add(new CatInfo(cat));
-        }
-        infomation.cats = catinfoList;
-        //infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
-        infomation.catCount = gameObject.GetComponent<CatBuilder>().catList.ToArray().Length;
+            infomation.rooms = gameObject.GetComponent<BuildRoom>().rooms;//RENAME RESEARCHING TO ACTIVE
+            infomation.roomCount = gameObject.GetComponent<BuildRoom>().roomCount;
+            infomation.nodeLength = gameObject.GetComponent<BuildingNodePlacer>().nodeLength;
+            if (infomation.nodeLength > 0) {
+                infomation.nodeY = gameObject.GetComponent<BuildingNodePlacer>().node.transform.position.y;
+            }
+            else {
+                infomation.nodeY = -1.6f;
+            }
+            //cats
+            List<CatInfo> catinfoList = new List<CatInfo>();
+            foreach (GameObject cat in gameObject.GetComponent<CatBuilder>().catList) {
+                catinfoList.Add(new CatInfo(cat));
+            }
+            infomation.cats = catinfoList;
+            //infomation.cats = gameObject.GetComponent<ScreenCatList>().getCatInfo();
+            infomation.catCount = gameObject.GetComponent<CatBuilder>().catList.ToArray().Length;
 
-        infomation.unlockedArtifacts = gameObject.GetComponent<ArtifactsFound>().GetUnlockedArtifacts();
-        infomation.unlockedArtifactCount = gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount;
-        ArtifactSaveInfo artifactSaveInfo = new ArtifactSaveInfo();
-        infomation.spawnedArtifacts = artifactSaveInfo.makeSaveInfo(gameObject.GetComponent<ArtifactsFound>().spawnedArtifacts, gameObject.GetComponent<ArtifactsFound>().artifactCount, gameObject.GetComponent<ArtifactsFound>().allArtifacts);
+            infomation.unlockedArtifacts = gameObject.GetComponent<ArtifactsFound>().GetUnlockedArtifacts();
+            infomation.unlockedArtifactCount = gameObject.GetComponent<ArtifactsFound>().unlockedArtifactsCount;
+            ArtifactSaveInfo artifactSaveInfo = new ArtifactSaveInfo();
+            infomation.spawnedArtifacts = artifactSaveInfo.makeSaveInfo(gameObject.GetComponent<ArtifactsFound>().spawnedArtifacts, gameObject.GetComponent<ArtifactsFound>().artifactCount, gameObject.GetComponent<ArtifactsFound>().allArtifacts);
 
-        infomation.timeSaved = DateTime.Now;
-        string userId = gameObject.GetComponent<User>().userId;
-        infomation.userId = userId;
-        infomation.userName = gameObject.GetComponent<User>().username;
-        infomation.highScore = gameObject.GetComponent<User>().highScore;
+            infomation.timeSaved = DateTime.Now;
+            string userId = gameObject.GetComponent<User>().userId;
+            infomation.userId = userId;
+            infomation.userName = gameObject.GetComponent<User>().username;
+            infomation.highScore = gameObject.GetComponent<User>().highScore;
 
-        infomation.firstLoad = gameObject.GetComponent<CatGameFlags>().firstLoad;
-        infomation.milestone1 = gameObject.GetComponent<CatGameFlags>().milestone1;
-        infomation.milestone2 = gameObject.GetComponent<CatGameFlags>().milestone2;
-        infomation.milestone3 = gameObject.GetComponent<CatGameFlags>().milestone3;
-        infomation.milestone4 = gameObject.GetComponent<CatGameFlags>().milestone4;
-        infomation.milestone5 = gameObject.GetComponent<CatGameFlags>().milestone5;
-        infomation.milestone6 = gameObject.GetComponent<CatGameFlags>().milestone6;
-        infomation.milestone7 = gameObject.GetComponent<CatGameFlags>().milestone7;
-        infomation.milestone8 = gameObject.GetComponent<CatGameFlags>().milestone8;
-        infomation.milestone9 = gameObject.GetComponent<CatGameFlags>().milestone9;
-        infomation.milestone10 = gameObject.GetComponent<CatGameFlags>().milestone10;
-        infomation.milestone11 = gameObject.GetComponent<CatGameFlags>().milestone11;
-        infomation.milestone12 = gameObject.GetComponent<CatGameFlags>().milestone12;
-        infomation.artifactTutorial = gameObject.GetComponent<CatGameFlags>().artifactTutorial;
+            infomation.firstLoad = gameObject.GetComponent<CatGameFlags>().firstLoad;
+            infomation.milestone1 = gameObject.GetComponent<CatGameFlags>().milestone1;
+            infomation.milestone2 = gameObject.GetComponent<CatGameFlags>().milestone2;
+            infomation.milestone3 = gameObject.GetComponent<CatGameFlags>().milestone3;
+            infomation.milestone4 = gameObject.GetComponent<CatGameFlags>().milestone4;
+            infomation.milestone5 = gameObject.GetComponent<CatGameFlags>().milestone5;
+            infomation.milestone6 = gameObject.GetComponent<CatGameFlags>().milestone6;
+            infomation.milestone7 = gameObject.GetComponent<CatGameFlags>().milestone7;
+            infomation.milestone8 = gameObject.GetComponent<CatGameFlags>().milestone8;
+            infomation.milestone9 = gameObject.GetComponent<CatGameFlags>().milestone9;
+            infomation.milestone10 = gameObject.GetComponent<CatGameFlags>().milestone10;
+            infomation.milestone11 = gameObject.GetComponent<CatGameFlags>().milestone11;
+            infomation.milestone12 = gameObject.GetComponent<CatGameFlags>().milestone12;
+            infomation.artifactTutorial = gameObject.GetComponent<CatGameFlags>().artifactTutorial;
 
-        infomation.triesSinceLastAd = adController.timeSinceLastAd;
+            infomation.triesSinceLastAd = adController.timeSinceLastAd;
 
-        infomation.crazyCatCounter = gameObject.GetComponent<GameProgression>().crazyCatCounter;
+            infomation.crazyCatCounter = gameObject.GetComponent<GameProgression>().crazyCatCounter;
 
-        string data = SaveHelper.Serialise<SaveInfomation>(infomation);
+            string data = SaveHelper.Serialise<SaveInfomation>(infomation);
 
-        PlayerPrefs.SetString("Save Info", data);
-        Debug.Log(data);
-        cloudSave.WriteNewUser(data, userId);
+            PlayerPrefs.SetString("Save Info", data);
+            Debug.Log(data);
+            cloudSave.WriteNewUser(data, userId);
 
-        if (!isConnected) {
-            PlayerPrefs.SetInt("Last Saved Via Internet", 0);
-        }
-        else {
-            PlayerPrefs.SetInt("Last Saved Via Internet", 1);
+            if (!isConnected) {
+                PlayerPrefs.SetInt("Last Saved Via Internet", 0);
+            }
+            else {
+                PlayerPrefs.SetInt("Last Saved Via Internet", 1);
+            }
         }
     }
 

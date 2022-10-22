@@ -235,15 +235,16 @@ public class BuildRoom : MonoBehaviour
 
                 int currentPrice = 0;
 
-                if (roomCount > 0)
-                {
-                    //TODO maybe add a baseprice here
-                    currentPrice = (room.GetComponent<CanAfford>().basePrice * 2 * 2 ^ (roomCount / 5));
-                    
+                currentPrice = (room.GetComponent<CanAfford>().basePrice * 2 * 2 ^ (roomCount / 5));
+
+                if (roomCount == 0 && room.gameObject.GetComponent<CanAfford>().resourceType == ResourceRoom.ResourceType.catpower) {
+                    currentPrice = 0;
                 }
+
                 room.GetComponent<CanAfford>().currentPrice = currentPrice;
                 resourceRoom = true;
             }
+            
 
             int price = room.GetComponent<CanAfford>().currentPrice;
             CanAfford.PriceType priceType = room.GetComponent<CanAfford>().priceType;
@@ -253,47 +254,54 @@ public class BuildRoom : MonoBehaviour
             buttonText += room.name + "\nPrice: " + price + " " + priceType;
             room.GetComponent<ButtonSetText>().SetText(buttonText);
 
-            if (priceType == CanAfford.PriceType.Minerals)
-                {
-                    if (gameObject.GetComponent<User>().minerals >= price)
-                    {
-                        if(flags.resourcesCanBeClicked) {
+            if (EmptyRoomAvailable()) {
+                if (priceType == CanAfford.PriceType.Minerals) {
+                    if (gameObject.GetComponent<User>().minerals >= price) {
+                        if (flags.resourcesCanBeClicked) {
                             room.GetComponent<Button>().interactable = true;
-                        } else {
+                        }
+                        else {
                             if (!resourceRoom) {
                                 room.GetComponent<Button>().interactable = true;
-                            } else {
+                            }
+                            else {
                                 room.GetComponent<Button>().interactable = false;
                             }
                         }
                     }
-                    else
-                    {
+                    else {
                         room.GetComponent<Button>().interactable = false;
                     }
                 }
-                else if (priceType == CanAfford.PriceType.Catpower)
-                {
-                    if (gameObject.GetComponent<User>().catPower >= price && flags.resourcesCanBeClicked)
-                    {
+                else if (priceType == CanAfford.PriceType.Catpower) {
+                    if (gameObject.GetComponent<User>().catPower >= price && flags.resourcesCanBeClicked) {
                         room.GetComponent<Button>().interactable = true;
                     }
-                    else
-                    {
+                    else {
                         room.GetComponent<Button>().interactable = false;
                     }
                 }
-                else if (priceType == CanAfford.PriceType.Food)
-                {
-                    if (gameObject.GetComponent<User>().food >= price && flags.resourcesCanBeClicked)
-                    {
+                else if (priceType == CanAfford.PriceType.Food) {
+                    if (gameObject.GetComponent<User>().food >= price && flags.resourcesCanBeClicked) {
                         room.GetComponent<Button>().interactable = true;
                     }
-                    else
-                    {
+                    else {
                         room.GetComponent<Button>().interactable = false;
                     }
                 }
             }
+            else {
+                room.GetComponent<Button>().interactable = false;
+            }
         }
     }
+
+    public bool EmptyRoomAvailable() {
+        if (emptyRooms.Count > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}

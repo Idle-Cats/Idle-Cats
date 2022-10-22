@@ -11,6 +11,7 @@ public class CloudSaveData : MonoBehaviour
 
     private SaveLoadManager saveLoadManager;
     private GameProgression gameProgression;
+    private WelcomeScreenControl welcomeScreenControl;
 
     public void SetSaveLoadManager(SaveLoadManager saveLoadManager) {
         this.saveLoadManager = saveLoadManager;
@@ -18,6 +19,11 @@ public class CloudSaveData : MonoBehaviour
 
     public void SetGameProgression(GameProgression gameProgression) {
         this.gameProgression = gameProgression;
+    }
+
+    public void SetWelcoemScreenControl(WelcomeScreenControl welcomeScreenControl)
+    {
+        this.welcomeScreenControl = welcomeScreenControl;
     }
 
     private void Start()
@@ -125,6 +131,8 @@ public class CloudSaveData : MonoBehaviour
             Debug.Log("Is Connected: " + isConnected);
             saveLoadManager.isConnected = isConnected;
             saveLoadManager.connectionChecked = true;
+            welcomeScreenControl.isConnected = isConnected;
+            welcomeScreenControl.connetionChecked = true;
         };
     }
 }

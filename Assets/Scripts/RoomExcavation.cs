@@ -116,10 +116,12 @@ public class RoomExcavation : MonoBehaviour
     void Update()
     {
         //call canAfford, have it make start digging buton available ONLY if not already digging
-        if ((canAfford() == true) && (researching == false) && (awaitingCollect == false))
-        {
+        if ((canAfford() == true) && (researching == false) && (awaitingCollect == false)) {
             //make start button active
             startButton.SetActive(true);
+        }
+        else {
+            startButton.SetActive(false);
         }
         
         

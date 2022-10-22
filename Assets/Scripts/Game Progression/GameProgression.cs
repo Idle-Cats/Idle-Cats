@@ -112,7 +112,7 @@ public class GameProgression : MonoBehaviour{
             foodReached1000000();
         }
 
-        if (minerals >= 5000 && flags.artifactTutorial == 0) {
+        if (minerals >= 5000 && flags.artifactTutorial == 0 && gameObject.GetComponent<BuildRoom>().EmptyRoomAvailable()) {
             mineralsReached5000();
         }
     }
