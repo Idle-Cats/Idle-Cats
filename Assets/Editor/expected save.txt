@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-16"?>#
+<SaveInfomation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">#
+  <food>0</food>#
+  <minerals>0</minerals>#
+  <catPower>0</catPower>#
+  <catCount>0</catCount>#
+  <roomCount>0</roomCount>#
+  <nodeLength>0</nodeLength>#
+  <nodeY>0</nodeY>#
+  <unlockedArtifactCount>0</unlockedArtifactCount>#
+  <timeSaved>0001-01-01T00:00:00</timeSaved>#
+  <highScore>0</highScore>#
+  <firstLoad>0</firstLoad>#
+  <milestone1>0</milestone1>#
+  <milestone2>0</milestone2>#
+  <milestone3>0</milestone3>#
+  <milestone4>0</milestone4>#
+  <milestone5>0</milestone5>#
+  <milestone6>0</milestone6>#
+  <milestone7>0</milestone7>#
+  <milestone8>0</milestone8>#
+  <milestone9>0</milestone9>#
+  <milestone10>0</milestone10>#
+  <milestone11>0</milestone11>#
+  <milestone12>0</milestone12>#
+  <artifactTutorial>0</artifactTutorial>#
+  <triesSinceLastAd>0</triesSinceLastAd>#
+  <crazyCatCounter>0</crazyCatCounter>#
+</SaveInfomation>
