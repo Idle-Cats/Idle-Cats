@@ -24,6 +24,8 @@ public class SaveLoadManager : MonoBehaviour
     [SerializeField]
     private GameObject loadSavePanel;
 
+    public bool continueLoadUser;
+
     public static SaveLoadManager Instance {
         set;
         get;
@@ -48,6 +50,10 @@ public class SaveLoadManager : MonoBehaviour
 
     private void Update()
     {
+        if (continueLoadUser) {
+            cloudSave.LoadUser(infomation.userId, localData);
+            continueLoadUser = false;
+        }
         if (connectionChecked) {
             if (isConnected) {
                 if (continueSave) {
@@ -101,20 +107,16 @@ public class SaveLoadManager : MonoBehaviour
             infomation.catPower = gameObject.GetComponent<User>().catPower;
             infomation.minerals = gameObject.GetComponent<User>().minerals;
             infomation.food = gameObject.GetComponent<User>().food;
+            infomation.roomDepth = gameObject.GetComponent<User>().roomDepth;
 
             infomation.discoveredCats = CatList.getInstance().discoveredCats;
 
+            //rooms
             gameObject.GetComponent<BuildRoom>().RefreshRooms();
 
             infomation.rooms = gameObject.GetComponent<BuildRoom>().rooms;//RENAME RESEARCHING TO ACTIVE
             infomation.roomCount = gameObject.GetComponent<BuildRoom>().roomCount;
-            infomation.nodeLength = gameObject.GetComponent<BuildingNodePlacer>().nodeLength;
-            if (infomation.nodeLength > 0) {
-                infomation.nodeY = gameObject.GetComponent<BuildingNodePlacer>().node.transform.position.y;
-            }
-            else {
-                infomation.nodeY = -1.6f;
-            }
+
             //cats
             List<CatInfo> catinfoList = new List<CatInfo>();
             foreach (GameObject cat in gameObject.GetComponent<CatBuilder>().catList) {
@@ -132,6 +134,8 @@ public class SaveLoadManager : MonoBehaviour
             infomation.timeSaved = DateTime.Now;
             string userId = gameObject.GetComponent<User>().userId;
             infomation.userId = userId;
+            infomation.password = gameObject.GetComponent<User>().password;
+            infomation.email = gameObject.GetComponent<User>().email;
             infomation.userName = gameObject.GetComponent<User>().username;
             infomation.highScore = gameObject.GetComponent<User>().highScore;
 
@@ -153,6 +157,10 @@ public class SaveLoadManager : MonoBehaviour
             infomation.triesSinceLastAd = adController.timeSinceLastAd;
 
             infomation.crazyCatCounter = gameObject.GetComponent<GameProgression>().crazyCatCounter;
+
+            RoomExcavation roomExcavation = gameObject.GetComponent<BuildRoom>().excavationRoomCopy.GetComponent<RoomExcavation>();
+            infomation.excavationRoomSave = new ExcavationSave(roomExcavation.timeLength, roomExcavation.initialLength, roomExcavation.researching, roomExcavation.researchTitle, gameObject.GetComponent<BuildRoom>().excavationRoomCopy.transform.position.y);
+            infomation.emptyRooms = gameObject.GetComponent<BuildRoom>().ReturnEmptyRooms();
 
             string data = SaveHelper.Serialise<SaveInfomation>(infomation);
 
@@ -177,9 +185,10 @@ public class SaveLoadManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Save Info")) {
             localData = PlayerPrefs.GetString("Save Info");
             infomation = SaveHelper.Deserialise<SaveInfomation>(localData);
+            gameObject.GetComponent<AuthenicateUser>().saveLoadManager = this;
+            gameObject.GetComponent<AuthenicateUser>().LoadUserFromSave(infomation.email, infomation.password);
             Debug.Log(localData);
             string userId = infomation.userId;
-            cloudSave.LoadUser(userId, localData);
         }
         else {//if there is no save infomation makes a new blank save
             infomation = new SaveInfomation();
@@ -220,15 +229,14 @@ public class SaveLoadManager : MonoBehaviour
         user.catPower = infomation.catPower;
         user.food = infomation.food;
         user.minerals = infomation.minerals;
+        user.roomDepth = infomation.roomDepth;
 
         CatList.getInstance().discoveredCats = infomation.discoveredCats;
         buildRoom.rooms = infomation.rooms;
         buildRoom.roomCount = infomation.roomCount;
 
         buildRoom.LoadRooms();
-
-        gameObject.GetComponent<BuildingNodePlacer>().nodeLength = infomation.nodeLength;
-        gameObject.GetComponent<BuildingNodePlacer>().LoadNode(infomation.nodeY);
+        buildRoom.LoadEmptyRooms(infomation.emptyRooms);
 
         foreach (CatInfo catInfo in infomation.cats) {
             gameObject.GetComponent<CatBuilder>().createCat(catInfo);
@@ -250,11 +258,15 @@ public class SaveLoadManager : MonoBehaviour
 
         gameObject.GetComponent<User>().username = username;
         gameObject.GetComponent<User>().userId = infomation.userId;
+        user.password = infomation.password;
+        user.email = infomation.email;
         gameObject.GetComponent<User>().highScore = infomation.highScore;
 
         adController.timeSinceLastAd = infomation.triesSinceLastAd;
 
         gameObject.GetComponent<GameProgression>().crazyCatCounter = infomation.crazyCatCounter;
+
+        gameObject.GetComponent<BuildRoom>().buildExcavationRoomCopy(infomation.excavationRoomSave);
 
         return username;
     }

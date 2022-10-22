@@ -9,6 +9,8 @@ public class User : MonoBehaviour
 
     public string username;
     public string userId;
+    public string password;
+    public string email;
 
     public int catPower = 0;
     public int food = 0;

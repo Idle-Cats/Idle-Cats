@@ -21,9 +21,7 @@ public class SaveInfomation
 
     public int roomCount;
 
-    public int nodeLength;
-
-    public float nodeY;
+    public int roomDepth;
 
     public int[] unlockedArtifacts;
     public int unlockedArtifactCount;
@@ -34,6 +32,8 @@ public class SaveInfomation
     public int highScore;
     public string userName;
     public string userId;
+    public string password;
+    public string email;
 
     public int firstLoad;
     public int milestone1;
@@ -53,4 +53,8 @@ public class SaveInfomation
     public int triesSinceLastAd;
 
     public int crazyCatCounter;
+
+    public ExcavationSave excavationRoomSave;
+
+    public EmptyRoomSave[] emptyRooms;
 }

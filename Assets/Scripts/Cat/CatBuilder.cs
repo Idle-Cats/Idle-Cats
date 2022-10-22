@@ -27,6 +27,13 @@ public class CatBuilder : MonoBehaviour
         cat.GetComponent<Cat>().setCatType(catInfo.catType);
         if (catInfo.roomNum > -1) {
             cat.GetComponent<CurrentRoom>().currentRoom = gameObject.GetComponent<BuildRoom>().rooms[catInfo.roomNum].getRoom();
+            gameObject.GetComponent<BuildRoom>().rooms[catInfo.roomNum].getRoom().GetComponent<RoomInformation>().cat = cat;
+        }
+        if (catInfo.isActive == 1) {
+            cat.SetActive(true);
+        }
+        else {
+            cat.SetActive(false);
         }
 
         catList.Add(cat);

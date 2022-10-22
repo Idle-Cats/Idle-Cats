@@ -129,11 +129,13 @@ public class WelcomeScreenControl : MonoBehaviour
         if (userExistsChecked) {
             errorText.SetText("User Already Exists");
             errorTextObject.SetActive(true);
+            confirmButtonCreate.SetActive(true);
             userExistsChecked = false;
         }
         if (userDosentExistsChecked) {
             errorText.SetText("Username or Password was incorrect");
             errorTextObject.SetActive(true);
+            confurmButtonLoad.SetActive(true);
             userDosentExistsChecked = false;
         }
     }
