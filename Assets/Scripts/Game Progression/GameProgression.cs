@@ -50,6 +50,7 @@ public class GameProgression : MonoBehaviour{
 
     //instance of the add room button to set it to unclickable
     public GameObject addRoomButton;
+    public Button openCatListButton;
 
     public bool isInTutorial = false;
 
@@ -148,6 +149,7 @@ public class GameProgression : MonoBehaviour{
     {
         if (flags.milestone1 == 0) {
             tutorial2.SetActive(false);
+            openCatListButton.interactable = false;
             tutorial2_1.SetActive(true);
         }
     }
@@ -155,6 +157,7 @@ public class GameProgression : MonoBehaviour{
     public void CloseTutorial2_1()
     {
         if (flags.milestone1 == 0) {
+            openCatListButton.interactable = true;
             tutorial2_1.SetActive(false);
             milestone1_3.SetActive(true);   
         }

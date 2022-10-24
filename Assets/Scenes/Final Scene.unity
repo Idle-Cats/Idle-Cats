@@ -14070,18 +14070,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1564675683}
-        m_TargetAssemblyTypeName: PlayfabManager, Assembly-CSharp
-        m_MethodName: UpdatePlayerDisplayName
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1207592124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18246,6 +18234,7 @@ MonoBehaviour:
   tutorial4: {fileID: 1722374132}
   tutorial5: {fileID: 1929052537}
   addRoomButton: {fileID: 537950451}
+  openCatListButton: {fileID: 20565533}
   isInTutorial: 0
   cloudCheckWelcome: 0
   food: 0
@@ -18340,6 +18329,8 @@ MonoBehaviour:
   closeButton: {fileID: 28848926}
   rowPrefab: {fileID: 501957788704034885, guid: e821e92c8dc1f4d4b9b4c607415d7551, type: 3}
   rowsParent: {fileID: 1346573772}
+  gameLoaded: 0
+  id: 
 --- !u!114 &1564675684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18478,6 +18469,7 @@ MonoBehaviour:
   welcomeScreenControl: {fileID: 1564675686}
   saveLoadManager: {fileID: 0}
   user: {fileID: 1564675678}
+  playfabManager: {fileID: 1564675683}
 --- !u!114 &1564675692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19887,18 +19879,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1564675686}
         m_TargetAssemblyTypeName: WelcomeScreenControl, Assembly-CSharp
         m_MethodName: LoadUser
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1564675683}
-        m_TargetAssemblyTypeName: PlayfabManager, Assembly-CSharp
-        m_MethodName: UpdatePlayerDisplayName
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

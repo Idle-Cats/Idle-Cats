@@ -10,6 +10,7 @@ public class AuthenicateUser : MonoBehaviour
     public WelcomeScreenControl welcomeScreenControl;
     public SaveLoadManager saveLoadManager;
     public User user;
+    public PlayfabManager playfabManager;
 
     public void CreateUser(TMP_InputField email, TMP_InputField password) {
         FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(email.text, password.text).ContinueWith(task => {
@@ -31,6 +32,8 @@ public class AuthenicateUser : MonoBehaviour
             user.userId = newUser.UserId;
             user.email = email.text;
             user.password = password.text;
+            playfabManager.gameLoaded = true;
+            playfabManager.id = newUser.UserId;
         });
     }
 
@@ -53,6 +56,8 @@ public class AuthenicateUser : MonoBehaviour
             user.userId = newUser.UserId;
             user.email = email.text;
             user.password = password.text;
+            playfabManager.gameLoaded = true;
+            playfabManager.id = newUser.UserId;
         });
     }
 
@@ -63,6 +68,8 @@ public class AuthenicateUser : MonoBehaviour
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
             saveLoadManager.continueLoadUser = true;
+            playfabManager.gameLoaded = true;
+            playfabManager.id = newUser.UserId;
         });
     }
 }
