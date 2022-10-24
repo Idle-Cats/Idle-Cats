@@ -91,6 +91,7 @@ public class BuildRoom : MonoBehaviour
         if (excavationSave.researching == 1) {
             researching = true;
         }
+        room.GetComponent<RoomExcavation>().loadedIn = true;
         room.GetComponent<RoomExcavation>().calculateOfflineProgress(excavationSave.timeLength, excavationSave.researchTitle, excavationSave.initialLength, researching);
         //gets the info for the room, this is for saving and loading purposes as you cant save gameObjects
 
@@ -121,7 +122,7 @@ public class BuildRoom : MonoBehaviour
             roomInfo.SetRoom(room);
 
             //Holds an array of room info
-            Debug.Log("Room Length: " + rooms);
+            //Debug.Log("Room Length: " + rooms);
             if (roomCount == rooms.Length - 1)
             {
                 ExpandRooms();
@@ -280,7 +281,7 @@ public class BuildRoom : MonoBehaviour
 
                 int currentPrice = 0;
 
-                currentPrice = (room.GetComponent<CanAfford>().basePrice * 2 * 2 ^ (roomCount / 5));
+                currentPrice = room.GetComponent<CanAfford>().basePrice * 3 * roomCount;
 
                 if (roomCount == 0 && room.gameObject.GetComponent<CanAfford>().resourceType == ResourceRoom.ResourceType.catpower) {
                     currentPrice = 0;

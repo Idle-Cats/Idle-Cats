@@ -189,7 +189,7 @@ public class GameProgression : MonoBehaviour{
             tutorial4.SetActive(false);
             tutorial5.SetActive(true);
             addRoomButton.GetComponent<Button>().interactable = true;
-            Debug.Log("can be clicked");
+            //Debug.Log("can be clicked");
             flags.resourcesCanBeClicked = true;
         }
     }
@@ -350,7 +350,7 @@ public class GameProgression : MonoBehaviour{
         flags.milestone4 = 1;
         ShowMilestone4();
         catList.AddCatType(CatType.GINGER);
-        Debug.Log("Added cat 64");
+        //Debug.Log("Added cat 64");
     }
 
     void mineralsReached5000() {
@@ -364,21 +364,21 @@ public class GameProgression : MonoBehaviour{
         flags.milestone5 = 1;
         ShowMilestone5();
         catList.AddCatType(CatType.TEAL);
-        Debug.Log("Added cat 5");
+        //Debug.Log("Added cat 5");
     }
 
     void foodReached100000() {
         flags.milestone6 = 1;
         ShowMilestone6();
         catList.AddCatType(CatType.PINK);
-        Debug.Log("Added cat 6");
+        //Debug.Log("Added cat 6");
     }
 
     void foodReached1000000() {
         flags.milestone7 = 1;
         ShowMilestone7();
         catList.AddCatType(CatType.BLUE);
-        Debug.Log("Added cat 7");
+        //Debug.Log("Added cat 7");
     }
 
     //counts the number of button presses the user has done this session

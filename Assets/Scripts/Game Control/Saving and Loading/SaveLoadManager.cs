@@ -75,7 +75,6 @@ public class SaveLoadManager : MonoBehaviour
     }
 
     public void LocalSaveButtonPressed() {
-        Debug.Log("test");
         loadSavePanel.SetActive(false);
         LoadFromData(localData);
     }
@@ -165,7 +164,7 @@ public class SaveLoadManager : MonoBehaviour
             string data = SaveHelper.Serialise<SaveInfomation>(infomation);
 
             PlayerPrefs.SetString("Save Info", data);
-            Debug.Log(data);
+            //Debug.Log(data);
             cloudSave.WriteNewUser(data, userId);
 
             if (!isConnected) {
@@ -187,7 +186,7 @@ public class SaveLoadManager : MonoBehaviour
             infomation = SaveHelper.Deserialise<SaveInfomation>(localData);
             gameObject.GetComponent<AuthenicateUser>().saveLoadManager = this;
             gameObject.GetComponent<AuthenicateUser>().LoadUserFromSave(infomation.email, infomation.password);
-            Debug.Log(localData);
+            //Debug.Log(localData);
             string userId = infomation.userId;
         }
         else {//if there is no save infomation makes a new blank save
@@ -198,7 +197,7 @@ public class SaveLoadManager : MonoBehaviour
 
     public void LoadFromData(string data) {
         infomation = SaveHelper.Deserialise<SaveInfomation>(data);
-        Debug.Log("Cloud Save Data was different" + data);
+        //Debug.Log("Cloud Save Data was different" + data);
         FinishLoad();
 
         gameObject.GetComponent<GameProgression>().CheckWelcome();

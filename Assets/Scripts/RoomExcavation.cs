@@ -52,14 +52,19 @@ public class RoomExcavation : MonoBehaviour
     //replace this with a reference to global variable
     private int roomDepth = 0;
 
+    public bool loadedIn = false;
+
     // Start is called before the first frame update
     public void Start()
     {
         //
         roomDepth = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().roomDepth;
         roomHeight = gameObject.GetComponent<SpriteRenderer>().size.y;
-        research.GetComponent<TextMeshProUGUI>().SetText("Excavate New Room?\n Cost:" + (roomDepth * roomDepth) + " Cat Power.");
-        collectButton.SetActive(false);
+        if (!loadedIn) {
+            research.GetComponent<TextMeshProUGUI>().SetText("Excavate New Room?\n Cost:" + getPrice() + " Cat Power.");
+            collectButton.SetActive(false);
+            startButton.SetActive(true);
+        }
     }
 
     //TODO put a method here that checks for pricing  for startButton
@@ -69,7 +74,7 @@ public class RoomExcavation : MonoBehaviour
     bool canAfford()    
     {
         int currentResources = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().catPower;
-        int currentCost = (roomDepth * roomDepth);
+        int currentCost = getPrice();
 
         if (currentResources >= currentCost)
         {
@@ -94,7 +99,7 @@ public class RoomExcavation : MonoBehaviour
     //this is the method that executes when clicking the collect button
     public void clickCollect()
     {
-        setTimer();
+        setTimerOff();
         //make button unclickable
 
         //apply results of collecting timer here
@@ -106,7 +111,7 @@ public class RoomExcavation : MonoBehaviour
         //so put in empty room, put in new this room below it, increment roomDepth
         roomDepth++; //TODO make this global
         gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().roomDepth = roomDepth;
-        research.GetComponent<TextMeshProUGUI>().SetText("Excavate New Room?\n Cost:" + (roomDepth * roomDepth) + " Cat Power.");
+        research.GetComponent<TextMeshProUGUI>().SetText("Excavate New Room?\n Cost:" + getPrice() + " Cat Power.");
         RoomInformation roomInfo = gameObject.GetComponent<RoomInformation>();
         BuildRoom buildRoom = roomInfo.gameControl.GetComponent<BuildRoom>();
         buildRoom.emptyRooms.Enqueue(diggyDiggyHole);
@@ -132,6 +137,17 @@ public class RoomExcavation : MonoBehaviour
 
         //method for timer not running
     void setTimer()
+    {
+        this.researching = false;
+        collectButton.SetActive(true);
+        slider.SetActive(false);
+        startButton.SetActive(false);
+        this.researchTitle = "Excavation Finished!";
+        awaitingCollect = true;
+        research.GetComponent<TextMeshProUGUI>().SetText(researchTitle);
+    }
+
+    void setTimerOff()
     {
         this.researching = false;
         collectButton.SetActive(false);
@@ -163,7 +179,7 @@ public class RoomExcavation : MonoBehaviour
     //basically only contains the increasing time formula, and removes resource cost
     public void startExcavation()
     {
-        int cost = (roomDepth * roomDepth);
+        int cost = getPrice();
         gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().catPower -= cost;
         research.GetComponent<TextMeshProUGUI>().SetText("Excavating! Your cats are hard at work.");
         setTimer(((roomDepth + 1) * 30), "Excavation in progress");
@@ -204,21 +220,37 @@ public class RoomExcavation : MonoBehaviour
 
             if (dateNow > dateQuit) {
                 TimeSpan timeSpan = dateNow - dateQuit;
-                timeLength -= (int)(this.initialLength * timeSpan.TotalSeconds);
+                timeLength -= (int)(timeSpan.TotalSeconds);
+                Debug.Log("Time Length" + timeLength);
             }
             slider.SetActive(true);
             startButton.SetActive(false);
             if (timeLength <= 0) {
                 setTimer();
-                collectButton.SetActive(true);
             }
             else {
-                setTimer((timeLength), researchTitle, initialLength);
+                setTimer(timeLength, researchTitle, initialLength);
             }
 
             this.percentDone = ((float)this.timeLength / (float)initialLength) * 100;
 
             slider.GetComponent<Slider>().value = percentDone;
         }
+        else {
+            roomDepth = gameObject.GetComponent<RoomInformation>().gameControl.GetComponent<User>().roomDepth;
+            roomHeight = gameObject.GetComponent<SpriteRenderer>().size.y;
+            research.GetComponent<TextMeshProUGUI>().SetText("Excavate New Room?\n Cost:" + getPrice() + " Cat Power.");
+            collectButton.SetActive(false);
+            startButton.SetActive(true);
+        }
+
+        if (timeLength <= 0) {
+            awaitingCollect = true;
+            setTimer();
+        }
+    }
+
+    private int getPrice() {
+        return (int)Math.Pow(2, (roomDepth * roomDepth) / 5);
     }
 }

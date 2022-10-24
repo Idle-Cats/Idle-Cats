@@ -9,6 +9,8 @@ public class CloudSaveData : MonoBehaviour
     public string data = "test";
     DatabaseReference reference;
 
+    bool connectionCheckedProper = false;
+
     private SaveLoadManager saveLoadManager;
     private GameProgression gameProgression;
     private WelcomeScreenControl welcomeScreenControl;
@@ -54,19 +56,19 @@ public class CloudSaveData : MonoBehaviour
 
     public void LoadUser(string username, string localData)
     {
-        Debug.Log("Loading from Cloud");
+        //Debug.Log("Loading from Cloud");
         reference = FirebaseDatabase.DefaultInstance.RootReference;
 
         FirebaseDatabase.DefaultInstance.GetReference("users").Child(username).GetValueAsync().ContinueWith(task =>
         {
             if (task.IsFaulted) {
-                Debug.Log("Error in getting data");
+                //Debug.Log("Error in getting data");
             }
             else if (task.IsCompleted) {
                 DataSnapshot snapshot = task.Result;
-                Debug.Log("Data: " + data);
+                //Debug.Log("Data: " + data);
                 if (!snapshot.Exists) {
-                    Debug.Log("cloud save no exist");
+                    //Debug.Log("cloud save no exist");
                     saveLoadManager.continueSave = true;
                     saveLoadManager.data = localData;
                 }
@@ -82,33 +84,33 @@ public class CloudSaveData : MonoBehaviour
                 }
             }
             else if (task.IsCanceled) {
-                Debug.Log("Task Cancelled");
+                //Debug.Log("Task Cancelled");
             }
         });
     }
 
     public void CheckProfile(string username)
     {
-        Debug.Log("Checking if profile already exists");
+        //Debug.Log("Checking if profile already exists");
         reference = FirebaseDatabase.DefaultInstance.RootReference;
 
         FirebaseDatabase.DefaultInstance.GetReference("users").Child(username).GetValueAsync().ContinueWith(task =>
         {
             if (task.IsFaulted) {
-                Debug.Log("Error in getting data");
+                //Debug.Log("Error in getting data");
             }
             else if (task.IsCompleted) {
-                Debug.Log("Task Completed");
+                //Debug.Log("Task Completed");
                 DataSnapshot snapshot = task.Result;
                 if (snapshot.Exists) {
-                    Debug.Log("exists");
+                    //Debug.Log("exists");
                 }
                 else {
-                    Debug.Log("dosent exist");
+                    //Debug.Log("dosent exist");
                     gameProgression.cloudCheckWelcome = true;
                 }
                 data = snapshot.Child("data").Value.ToString();
-                Debug.Log("Data: " + data);
+                //Debug.Log("Data: " + data);
 
                 saveLoadManager.continueSave = true;
                 saveLoadManager.data = data;
@@ -127,12 +129,17 @@ public class CloudSaveData : MonoBehaviour
 
         connectedRef.ValueChanged += (object sender, ValueChangedEventArgs a) =>
         {
-            bool isConnected = (bool)a.Snapshot.Value;
-            Debug.Log("Is Connected: " + isConnected);
-            saveLoadManager.isConnected = isConnected;
-            saveLoadManager.connectionChecked = true;
-            welcomeScreenControl.isConnected = isConnected;
-            welcomeScreenControl.connetionChecked = true;
+            if (!connectionCheckedProper) {
+                bool isConnected = (bool)a.Snapshot.Value;
+                //Debug.Log("Is Connected: " + isConnected);
+                saveLoadManager.isConnected = isConnected;
+                if (isConnected) {
+                    connectionCheckedProper = true;
+                }
+                saveLoadManager.connectionChecked = true;
+                welcomeScreenControl.isConnected = isConnected;
+                welcomeScreenControl.connetionChecked = true;
+            }
         };
     }
 }

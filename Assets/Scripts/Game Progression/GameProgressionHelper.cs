@@ -46,12 +46,12 @@ public class GameProgressionHelper
     public void buildRoomCheck() {
         if (milestone1 == 0) {
             //add cat from milestone1
-            Debug.Log("milestone1");
+            //Debug.Log("milestone1");
            catList.AddCatType(CatType.GREY);
         }
 
         if (milestone12 == 0 && roomCount > 10) {
-            Debug.Log("Milestone12");
+            //Debug.Log("Milestone12");
             milestone12 = 1;
 
             //add cat from milestone12

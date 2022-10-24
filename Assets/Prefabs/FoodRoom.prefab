@@ -1207,8 +1207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomInvent: 0
   roomBoost: {fileID: 2865734567044348951}
-  roomCapacity: 0
-  resourceGen: 0
+  roomCapacity: 1000
+  resourceGen: 1
   name: ResourceRoom
   resourceCounter: {fileID: 5542171577419327473}
   timesInventUpgraded: 0

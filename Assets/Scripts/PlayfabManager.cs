@@ -35,7 +35,7 @@ public class PlayfabManager : MonoBehaviour
     }
 
     void OnSuccess(LoginResult result) {
-        Debug.Log("Successful Login!");
+        //Debug.Log("Successful Login!");
         string name = null;
         if (result.InfoResultPayload.PlayerProfile != null) {
             name = result.InfoResultPayload.PlayerProfile.DisplayName;
@@ -56,12 +56,12 @@ public class PlayfabManager : MonoBehaviour
     }
 
     void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result) {
-        Debug.Log("Displayname succesfully set");
+        //Debug.Log("Displayname succesfully set");
     }
 
     void OnError(PlayFabError error) {
-        Debug.Log("Error");
-        Debug.Log(error.GenerateErrorReport());
+        //Debug.Log("Error");
+        //Debug.Log(error.GenerateErrorReport());
     }
 
     void SendLeaderBoard() {

@@ -58,7 +58,6 @@ public class AuthenicateUser : MonoBehaviour
 
     public void LoadUserFromSave(string email, string password)
     {
-        Debug.Log("WWWWWWWWWWWAH");
         FirebaseAuth.DefaultInstance.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
             Firebase.Auth.FirebaseUser newUser = task.Result;
             Debug.LogFormat("User signed in successfully: {0} ({1})",

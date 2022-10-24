@@ -18048,6 +18048,7 @@ GameObject:
   - component: {fileID: 1564675689}
   - component: {fileID: 1564675690}
   - component: {fileID: 1564675691}
+  - component: {fileID: 1564675692}
   m_Layer: 0
   m_Name: Game Control
   m_TagString: Untagged
@@ -18175,6 +18176,8 @@ MonoBehaviour:
   highScore: 0
   username: 
   userId: 
+  password: 
+  email: 
   catPower: 0
   food: 0
   minerals: 0
@@ -18267,6 +18270,7 @@ MonoBehaviour:
   isConnected: 0
   connectionChecked: 0
   loadSavePanel: {fileID: 860064548}
+  continueLoadUser: 0
   infomation:
     food: 0
     minerals: 0
@@ -18279,6 +18283,8 @@ MonoBehaviour:
     highScore: 0
     userName: 
     userId: 
+    password: 
+    email: 
     firstLoad: 0
     milestone1: 0
     milestone2: 0
@@ -18295,7 +18301,6 @@ MonoBehaviour:
     artifactTutorial: 0
     triesSinceLastAd: 0
     crazyCatCounter: 0
-    excavationRoomY: 0
 --- !u!114 &1564675682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18444,7 +18449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _androidGameId: 4954772
   _iOSGameId: 4954773
-  _testMode: 1
+  _testMode: 0
 --- !u!114 &1564675690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18471,7 +18476,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   welcomeScreenControl: {fileID: 1564675686}
+  saveLoadManager: {fileID: 0}
   user: {fileID: 1564675678}
+--- !u!114 &1564675692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564675671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5aab4d98514484398ca684cd3080f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1569959881
 GameObject:
   m_ObjectHideFlags: 0
