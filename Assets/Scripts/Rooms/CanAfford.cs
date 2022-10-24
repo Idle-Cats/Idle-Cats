@@ -8,6 +8,7 @@ public class CanAfford : MonoBehaviour
     public int currentPrice;
     public PriceType priceType;
     public RoomSaveInfo.RoomType roomType;
+    public ResourceRoom.ResourceType resourceType;
 
     public GameObject gameControl;
 

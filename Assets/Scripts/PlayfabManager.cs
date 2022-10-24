@@ -15,21 +15,34 @@ public class PlayfabManager : MonoBehaviour
     public GameObject rowPrefab;
     public Transform rowsParent;
 
+    public bool gameLoaded = false;
+    public string id;
+
     // Start is called before the first frame update
     void Start()
     {
-        Login();
+        //Login();
+    }
+
+    private void Update()
+    {
+        if (gameLoaded) {
+            Login();
+            gameLoaded = false;
+        }
     }
 
     void Login()
     {
         var request = new LoginWithCustomIDRequest {
-            CustomId = SystemInfo.deviceUniqueIdentifier,
+            CustomId = id,
             CreateAccount = true,
             InfoRequestParameters = new GetPlayerCombinedInfoRequestParams {
                 GetPlayerProfile = true
             }
         };
+
+        Debug.Log(request.CustomId);
 
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
     }
@@ -40,6 +53,8 @@ public class PlayfabManager : MonoBehaviour
         if (result.InfoResultPayload.PlayerProfile != null) {
             name = result.InfoResultPayload.PlayerProfile.DisplayName;
         }
+
+        UpdatePlayerDisplayName();
     }
 
     public void UpdatePlayerDisplayName() {
@@ -60,7 +75,7 @@ public class PlayfabManager : MonoBehaviour
     }
 
     void OnError(PlayFabError error) {
-        Debug.Log("Error");
+        Debug.Log("Error playfab lol");
         Debug.Log(error.GenerateErrorReport());
     }
 

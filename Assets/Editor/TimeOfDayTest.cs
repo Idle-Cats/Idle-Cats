@@ -14,7 +14,8 @@ public class TimeOfDayTest
 
     [Test]
     public void isDaytime() {
-        TimeSpan now = DateTime.Now.TimeOfDay;
+        //TimeSpan now = DateTime.Now.TimeOfDay;
+        TimeSpan now = new TimeSpan(7, 0, 0);
         bool isDay;
         if (now > morning && now < evening)
         {

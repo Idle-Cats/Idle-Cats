@@ -17,21 +17,37 @@ public class RoomSaveInfo
 
     public int roomNum;
 
-    public RoomSaveInfo(Vector3 pos, RoomType type, ResourceRoomSave resourceRoom) {
+    public int containsCat;
+
+    public RoomSaveInfo(Vector3 pos, RoomType type, ResourceRoomSave resourceRoom, bool containsCat) {
         this.x = pos.x;
         this.y = pos.y;
         this.z = pos.z;
         this.roomType = type;
         this.resourceRoom = resourceRoom;
+
+        if (containsCat) {
+            this.containsCat = 1;
+        }
+        else {
+            this.containsCat = 0;
+        }
     }
 
-    public RoomSaveInfo(Vector3 pos, RoomType type, TimerRoomSave timerRoomSave)
+    public RoomSaveInfo(Vector3 pos, RoomType type, TimerRoomSave timerRoomSave, bool containsCat)
     {
         this.x = pos.x;
         this.y = pos.y;
         this.z = pos.z;
         this.roomType = type;
         this.timerRoomSave = timerRoomSave;
+
+        if (containsCat) {
+            this.containsCat = 1;
+        }
+        else {
+            this.containsCat = 0;
+        }
     }
 
     public RoomSaveInfo() {
@@ -64,6 +80,9 @@ public class RoomSaveInfo
         }
         else if (roomType == RoomType.ArtifactRoom){
             timerRoomSave = room.GetComponent<ArtifactRoom>().MakeCopy();
+        }
+        else if (roomType == RoomType.StealingRoom) {
+            timerRoomSave = room.GetComponent<StealingRoom>().MakeCopy();
         }
     }
 }

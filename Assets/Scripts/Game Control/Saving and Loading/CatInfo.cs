@@ -10,6 +10,8 @@ public class CatInfo
 
     public int roomNum;
 
+    public int isActive;
+
     public CatType catType;
 
     public CatInfo() {
@@ -28,6 +30,13 @@ public class CatInfo
         }
         else {
             this.roomNum = -1;
+        }
+
+        if (cat.activeSelf) {
+            isActive = 1;
+        }
+        else {
+            isActive = 0;
         }
     }
 }

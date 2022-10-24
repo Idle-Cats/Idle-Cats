@@ -678,7 +678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -391.63, y: -118.19}
+  m_AnchoredPosition: {x: -390.48465, y: -118.25853}
   m_SizeDelta: {x: 2.6079, y: 0.654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7884495734715990410
@@ -1179,6 +1179,7 @@ MonoBehaviour:
   roomType: 0
   gameControl: {fileID: 0}
   containsCat: 0
+  cat: {fileID: 0}
 --- !u!114 &2865734567044348951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,8 +1207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomInvent: 0
   roomBoost: {fileID: 2865734567044348951}
-  roomCapacity: 0
-  resourceGen: 0
+  roomCapacity: 1000
+  resourceGen: 1
   name: ResourceRoom
   resourceCounter: {fileID: 5542171577419327473}
   timesInventUpgraded: 0

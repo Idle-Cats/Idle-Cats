@@ -50,9 +50,11 @@ public class GameProgression : MonoBehaviour{
 
     //instance of the add room button to set it to unclickable
     public GameObject addRoomButton;
+    public Button openCatListButton;
 
     public bool isInTutorial = false;
 
+    public bool cloudCheckWelcome = false;
     public int food;
     public int minerals;
     public int catPower;
@@ -64,9 +66,12 @@ public class GameProgression : MonoBehaviour{
         user = gameObject.GetComponent<User>();
         catList = CatList.getInstance();
 
-        // Debug.Log(catList.discoveredCat);
+        flags = gameObject.GetComponent<CatGameFlags>();
+    }
 
-        //gets an instance of the flags script
+    public void CheckWelcome() {//allows delay of showing welcome screen so can load in time
+        user = gameObject.GetComponent<User>();
+        catList = CatList.getInstance();
         flags = gameObject.GetComponent<CatGameFlags>();
 
         //shows the welcome screen if it is the users first load
@@ -78,6 +83,10 @@ public class GameProgression : MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
+        if (cloudCheckWelcome) {
+            CheckWelcome();
+            cloudCheckWelcome = false;
+        }
         //checks if specific resource goals have been hit for the first time and runs
         //their asscoiated function
         food = user.food;
@@ -104,18 +113,19 @@ public class GameProgression : MonoBehaviour{
             foodReached1000000();
         }
 
-        if (minerals >= 5000 && flags.artifactTutorial == 0) {
+        if (minerals >= 5000 && flags.artifactTutorial == 0 && gameObject.GetComponent<BuildRoom>().EmptyRoomAvailable()) {
             mineralsReached5000();
         }
     }
-
-    //All functions facilitate the closing and opening of panels
-    //after the last panel is closed the associated flag is set to a non 0 number
+    
     public void CloseWelcome() {
         if (flags.firstLoad == 0) {
             welcome_panel.SetActive(false);
             tutorial1.SetActive(true);
         }
+
+    //All functions facilitate the closing and opening of panels
+    //after the last panel is closed the associated flag is set to a non 0 number
     }
 
     void ShowWelcome() {
@@ -139,6 +149,7 @@ public class GameProgression : MonoBehaviour{
     {
         if (flags.milestone1 == 0) {
             tutorial2.SetActive(false);
+            openCatListButton.interactable = false;
             tutorial2_1.SetActive(true);
         }
     }
@@ -146,6 +157,7 @@ public class GameProgression : MonoBehaviour{
     public void CloseTutorial2_1()
     {
         if (flags.milestone1 == 0) {
+            openCatListButton.interactable = true;
             tutorial2_1.SetActive(false);
             milestone1_3.SetActive(true);   
         }
@@ -180,7 +192,7 @@ public class GameProgression : MonoBehaviour{
             tutorial4.SetActive(false);
             tutorial5.SetActive(true);
             addRoomButton.GetComponent<Button>().interactable = true;
-            Debug.Log("can be clicked");
+            //Debug.Log("can be clicked");
             flags.resourcesCanBeClicked = true;
         }
     }
@@ -341,7 +353,7 @@ public class GameProgression : MonoBehaviour{
         flags.milestone4 = 1;
         ShowMilestone4();
         catList.AddCatType(CatType.GINGER);
-        Debug.Log("Added cat 64");
+        //Debug.Log("Added cat 64");
     }
 
     void mineralsReached5000() {
@@ -355,21 +367,21 @@ public class GameProgression : MonoBehaviour{
         flags.milestone5 = 1;
         ShowMilestone5();
         catList.AddCatType(CatType.TEAL);
-        Debug.Log("Added cat 5");
+        //Debug.Log("Added cat 5");
     }
 
     void foodReached100000() {
         flags.milestone6 = 1;
         ShowMilestone6();
         catList.AddCatType(CatType.PINK);
-        Debug.Log("Added cat 6");
+        //Debug.Log("Added cat 6");
     }
 
     void foodReached1000000() {
         flags.milestone7 = 1;
         ShowMilestone7();
         catList.AddCatType(CatType.BLUE);
-        Debug.Log("Added cat 7");
+        //Debug.Log("Added cat 7");
     }
 
     //counts the number of button presses the user has done this session

@@ -1043,6 +1043,7 @@ MonoBehaviour:
   roomType: 0
   gameControl: {fileID: 0}
   containsCat: 0
+  cat: {fileID: 0}
 --- !u!114 &2664084266792997036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1070,8 +1071,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomInvent: 0
   roomBoost: {fileID: 2664084266792997036}
-  roomCapacity: 0
-  resourceGen: 0
+  roomCapacity: 1000
+  resourceGen: 1
   name: ResourceRoom
   resourceCounter: {fileID: 8952959076580076366}
   timesInventUpgraded: 0

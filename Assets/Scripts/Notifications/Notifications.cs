@@ -85,7 +85,7 @@ public class Notifications : MonoBehaviour
             secondsTillFull = (int) (resourcesLeft / genPerSec);
         }
 
-        Debug.Log(resourcesLeft + " : " + genPerSec + " : " + secondsTillFull);
+        //Debug.Log(resourcesLeft + " : " + genPerSec + " : " + secondsTillFull);
 
         var date = System.DateTime.Now.AddSeconds(secondsTillFull);
 

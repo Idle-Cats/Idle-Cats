@@ -167,6 +167,7 @@ MonoBehaviour:
   roomType: 1
   gameControl: {fileID: 0}
   containsCat: 0
+  cat: {fileID: 0}
 --- !u!114 &3200233253868290228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,14 +180,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b990c9144fa7284eb0d8d3f92509e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  researching: 0
   timeLength: 0
   percentDone: 0
+  researchTitle: 
   slider: {fileID: 2373952320064549409}
   initialLength: 0
   research: {fileID: 7901006341145586284}
   startButton: {fileID: 8501619871698317574}
   collectButton: {fileID: 4646127356082643177}
   emptyRoom: {fileID: 2205992875595995088, guid: 1241b0bce3ddbb848963b07e7f015dc1, type: 3}
+  loadedIn: 0
 --- !u!1 &2373952320064549409
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &934672905016811373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -927,7 +931,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Excavate New room?
+  m_text: 'Excavate New room?AMONGUS
 
     Cost:'
   m_isRightToLeft: 0
@@ -1016,7 +1020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2043369931586344930
 RectTransform:
   m_ObjectHideFlags: 0

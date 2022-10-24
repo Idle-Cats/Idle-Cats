@@ -24,8 +24,8 @@ public class ResourceRoom : MonoBehaviour
     public float roomInvent = 0;
     public RoomBoost roomBoost;
     //public float upgradeModifier = 0;
-    public float roomCapacity = 0;
-    public float resourceGen = 0;
+    public float roomCapacity = 1000;
+    public float resourceGen = 1;
     public new string name = "ResourceRoom";
     [SerializeField]
     private GameObject resourceCounter;
@@ -51,8 +51,8 @@ public class ResourceRoom : MonoBehaviour
         //initialise values here
         //temp placeholder code:
         this.name = "Fishing Room";
-        this.roomCapacity = 1000;
-        this.resourceGen = 1;
+        //this.roomCapacity = 1000;
+        //this.resourceGen = 1;
         InvokeRepeating("updateRoom", 0.0f, 1.0f);
         upgradeGenerationButtonText.GetComponent<TextMeshProUGUI>().SetText(updateButtonText(true));
         upgradeInventButtonText.GetComponent<TextMeshProUGUI>().SetText(updateButtonText(false));
@@ -93,11 +93,13 @@ public class ResourceRoom : MonoBehaviour
         this.name = resourceRoom.name;
         this.roomBoost.boostAmount = resourceRoom.roomBoost;
         this.resourceType = resourceRoom.resourceType;
+        this.timesInventUpgraded = resourceRoom.timesInventUpgraded;
+        this.timesGenerationUpgraded = resourceRoom.timesGenerationUpgraded;
     }
 
     //makes a copy for saving
     public ResourceRoomSave MakeCopy() {
-        return new ResourceRoomSave(roomInvent, roomBoost, roomCapacity, resourceGen, name, resourceType);
+        return new ResourceRoomSave(roomInvent, roomBoost, roomCapacity, resourceGen, name, resourceType, timesInventUpgraded, timesGenerationUpgraded);
     }
 
     //method for adding to invent making sure capacity isn't exceeded
