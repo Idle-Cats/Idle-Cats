@@ -6,22 +6,24 @@ using TMPro;
 
 public class TimerRoom : MonoBehaviour
 {
-    //nathan is here
-    //he says we suck
-    //this is a skeleton class for timed rooms
-
-        // need upgrade object with constructor
-        //costs, timer, gain.
-
     private bool researching = false;
+    [SerializeField]
     private int timeLength = 0;
+    [SerializeField]
     private float percentDone = 0.0f;
     private int rewardAmount = 0;
     private int rewardType = 0;
     private string researchTitle = null;
     [SerializeField]
     private GameObject slider;
-   
+    [SerializeField]
+    private int initialLength;
+
+    [SerializeField]
+    private GameObject startButton;
+    [SerializeField]
+    private GameObject collectButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,25 +31,17 @@ public class TimerRoom : MonoBehaviour
     }
 
     //where do i put this?
-    public void applyResearch()
+     public void applyResearch(int timerLength)
     {
-        if (researching)
-        {
-            int initialLength = this.timeLength;
-            while (this.timeLength < 0)
-            {
-                InvokeRepeating("updateTimerLength", 0.0f, 1.0f);
-                //do i need to keep updating percentdone?
-                this.percentDone = (this.timeLength / initialLength) * 100;
-                
-               slider.GetComponent<Slider>().value = percentDone;
+        initialLength = timerLength;
 
-            }
-
-            //set collect button to clickable
-
-        }
+        InvokeRepeating("updateArtifactTimerLength", 0.0f, 1.0f);
     }
+
+    //set collect button to clickable
+
+
+    
 
     public void clickCollect()
     {
@@ -74,6 +68,9 @@ public class TimerRoom : MonoBehaviour
     void setTimer()
     {
         this.researching = false;
+        collectButton.SetActive(false);
+        startButton.SetActive(true);
+        slider.SetActive(false);
         this.researchTitle = "Room not busy";
     }
 
@@ -84,11 +81,16 @@ public class TimerRoom : MonoBehaviour
         this.timeLength = timeLength;
         this.researchTitle = researchTitle;
         this.researching = true;
+        applyResearch(timeLength);
     }
 
     public void startPlaceholder()
     {
         setTimer(300, 1000, 3, "Converting 1000 Catpower");
+        startButton.SetActive(false);
+        slider.SetActive(true);
+        this.rewardType = 3;
+        this.rewardAmount = 1000;
     }
 
     public void updateTimerLength()
@@ -96,6 +98,16 @@ public class TimerRoom : MonoBehaviour
         if (this.timeLength > 0)
         {
             this.timeLength--;
+            this.percentDone = ((float)this.timeLength / (float)initialLength) * 100;
+
+            slider.GetComponent<Slider>().value = percentDone;
+        }
+        if (this.timeLength <= 0)
+        {
+            setTimer();
+            collectButton.SetActive(true);
+
+            CancelInvoke("updateArtifactTimerLength");
         }
     }
     //tap room brings up UI where select between three choices.

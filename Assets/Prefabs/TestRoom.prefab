@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2205992875595995095}
   - component: {fileID: 6803920241028846455}
   - component: {fileID: 2845889945985629952}
+  - component: {fileID: 3523940588975789952}
+  - component: {fileID: 1425116050999907019}
   m_Layer: 6
   m_Name: TestRoom
   m_TagString: Untagged
@@ -125,7 +127,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845fab38fdab91d4ba94f9f927977a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomInvent: 0
+  roomBoost: {fileID: 1425116050999907019}
+  roomCapacity: 0
+  resourceGen: 0
+  name: ResourceRoom
   resourceCounter: {fileID: 3832907475030933562}
+  resourceType: 0
+--- !u!114 &3523940588975789952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205992875595995088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66af3ddc239ee24b9ad591f12e792dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomNum: 0
+  roomType: 0
+  gameControl: {fileID: 0}
+  containsCat: 0
+--- !u!114 &1425116050999907019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2205992875595995088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae026a0f17dc4e43b485778acc52e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostAmount: 0
 --- !u!1 &3832907475030933562
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +175,7 @@ GameObject:
   - component: {fileID: 1491779706123757121}
   - component: {fileID: 5407497059058137109}
   m_Layer: 5
-  m_Name: ResourceCount
+  m_Name: CurrentCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,8 +198,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -391.43637, y: -118.33165}
-  m_SizeDelta: {x: 2.7543, y: 1.2394}
+  m_AnchoredPosition: {x: -391.1835, y: -118.14198}
+  m_SizeDelta: {x: 3.2601, y: 0.8601}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1491779706123757121
 CanvasRenderer:
@@ -186,13 +223,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Resource Count:'
+  m_text: 'Cost to Excavate:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -321,13 +358,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

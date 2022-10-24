@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4099a821b7c601c479500553c665cdd4, type: 3}
+  m_Name: Golden Cat Food
+  m_EditorClassIdentifier: 
+  artifactName: Golden Cat Food
+  boost: 0.4
+  image: {fileID: 21300000, guid: 9823326ff6403c7418ed76da67505ec9, type: 3}
+  boostType: 0
