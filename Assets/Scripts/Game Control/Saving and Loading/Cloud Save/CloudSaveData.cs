@@ -123,7 +123,7 @@ public class CloudSaveData : MonoBehaviour
     }
 
     private IEnumerator RunConnectionCheck() {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
 
         DatabaseReference connectedRef = FirebaseDatabase.DefaultInstance.GetReference(".info/connected");
 
