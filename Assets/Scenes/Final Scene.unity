@@ -18467,7 +18467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   welcomeScreenControl: {fileID: 1564675686}
-  saveLoadManager: {fileID: 0}
+  saveLoadManager: {fileID: 1564675681}
   user: {fileID: 1564675678}
   playfabManager: {fileID: 1564675683}
 --- !u!114 &1564675692

@@ -281,7 +281,7 @@ public class BuildRoom : MonoBehaviour
 
                 int currentPrice = 0;
 
-                currentPrice = room.GetComponent<CanAfford>().basePrice * 3 * roomCount;
+                currentPrice = (room.GetComponent<CanAfford>().basePrice * 3 * roomCount) + 1;
 
                 if (roomCount == 0 && room.gameObject.GetComponent<CanAfford>().resourceType == ResourceRoom.ResourceType.catpower) {
                     currentPrice = 0;
