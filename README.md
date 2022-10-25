@@ -7,7 +7,7 @@
 1. Install Unity 2021.3.7f1 (note while this may work on other versions of Unity this is untested so we recommend this version)
 2. Install any IDE that can edit C# scripts
 3. Clone the release branch from GitHub
-4. Unzip the folder called Firebase.zip and move it into the assets folder
+4. Unzip the folder called Firebase.zip in the relases and move it into the assets folder
 5. Launch the project in Unity Hub
 
 ## Warnings that appear when you open in Unity
